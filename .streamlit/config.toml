@@ -1,0 +1,15 @@
+[theme]
+base="light"
+primaryColor="#FFD700"
+backgroundColor="#000000"
+secondaryBackgroundColor="#222222"
+textColor="#FFFFFF"
+font="Times New Roman"
+
+[server]
+headless = true
+
+[client]
+showErrorDetails = true
+
+
