@@ -57,8 +57,8 @@ with st.container():
         st.write("")  # Empty
 
     with col2:
-        st.markdown("<br> </br> <br>", unsafe_allow_html=True)  # Empty
-        st.image(logo, width=1000)
+        st.markdown("<br> </br>" unsafe_allow_html=True)  # Empty
+        st.image(logo, width=750)
 
 
 
