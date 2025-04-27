@@ -15,7 +15,7 @@ from functions import (
 from datetime import datetime
 
 # Load Data
-filename = "College Basketball Model.xlsm"
+filename = "data/College Basketball Model.xlsm"
 sheet = "All Seasons Data"
 df = pd.read_excel(filename, sheet_name=sheet, engine="openpyxl")
 df.columns = df.columns.astype(str).str.strip().str.replace('\n', ' ', regex=False)
