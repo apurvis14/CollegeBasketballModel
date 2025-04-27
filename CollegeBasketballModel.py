@@ -13,7 +13,7 @@ from functions import (
     display_metrics
 )
 from datetime import datetime
-
+from PIL import Image
 # Load Data
 filename = "data/College Basketball Model.xlsm"
 sheet = "All Seasons Data"
@@ -33,6 +33,32 @@ columns_to_drop = [
 ]
 df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+# Remove padding at the top
+st.markdown(
+    """
+    <style>
+        .block-container {
+            padding-top: 0rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Load logo
+logo = Image.open("data/CBB Logo.png")
+
+# Put logo upper right
+with st.container():
+    col1, col2 = st.columns([8, 1])
+
+    with col1:
+        st.write("")  # Empty
+
+    with col2:
+        st.image(logo, width=150)
+
 
 st.title("College Basketball Trends Dashboard")
 st.markdown("""
