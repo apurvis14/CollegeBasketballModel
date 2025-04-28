@@ -139,8 +139,8 @@ def display_metrics(percent, win, loss):
     st.markdown(f"**Percentage:** {percent_display}", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     
-    # Display Wins with gold color (using markdown instead of metric)
-    col1.markdown(f"<h4 style='color: gold; font-size: 16px;'>Wins: {win}</h4>", unsafe_allow_html=True)
+    # Display Wins with only the number in gold and custom font size
+    col1.markdown(f"<h4>Wins: <span style='color: gold; font-size: 24px;'>{win}</span></h4>", unsafe_allow_html=True)
     
-    # Display Losses with gold color (using markdown instead of metric)
-    col2.markdown(f"<h4 style='color: gold; font-size: 16px;'>Losses: {loss}</h4>", unsafe_allow_html=True)
+    # Display Losses with only the number in gold and custom font size
+    col2.markdown(f"<h4>Losses: <span style='color: gold; font-size: 24px;'>{loss}</span></h4>", unsafe_allow_html=True)
