@@ -125,7 +125,14 @@ elif trend_option == "All Under":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        st.write(f"**{o} Offense under 100 / {d} Defense under 100**")
+        st.markdown(
+        f"""
+        <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+            {o} Offense Under 100 / {d} Defense Under 100
+        </h3>
+        """,
+        unsafe_allow_html=True
+        )
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
@@ -168,7 +175,13 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o1, o2, d1, d2), percent, win, loss in results:    
-        st.write(f"**{o1} Offense Over 100 and {o2} 110 / {d1} Defense Under 100 and {d2} 95**")
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">"
+                {o1} Offense Over 100 and {o2} 110 / {d1} Defense Under 100 and {d2} 95"
+                </h3>
+                """, unsafe_allow_html=True)
+        
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
@@ -202,7 +215,12 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o1, o2, d1, d2), percent, win, loss in results:
-        st.write(f"**{o1} OFF Under 100 and {o2} 95 / {d1} DEF Under 100 and {d2} 95**")
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">"
+                {o1} OFF Under 100 and {o2} 95 / {d1} DEF Under 100 and {d2} 95**"
+                </h3>
+                """, unsafe_allow_html=True)
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
@@ -260,7 +278,13 @@ elif trend_option == "Tempo Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for val, percent, win, loss in results:
-        st.write(f"**{val} EFF Over 105**")
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {val} EFF Over 105"
+            </h3>
+            """,unsafe_allow_html=True
+        )
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
@@ -293,7 +317,13 @@ elif trend_option == "PPG Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for val, percent, win, loss in results:
-        st.write(f"**{val} PPG Over**")
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {val} PPG Over 110"
+            </h3>
+            """,unsafe_allow_html=True
+        )
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
@@ -326,7 +356,13 @@ elif trend_option == "EFF Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        st.write(f"**{o} Offense Over 105 / {d} Defense Over 105**")
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {o} Offense Over 105 / {d} Defense Over 105"
+            </h3>
+            """,unsafe_allow_html=True
+        )
         display_metrics(percent, win, loss)
     
     # **NEW** Section to Filter by Specific Date and Display Data
