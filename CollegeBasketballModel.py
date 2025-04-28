@@ -94,6 +94,14 @@ if trend_option == "All Over":
         unsafe_allow_html=True
         )
         display_metrics(percent, win, loss)
+        st.markdown(
+        f"""
+        <p style="font-size: 18px;">
+            Wins: <span style="color: gold;">{win}</span><br>
+            Losses: <span style="color: gold;">{loss}</span>
+        </p>
+        """,
+        unsafe_allow_html=True)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.subheader("Data for Today's Games with All Over Trends")
