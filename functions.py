@@ -126,17 +126,17 @@ def display_metrics(percent, win, loss):
     if percent is None:
         percent_display = "N/A"
     elif percent > 60:
-        percent_display = f"<span style='color:darkgreen; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'> <u>{percent}%<u> </span>"
     elif percent > 55:
-        percent_display = f"<span style='color:lightgreen; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'> <u>{percent}%<u> </span>"
     elif percent > 40 and percent < 46:
-        percent_display = f"<span style='color:orange; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:orange; font-weight:bold'> <u>{percent}%<u> </span>"
     elif percent < 40:
-        percent_display = f"<span style='color:red; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:red; font-weight:bold'> <u>{percent}%<u> </span>"
     else:
-        percent_display = f"{percent}%"
+        percent_display = f" <u>{percent}%<u>"
 
-    st.markdown(f"**Percentage:** <u>{percent_display}<u>", unsafe_allow_html=True)
+    st.markdown(f"**Percentage:** {percent_display}", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     
     # Display Wins with only the number in gold and custom font size
