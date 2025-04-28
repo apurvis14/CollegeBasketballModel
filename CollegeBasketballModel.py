@@ -46,14 +46,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
-    """
-    <div style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px;">
-        <img src="data/CBB Horizontal Logo.png" style="max-width: 300px; height: auto;">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+logo = Image.open("data/CBB Horizontal Logo.png")
+st.image(logo, use_column_width=True)
 
 
 st.markdown(
