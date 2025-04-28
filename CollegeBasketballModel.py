@@ -96,7 +96,10 @@ if trend_option == "All Over":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Data for Today's Games with All Over Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Convert the selected date to a datetime object
     today_date = datetime.today().date()
@@ -136,7 +139,10 @@ elif trend_option == "All Under":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Data for Today's Games with All Under Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Convert the selected date to a datetime object
     today_date = datetime.today().date()
@@ -185,7 +191,10 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for EFF/PPG Over & Tempo Under Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Today's date
     today_date = datetime.today().date()
@@ -224,7 +233,10 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for Tempo/EFF Over & PPG Under Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Today's date
     today_date = datetime.today().date()
@@ -249,7 +261,10 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for PPG/Tempo Over & EFF Under Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Today's date
     today_date = datetime.today().date()
@@ -288,7 +303,10 @@ elif trend_option == "Tempo Over":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for Tempo Over Trends.")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     # Today's date
     today_date = datetime.today().date()
@@ -327,7 +345,10 @@ elif trend_option == "PPG Over":
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for PPG Over Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
     
     today_date = datetime.today().date()
 
@@ -366,7 +387,10 @@ elif trend_option == "EFF Over":
         display_metrics(percent, win, loss)
     
     # **NEW** Section to Filter by Specific Date and Display Data
-    st.subheader("Today's Games for EFF Over Trends")
+    st.markdown(
+        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        unsafe_allow_html=True
+    )
 
     today_date = datetime.today().date()
 
