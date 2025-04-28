@@ -85,7 +85,14 @@ if trend_option == "All Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        st.write(f"**{o} Offense over 100 / {d} Defense over 100**")
+        st.markdown(
+        f"""
+        <h3 style="text-align: left; font-size: 24px; text-decoration: underline;">
+            {o} Offense over 100 / {d} Defense over 100
+        </h3>
+        """,
+        unsafe_allow_html=True
+        )
         display_metrics(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
