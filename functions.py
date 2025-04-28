@@ -136,7 +136,11 @@ def display_metrics(percent, win, loss):
     else:
         percent_display = f" <u>{percent}%<u>"
 
-    st.markdown(f"**Percentage:** {percent_display}", unsafe_allow_html=True)
+    st.markdown(
+        f"<div style='text-align: center;'>**Percentage:** {percent_display}</div>", 
+        unsafe_allow_html=True
+        )
+    
     col1, col2 = st.columns(2)
 
 # Center the Wins with only the number in gold and custom font size
