@@ -87,7 +87,7 @@ if trend_option == "All Over":
     for (o, d), percent, win, loss in results:
         st.markdown(
         f"""
-        <h3 style="text-align: left; font-size: 24px; text-decoration: italic;">
+        <h3 style="text-align: left; font-size: 24px; font-style: italic;">
             {o} Offense over 100 / {d} Defense over 100
         </h3>
         """,
