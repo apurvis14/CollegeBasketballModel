@@ -62,11 +62,16 @@ with st.container():
 
 
 
-st.title("College Basketball Trends Dashboard")
-st.markdown("""
-This dashboard explores win/loss trends across various metrics and combinations including offensive/defensive ratings, 
-PPG, EFF, and tempo. Select a trend to see performance stats.
-""")
+st.markdown(
+    """
+    <h1 style='text-align: center;'>College Basketball Trends Dashboard</h1>
+    <p style='text-align: center;'>
+    This dashboard explores win/loss trends across various metrics and combinations including offensive/defensive ratings, 
+    PPG, EFF, and tempo. Select a trend to see performance stats.
+    </p>
+    """,
+    unsafe_allow_html=True
+)
 
 
 ## Trend Selection
