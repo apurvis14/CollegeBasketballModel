@@ -137,7 +137,7 @@ def display_metrics(percent, win, loss):
         percent_display = f" <u>{percent}%<u>"
 
     st.markdown(
-        f"<div style='text-align: center;'>Percentage: {percent_display}</div>", 
+        f"<div style='text-align: left;'>Percentage: {percent_display}</div>", 
         unsafe_allow_html=True
         )
     
