@@ -178,7 +178,7 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         st.markdown(
             f"""
             <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                {o1} Offense Over 100 and {o2} 110 / {d1} Defense Under 100 and {d2} 95
+                {o1} Offense Over 100 and {o2} Over 110 / {d1} Defense Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
         
