@@ -46,20 +46,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Load logo
-logo = Image.open("data/CBB Logo.png")
-
-# Put logo upper right
-with st.container():
-    col1, col2 = st.columns([8, 1])
-
-    with col1:
-        st.write("")  # Empty
-
-    with col2:
-        st.markdown("<br> </br>", unsafe_allow_html=True)  # Empty
-        st.image(logo, width=500)
-
+st.markdown(
+    """
+    <div style="display: flex; justify-content: center; align-items: center; padding-top: 10px; padding-bottom: 10px;">
+        <img src="data/CBB Horizontal Logo.png" style="max-width: 300px; height: auto;">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 st.markdown(
