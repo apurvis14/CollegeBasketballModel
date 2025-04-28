@@ -177,8 +177,8 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
     for (o1, o2, d1, d2), percent, win, loss in results:    
         st.markdown(
             f"""
-            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">"
-                {o1} Offense Over 100 and {o2} 110 / {d1} Defense Under 100 and {d2} 95"
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {o1} Offense Over 100 and {o2} 110 / {d1} Defense Under 100 and {d2} 95
                 </h3>
                 """, unsafe_allow_html=True)
         
