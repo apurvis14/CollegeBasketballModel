@@ -47,7 +47,7 @@ st.markdown(
 )
 
 logo = Image.open("data/CBB Horizontal Logo.png")
-st.image(logo, use_column_width=True)
+st.image(logo, use_column_width=True, use_container_width=True)
 
 
 st.markdown(
