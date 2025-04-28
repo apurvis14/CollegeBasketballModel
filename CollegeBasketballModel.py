@@ -218,7 +218,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
         st.markdown(
             f"""
             <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                {o1} OFF Under 100 and {o2} 95 / {d1} DEF Under 100 and {d2} 95
+                {o1} OFF Under 100 and {o2} Under 95 / {d1} DEF Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
         display_metrics(percent, win, loss)
