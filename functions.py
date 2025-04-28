@@ -126,15 +126,15 @@ def display_metrics(percent, win, loss):
     if percent is None:
         percent_display = "N/A"
     elif percent > 60:
-        percent_display = f"<span style='color:darkgreen; font-weight:bold'> <u>{percent}%<u> </span>"
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'> <i>{percent}%<i> </span>"
     elif percent > 55:
-        percent_display = f"<span style='color:lightgreen; font-weight:bold'> <u>{percent}%<u> </span>"
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'> <i>{percent}%<i> </span>"
     elif percent > 40 and percent < 46:
-        percent_display = f"<span style='color:orange; font-weight:bold'> <u>{percent}%<u> </span>"
+        percent_display = f"<span style='color:orange; font-weight:bold'> <i>{percent}%<i> </span>"
     elif percent < 40:
-        percent_display = f"<span style='color:red; font-weight:bold'> <u>{percent}%<u> </span>"
+        percent_display = f"<span style='color:red; font-weight:bold'> <i>{percent}%<i> </span>"
     else:
-        percent_display = f" <u>{percent}%<u>"
+        percent_display = f" <i>{percent}%<i>"
 
     st.markdown(
         f"<div style='text-align: left;'>Percentage: {percent_display}</div>", 
