@@ -217,8 +217,8 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
     for (o1, o2, d1, d2), percent, win, loss in results:
         st.markdown(
             f"""
-            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">"
-                {o1} OFF Under 100 and {o2} 95 / {d1} DEF Under 100 and {d2} 95**"
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {o1} OFF Under 100 and {o2} 95 / {d1} DEF Under 100 and {d2} 95
                 </h3>
                 """, unsafe_allow_html=True)
         display_metrics(percent, win, loss)
@@ -281,7 +281,7 @@ elif trend_option == "Tempo Over":
         st.markdown(
             f"""
             <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                {val} EFF Over 105"
+                {val} EFF Over 105
             </h3>
             """,unsafe_allow_html=True
         )
@@ -320,7 +320,7 @@ elif trend_option == "PPG Over":
         st.markdown(
             f"""
             <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                {val} PPG Over 110"
+                {val} PPG Over 110
             </h3>
             """,unsafe_allow_html=True
         )
@@ -359,7 +359,7 @@ elif trend_option == "EFF Over":
         st.markdown(
             f"""
             <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                {o} Offense Over 105 / {d} Defense Over 105"
+                {o} Offense Over 105 / {d} Defense Over 105
             </h3>
             """,unsafe_allow_html=True
         )
