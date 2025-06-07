@@ -146,6 +146,7 @@ if trend_option == "All Over":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "All Under":
+    subset1 = df[(df['All Formulas Under'] == 1)]  # Filter based on condition
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
     results = []
 
@@ -157,15 +158,38 @@ elif trend_option == "All Under":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        st.markdown(
-        f"""
-        <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-            {o} Offense Under 100 / {d} Defense Under 100
-        </h3>
-        """,
-        unsafe_allow_html=True
-        )
-        display_metrics_under(percent, win, loss)
+            st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                {o} Offense Under 100 / {d} Defense Under 100
+            </h3>
+            """,
+            unsafe_allow_html=True
+            )
+
+            display_metrics_under(percent, win, loss)
+
+                # Plot below metrics, centered with Streamlit's default centering
+            plot_df = subset1[
+                (subset1['Offense Over 100'] == o) & 
+                (subset1['Defense Over 100'] == d)
+            ]
+
+            if not plot_df.empty:
+                fig, ax = plt.subplots(figsize=(4, 2.5))  # Smaller figure size
+                sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+                ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+                ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+                ax.set_xlabel('Total Difference', fontsize=9)
+                ax.set_ylabel('Frequency', fontsize=9)
+                ax.tick_params(axis='both', labelsize=8)
+                ax.legend(fontsize=8)
+                ax.grid(True)
+
+                # Display in a narrower column
+                col1, col2, col3 = st.columns([1, 2, 1])
+                with col2:
+                    st.pyplot(fig)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
