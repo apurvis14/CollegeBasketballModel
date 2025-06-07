@@ -58,7 +58,7 @@ st.markdown(
     <h1 style='text-align: center;'>College Basketball Trends Dashboard</h1>
     <p style='text-align: center;'>
     This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
-    PPG, EFF, and tempo. Select a trend to see performance stats. Hello World <u>Scroll down to view games for today.<u>
+    PPG, EFF, and tempo. Select a trend to see performance stats. <u>Scroll down to view games for today.<u>
     </p>
     """,
     unsafe_allow_html=True
@@ -117,9 +117,9 @@ if trend_option == "All Over":
         ]
 
         if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(5, 3))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            fig, ax = plt.subplots(figsize=(4, 2))
+            sns.histplot(plot_df['Total Difference'], bins=30, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='0 Line')
             ax.set_title('Total Difference (Actual - Book)')
             ax.set_xlabel('Total Difference')
             ax.set_ylabel('Frequency')
