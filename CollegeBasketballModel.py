@@ -98,17 +98,7 @@ if trend_option == "All Over":
             unsafe_allow_html=True
         )
 
-        # Center the metrics using HTML + CSS inside markdown
-        st.markdown(
-            f"""
-            <div style="text-align: center; font-size: 16px; margin-bottom: 1rem;">
-                <b>Over Hit %:</b> {percent}%<br> 
-                <b>Wins:</b> {win} &nbsp;&nbsp;&nbsp; 
-                <b>Losses:</b> {loss}
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        display_metrics(percent, win, loss)
 
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = subset[
