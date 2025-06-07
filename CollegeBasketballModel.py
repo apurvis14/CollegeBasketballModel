@@ -88,7 +88,7 @@ if trend_option == "All Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        # Header ABOVE both columns
+        # Centered header
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
@@ -98,29 +98,35 @@ if trend_option == "All Over":
             unsafe_allow_html=True
         )
 
-        # Two-column layout
-        col1, col2 = st.columns([1, 2])  # Adjust width ratio as needed
+        # Center the metrics using HTML + CSS inside markdown
+        st.markdown(
+            f"""
+            <div style="text-align: center; font-size: 16px; margin-bottom: 1rem;">
+                <b>Win %:</b> {percent}% &nbsp;&nbsp;&nbsp; 
+                <b>Wins:</b> {win} &nbsp;&nbsp;&nbsp; 
+                <b>Losses:</b> {loss}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-        with col1:
-            display_metrics(percent, win, loss)
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = subset[
+            (subset['Offense Over 100'] == o) & 
+            (subset['Defense Over 100'] == d)
+        ]
 
-        with col2:
-            plot_df = subset[
-                (subset['Offense Over 100'] == o) & 
-                (subset['Defense Over 100'] == d)
-            ]
-
-            if not plot_df.empty:
-                fig, ax = plt.subplots(figsize=(6, 4))
-                sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-                ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-                ax.set_title('Total Difference (Actual - Book)')
-                ax.set_xlabel('Total Difference')
-                ax.set_ylabel('Frequency')
-                ax.grid(True)
-                ax.legend()
-                st.pyplot(fig)
-                plt.close(fig)  # Close the figure to free memory
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(6, 4))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)')
+            ax.set_xlabel('Total Difference')
+            ax.set_ylabel('Frequency')
+            ax.grid(True)
+            ax.legend()
+            st.pyplot(fig)
+            plt.close(fig)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
