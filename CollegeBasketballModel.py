@@ -171,8 +171,8 @@ elif trend_option == "All Under":
 
                 # Plot below metrics, centered with Streamlit's default centering
             plot_df1 = subset1[
-                (subset1['Offense Over 100'] == o) & 
-                (subset1['Defense Over 100'] == d)
+                (subset1['Offense Under 100'] == o) & 
+                (subset1['Defense Under 100'] == d)
             ]
 
             if not plot_df1.empty:
