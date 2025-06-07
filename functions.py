@@ -128,32 +128,26 @@ def display_metrics(percent, win, loss):
     if percent is None:
         percent_display = "N/A"
     elif percent > 60:
-        percent_display = f"<span style='color:darkgreen; font-weight:bold'> <i>{percent}%<i> </span>"
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
     elif percent > 55:
-        percent_display = f"<span style='color:lightgreen; font-weight:bold'> <i>{percent}%<i> </span>"
-    elif percent > 40 and percent < 46:
-        percent_display = f"<span style='color:orange; font-weight:bold'> <i>{percent}%<i> </span>"
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif 40 < percent < 46:
+        percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
-        percent_display = f"<span style='color:red; font-weight:bold'> <i>{percent}%<i> </span>"
+        percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
     else:
-        percent_display = f" <i>{percent}%<i>"
+        percent_display = f"<i>{percent}%</i>"
 
     st.markdown(
-        f"<div style='text-align: left;'>Percentage: {percent_display}</div>", 
+        f"""
+        <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
+            <b>Over Hit %:</b> {percent_display}<br>
+            <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
+            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span>
+        </div>
+        """,
         unsafe_allow_html=True
-        )
-    
-    col1, col2 = st.columns(2)
-
-# Center the Wins with only the number in gold and custom font size
-    col1.markdown(
-        f"<h4 style='text-align: center;'>Wins: <span style='color: gold; font-size: 20px;'>{win}</span></h4>", 
-        unsafe_allow_html=True)
-
-# Center the Losses with only the number in gold and custom font size
-    col2.markdown(
-        f"<h4 style='text-align: center;'>Losses: <span style='color: gold; font-size: 20px;'>{loss}</span></h4>", 
-     unsafe_allow_html=True)
+    )
     
 
 ## Histogram Functions
