@@ -14,6 +14,9 @@ from functions import (
 )
 from datetime import datetime
 from PIL import Image
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 # Load Data
 filename = "data/College Basketball Model.xlsm"
 sheet = "All Seasons Data"
@@ -85,19 +88,42 @@ if trend_option == "All Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        st.markdown(
-        f"""
-        <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-            {o} Offense over 100 / {d} Defense over 100
-        </h3>
-        """,
-        unsafe_allow_html=True
-        )
-        display_metrics(percent, win, loss)
+        # Create two columns: one for metrics, one for plot
+        col1, col2 = st.columns([1, 2])  # Adjust width ratio as needed
+
+        with col1:
+            st.markdown(
+                f"""
+                <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
+                    {o} Offense over 100 / {d} Defense over 100
+                </h3>
+                """,
+                unsafe_allow_html=True
+            )
+            display_metrics(percent, win, loss)
+
+        with col2:
+            # Filter the relevant data for plotting
+            plot_df = subset[
+                (subset['Offense Over 100'] == o) & 
+                (subset['Defense Over 100'] == d)
+            ]
+
+            if not plot_df.empty:
+                fig, ax = plt.subplots(figsize=(6, 4))
+                sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+                ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+                ax.set_title('Total Difference (Actual - Book)')
+                ax.set_xlabel('Total Difference')
+                ax.set_ylabel('Frequency')
+                ax.grid(True)
+                ax.legend()
+                st.pyplot(fig)
+                plt.close(fig)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for All Over Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -140,7 +166,7 @@ elif trend_option == "All Under":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for All Under Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -192,7 +218,7 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for EFF/PPG Over & Tempo Under Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -234,7 +260,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for Tempo/EFF Over & PPG Under Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -304,7 +330,7 @@ elif trend_option == "Tempo Over":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for Tempo Over Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -346,7 +372,7 @@ elif trend_option == "PPG Over":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for PPG Over Trends</h3>", 
         unsafe_allow_html=True
     )
     
@@ -388,7 +414,7 @@ elif trend_option == "EFF Over":
     
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for EFF Over Trends</h3>", 
         unsafe_allow_html=True
     )
 

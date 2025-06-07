@@ -1,5 +1,7 @@
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # All Over Function
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -152,3 +154,29 @@ def display_metrics(percent, win, loss):
     col2.markdown(
         f"<h4 style='text-align: center;'>Losses: <span style='color: gold; font-size: 20px;'>{loss}</span></h4>", 
      unsafe_allow_html=True)
+    
+
+## Histogram Functions
+def allover_total_diff_hist(df, offense_value, defense_value):
+    # Filter the relevant rows
+    filtered_df = df[
+        (df['All Formulas Over'] == 1) & 
+        (df['Offense Over 100'] == offense_value) & 
+        (df['Defense Over 100'] == defense_value)
+    ]
+
+    if filtered_df.empty:
+        print("No matching data.")
+        return
+
+    # Plot the histogram using the existing 'Total Difference' column
+    plt.figure(figsize=(8, 5))
+    sns.histplot(filtered_df['Total Difference'], bins=20, kde=True, color='mediumseagreen')
+    plt.title(f'Total Difference Histogram | Offense {offense_value}, Defense {defense_value}')
+    plt.xlabel('Total Difference (Actual - Book)')
+    plt.ylabel('Frequency')
+    plt.axvline(x=0, color='red', linestyle='--', label='No Difference')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
