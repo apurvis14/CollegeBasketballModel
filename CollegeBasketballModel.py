@@ -117,7 +117,7 @@ if trend_option == "All Over":
         ]
 
         if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(6, 4))
+            fig, ax = plt.subplots(figsize=(5, 3))
             sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
             ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
             ax.set_title('Total Difference (Actual - Book)')
