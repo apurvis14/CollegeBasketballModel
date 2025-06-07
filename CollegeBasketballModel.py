@@ -91,7 +91,7 @@ if trend_option == "All Over":
         # Header ABOVE both columns
         st.markdown(
             f"""
-            <h3 style="text-align: left; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
+            <h3 style="text-align: middle; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
                 {o} Offense over 100 / {d} Defense over 100
             </h3>
             """,
