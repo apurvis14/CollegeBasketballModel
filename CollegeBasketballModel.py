@@ -120,7 +120,7 @@ if trend_option == "All Over":
             # Display in a narrower column
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                st.pyplot(fig, bbox_inches='tight')
+                st.pyplot(fig)
 
 
     # **NEW** Section to Filter by Specific Date and Display Data
