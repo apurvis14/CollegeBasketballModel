@@ -10,7 +10,8 @@ from functions import (
     TempoOver_count_win_loss,
     PPGover_count_win_loss,
     EFFover_count_win_loss,
-    display_metrics
+    display_metrics,
+    display_metrics_under
 )
 from datetime import datetime
 from PIL import Image
@@ -164,7 +165,7 @@ elif trend_option == "All Under":
         """,
         unsafe_allow_html=True
         )
-        display_metrics(percent, win, loss)
+        display_metrics_under(percent, win, loss)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(

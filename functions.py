@@ -149,28 +149,28 @@ def display_metrics(percent, win, loss):
         unsafe_allow_html=True
     )
     
+# Display for Under
+def display_metrics_under(percent, win, loss):
+    if percent is None:
+        percent_display = "N/A"
+    elif percent > 60:
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent > 55:
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif 40 < percent < 46:
+        percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent < 40:
+        percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+    else:
+        percent_display = f"<i>{percent}%</i>"
 
-## Histogram Functions
-def allover_total_diff_hist(df, offense_value, defense_value):
-    # Filter the relevant rows
-    filtered_df = df[
-        (df['All Formulas Over'] == 1) & 
-        (df['Offense Over 100'] == offense_value) & 
-        (df['Defense Over 100'] == defense_value)
-    ]
-
-    if filtered_df.empty:
-        print("No matching data.")
-        return
-
-    # Plot the histogram using the existing 'Total Difference' column
-    plt.figure(figsize=(8, 5))
-    sns.histplot(filtered_df['Total Difference'], bins=20, kde=True, color='mediumseagreen')
-    plt.title(f'Total Difference Histogram | Offense {offense_value}, Defense {defense_value}')
-    plt.xlabel('Total Difference (Actual - Book)')
-    plt.ylabel('Frequency')
-    plt.axvline(x=0, color='red', linestyle='--', label='No Difference')
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    plt.show()
+    st.markdown(
+        f"""
+        <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
+            <b>Under Hit Rate:</b> {percent_display}<br>
+            <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
+            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
