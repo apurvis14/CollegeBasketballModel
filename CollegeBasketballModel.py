@@ -88,22 +88,23 @@ if trend_option == "All Over":
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
-        # Create two columns: one for metrics, one for plot
+        # Header ABOVE both columns
+        st.markdown(
+            f"""
+            <h3 style="text-align: left; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
+                {o} Offense over 100 / {d} Defense over 100
+            </h3>
+            """,
+            unsafe_allow_html=True
+        )
+
+        # Two-column layout
         col1, col2 = st.columns([1, 2])  # Adjust width ratio as needed
 
         with col1:
-            st.markdown(
-                f"""
-                <h3 style="text-align: left; font-size: 20px; text-decoration: underline;">
-                    {o} Offense over 100 / {d} Defense over 100
-                </h3>
-                """,
-                unsafe_allow_html=True
-            )
             display_metrics(percent, win, loss)
 
         with col2:
-            # Filter the relevant data for plotting
             plot_df = subset[
                 (subset['Offense Over 100'] == o) & 
                 (subset['Defense Over 100'] == d)
@@ -119,7 +120,7 @@ if trend_option == "All Over":
                 ax.grid(True)
                 ax.legend()
                 st.pyplot(fig)
-                plt.close(fig)
+                plt.close(fig)  # Close the figure to free memory
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
