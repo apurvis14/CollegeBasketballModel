@@ -102,7 +102,7 @@ if trend_option == "All Over":
         st.markdown(
             f"""
             <div style="text-align: center; font-size: 16px; margin-bottom: 1rem;">
-                <b>Over Hit %:</b> {percent}%<br>; 
+                <b>Over Hit %:</b> {percent}%<br> 
                 <b>Wins:</b> {win} &nbsp;&nbsp;&nbsp; 
                 <b>Losses:</b> {loss}
             </div>
