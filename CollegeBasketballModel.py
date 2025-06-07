@@ -170,14 +170,14 @@ elif trend_option == "All Under":
             display_metrics_under(percent, win, loss)
 
                 # Plot below metrics, centered with Streamlit's default centering
-            plot_df1 = subset1[
+            plot_df = subset1[
                 (subset1['Offense Under 100'] == o) & 
                 (subset1['Defense Under 100'] == d)
             ]
 
-            if not plot_df1.empty:
+            if not plot_df.empty:
                 fig, ax = plt.subplots(figsize=(4, 2.5))  # Smaller figure size
-                sns.histplot(plot_df1['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+                sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
                 ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
                 ax.set_title('Total Difference (Actual - Book)', fontsize=10)
                 ax.set_xlabel('Total Difference', fontsize=9)
