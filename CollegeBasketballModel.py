@@ -107,16 +107,21 @@ if trend_option == "All Over":
         ]
 
         if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2))
-            sns.histplot(plot_df['Total Difference'], bins=30, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='0 Line')
-            ax.set_title('Total Difference (Actual - Book)')
-            ax.set_xlabel('Total Difference')
-            ax.set_ylabel('Frequency')
+            fig, ax = plt.subplots(figsize=(4, 2.5))  # Smaller figure size
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
             ax.grid(True)
-            ax.legend()
-            st.pyplot(fig)
-            plt.close(fig)
+
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig, bbox_inches='tight')
+
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
