@@ -670,11 +670,29 @@ elif trend_option == "Tempo Over":
 
 elif trend_option == "PPG Over":
     results = []
+    results_cur = []
+    results_prev = []
+
     for val in [0,1,2,3]:
         count, win, loss = PPGover_count_win_loss(df, val)
         if count != 0:
             percent = round((win / count) * 100, 2) if count != 0 else None
             results.append((val, percent, win, loss))
+        count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append((val, percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append((val, None, 0, 0))
+        count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append((val, percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append((val, None, 0, 0))
+    
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
     
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
@@ -686,7 +704,18 @@ elif trend_option == "PPG Over":
             </h3>
             """,unsafe_allow_html=True
         )
-        display_metrics(percent, win, loss)
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            percent_cur, win_cur, loss_cur = results_cur_dict.get(val, (None, 0, 0))
+            display_metrics(percent_cur, win_cur, loss_cur)
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            percent_prev, win_prev, loss_prev = results_prev_dict.get(val, (None, 0, 0))
+            display_metrics(percent_prev, win_prev, loss_prev)
 
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[(df['Just PPG Over'] == 1) &
