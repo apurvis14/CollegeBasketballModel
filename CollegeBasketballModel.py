@@ -544,8 +544,8 @@ elif trend_option == "EFF Over":
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[
             (df['Just Efficiency Over'] == 1) &
-            (df['Offense Over 105'] == o) &
-            (df['Defense Over 105'] == d)
+            (df['OFF Over 105'] == o) &
+            (df['DEF Over 105'] == d)
         ]
 
         if not plot_df.empty:
