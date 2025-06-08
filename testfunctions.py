@@ -27,7 +27,7 @@ df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
 
 # All Over Function from import to get wins and losses
-count, win, loss = allover_count_win_loss(df, 2, 2)
+count, win, loss = allover_count_win_loss(df, 2, 1)
 
 # Print results
 print(f"Count: {count}, Wins: {win}, Losses: {loss}")
