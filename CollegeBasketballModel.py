@@ -562,6 +562,16 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "PPG/Tempo Over & EFF Under":
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - PPG/Tempo Over & EFF Under means PPG and Tempo predictive formulas were over the Book Total while Efficiency predictive formula was under the Book Total.
+                    - The Tempo/EFF Over & PPG Under trends do not have subcategories based on the offensive and defensive efficiency ratings due to low quantity of games.
+                    - 
+
+                    - Example: Trend means EFF and Tempo Formulas Predicted over the Book Total and PPG under the Book Total with no other constraints. 
+                    """,
+                    unsafe_allow_html=True)
+
     count, win, loss = TPOver_EFFUnder_count_win_loss(df)
     if count != 0:
         percent = round((win / count) * 100, 2)
