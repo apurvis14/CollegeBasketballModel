@@ -361,6 +361,23 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
         percent = round((win / count) * 100, 2) if count != 0 else None
         display_metrics(percent, win, loss)
 
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[df['Tempo and PPG over (Efficiency Under)'] == 1]
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(4, 2.5))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
+            ax.grid(True)
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig)
+
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
         "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
@@ -402,6 +419,23 @@ elif trend_option == "Tempo Over":
             """,unsafe_allow_html=True
         )
         display_metrics(percent, win, loss)
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[df['Just Tempo Over'] == 1]
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(4, 2.5))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
+            ax.grid(True)
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig)
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
@@ -445,6 +479,24 @@ elif trend_option == "PPG Over":
         )
         display_metrics(percent, win, loss)
 
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[df['Just PPG Over'] == 1]
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(4, 2.5))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
+            ax.grid(True)
+
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig)
+
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
         "<h3 style='text-align: center;'>Today's Games for PPG Over Trends</h3>", 
@@ -486,7 +538,30 @@ elif trend_option == "EFF Over":
             """,unsafe_allow_html=True
         )
         display_metrics(percent, win, loss)
-    
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[
+            (df['Just Efficiency Over'] == 1) &
+            (df['Offense Over 105'] == o) &
+            (df['Defense Over 105'] == d)
+        ]
+
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(4, 2.5))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
+            ax.grid(True)
+
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig)
+
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
         "<h3 style='text-align: center;'>Today's Games for EFF Over Trends</h3>", 
