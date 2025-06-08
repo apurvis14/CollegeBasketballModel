@@ -76,8 +76,8 @@ st.markdown(
     <p style='text-align: center;'>
     This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
     PPG, EFF, and tempo. Select a trend to see performance stats. <u>Scroll down to view games for today.</u><br><br>
-    Over Net Units means how many units won by betting on the Over <br>
-    Under Net Units means how many units won by betting on the Under <br>
+    **Over Net Units means how many units won by betting on the Over** <br>
+    **Under Net Units means how many units won by betting on the Under** <br>
     </p>
     """,
     unsafe_allow_html=True
