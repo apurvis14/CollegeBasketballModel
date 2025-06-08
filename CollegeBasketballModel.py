@@ -219,8 +219,8 @@ elif trend_option == "All Under":
         unsafe_allow_html=True
         )
 
-        percent_cur, win_cur, loss_cur = results_cur.get((o, d), (None, 0, 0))
-        percent_prev, win_prev, loss_prev = results_prev.get((o, d), (None, 0, 0))
+        percent_cur, win_cur, loss_cur = results_cur_dict.get((o, d), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev_dict.get((o, d), (None, 0, 0))
 
         col1, col2, col3 = st.columns(3)
         with col1:
