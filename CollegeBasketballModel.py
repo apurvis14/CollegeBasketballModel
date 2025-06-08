@@ -700,7 +700,7 @@ elif trend_option == "PPG Over":
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
-                {val} PPG Over 110
+                {val} EFF Over 110
             </h3>
             """,unsafe_allow_html=True
         )
