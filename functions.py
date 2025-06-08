@@ -143,11 +143,11 @@ def EFFover_count_win_loss(df,offense_value, defense_value):
 def display_metrics(percent, win, loss):
     if percent is None:
         percent_display = "N/A"
-    elif percent > 60:
+    elif percent >= 60:
         percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
-    elif percent > 55:
+    elif percent >= 55:
         percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
-    elif 40 < percent < 46:
+    elif 40 <= percent <= 46:
         percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
         percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
@@ -169,11 +169,11 @@ def display_metrics(percent, win, loss):
 def display_metrics_under(percent, win, loss):
     if percent is None:
         percent_display = "N/A"
-    elif percent > 60:
+    elif percent >= 60:
         percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
-    elif percent > 55:
+    elif percent >= 55:
         percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
-    elif 40 < percent < 46:
+    elif 40 <= percent <= 46:
         percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
         percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
