@@ -97,16 +97,26 @@ st.markdown("""
     unsafe_allow_html=True
 )
 
-with st.expander("View Explanation of these Trends"):
-    st.markdown("""
-                - All Over means all 3 of my formulas predictions were over the book total.
-                - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
-                
-                - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Over Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
-                """,
-                unsafe_allow_html=True)
+# with st.expander("View Explanation of these Trends"):
+#     st.markdown("""
+#                 - All Over means all 3 of my formulas predictions were over the book total.
+#                 - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+#                 - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Predicted Over the Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
+#                 """,
+#                 unsafe_allow_html=True)
 
 if trend_option == "All Over":
+
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - All Over means all 3 of my formulas predictions were over the book total.
+                    - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Predicted Over the Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
+                    """,
+                    unsafe_allow_html=True)
+    
     subset = df[(df['All Formulas Over'] == 1)]
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
 
