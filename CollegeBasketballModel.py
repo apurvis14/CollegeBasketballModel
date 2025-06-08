@@ -183,12 +183,12 @@ if trend_option == "All Over":
         (df['Defense Over 100'] == d)
 ][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
 
-    if not today_games.empty:
-        today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
-        with st.expander(f"📅 Games Today for {o} Offense / {d} Defense Combo"):
-            st.dataframe(today_games)
-    else:
-        st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for {o} Offense / {d} Defense Combo"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
 
         # Plot histogram
         plot_df = subset[
