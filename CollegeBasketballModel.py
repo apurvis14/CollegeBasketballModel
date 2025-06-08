@@ -97,6 +97,9 @@ st.markdown("""
     unsafe_allow_html=True
 )
 
+with st.expander("View Definition of Trends"):
+    st.write("All Over means all 3 of my formulas predictions were over the book total.")
+
 if trend_option == "All Over":
     subset = df[(df['All Formulas Over'] == 1)]
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
