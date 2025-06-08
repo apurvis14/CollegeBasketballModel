@@ -202,12 +202,35 @@ def display_metrics_under(percent, win, loss):
     else:
         percent_display = f"<i>{percent}%</i>"
 
+    units = round(win * 0.909 - loss, 2)
+    if units >= 15:
+        units_display = f"<span style='color:darkgreen; font-weight:bold'>{units}</span>"
+    elif 10 <= units < 15:
+        units_display = f"<span style='color:green; font-weight:bold'>{units}</span>"
+    elif 0 <= units < 10:
+        units_display = f"<span style='color:lightgreen; font-weight:bold'>{units}</span>"
+    else:
+        units_display = f"<span style='color:red; font-weight:bold'>{units}</span>"
+    
+    fade_units = round(loss*0.909 - win, 2)
+    if fade_units >= 15:
+        fade_display = f" <span style='color:darkgreen; font-weight:bold'>({fade_units})</span>"
+    elif 10 <= fade_units < 15:
+        fade_display = f" <span style='color:green; font-weight:bold'>({fade_units})</span>"
+    elif 0 <= fade_units < 10:
+        fade_display = f" <span style='color:lightgreen; font-weight:bold'>({fade_units})</span>"
+    else:
+        fade_display = f" <span style='color:red; font-weight:bold'>({fade_units})</span>"
+
     st.markdown(
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Under Hit Rate:</b> {percent_display}<br>
             <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
-            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span>
+            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span><br>
+            <div style='font-size: 13px; margin-top: 4px;'>
+            <u>Under Net Units:</u> {units_display}<br>
+            <u>Over Net Units:</u> {fade_display}
         </div>
         """,
         unsafe_allow_html=True
