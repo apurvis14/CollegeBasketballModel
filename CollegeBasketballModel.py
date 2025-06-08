@@ -133,7 +133,7 @@ if trend_option == "All Over":
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 32px; text-decoration: underline; margin-bottom: 0.2rem;">
-                {o} Offense over 100 / {d} Defense over 100
+                {o} Offense EFF over 100 / {d} Defense EFF over 100
             </h3>
             """,
             unsafe_allow_html=True
@@ -235,7 +235,7 @@ elif trend_option == "All Under":
         st.markdown(
         f"""
         <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
-            {o} Offense Under 100 / {d} Defense Under 100
+            {o} Offense EFF Under 100 / {d} Defense EFF Under 100
         </h3>
         """,
         unsafe_allow_html=True
@@ -281,7 +281,7 @@ elif trend_option == "All Under":
 
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for All Under Trends</h3>", 
+        "<h3 style='text-align: center;'>Today's Games for All Formulas Under Trends</h3>", 
         unsafe_allow_html=True
     )
 
@@ -345,7 +345,7 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
-                {o1} Offense Over 100 and {o2} Over 110 / {d1} Defense Under 100 and {d2} Under 95
+                {o1} Offense EFF Over 100 and {o2} Over 110 / {d1} Defense EFF Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
         
@@ -446,7 +446,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
-                {o1} OFF Under 100 and {o2} Under 95 / {d1} DEF Under 100 and {d2} Under 95
+                {o1} OFF EFF Under 100 and {o2} Under 95 / {d1} DEF EFF Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
         
@@ -801,7 +801,7 @@ elif trend_option == "EFF Over":
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
-                {o} Offense Over 105 / {d} Defense Over 105
+                {o} Offense EFF Over 105 / {d} Defense EFF Over 105
             </h3>
             """,unsafe_allow_html=True
         )

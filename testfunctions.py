@@ -1,10 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from functions import (
-    allover_count_win_loss,
-    allover_count_win_loss_current,
-    allover_count_win_loss_prev)
+
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
@@ -26,25 +23,40 @@ columns_to_drop = [
 df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
+def all_over_combinations_by_team_table(df):
+    # Filter to "All Formulas Over"
+    subset = df[df['All Formulas Over'] == 1]
 
-# All Over Function from import to get wins and losses
-# Count Wins and Losses
-percent, wins, losses = allover_count_win_loss(df, 2, 2)
-percent_cur, wins_cur, losses_cur = allover_count_win_loss_current(df, 2, 2)
-percent_prev, wins_prev, losses_prev = allover_count_win_loss_prev(df, 2, 2)
+    # Define combinations of (PPG Over, Efficiency Over)
+    combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
 
-all_units_won = wins * .909
-all_units_lost = losses * 1
-all_net_units = all_units_won - all_units_lost
-print(f"Units Won: {all_units_won}, Units Lost: {all_units_lost}, Net Units: {all_net_units}")
+    # Store all combinations in one list of DataFrames
+    all_tables = []
 
-current_units_won = wins_cur * .909
-current_units_lost = losses_cur * 1
-current_net_units = current_units_won - current_units_lost
-print(f"Current Units Won: {current_units_won}, Current Units Lost: {current_units_lost}, Current Net Units: {current_net_units}")
+    for o, d in combinations:
+        # Filter for this specific combo and regular season
+        filtered = subset[
+            (subset['Offense Over 100'] == o) &
+            (subset['Defense Over 100'] == d) &
+            (subset['RS/PS'] == "RS")
+        ]
 
-previous_units_won = wins_prev * .909
-previous_units_lost = losses_prev * 1
-previous_net_units = previous_units_won - previous_units_lost
-print(f"Previous Units Won: {previous_units_won}, Previous Units Lost: {previous_units_lost}, Previous Net Units: {previous_net_units}")
+        # Group by Home Team and count wins/losses
+        summary = filtered.groupby('Home Team').agg(
+            Over_Hit=('Over Hit', lambda x: (x == 1).sum()),
+            Under_Hit=('Over Hit', lambda x: (x == " ").sum())
+        ).reset_index()
+
+        # Add combination as a new column
+        summary['Combo'] = f"OFF {o}, DEF {d}"
+
+        all_tables.append(summary)
+
+    # Concatenate all combinations into one table
+    final_table = pd.concat(all_tables, ignore_index=True)
+
+    return final_table
+
+table = all_over_combinations_by_team_table(df)
+print(table)
 
