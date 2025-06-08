@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from functions import (
-    allover_count_win_loss
+    allover_count_win_loss_current
 )
 
 # Load Data
@@ -27,7 +27,7 @@ df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
 
 # All Over Function from import to get wins and losses
-count, win, loss = allover_count_win_loss(df, 2, 1)
+count, win, loss = allover_count_win_loss_current(df, 2, 1)
 
 # Print results
 print(f"Count: {count}, Wins: {win}, Losses: {loss}")
