@@ -218,6 +218,15 @@ if trend_option == "All Over":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "All Under":
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - All Under means all 3 of my predictive formulas were under the book total.
+                    - The All Under trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 0 OFF EFF under 100 / 0 DEF EFF under 100 means All Formulas Predicted Under the Book Total while neither teams' Offensive Efficiency and Defensive Efficiency under 100. 
+                    """,
+                    unsafe_allow_html=True)
+
     subset1 = df[(df['All Formulas Under'] == 1)]  # Filter based on condition
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
     results = []
@@ -321,6 +330,16 @@ elif trend_option == "All Under":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "EFF/PPG Over & Tempo Under":
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - EFF/PPG Over & Tempo Under means Efficiency and PPG predictive formulas were over while Tempo predictive formula was under.
+                    - The EFF/PPG Over & Tempo Under trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+                    - To provide better insights, offensive and defensive efficiency had two numbers to create subcategories.
+
+                    - Example: 2 OFF EFF over 100 and 0 Over 110 / 2 DEF EFF under 100 and 0 under 95 means EFF and PPG Formulas Predicted over the Book Total and Tempo under the Book Total while both teams' Offensive Efficiency were over 100 but below 110 and both teams' Defensive Efficiency were under 100 but over 95. 
+                    """,
+                    unsafe_allow_html=True)
+
     combinations = [(0, 0, 0, 0), (0, 0, 1, 0), (0, 0, 1, 1), (0, 0, 2, 0), (0, 0, 2, 1), (0, 0, 2, 2),
     
     (1, 0, 0, 0), (1, 0, 1, 0), (1, 0, 1, 1), (1, 0, 2, 0), (1, 0, 2, 1), (1, 0, 2, 2),
