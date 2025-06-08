@@ -110,7 +110,7 @@ if trend_option == "All Over":
 
     with st.expander("View Explanation of these Trends"):
         st.markdown("""
-                    - All Over means all 3 of my formulas predictions were over the book total.
+                    - All Over means all 3 of my predictive formulas were over the book total.
                     - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
 
                     - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Predicted Over the Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
