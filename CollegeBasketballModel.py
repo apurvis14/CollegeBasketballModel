@@ -189,7 +189,7 @@ if trend_option == "All Over":
     filtered_subset = subset[subset['Date'].dt.normalize() == "1/3/2025"]
     
     # Reorder the columns as needed
-    desired_order = ['Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
+    desired_order = ['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
     desired_df = filtered_subset[desired_order]
 
     if not desired_df.empty:
