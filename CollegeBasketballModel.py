@@ -186,8 +186,9 @@ elif trend_option == "All Under":
 
     for o, d in combinations:
         count, win, loss = allunder_count_win_loss(df, o, d)
-        percent = round((win / count) * 100, 2) if count != 0 else None
-        results.append(((o, d), percent, win, loss))
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append(((o, d), percent, win, loss))
 
         count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
         if count_cur != 0:
