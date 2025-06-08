@@ -11,7 +11,9 @@ from functions import (
     PPGover_count_win_loss,
     EFFover_count_win_loss,
     display_metrics,
-    display_metrics_under
+    display_metrics_under,
+    allover_count_win_loss_current,
+    allover_count_win_loss_2024
 )
 from datetime import datetime
 from PIL import Image
@@ -80,11 +82,30 @@ if trend_option == "All Over":
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
     results = []
     
+    # All Seasons
     for o, d in combinations:
         count, win, loss = allover_count_win_loss(df, o, d)
         if count != 0:
             percent = round((win / count) * 100, 2) if count != 0 else None
             results.append(((o, d), percent, win, loss))
+
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    # Current Season
+    for o, d in combinations:
+        count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2) if count_cur != 0 else None
+            results.append(((o, d), percent_cur, win_cur, loss_cur))
+    
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    # 2024 Season
+    for o, d in combinations:
+        count_24, win_24, loss_24 = allover_count_win_loss_2024(df, o, d)
+        if count_24 != 0:
+            percent_24 = round((win_24 / count_24) * 100, 2) if count_24 != 0 else None
+            results.append(((o, d), percent_24, win_24, loss_24))
 
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
@@ -98,8 +119,20 @@ if trend_option == "All Over":
             """,
             unsafe_allow_html=True
         )
+        
+        col1, col2, col3 = st.columns(3)
 
-        display_metrics(percent, win, loss)
+        with col1:
+            st.markdown("<h4 style='text-align:center;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+
+        with col2:
+            st.markdown("<h4 style='text-align:center;'>Current Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_cur, win_cur, loss_cur)
+
+        with col3:
+            st.markdown("<h4 style='text-align:center;'>2024 Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_24, win_24, loss_24)
 
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = subset[

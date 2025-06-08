@@ -193,45 +193,45 @@ def display_metrics_under(percent, win, loss):
 
 # All Over Function (Regular Season) - Current Season
 def allover_count_win_loss_current(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Over'] == 1) & 
+    count_cur = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
                    (df['Defense Over 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') & 
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['All Formulas Over'] == 1) & 
+    win_cur = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
                  (df['Defense Over 100'] == defense_value) & 
                  (df['Over Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
     
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # All Under Function (Regular Season) - Current Season
 def allunder_count_win_loss_current(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Under'] == 1) & 
-                   (df['Offense Under 100'] == offense_value) & 
-                   (df['Defense Under 100'] == defense_value) &
-                   (df['RS/PS'] == 'RS') & 
-                   (df['Year'] == 2024)])
+    count_cur = len(df[(df['All Formulas Under'] == 1) &
+                     (df['Offense Under 100'] == offense_value) &
+                        (df['Defense Under 100'] == defense_value) &
+                        (df['RS/PS'] == 'RS') &
+                        (df['Year'] == 2024)])
     
-    win = len(df[(df['All Formulas Under'] == 1) & 
-                 (df['Offense Under 100'] == offense_value) & 
-                 (df['Defense Under 100'] == defense_value) & 
-                 (df['Under Hit'] == 1) &
-                 (df['RS/PS'] == 'RS') &
-                 (df['Year'] == 2024)])
+    win_cur = len(df[(df['All Formulas Under'] == 1) &
+                        (df['Offense Under 100'] == offense_value) &
+                        (df['Defense Under 100'] == defense_value) &
+                        (df['Under Hit'] == 1) &
+                        (df['RS/PS'] == 'RS') &
+                        (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_cur = count_cur - win_cur
+
+    return count_cur, win_cur, loss_cur
 
 # EFF and PPG Over and Tempo Under Function (Regular Season) - Current Season
 def EPOver_TempoUnder_count_win_loss_current(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    count_cur = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -239,7 +239,7 @@ def EPOver_TempoUnder_count_win_loss_current(df, offense_value, offense_value_1,
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    win_cur = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -248,13 +248,13 @@ def EPOver_TempoUnder_count_win_loss_current(df, offense_value, offense_value_1,
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
     
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # Tempo and EFF Over and PPG Under Function (Regular Season) - Current Season
 def TEOver_PPGUnder_count_win_loss_current(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    count_cur = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -262,7 +262,7 @@ def TEOver_PPGUnder_count_win_loss_current(df, offense_value, offense_value_1, d
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    win_cur = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -271,119 +271,119 @@ def TEOver_PPGUnder_count_win_loss_current(df, offense_value, offense_value_1, d
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
     
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # Tempo and PPG Over and EFF Under Function (Regular Season) - Current Season
 def TPOver_EFFUnder_count_win_loss_current(df):
-    count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    count_cur = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    win_cur = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                 (df['Over Hit.3'] == 1) &
                 (df['RS/PS'] == 'RS') &
                 (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
     
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # Just Tempo Over Function (Regular Season) - Current Season
 def TempoOver_count_win_loss_current(df, eff_value):
-    count = len(df[(df['Just Tempo Over'] == 1) & 
+    count_cur = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just Tempo Over'] == 1) & 
+    win_cur = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['Over Hit.4'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
     
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # Just PPG Over Function (Regular Season) - Current Season
 def PPGover_count_win_loss_current(df, eff_value):
-    count = len(df[(df['Just PPG Over'] == 1) &
+    count_cur = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just PPG Over'] == 1) &
+    win_cur = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
 
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # Just EFF Over Function (Regular Season) - Current Season
 def EFFover_count_win_loss_current(df, offense_value, defense_value):
-    count = len(df[(df['Just Efficiency Over'] == 1) &
+    count_cur = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just Efficiency Over'] == 1) &
+    win_cur = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_cur = count_cur - win_cur
 
-    return count, win, loss
+    return count_cur, win_cur, loss_cur
 
 # All Over Function (Regular Season) - 2023 Season
 def allover_count_win_loss_2023(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Over'] == 1) & 
+    count_23 = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
                    (df['Defense Over 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') & 
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['All Formulas Over'] == 1) & 
+    win_23 = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
                  (df['Defense Over 100'] == defense_value) & 
                  (df['Over Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23
     
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # All Under Function (Regular Season) - 2023 Season
 def allunder_count_win_loss_2023(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Under'] == 1) & 
+    count_23 = len(df[(df['All Formulas Under'] == 1) & 
                    (df['Offense Under 100'] == offense_value) & 
                    (df['Defense Under 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') & 
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['All Formulas Under'] == 1) & 
+    win_23 = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
                  (df['Defense Under 100'] == defense_value) & 
                  (df['Under Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23
     
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # EFF and PPG Over and Tempo Under Function (Regular Season) - 2023 Season
 def EPOver_TempoUnder_count_win_loss_2023(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    count_23 = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -391,7 +391,7 @@ def EPOver_TempoUnder_count_win_loss_2023(df, offense_value, offense_value_1, de
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    win_23 = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -400,13 +400,13 @@ def EPOver_TempoUnder_count_win_loss_2023(df, offense_value, offense_value_1, de
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23
     
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # Tempo and EFF Over and PPG Under Function (Regular Season) - 2023 Season
 def TEOver_PPGUnder_count_win_loss_2023(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    count_23 = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -414,7 +414,7 @@ def TEOver_PPGUnder_count_win_loss_2023(df, offense_value, offense_value_1, defe
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    win_23 = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -423,119 +423,119 @@ def TEOver_PPGUnder_count_win_loss_2023(df, offense_value, offense_value_1, defe
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23 
     
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # Tempo and PPG Over and EFF Under Function (Regular Season) - 2023 Season
 def TPOver_EFFUnder_count_win_loss_2023(df):
-    count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    count_23 = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    win_23 = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                 (df['Over Hit.3'] == 1) &
                 (df['RS/PS'] == 'RS') &
                 (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 =  count_23 - win_23
     
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # Just Tempo Over Function (Regular Season) - 2023 Season
 def TempoOver_count_win_loss_2023(df, eff_value):
-    count = len(df[(df['Just Tempo Over'] == 1) & 
+    count_23 = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Just Tempo Over'] == 1) & 
+    win_23 = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['Over Hit.4'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_23 = count_23 - win_23
+
+    return count_23, win_23, loss_23
 
 # Just PPG Over Function (Regular Season) - 2023 Season
 def PPGover_count_win_loss_2023(df, eff_value):
-    count = len(df[(df['Just PPG Over'] == 1) &
+    count_23 = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Just PPG Over'] == 1) &
+    win_23 = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23
 
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # Just EFF Over Function (Regular Season) - 2023 Season
 def EFFover_count_win_loss_2023(df, offense_value, defense_value):
-    count = len(df[(df['Just Efficiency Over'] == 1) &
+    count_23 = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    win = len(df[(df['Just Efficiency Over'] == 1) &
+    win_23 = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
-    loss = count - win
+    loss_23 = count_23 - win_23
 
-    return count, win, loss
+    return count_23, win_23, loss_23
 
 # All Over Function (Regular Season) - 2024 Season
 def allover_count_win_loss_2024(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Over'] == 1) & 
+    count_24 = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
                    (df['Defense Over 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') & 
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['All Formulas Over'] == 1) & 
+    win_24 = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
                  (df['Defense Over 100'] == defense_value) & 
                  (df['Over Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
 
+    return count_24, win_24, loss_24
+    
 # All Under Function (Regular Season) - 2024 Season
 def allunder_count_win_loss_2024(df, offense_value, defense_value):
-    count = len(df[(df['All Formulas Under'] == 1) & 
+    count_24 = len(df[(df['All Formulas Under'] == 1) & 
                    (df['Offense Under 100'] == offense_value) & 
                    (df['Defense Under 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') & 
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['All Formulas Under'] == 1) & 
+    win_24 = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
                  (df['Defense Under 100'] == defense_value) & 
                  (df['Under Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
+
+    return count_24, win_24, loss_24
 
 # EFF and PPG Over and Tempo Under Function (Regular Season) - 2024 Season
 def EPOver_TempoUnder_count_win_loss_2024(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    count_24 = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -543,7 +543,7 @@ def EPOver_TempoUnder_count_win_loss_2024(df, offense_value, offense_value_1, de
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+    win_24 = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
                    (df['Count of OFF over 100'] == offense_value) & 
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
@@ -552,13 +552,13 @@ def EPOver_TempoUnder_count_win_loss_2024(df, offense_value, offense_value_1, de
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
+
+    return count_24, win_24, loss_24
 
 # Tempo and EFF Over and PPG Under Function (Regular Season) - 2024 Season
 def TEOver_PPGUnder_count_win_loss_2024(df, offense_value, offense_value_1, defense_value, defense_value_1):
-    count = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    count_24 = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -566,7 +566,7 @@ def TEOver_PPGUnder_count_win_loss_2024(df, offense_value, offense_value_1, defe
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+    win_24 = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
@@ -575,74 +575,74 @@ def TEOver_PPGUnder_count_win_loss_2024(df, offense_value, offense_value_1, defe
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
+
+    return count_24, win_24, loss_24
 
 # Tempo and PPG Over and EFF Under Function (Regular Season) - 2024 Season
 def TPOver_EFFUnder_count_win_loss_2024(df):
-    count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    count_24 = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+    win_24 = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                 (df['Over Hit.3'] == 1) &
                 (df['RS/PS'] == 'RS') &
                 (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
+
+    return count_24, win_24, loss_24
 
 # Just Tempo Over Function (Regular Season) - 2024 Season
 def TempoOver_count_win_loss_2024(df, eff_value):
-    count = len(df[(df['Just Tempo Over'] == 1) & 
+    count_24 = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just Tempo Over'] == 1) & 
+    win_24 = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
                    (df['Over Hit.4'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
-    
-    return count, win, loss
+    loss_24 = count_24 - win_24
+
+    return count_24, win_24, loss_24
 
 # Just PPG Over Function (Regular Season) - 2024 Season
 def PPGover_count_win_loss_2024(df, eff_value):
-    count = len(df[(df['Just PPG Over'] == 1) &
+    count_24 = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just PPG Over'] == 1) &
+    win_24 = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
                    (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_24 = count_24 - win_24
 
-    return count, win, loss
+    return count_24, win_24, loss_24
 
 # Just EFF Over Function (Regular Season) - 2024 Season
 def EFFover_count_win_loss_2024(df, offense_value, defense_value):
-    count = len(df[(df['Just Efficiency Over'] == 1) &
+    count_24 = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    win = len(df[(df['Just Efficiency Over'] == 1) &
+    win_24 = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
                    (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
-    loss = count - win
+    loss_24 = count_24 - win_24
 
-    return count, win, loss
+    return count_24, win_24, loss_24
