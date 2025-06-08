@@ -186,7 +186,7 @@ if trend_option == "All Over":
     today_date = datetime.today().date()
     
     # Filter the 'subset' DataFrame based on the specific date
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
+    filtered_subset = subset[subset['Date'].dt.normalize() == "1/3/2025"]
     
     # Reorder the columns as needed
     desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
