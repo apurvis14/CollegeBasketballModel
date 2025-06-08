@@ -175,9 +175,9 @@ if trend_option == "All Over":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
-        today = "2/15/2025"
+        today = datetime.today().date()
         today_games = df[
-        (df['Date'].dt.date == today) &
+        (df['Date'].dt.date == '2/15/2025') &
         (df['All Formulas Over'] == 1) &
         (df['Offense Over 100'] == o) &
         (df['Defense Over 100'] == d)
