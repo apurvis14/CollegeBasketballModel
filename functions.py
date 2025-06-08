@@ -161,8 +161,8 @@ def display_metrics(percent, win, loss):
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Over Hit Rate:</b> {percent_display}<br>
             <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
-            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span>
-            {units_display}
+            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span><br>
+            <b>Net Units:</b> {units_display}<br>
         </div>
         """,
         unsafe_allow_html=True
