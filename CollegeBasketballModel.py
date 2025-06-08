@@ -110,7 +110,7 @@ if trend_option == "All Over":
     for (o, d), (percent, win, loss) in sorted_combos:
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline; margin-bottom: 0.2rem;">
                 {o} Offense over 100 / {d} Defense over 100
             </h3>
             """,
@@ -123,15 +123,15 @@ if trend_option == "All Over":
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.markdown("<h4 style='text-align:center;'>All Seasons</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
             display_metrics(percent, win, loss)
 
         with col2:
-            st.markdown("<h4 style='text-align:center;'>Current Season</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_cur, win_cur, loss_cur)
 
         with col3:
-            st.markdown("<h4 style='text-align:center;'>Previous Season</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
         # Plot histogram
