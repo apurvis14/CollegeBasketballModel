@@ -193,11 +193,18 @@ elif trend_option == "All Under":
         if count_cur != 0:
             percent_cur = round((win_cur / count_cur) * 100, 2)
             results_cur.append(((o, d), percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append(((o, d), None, 0, 0))
 
         count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
         if count_prev != 0:
             percent_prev = round((win_prev / count_prev) * 100, 2)
             results_prev.append(((o, d), percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append(((o, d), None, 0, 0))
+
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
 
     # Sort by All Seasons win %
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
