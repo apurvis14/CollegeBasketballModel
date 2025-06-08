@@ -98,8 +98,7 @@ st.markdown("""
 )
 
 with st.expander("View Explanation of these Trends"):
-    st.write("All Over means all 3 of my formulas predictions were over the book total. \n"
-    "The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings. \n")
+    st.write("All Over means all 3 of my formulas predictions were over the book total. \n The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings. \n")
 
 if trend_option == "All Over":
     subset = df[(df['All Formulas Over'] == 1)]
