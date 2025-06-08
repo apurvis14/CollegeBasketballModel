@@ -429,15 +429,14 @@ def TEOver_PPGUnder_count_win_loss_prev(df, offense_value, offense_value_1, defe
 
 # Tempo and PPG Over and EFF Under Function (Regular Season) - Previous Season
 def TPOver_EFFUnder_count_win_loss_prev(df):
-    count_prev = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
-                   (df['RS/PS'] == 'RS') &
-                   (df['Year'] == 2023)])
+    filtered_df = df[
+        (df['Tempo and PPG over (Efficiency Under)'] == 1) &
+        (df['RS/PS'] == 'RS') &
+        (df['Year'] == 2023)
+    ]
     
-    win_prev = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
-                (df['Over Hit.3'] == 1) &
-                (df['RS/PS'] == 'RS') &
-                (df['Year'] == 2023)])
-    
+    count_prev = len(filtered_df)
+    win_prev = len(filtered_df[filtered_df['Over Hit.3'] == 1])
     loss_prev = count_prev - win_prev
 
     return count_prev, win_prev, loss_prev
