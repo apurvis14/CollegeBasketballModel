@@ -505,10 +505,6 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "PPG/Tempo Over & EFF Under":
-    results = []
-    results_cur = []
-    results_prev = []
-
     count, win, loss = TPOver_EFFUnder_count_win_loss(df)
     if count != 0:
         percent = round((win / count) * 100, 2) if count != 0 else None
