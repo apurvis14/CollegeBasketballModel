@@ -13,7 +13,7 @@ from functions import (
     display_metrics,
     display_metrics_under,
     allover_count_win_loss_current,
-    allover_count_win_loss_2024
+    allover_count_win_loss_prev
 )
 from datetime import datetime
 from PIL import Image
@@ -76,41 +76,38 @@ trend_option = st.selectbox("Choose Trend Type", [
 
 
 if trend_option == "All Over":
-    # Filter the df for the 'All Formulas Over' condition
-    subset = df[(df['All Formulas Over'] == 1)]  # Filter based on condition
-
+    subset = df[(df['All Formulas Over'] == 1)]
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
-    results = []
-    
-    # All Seasons
+
+    results_all = {}
+    results_cur = {}
+    results_prev = {}
+
     for o, d in combinations:
+        key = (o, d)
+
         count, win, loss = allover_count_win_loss(df, o, d)
         if count != 0:
-            percent = round((win / count) * 100, 2) if count != 0 else None
-            results.append(((o, d), percent, win, loss))
+            percent = round((win / count) * 100, 2)
+            results_all[key] = (percent, win, loss)
 
-    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
-
-    # Current Season
-    for o, d in combinations:
         count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
         if count_cur != 0:
-            percent_cur = round((win_cur / count_cur) * 100, 2) if count_cur != 0 else None
-            results.append(((o, d), percent_cur, win_cur, loss_cur))
-    
-    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur[key] = (percent_cur, win_cur, loss_cur)
 
-    # 2024 Season
-    for o, d in combinations:
-        count_24, win_24, loss_24 = allover_count_win_loss_2024(df, o, d)
-        if count_24 != 0:
-            percent_24 = round((win_24 / count_24) * 100, 2) if count_24 != 0 else None
-            results.append(((o, d), percent_24, win_24, loss_24))
+        count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev[key] = (percent_prev, win_prev, loss_prev)
 
-    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+    # Sort by All Seasons win %
+    sorted_combos = sorted(
+        results_all.items(), 
+        key=lambda x: (x[1][0] is None, -x[1][0] if x[1][0] is not None else 0)
+    )
 
-    for (o, d), percent, win, loss in results:
-        # Centered header
+    for (o, d), (percent, win, loss) in sorted_combos:
         st.markdown(
             f"""
             <h3 style="text-align: center; font-size: 20px; text-decoration: underline; margin-bottom: 0.2rem;">
@@ -119,7 +116,10 @@ if trend_option == "All Over":
             """,
             unsafe_allow_html=True
         )
-        
+
+        percent_cur, win_cur, loss_cur = results_cur.get((o, d), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev.get((o, d), (None, 0, 0))
+
         col1, col2, col3 = st.columns(3)
 
         with col1:
@@ -131,17 +131,17 @@ if trend_option == "All Over":
             display_metrics(percent_cur, win_cur, loss_cur)
 
         with col3:
-            st.markdown("<h4 style='text-align:center;'>2024 Season</h4>", unsafe_allow_html=True)
-            display_metrics(percent_24, win_24, loss_24)
+            st.markdown("<h4 style='text-align:center;'>Previous Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_prev, win_prev, loss_prev)
 
-        # Plot below metrics, centered with Streamlit's default centering
+        # Plot histogram
         plot_df = subset[
             (subset['Offense Over 100'] == o) & 
             (subset['Defense Over 100'] == d)
         ]
 
         if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))  # Smaller figure size
+            fig, ax = plt.subplots(figsize=(4, 2.5))
             sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
             ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
             ax.set_title('Total Difference (Actual - Book)', fontsize=10)
@@ -151,10 +151,7 @@ if trend_option == "All Over":
             ax.legend(fontsize=8)
             ax.grid(True)
 
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
+            st.columns([1, 2, 1])[1].pyplot(fig)
 
 
     # **NEW** Section to Filter by Specific Date and Display Data
