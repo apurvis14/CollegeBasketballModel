@@ -843,6 +843,15 @@ elif trend_option == "PPG Over":
         st.write(f"No data available for {today_date}.")
 
 elif trend_option == "EFF Over":
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - EFF Over means Efficiency predictive formulas were over the Book Total while PPG and Tempo predictive formula was under the Book Total.
+                    - The EFF Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 0 OFF EFF over 105 and 0 DEF EFF over 105 Subcategory Trend means EFF Formula Predicted over the Book Total and PPG & Tempo Formulas Predicted under the Book Total while neither teams' offensive or defensive ratings were over 105.
+                    """,
+                    unsafe_allow_html=True)
+
     combinations = [(0,0),(0,1),(1,0),(1,1),(2,0),(2,1),(2,2)]
     results = []
     results_cur = []
