@@ -163,6 +163,16 @@ def display_metrics(percent, win, loss):
     else:
         units_display = f"<span style='color:red; font-weight:bold'>{units}</span>"
 
+    fade_units = round(loss*0.909 - win, 2)
+    if fade_units >= 15:
+        units_display += f" <span style='color:darkred; font-weight:bold'>({fade_units})</span>"
+    elif 10 <= fade_units < 15:
+        units_display += f" <span style='color:red; font-weight:bold'>({fade_units})</span>"
+    elif 0 <= fade_units < 10:
+        units_display += f" <span style='color:orange; font-weight:bold'>({fade_units})</span>"
+    else:
+        units_display += f" <span style='color:lightgray; font-weight:bold'>({fade_units})</span>"
+
     st.markdown(
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
@@ -170,6 +180,7 @@ def display_metrics(percent, win, loss):
             <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
             <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span><br>
             <b>Net Units:</b> {units_display}<br>
+            <b>Fade Net Units:</b> {fade_units}
         </div>
         """,
         unsafe_allow_html=True
