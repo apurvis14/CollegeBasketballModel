@@ -335,7 +335,7 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
     for (o1, o2, d1, d2), percent, win, loss in results:    
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {o1} Offense Over 100 and {o2} Over 110 / {d1} Defense Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
@@ -436,7 +436,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
     for (o1, o2, d1, d2), percent, win, loss in results:
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {o1} OFF Under 100 and {o2} Under 95 / {d1} DEF Under 100 and {d2} Under 95
                 </h3>
                 """, unsafe_allow_html=True)
@@ -610,7 +610,7 @@ elif trend_option == "Tempo Over":
     for val, percent, win, loss in results:
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {val} EFF Over 105
             </h3>
             """,unsafe_allow_html=True
@@ -699,7 +699,7 @@ elif trend_option == "PPG Over":
     for val, percent, win, loss in results:
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {val} PPG Over 110
             </h3>
             """,unsafe_allow_html=True
@@ -791,7 +791,7 @@ elif trend_option == "EFF Over":
     for (o, d), percent, win, loss in results:
         st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {o} Offense Over 105 / {d} Defense Over 105
             </h3>
             """,unsafe_allow_html=True
