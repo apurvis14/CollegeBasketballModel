@@ -246,10 +246,10 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[
             (df['Efficiency/PPG over  (Tempo under)'] == 1) &
-            (df['Offense Over 100'] == o1) &
-            (df['Offense Over 110'] == o2) &
-            (df['Defense Under 100'] == d1) &
-            (df['Defense Under 95'] == d2)
+            (df['Count of OFF over 100'] == o1) &
+            (df['Count of OFF over 110'] == o2) &
+            (df['Count of DEF under 100'] == d1) &
+            (df['Count of DEF under 95'] == d2)
         ]
         if not plot_df.empty:
             fig, ax = plt.subplots(figsize=(4, 2.5))
