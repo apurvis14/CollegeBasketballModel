@@ -91,8 +91,8 @@ trend_option = st.selectbox("Choose Trend Type", [
 
 st.markdown("""
     <p style='text-align: center;'>
-    **Over Net Units means how many units won by betting on the Over** <br>
-    **Under Net Units means how many units won by betting on the Under** <br>
+    **Over Net Units means how many units won by betting on the Over on every game in that trend** <br>
+    **Under Net Units means how many units won by betting on the Under on every game in that trend** <br>
     """,
     unsafe_allow_html=True
 )
