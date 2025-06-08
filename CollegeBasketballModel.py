@@ -327,6 +327,8 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         else:
             results_prev.append(((o1, o2, d1, d2), None, 0, 0))
 
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
 
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
@@ -338,8 +340,8 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
                 </h3>
                 """, unsafe_allow_html=True)
         
-        percent_cur, win_cur, loss_cur = results_cur.get((o1, o2, d1, d2), (None, 0, 0))
-        percent_prev, win_prev, loss_prev = results_prev.get((o1, o2, d1, d2), (None, 0, 0))
+        percent_cur, win_cur, loss_cur = results_cur_dict.get((o1, o2, d1, d2), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev_dict.get((o1, o2, d1, d2), (None, 0, 0))
 
         col1, col2, col3 = st.columns(3)
         with col1:
