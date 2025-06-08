@@ -154,8 +154,15 @@ def display_metrics(percent, win, loss):
         percent_display = f"<i>{percent}%</i>"
 
     units = round(win * 0.909 - loss, 2)
-    color = "darkgreen" if units >= 0 else "red" if units < 0 else "gray"
-    units_display = f"<span style='color:{color}; font-weight:bold'>{units} units</span>"
+    if units >= 15:
+        units_display = f"<span style='color:darkgreen; font-weight:bold'>{units}</span>"
+    elif 10 <= units < 15:
+        units_display = f"<span style='color:green; font-weight:bold'>{units}</span>"
+    elif 0 <= units < 10:
+        units_display = f"<span style='color:lightgreen; font-weight:bold'>{units}</span>"
+    else:
+        units_display = f"<span style='color:red; font-weight:bold'>{units}</span>"
+
     st.markdown(
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
@@ -167,8 +174,6 @@ def display_metrics(percent, win, loss):
         """,
         unsafe_allow_html=True
     )
-
-# 
     
 # Display metrics for Under Rate
 def display_metrics_under(percent, win, loss):
