@@ -309,6 +309,30 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
                 """, unsafe_allow_html=True)
         display_metrics(percent, win, loss)
 
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[
+            (df['Tempo and Efficiency over (PPG under)'] == 1) &
+            (df['Count of OFF under 100'] == o1) &
+            (df['Count of OFF under 95'] == o2) &
+            (df['Count of DEF under 100'] == d1) &
+            (df['Count of DEF under 95'] == d2)
+        ]
+        if not plot_df.empty:
+            fig, ax = plt.subplots(figsize=(4, 2.5))
+            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+            ax.set_title('Total Difference (Actual - Book)', fontsize=10)
+            ax.set_xlabel('Total Difference', fontsize=9)
+            ax.set_ylabel('Frequency', fontsize=9)
+            ax.tick_params(axis='both', labelsize=8)
+            ax.legend(fontsize=8)
+            ax.grid(True)
+
+            # Display in a narrower column
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.pyplot(fig)
+
     # **NEW** Section to Filter by Specific Date and Display Data
     st.markdown(
         "<h3 style='text-align: center;'>Today's Games for Tempo/EFF Over & PPG Under Trends</h3>", 
