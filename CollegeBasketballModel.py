@@ -27,8 +27,7 @@ from functions import (
     PPGover_count_win_loss_current,
     PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current,
-    EFFover_count_win_loss_prev,
-    allover_count_win_loss_units
+    EFFover_count_win_loss_prev
 )
 from datetime import datetime
 from PIL import Image
