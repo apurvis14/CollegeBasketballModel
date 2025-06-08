@@ -179,8 +179,8 @@ def display_metrics(percent, win, loss):
             <b>Over Hit Rate:</b> {percent_display}<br>
             <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
             <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span><br>
-            <b>Over Net Units:</b> {units_display}<br>
-            <b>Under Net Units:</b> {fade_display}
+            Over Net Units: {units_display}<br>
+            Under Net Units: {fade_display}
         </div>
         """,
         unsafe_allow_html=True
