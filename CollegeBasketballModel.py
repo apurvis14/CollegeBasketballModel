@@ -190,7 +190,8 @@ if trend_option == "All Over":
     
     # Reorder the columns as needed
     desired_order = ['Date','Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
-    desired_df = filtered_subset[desired_order] 
+    desired_df = filtered_subset[desired_order]
+    desired_df['Date'] = desired_df['Date'].dt.strftime('%Y-%m-%d')  # Format date for display
 
     if not desired_df.empty:
         st.dataframe(desired_df)  # Display the filtered subset DataFrame for the selected date
