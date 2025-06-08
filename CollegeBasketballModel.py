@@ -205,7 +205,7 @@ elif trend_option == "All Under":
     for (o, d), percent, win, loss in results:
             st.markdown(
             f"""
-            <h3 style="text-align: center; font-size: 20px; text-decoration: underline;">
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
                 {o} Offense Under 100 / {d} Defense Under 100
             </h3>
             """,
