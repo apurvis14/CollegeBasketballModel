@@ -481,7 +481,8 @@ elif trend_option == "PPG Over":
         display_metrics(percent, win, loss)
 
         # Plot below metrics, centered with Streamlit's default centering
-        plot_df = df[df['Just PPG Over'] == 1]
+        plot_df = df[(df['Just PPG Over'] == 1) &
+                     (df['Over 110 PPG'] == val)]
         if not plot_df.empty:
             fig, ax = plt.subplots(figsize=(4, 2.5))
             sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
