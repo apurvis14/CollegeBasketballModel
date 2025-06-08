@@ -18,6 +18,7 @@ def allover_count_win_loss(df, offense_value, defense_value):
     
     return count, win, loss
 
+
 # All Under Function (Regular Season) - All Seasons
 def allunder_count_win_loss(df, offense_value, defense_value):
     count = len(df[(df['All Formulas Under'] == 1) & 
@@ -152,12 +153,16 @@ def display_metrics(percent, win, loss):
     else:
         percent_display = f"<i>{percent}%</i>"
 
+    units = round(win * 0.909 - loss, 2)
+    color = "darkgreen" if units >= 0 else "red" if units < 0 else "gray"
+    units_display = f"<span style='color:{color}; font-weight:bold'>{units} units</span>"
     st.markdown(
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Over Hit Rate:</b> {percent_display}<br>
             <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
             <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span>
+            {units_display}
         </div>
         """,
         unsafe_allow_html=True

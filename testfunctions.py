@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from functions import (
-    TPOver_EFFUnder_count_win_loss,
-    TPOver_EFFUnder_count_win_loss_current,
-    TPOver_EFFUnder_count_win_loss_prev)
+    allover_count_win_loss,
+    allover_count_win_loss_current,
+    allover_count_win_loss_prev)
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
@@ -28,11 +28,23 @@ df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
 
 # All Over Function from import to get wins and losses
-count, win, loss = TPOver_EFFUnder_count_win_loss(df)
-count_current, win_current, loss_current = TPOver_EFFUnder_count_win_loss_current(df)
-count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
+# Count Wins and Losses
+percent, wins, losses = allover_count_win_loss(df, 2, 2)
+percent_cur, wins_cur, losses_cur = allover_count_win_loss_current(df, 2, 2)
+percent_prev, wins_prev, losses_prev = allover_count_win_loss_prev(df, 2, 2)
 
-# Print results
-print(f"Count: {count}, Wins: {win}, Losses: {loss}")
-print(f"Current Count: {count_current}, Wins: {win_current}, Losses: {loss_current}")
-print(f"Previous Count: {count_prev}, Wins: {win_prev}, Losses: {loss_prev}")
+all_units_won = wins * .909
+all_units_lost = losses * 1
+all_net_units = all_units_won - all_units_lost
+print(f"Units Won: {all_units_won}, Units Lost: {all_units_lost}, Net Units: {all_net_units}")
+
+current_units_won = wins_cur * .909
+current_units_lost = losses_cur * 1
+current_net_units = current_units_won - current_units_lost
+print(f"Current Units Won: {current_units_won}, Current Units Lost: {current_units_lost}, Current Net Units: {current_net_units}")
+
+previous_units_won = wins_prev * .909
+previous_units_lost = losses_prev * 1
+previous_net_units = previous_units_won - previous_units_lost
+print(f"Previous Units Won: {previous_units_won}, Previous Units Lost: {previous_units_lost}, Previous Net Units: {previous_net_units}")
+
