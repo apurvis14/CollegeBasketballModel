@@ -507,7 +507,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
 elif trend_option == "PPG/Tempo Over & EFF Under":
     count, win, loss = TPOver_EFFUnder_count_win_loss(df)
     if count != 0:
-        percent = round((win / count) * 100, 2) if count != 0 else None
+        percent = round((win / count) * 100, 2)
     else:
         percent, win, loss = None, 0, 0
 
@@ -532,10 +532,10 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
         display_metrics(percent, win, loss)
     with col2:
         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
-        display_metrics(*results_cur)
+        display_metrics(percent_cur, win_cur, loss_cur)
     with col3:
         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
-        display_metrics(*results_prev)
+        display_metrics(percent_prev, win_prev, loss_prev)
 
 
         # Plot below metrics, centered with Streamlit's default centering
