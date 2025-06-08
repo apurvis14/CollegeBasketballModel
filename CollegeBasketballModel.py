@@ -13,7 +13,9 @@ from functions import (
     display_metrics,
     display_metrics_under,
     allover_count_win_loss_current,
-    allover_count_win_loss_prev
+    allover_count_win_loss_prev,
+    allunder_count_win_loss_current,
+    allunder_count_win_loss_prev
 )
 from datetime import datetime
 from PIL import Image
@@ -179,12 +181,25 @@ elif trend_option == "All Under":
     subset1 = df[(df['All Formulas Under'] == 1)]  # Filter based on condition
     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
     results = []
+    results_cur = []
+    results_prev = []
 
     for o, d in combinations:
         count, win, loss = allunder_count_win_loss(df, o, d)
         percent = round((win / count) * 100, 2) if count != 0 else None
         results.append(((o, d), percent, win, loss))
 
+        count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append(((o, d), percent_cur, win_cur, loss_cur))
+
+        count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append(((o, d), percent_prev, win_prev, loss_prev))
+
+    # Sort by All Seasons win %
     results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
 
     for (o, d), percent, win, loss in results:
@@ -197,7 +212,21 @@ elif trend_option == "All Under":
             unsafe_allow_html=True
             )
 
-            display_metrics_under(percent, win, loss)
+            percent_cur, win_cur, loss_cur = results_cur.get((o, d), (None, 0, 0))
+            percent_prev, win_prev, loss_prev = results_prev.get((o, d), (None, 0, 0))
+
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+                display_metrics_under(percent, win, loss)
+
+            with col2:
+                st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+                display_metrics_under(percent_cur, win_cur, loss_cur)
+
+            with col3:
+                st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+                display_metrics_under(percent_prev, win_prev, loss_prev)
 
                 # Plot below metrics, centered with Streamlit's default centering
             plot_df = subset1[
