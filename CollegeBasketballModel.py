@@ -98,7 +98,10 @@ st.markdown("""
 )
 
 with st.expander("View Explanation of these Trends"):
-    st.markdown("All Over means all 3 of my formulas predictions were over the book total.<br> The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.", 
+    st.markdown("""
+                - All Over means all 3 of my formulas predictions were over the book total.
+                - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings. 
+                """,
                 unsafe_allow_html=True)
 
 if trend_option == "All Over":
