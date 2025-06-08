@@ -79,8 +79,8 @@ def TEOver_PPGUnder_count_win_loss(df, offense_value, offense_value_1, defense_v
 
 # Tempo and PPG Over and EFF Under Function (Regular Season) - All Seasons
 def TPOver_EFFUnder_count_win_loss(df):
-    count = len(df[df['Tempo and PPG over (Efficiency Under)'] == 1] &
-                df['RS/PS'] == 'RS')
+    count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+                (df['RS/PS'] == 'RS')])
     
     win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                 (df['Over Hit.3'] == 1) &
