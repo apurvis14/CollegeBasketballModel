@@ -7,12 +7,14 @@ import seaborn as sns
 def allover_count_win_loss(df, offense_value, defense_value):
     count = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
-                   (df['Defense Over 100'] == defense_value)])
+                   (df['Defense Over 100'] == defense_value) &
+                   (df['RS/PS'] == 'RS')])
     
     win = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
                  (df['Defense Over 100'] == defense_value) & 
-                 (df['Over Hit'] == 1)])
+                 (df['Over Hit'] == 1) &
+                 (df['RS/PS'] == 'RS')])
     
     loss = count - win
     
