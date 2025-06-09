@@ -575,15 +575,16 @@ def home_away_over_under_by_team(df, offense_value, defense_value):
     
     records = {}
     for team in teams:
+        year = "2024"
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == 1)).sum()
-        home_unders = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == " ")).sum()
+        home_overs = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == 1)).sum()
-        away_unders = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == " ")).sum()
+        away_overs = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
