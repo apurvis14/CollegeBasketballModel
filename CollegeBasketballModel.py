@@ -168,6 +168,9 @@ if trend_option == "All Over":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
+        if 'Result' not in df.columns and 'Total Points' in df.columns and 'Book Total' in df.columns:
+            df['Result'] = (df['Total Points'] > df['Book Total']).map({True: 'Over', False: 'Under'})
+
         trend_df = df[
         (df['All Formulas Over'] == 1) &
         (df['Offense Over 100'] == o) &
