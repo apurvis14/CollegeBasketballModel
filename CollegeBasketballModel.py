@@ -172,8 +172,8 @@ if trend_option == "All Over":
         today_games = df[
         (df['Date'].dt.date == today) &
         (df['All Formulas Over'] == 1) &
-        (df['Offense Onder 100'] == o) &
-        (df['Defense Onder 100'] == d)
+        (df['Offense Over 100'] == o) &
+        (df['Defense Over 100'] == d)
 ][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
 
 
