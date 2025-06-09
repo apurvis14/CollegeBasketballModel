@@ -293,7 +293,7 @@ elif trend_option == "All Under":
             display_metrics_under(percent_prev, win_prev, loss_prev)
 
         # Today's Games
-        today = datetime.today().date()
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
         today_games = df[
         (df['Date'].dt.date == today) &
         (df['All Formulas Under'] == 1) &
