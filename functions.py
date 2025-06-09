@@ -545,30 +545,19 @@ def EFFover_count_win_loss_prev(df, offense_value, defense_value):
     return count_prev, win_prev, loss_prev
 
 def display_total_difference_histogram(plot_df):
+    """
+    Plots the histogram of 'Total Difference' from book total for the provided filtered DataFrame.
+    The plot is centered and styled for Streamlit.
+    """
     if not plot_df.empty:
-        # Ensure numeric and drop NaNs
-        data = pd.to_numeric(plot_df['Total Difference'], errors='coerce').dropna()
-
-        # Prepare KDE
-        kde = gaussian_kde(data)
-        x_vals = np.linspace(data.min(), data.max(), 200)
-        y_vals = kde(x_vals)
-
-        # Plot
         fig, ax = plt.subplots(figsize=(4, 2.5))
-        PRIMARY_COLOR = '#FFD700'   # Gold
-        SECONDARY_COLOR = '#000000' # Black
-        LINE_COLOR = '#FF5733'      # A pop color for vertical lines
-
-        ax.hist(data, bins=20, color=PRIMARY_COLOR, edgecolor='black', alpha=0.6)
-        ax.plot(x_vals, y_vals, color=SECONDARY_COLOR, linewidth=2, label='KDE')
-        ax.axvline(x=0, color=LINE_COLOR, linestyle='--', label='Even Line')
-
+        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+        ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
         ax.set_ylabel('Frequency', fontsize=9)
         ax.tick_params(axis='both', labelsize=8)
         ax.legend(fontsize=8)
         ax.grid(True)
-
+        
         st.columns([1, 2, 1])[1].pyplot(fig)
