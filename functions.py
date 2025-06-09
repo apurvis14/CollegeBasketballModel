@@ -565,40 +565,34 @@ def display_total_difference_histogram(plot_df):
         
         st.columns([1, 2, 1])[1].pyplot(fig)
 
-# Home And Away Records for specific trend
-def ou_records_teams(df,trend_df):
+def home_away_over_under_by_team(df, offense_value, defense_value):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Offense Over 100'] == offense_value) & 
+                     (df['Defense Over 100'] == defense_value) & 
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == 1)).sum()
+        home_unders = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == " ")).sum()
 
-    today = datetime.today().date()
-
-    # Ensure 'Result' column exists
-    if 'Result' not in df.columns and 'Total Points' in df.columns and 'Book Total' in df.columns:
-        df['Result'] = (df['Total Points'] > df['Book Total']).map({True: 'Over', False: 'Under'})
-
-    # Over/Under counts for Home teams
-    home_over = trend_df[trend_df['Result'] == 'Over'].groupby('Home Team').size()
-    home_under = trend_df[trend_df['Result'] == 'Under'].groupby('Home Team').size()
-    home_ou_record = (home_over.fillna(0).astype(int)).astype(str) + "-" + (home_under.fillna(0).astype(int)).astype(str)
-
-    # Over/Under counts for Away teams
-    away_over = trend_df[trend_df['Result'] == 'Over'].groupby('Away Team').size()
-    away_under = trend_df[trend_df['Result'] == 'Under'].groupby('Away Team').size()
-    away_ou_record = (away_over.fillna(0).astype(int)).astype(str) + "-" + (away_under.fillna(0).astype(int)).astype(str)
-
-    # Lookup dictionaries
-    home_ou_dict = home_ou_record.to_dict()
-    away_ou_dict = away_ou_record.to_dict()
-
-    # Filter today's games
-    today_games = trend_df[trend_df['Date'].dt.date == today][[
-        'Date', 'Home Team', 'Away Team', 'Book Total',
-        'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction'
-    ]].copy()
-
-    # Add O/U records
-    today_games['Home O-U Record'] = today_games['Home Team'].map(home_ou_dict)
-    today_games['Away O-U Record'] = today_games['Away Team'].map(away_ou_dict)
-
-    # Format date
-    today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')
-
-    return today_games
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == 1)).sum()
+        away_unders = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')

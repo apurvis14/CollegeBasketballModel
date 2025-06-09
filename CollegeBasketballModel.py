@@ -29,7 +29,7 @@ from functions import (
     EFFover_count_win_loss_current,
     EFFover_count_win_loss_prev,
     display_total_difference_histogram,
-    ou_records_teams
+    home_away_over_under_by_team
 )
 from datetime import datetime
 from PIL import Image
@@ -168,7 +168,7 @@ if trend_option == "All Over":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
-        today = datetime.today().date()
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
         today_games = df[
         (df['Date'].dt.date == today) &
         (df['All Formulas Over'] == 1) &
@@ -176,6 +176,22 @@ if trend_option == "All Over":
         (df['Defense Over 100'] == d)
 ][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
 
+        # Step 1: Run your function to get records_df
+        records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+        # Step 2: Prepare mapping dictionaries for quick lookup
+        home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+        away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+        total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+        # Step 3: Add new columns to today_games by mapping from the dictionaries
+        today_games['Home Team Home Record'] = today_games['Home Team'].map(home_record_map).fillna('N/A')
+        today_games['Home Team Away Record'] = today_games['Home Team'].map(away_record_map).fillna('N/A')
+        today_games['Home Team Total Record'] = today_games['Home Team'].map(total_record_map).fillna('N/A')
+
+        today_games['Away Team Home Record'] = today_games['Away Team'].map(home_record_map).fillna('N/A')
+        today_games['Away Team Away Record'] = today_games['Away Team'].map(away_record_map).fillna('N/A')
+        today_games['Away Team Total Record'] = today_games['Away Team'].map(total_record_map).fillna('N/A')
 
         if not today_games.empty:
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting

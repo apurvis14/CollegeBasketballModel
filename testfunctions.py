@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from functions import home_away_over_under_by_team
 
 
 # Load Data
@@ -23,40 +24,43 @@ columns_to_drop = [
 df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
-def all_over_combinations_by_team_table(df):
-    # Filter to "All Formulas Over"
-    subset = df[df['All Formulas Over'] == 1]
+# def all_over_combinations_by_team_table(df):
+#     # Filter to "All Formulas Over"
+#     subset = df[df['All Formulas Over'] == 1]
 
-    # Define combinations of (PPG Over, Efficiency Over)
-    combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
+#     # Define combinations of (PPG Over, Efficiency Over)
+#     combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
 
-    # Store all combinations in one list of DataFrames
-    all_tables = []
+#     # Store all combinations in one list of DataFrames
+#     all_tables = []
 
-    for o, d in combinations:
-        # Filter for this specific combo and regular season
-        filtered = subset[
-            (subset['Offense Over 100'] == o) &
-            (subset['Defense Over 100'] == d) &
-            (subset['RS/PS'] == "RS")
-        ]
+#     for o, d in combinations:
+#         # Filter for this specific combo and regular season
+#         filtered = subset[
+#             (subset['Offense Over 100'] == o) &
+#             (subset['Defense Over 100'] == d) &
+#             (subset['RS/PS'] == "RS")
+#         ]
 
-        # Group by Home Team and count wins/losses
-        summary = filtered.groupby('Home Team').agg(
-            Over_Hit=('Over Hit', lambda x: (x == 1).sum()),
-            Under_Hit=('Over Hit', lambda x: (x == " ").sum())
-        ).reset_index()
+#         # Group by Home Team and count wins/losses
+#         summary = filtered.groupby('Home Team').agg(
+#             Over_Hit=('Over Hit', lambda x: (x == 1).sum()),
+#             Under_Hit=('Over Hit', lambda x: (x == " ").sum())
+#         ).reset_index()
 
-        # Add combination as a new column
-        summary['Combo'] = f"OFF {o}, DEF {d}"
+#         # Add combination as a new column
+#         summary['Combo'] = f"OFF {o}, DEF {d}"
 
-        all_tables.append(summary)
+#         all_tables.append(summary)
 
-    # Concatenate all combinations into one table
-    final_table = pd.concat(all_tables, ignore_index=True)
+#     # Concatenate all combinations into one table
+#     final_table = pd.concat(all_tables, ignore_index=True)
 
-    return final_table
+#     return final_table
 
-table = all_over_combinations_by_team_table(df)
-print(table)
+# table = all_over_combinations_by_team_table(df)
+# print(table)
+
+df_records = home_away_over_under_by_team(df, 2, 2)
+print(df_records)
 
