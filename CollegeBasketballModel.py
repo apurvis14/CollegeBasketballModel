@@ -29,7 +29,8 @@ from functions import (
     EFFover_count_win_loss_current,
     EFFover_count_win_loss_prev,
     display_total_difference_histogram,
-    home_away_over_under_by_team
+    home_away_over_under_by_team,
+    home_away_over_under_by_team_all_under
 )
 from datetime import datetime
 from PIL import Image
@@ -299,6 +300,38 @@ elif trend_option == "All Under":
         (df['Offense Under 100'] == o) &
         (df['Defense Under 100'] == d)
 ][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+        
+        # Step 1: Run your function to get records_df
+        records_df = home_away_over_under_by_team_all_under(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+        # Step 2: Prepare mapping dictionaries for quick lookup
+        home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+        away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+        total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+        # Step 3: Add new columns to today_games by mapping from the dictionaries
+        today_games['Home Team Record'] = (
+        "Home: " + today_games['Home Team'].map(home_record_map).fillna("N/A") +
+        " | Total: " + today_games['Home Team'].map(total_record_map).fillna("N/A")
+        )
+
+        today_games['Away Team Record'] = (
+        "Away: " + today_games['Away Team'].map(away_record_map).fillna("N/A") +
+        " | Total: " + today_games['Away Team'].map(total_record_map).fillna("N/A")
+        )
+
+        def move_cols_after(df, cols_to_move, target_col):
+            # Extract columns
+            for col in cols_to_move:
+                series = df.pop(col)
+                target_idx = df.columns.get_loc(target_col) + 1
+                # Insert col after target_col
+                df.insert(target_idx, col, series)
+                # Increment target_idx for next insert so columns keep order
+                target_col = col  # So next col inserts after the last inserted
+
+        move_cols_after(today_games, ['Home Team Record'], 'Home Team')
+        move_cols_after(today_games, ['Away Team Record'], 'Away Team')
 
         if not today_games.empty:
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
