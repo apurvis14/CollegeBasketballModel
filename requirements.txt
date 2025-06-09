@@ -5,5 +5,5 @@ numpy
 Pillow
 matplotlib
 seaborn
-
+scipy
 
