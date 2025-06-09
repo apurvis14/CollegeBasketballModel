@@ -186,10 +186,8 @@ if trend_option == "All Over":
 
         # Step 3: Add new columns to today_games by mapping from the dictionaries
         today_games['Home Team Home Record'] = today_games['Home Team'].map(home_record_map).fillna('N/A')
-        today_games['Home Team Away Record'] = today_games['Home Team'].map(away_record_map).fillna('N/A')
         today_games['Home Team Total Record'] = today_games['Home Team'].map(total_record_map).fillna('N/A')
 
-        today_games['Away Team Home Record'] = today_games['Away Team'].map(home_record_map).fillna('N/A')
         today_games['Away Team Away Record'] = today_games['Away Team'].map(away_record_map).fillna('N/A')
         today_games['Away Team Total Record'] = today_games['Away Team'].map(total_record_map).fillna('N/A')
 
