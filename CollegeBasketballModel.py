@@ -337,7 +337,7 @@ elif trend_option == "All Under":
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
             with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense under 100 EFF / {d} Defense under 100 EFF"):
                 st.dataframe(today_games)
-                st.markdown("***The Record represents (Unders - Overs), so (4-1) would say that team has 4 unders and 1 over.***")
+                st.markdown("***This Record represents (Unders - Overs), so (4-1) would say that team has 4 unders and 1 over.***")
         else:
             st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
 
