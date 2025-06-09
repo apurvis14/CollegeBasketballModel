@@ -557,7 +557,8 @@ def display_total_difference_histogram(plot_df):
         PRIMARY_COLOR = '#FFD700'   # Gold
         SECONDARY_COLOR = '#000000' # Black
         LINE_COLOR = '#FF5733'      # A pop color for vertical lines
-        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color=PRIMARY_COLOR, kde_kws={"color": SECONDARY_COLOR, 'linewidth': 2})
+        sns.histplot(plot_df['Total Difference'], bins=20, kde=False, ax=ax, color=PRIMARY_COLOR)
+        sns.kdeplot(plot_df['Total Difference'], ax=ax, color=SECONDARY_COLOR, linewidth=2)
         ax.axvline(x=0, color=LINE_COLOR, linestyle='--', label='Even Line')
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
