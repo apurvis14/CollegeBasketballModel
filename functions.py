@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from scipy.stats import gaussian_kde
+from datetime import datetime
 
 # All Over Function (Regular Season) - All Seasons
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -563,3 +564,41 @@ def display_total_difference_histogram(plot_df):
         ax.grid(True)
         
         st.columns([1, 2, 1])[1].pyplot(fig)
+
+# Home And Away Records for specific trend
+def ou_records_teams(df,trend_df):
+
+    today = datetime.today().date()
+
+    # Ensure 'Result' column exists
+    if 'Result' not in df.columns and 'Total Points' in df.columns and 'Book Total' in df.columns:
+        df['Result'] = (df['Total Points'] > df['Book Total']).map({True: 'Over', False: 'Under'})
+
+    # Over/Under counts for Home teams
+    home_over = trend_df[trend_df['Result'] == 'Over'].groupby('Home Team').size()
+    home_under = trend_df[trend_df['Result'] == 'Under'].groupby('Home Team').size()
+    home_ou_record = (home_over.fillna(0).astype(int)).astype(str) + "-" + (home_under.fillna(0).astype(int)).astype(str)
+
+    # Over/Under counts for Away teams
+    away_over = trend_df[trend_df['Result'] == 'Over'].groupby('Away Team').size()
+    away_under = trend_df[trend_df['Result'] == 'Under'].groupby('Away Team').size()
+    away_ou_record = (away_over.fillna(0).astype(int)).astype(str) + "-" + (away_under.fillna(0).astype(int)).astype(str)
+
+    # Lookup dictionaries
+    home_ou_dict = home_ou_record.to_dict()
+    away_ou_dict = away_ou_record.to_dict()
+
+    # Filter today's games
+    today_games = trend_df[trend_df['Date'].dt.date == today][[
+        'Date', 'Home Team', 'Away Team', 'Book Total',
+        'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction'
+    ]].copy()
+
+    # Add O/U records
+    today_games['Home O-U Record'] = today_games['Home Team'].map(home_ou_dict)
+    today_games['Away O-U Record'] = today_games['Away Team'].map(away_ou_dict)
+
+    # Format date
+    today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')
+
+    return today_games
