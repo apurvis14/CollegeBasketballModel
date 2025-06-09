@@ -190,29 +190,6 @@ if trend_option == "All Over":
 
         display_total_difference_histogram(plot_df)
 
-
-    # # **NEW** Section to Filter by Specific Date and Display Data
-    # st.markdown(
-    #     "<h3 style='text-align: center;'>Today's Games for All Over Trends</h3>", 
-    #     unsafe_allow_html=True
-    # )
-
-    # # Convert the selected date to a datetime object
-    # today_date = datetime.today().date()
-    
-    # # Filter the 'subset' DataFrame based on the specific date
-    # filtered_subset = subset[subset['Date'].dt.normalize() == "2/15/2025"]
-    
-    # # Reorder the columns as needed
-    # desired_order = ['Date','Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
-    # desired_df = filtered_subset[desired_order]
-    # desired_df['Date'] = desired_df['Date'].dt.strftime('%Y-%m-%d')  # Format date for display
-
-    # if not desired_df.empty:
-    #     st.dataframe(desired_df)  # Display the filtered subset DataFrame for the selected date
-    # else:
-    #     st.write(f"No data available for {today_date}.")
-
 elif trend_option == "All Under":
     with st.expander("View Explanation of these Trends"):
         st.markdown("""
@@ -287,43 +264,7 @@ elif trend_option == "All Under":
             (subset1['Defense Under 100'] == d)
         ]
 
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))  # Smaller figure size
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for All Formulas Under Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    # Convert the selected date to a datetime object
-    today_date = datetime.today().date()
-
-    # Filter data based on the 'All Formulas Under' condition
-    subset = df[(df['All Formulas Under'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+        display_total_difference_histogram(plot_df)
 
 elif trend_option == "EFF/PPG Over & Tempo Under":
     with st.expander("View Explanation of these Trends"):
@@ -407,43 +348,7 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
             (df['Count of DEF under 100'] == d1) &
             (df['Count of DEF under 95'] == d2)
         ]
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for EFF/PPG Over & Tempo Under Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    # Today's date
-    today_date = datetime.today().date()
-
-    # Filter data based on the EFF/PPG Over & Tempo Under trend
-    subset = df[(df['Efficiency/PPG over  (Tempo under)'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+        display_total_difference_histogram(plot_df)
 
 elif trend_option == "Tempo/EFF Over & PPG Under":
     with st.expander("View Explanation of these Trends"):
@@ -519,43 +424,8 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
             (df['DEF Under 100'] == d1) &
             (df['DEF Under 95'] == d2)
         ]
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for Tempo/EFF Over & PPG Under Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    # Today's date
-    today_date = datetime.today().date()
-
-    # Filter data based on the Tempo/EFF Over & PPG Under trend
-    subset = df[(df['Tempo and Efficiency over (PPG under)'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+        
+        display_total_difference_histogram(plot_df)
 
 elif trend_option == "PPG/Tempo Over & EFF Under":
     with st.expander("View Explanation of these Trends"):
@@ -603,42 +473,8 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
 
     # Plot below metrics, centered with Streamlit's default centering
     plot_df = df[df['Tempo and PPG over (Efficiency Under)'] == 1]
-    if not plot_df.empty:
-        fig, ax = plt.subplots(figsize=(4, 2.5))
-        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-        ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-        ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-        ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-        ax.set_ylabel('Frequency', fontsize=9)
-        ax.tick_params(axis='both', labelsize=8)
-        ax.legend(fontsize=8)
-        ax.grid(True)
-        # Display in a narrower column
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            st.pyplot(fig)
 
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG/Tempo Over & EFF Under Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    # Today's date
-    today_date = datetime.today().date()
-
-    # Filter data based on the PPG/Tempo Over & EFF Under trend
-    subset = df[(df['Tempo and PPG over (Efficiency Under)'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+    display_total_difference_histogram(plot_df)
 
 elif trend_option == "Tempo Over":
     with st.expander("View Explanation of these Trends"):
@@ -703,42 +539,8 @@ elif trend_option == "Tempo Over":
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[(df['Just Tempo Over'] == 1) &
                      (df['Over 105 EFF'] == val)]
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for Tempo Over Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    # Today's date
-    today_date = datetime.today().date()
-
-    # Filter data based on the Tempo Over trend
-    subset = df[(df['Just Tempo Over'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+        
+        display_total_difference_histogram(plot_df)
 
 elif trend_option == "PPG Over":
     with st.expander("View Explanation of these Trends"):
@@ -801,42 +603,8 @@ elif trend_option == "PPG Over":
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[(df['Just PPG Over'] == 1) &
                      (df['Over 110 EFF'] == val)]
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for PPG Over Trends</h3>", 
-        unsafe_allow_html=True
-    )
-    
-    today_date = datetime.today().date()
-
-    # Filter data based on the PPG Over trend
-    subset = df[(df['Just PPG Over'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
+        
+        display_total_difference_histogram(plot_df)
 
 elif trend_option == "EFF Over":
     with st.expander("View Explanation of these Trends"):
@@ -906,40 +674,4 @@ elif trend_option == "EFF Over":
             (df['DEF Over 105'] == d)
         ]
 
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            # Display in a narrower column
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.pyplot(fig)
-
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for EFF Over Trends</h3>", 
-        unsafe_allow_html=True
-    )
-
-    today_date = datetime.today().date()
-
-    # Filter data based on the EFF Over trend
-    subset = df[(df['Just Efficiency Over'] == 1)]
-    filtered_subset = subset[subset['Date'].dt.normalize() == today_date]
-
-    # Reorder and display
-    desired_order = ['Home Team', 'Away Team', 'Book Total'] + [col for col in subset.columns if col not in ['Home Team', 'Away Team', 'Book Total']]
-    desired_df = filtered_subset[desired_order]
-
-    if not desired_df.empty:
-        st.dataframe(desired_df)
-    else:
-        st.write(f"No data available for {today_date}.")
-
+        display_total_difference_histogram(plot_df)
