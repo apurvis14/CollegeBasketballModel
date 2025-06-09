@@ -167,7 +167,7 @@ if trend_option == "All Over":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
         (df['All Formulas Over'] == 1) &
@@ -259,7 +259,7 @@ elif trend_option == "All Under":
             display_metrics_under(percent_prev, win_prev, loss_prev)
 
         # Today's Games
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
         (df['All Formulas Under'] == 1) &
@@ -355,8 +355,8 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
-                # Today's Games
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        # Today's Games
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
             (df['Efficiency/PPG over  (Tempo under)'] == 1) &
@@ -450,7 +450,7 @@ elif trend_option == "Tempo/EFF Over & PPG Under":
             display_metrics(percent_prev, win_prev, loss_prev)
 
         # Today's Game
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
             (df['Tempo and Efficiency over (PPG under)'] == 1) &
@@ -522,7 +522,7 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
         display_metrics(percent_prev, win_prev, loss_prev)
 
     # Today's Game
-    today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+    today = datetime.today().date()
     today_games = df[
     (df['Date'].dt.date == today) &
     (df['Tempo and PPG over (Efficiency Under)'] == 1)
@@ -603,7 +603,7 @@ elif trend_option == "Tempo Over":
             display_metrics(percent_prev, win_prev, loss_prev)
         
         # Today's Game
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
             (df['Just Tempo Over'] == 1) &
@@ -682,7 +682,7 @@ elif trend_option == "PPG Over":
             display_metrics(percent_prev, win_prev, loss_prev)
         
         # Today's Game
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
             (df['Just PPG Over'] == 1) &
@@ -764,7 +764,7 @@ elif trend_option == "EFF Over":
             display_metrics(percent_prev, win_prev, loss_prev)
         
         # Today's Game
-        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today = datetime.today().date()
         today_games = df[
         (df['Date'].dt.date == today) &
             (df['Just Efficiency Over'] == 1) &
