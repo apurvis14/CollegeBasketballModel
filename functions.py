@@ -550,8 +550,10 @@ def display_total_difference_histogram(plot_df):
     The plot is centered and styled for Streamlit.
     """
     if not plot_df.empty:
+        DARK_GOLD = '#B8860B'
+
         fig, ax = plt.subplots(figsize=(4, 2.5))
-        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color=DARK_GOLD)
         ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
