@@ -2,6 +2,8 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+from scipy.stats import gaussian_kde
 
 # All Over Function (Regular Season) - All Seasons
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -543,25 +545,40 @@ def EFFover_count_win_loss_prev(df, offense_value, defense_value):
     return count_prev, win_prev, loss_prev
 
 def display_total_difference_histogram(plot_df):
-    """
-    Plots the histogram of 'Total Difference' from book total for the provided filtered DataFrame.
-    The plot is centered and styled for Streamlit.
-    """
-
     if not plot_df.empty:
-        fig, ax = plt.subplots(figsize=(4, 2.5))
         PRIMARY_COLOR = '#FFD700'   # Gold
         SECONDARY_COLOR = '#000000' # Black
-        LINE_COLOR = '#FF5733'      # A pop color for vertical lines
-        data = plot_df['Total Difference']
-        sns.histplot(plot_df['Total Difference'], bins=20, kde=False, ax=ax, color=PRIMARY_COLOR, edgecolor=SECONDARY_COLOR)
-        sns.kdeplot(data, ax=ax, color=SECONDARY_COLOR, linewidth=2, bw_adjust=1.5)
+        LINE_COLOR = '#FF5733'      # Pop line
+
+        data = plot_df['Total Difference'].dropna()
+        
+        # Create figure and axes
+        fig, ax = plt.subplots(figsize=(4, 2.5))
+
+        # Plot histogram
+        sns.histplot(data, bins=20, kde=False, ax=ax, color=PRIMARY_COLOR, edgecolor=SECONDARY_COLOR)
+
+        # Compute and plot KDE manually
+        kde = gaussian_kde(data, bw_method=0.3)  # Adjust bw_method as needed
+        x_vals = np.linspace(data.min(), data.max(), 200)
+        y_vals = kde(x_vals)
+
+        # Scale KDE to histogram height (rough matching)
+        bin_width = (data.max() - data.min()) / 20  # same as number of bins
+        y_vals_scaled = y_vals * len(data) * bin_width
+
+        ax.plot(x_vals, y_vals_scaled, color=SECONDARY_COLOR, linewidth=2, label='KDE')
+
+        # Add vertical line at 0
         ax.axvline(x=0, color=LINE_COLOR, linestyle='--', label='Even Line')
+
+        # Format plot
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
         ax.set_ylabel('Frequency', fontsize=9)
         ax.tick_params(axis='both', labelsize=8)
         ax.legend(fontsize=8)
         ax.grid(True)
-        
+
+        # Display in center column in Streamlit
         st.columns([1, 2, 1])[1].pyplot(fig)
