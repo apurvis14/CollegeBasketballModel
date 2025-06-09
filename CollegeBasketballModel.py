@@ -258,6 +258,7 @@ elif trend_option == "All Under":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics_under(percent_prev, win_prev, loss_prev)
 
+        # Today's Games
         today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
         today_games = df[
         (df['Date'].dt.date == today) &
@@ -353,6 +354,24 @@ elif trend_option == "EFF/PPG Over & Tempo Under":
         with col3:
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
+
+                # Today's Games
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Efficiency/PPG over  (Tempo under)'] == 1) &
+            (df['Count of OFF over 100'] == o1) &
+            (df['Count of OFF over 110'] == o2) &
+            (df['Count of DEF under 100'] == d1) &
+            (df['Count of DEF under 95'] == d2)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o1} Offense over 100 EFF and {o2} over 110 / {d1} Defense under 100 EFF and {d2} under 95"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
 
         # Plot below metrics, centered with Streamlit's default centering
         plot_df = df[
