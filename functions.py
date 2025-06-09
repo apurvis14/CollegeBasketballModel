@@ -546,33 +546,24 @@ def EFFover_count_win_loss_prev(df, offense_value, defense_value):
 
 def display_total_difference_histogram(plot_df):
     if not plot_df.empty:
-        PRIMARY_COLOR = '#FFD700'   # Gold
-        SECONDARY_COLOR = '#000000' # Black
-        LINE_COLOR = '#FF5733'      # Pop line
+        # Ensure numeric and drop NaNs
+        data = pd.to_numeric(plot_df['Total Difference'], errors='coerce').dropna()
 
-        data = plot_df['Total Difference'].dropna()
-        
-        # Create figure and axes
-        fig, ax = plt.subplots(figsize=(4, 2.5))
-
-        # Plot histogram
-        sns.histplot(data, bins=20, kde=False, ax=ax, color=PRIMARY_COLOR, edgecolor=SECONDARY_COLOR)
-
-        # Compute and plot KDE manually
-        kde = gaussian_kde(data, bw_method=0.3)  # Adjust bw_method as needed
+        # Prepare KDE
+        kde = gaussian_kde(data)
         x_vals = np.linspace(data.min(), data.max(), 200)
         y_vals = kde(x_vals)
 
-        # Scale KDE to histogram height (rough matching)
-        bin_width = (data.max() - data.min()) / 20  # same as number of bins
-        y_vals_scaled = y_vals * len(data) * bin_width
+        # Plot
+        fig, ax = plt.subplots(figsize=(4, 2.5))
+        PRIMARY_COLOR = '#FFD700'   # Gold
+        SECONDARY_COLOR = '#000000' # Black
+        LINE_COLOR = '#FF5733'      # A pop color for vertical lines
 
-        ax.plot(x_vals, y_vals_scaled, color=SECONDARY_COLOR, linewidth=2, label='KDE')
-
-        # Add vertical line at 0
+        ax.hist(data, bins=20, color=PRIMARY_COLOR, edgecolor='black', alpha=0.6)
+        ax.plot(x_vals, y_vals, color=SECONDARY_COLOR, linewidth=2, label='KDE')
         ax.axvline(x=0, color=LINE_COLOR, linestyle='--', label='Even Line')
 
-        # Format plot
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
         ax.set_ylabel('Frequency', fontsize=9)
@@ -580,5 +571,4 @@ def display_total_difference_histogram(plot_df):
         ax.legend(fontsize=8)
         ax.grid(True)
 
-        # Display in center column in Streamlit
         st.columns([1, 2, 1])[1].pyplot(fig)
