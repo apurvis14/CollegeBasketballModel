@@ -575,7 +575,7 @@ def home_away_over_under_by_team(df, offense_value, defense_value):
     
     records = {}
     for team in teams:
-        year = "2024"
+        year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
         home_overs = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == 1) & (home_games['Year'] == year)).sum()
