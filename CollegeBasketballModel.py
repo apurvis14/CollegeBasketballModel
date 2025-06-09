@@ -521,6 +521,21 @@ elif trend_option == "PPG/Tempo Over & EFF Under":
         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
         display_metrics(percent_prev, win_prev, loss_prev)
 
+        # Today's Game
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['Tempo and PPG over (Efficiency Under)'] == 1)
+
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander("📅 Games Today for This Trend"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
 
     # Plot below metrics, centered with Streamlit's default centering
     plot_df = df[df['Tempo and PPG over (Efficiency Under)'] == 1]
