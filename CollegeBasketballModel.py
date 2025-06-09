@@ -258,7 +258,21 @@ elif trend_option == "All Under":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics_under(percent_prev, win_prev, loss_prev)
 
-                # Plot below metrics, centered with Streamlit's default centering
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['All Formulas Under'] == 1) &
+        (df['Offense Under 100'] == o) &
+        (df['Defense Under 100'] == d)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense under 100 EFF / {d} Defense under 100 EFF"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
         plot_df = subset1[
             (subset1['Offense Under 100'] == o) & 
             (subset1['Defense Under 100'] == d)
