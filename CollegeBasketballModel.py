@@ -191,6 +191,19 @@ if trend_option == "All Over":
         today_games['Away Team Away Record'] = today_games['Away Team'].map(away_record_map).fillna('N/A')
         today_games['Away Team Total Record'] = today_games['Away Team'].map(total_record_map).fillna('N/A')
 
+        def move_cols_after(df, cols_to_move, target_col):
+            # Extract columns
+            for col in cols_to_move:
+                series = df.pop(col)
+                target_idx = df.columns.get_loc(target_col) + 1
+                # Insert col after target_col
+                df.insert(target_idx, col, series)
+                # Increment target_idx for next insert so columns keep order
+                target_col = col  # So next col inserts after the last inserted
+
+        move_cols_after(today_games, ['Home Team Home Record', 'Home Team Total Record'], 'Home Team')
+        move_cols_after(today_games, ['Away Team Away Record', 'Away Team Total Record'], 'Away Team')
+
         if not today_games.empty:
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
             with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense over 100 EFF / {d} Defense over 100 EFF"):
