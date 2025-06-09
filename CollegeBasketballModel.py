@@ -185,11 +185,11 @@ if trend_option == "All Over":
         total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
 
         # Step 3: Add new columns to today_games by mapping from the dictionaries
-        today_games['Home Team Home Record'] = today_games['Home Team'].map(home_record_map).fillna('N/A')
-        today_games['Home Team Total Record'] = today_games['Home Team'].map(total_record_map).fillna('N/A')
+        today_games['Home Team Rec'] = today_games['Home Team'].map(home_record_map).fillna('N/A')
+        today_games['Home Team Total Rec.'] = today_games['Home Team'].map(total_record_map).fillna('N/A')
 
-        today_games['Away Team Away Record'] = today_games['Away Team'].map(away_record_map).fillna('N/A')
-        today_games['Away Team Total Record'] = today_games['Away Team'].map(total_record_map).fillna('N/A')
+        today_games['Away Team Rec.'] = today_games['Away Team'].map(away_record_map).fillna('N/A')
+        today_games['Away Team Total Rec.'] = today_games['Away Team'].map(total_record_map).fillna('N/A')
 
         def move_cols_after(df, cols_to_move, target_col):
             # Extract columns
@@ -201,8 +201,8 @@ if trend_option == "All Over":
                 # Increment target_idx for next insert so columns keep order
                 target_col = col  # So next col inserts after the last inserted
 
-        move_cols_after(today_games, ['Home Team Home Record', 'Home Team Total Record'], 'Home Team')
-        move_cols_after(today_games, ['Away Team Away Record', 'Away Team Total Record'], 'Away Team')
+        move_cols_after(today_games, ['Home Team Rec.', 'Home Team Total Rec.'], 'Home Team')
+        move_cols_after(today_games, ['Away Team Rec.', 'Away Team Total Rec.'], 'Away Team')
 
         if not today_games.empty:
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
