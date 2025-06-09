@@ -77,7 +77,7 @@ st.markdown(
     <p style='text-align: center;'>
     This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
     PPG, EFF, and tempo. Select a trend to see performance stats.<br> 
-    <u>Scroll down to view games for today.</u><br>
+    <u> Under each trend are the games for today for that trend.</u><br>
     </p>
     """,
     unsafe_allow_html=True
