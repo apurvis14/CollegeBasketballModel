@@ -547,10 +547,18 @@ def display_total_difference_histogram(plot_df):
     Plots the histogram of 'Total Difference' from book total for the provided filtered DataFrame.
     The plot is centered and styled for Streamlit.
     """
+
+    PRIMARY_COLOR = '#FFD700'   # Gold
+    SECONDARY_COLOR = '#000000' # Black
+    LINE_COLOR = '#FF5733'      # A pop color for vertical lines
+
     if not plot_df.empty:
         fig, ax = plt.subplots(figsize=(4, 2.5))
-        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-        ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+        PRIMARY_COLOR = '#FFD700'   # Gold
+        SECONDARY_COLOR = '#000000' # Black
+        LINE_COLOR = '#FF5733'      # A pop color for vertical lines
+        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color=PRIMARY_COLOR)
+        ax.axvline(x=0, color=LINE_COLOR, linestyle='--', label='Even Line')
         ax.set_title('Distribution of Difference from Book Total', fontsize=10)
         ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
         ax.set_ylabel('Frequency', fontsize=9)
