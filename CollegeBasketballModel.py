@@ -27,7 +27,8 @@ from functions import (
     PPGover_count_win_loss_current,
     PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current,
-    EFFover_count_win_loss_prev
+    EFFover_count_win_loss_prev,
+    display_total_difference_histogram
 )
 from datetime import datetime
 from PIL import Image
@@ -96,15 +97,6 @@ st.markdown("""
     """,
     unsafe_allow_html=True
 )
-
-# with st.expander("View Explanation of these Trends"):
-#     st.markdown("""
-#                 - All Over means all 3 of my formulas predictions were over the book total.
-#                 - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
-
-#                 - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Predicted Over the Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
-#                 """,
-#                 unsafe_allow_html=True)
 
 if trend_option == "All Over":
 
@@ -196,41 +188,30 @@ if trend_option == "All Over":
             (subset['Defense Over 100'] == d)
         ]
 
-        if not plot_df.empty:
-            fig, ax = plt.subplots(figsize=(4, 2.5))
-            sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
-            ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
-            ax.set_title('Distribution of Difference from Book Total', fontsize=10)
-            ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
-            ax.set_ylabel('Frequency', fontsize=9)
-            ax.tick_params(axis='both', labelsize=8)
-            ax.legend(fontsize=8)
-            ax.grid(True)
-
-            st.columns([1, 2, 1])[1].pyplot(fig)
+        display_total_difference_histogram(plot_df)
 
 
-    # **NEW** Section to Filter by Specific Date and Display Data
-    st.markdown(
-        "<h3 style='text-align: center;'>Today's Games for All Over Trends</h3>", 
-        unsafe_allow_html=True
-    )
+    # # **NEW** Section to Filter by Specific Date and Display Data
+    # st.markdown(
+    #     "<h3 style='text-align: center;'>Today's Games for All Over Trends</h3>", 
+    #     unsafe_allow_html=True
+    # )
 
-    # Convert the selected date to a datetime object
-    today_date = datetime.today().date()
+    # # Convert the selected date to a datetime object
+    # today_date = datetime.today().date()
     
-    # Filter the 'subset' DataFrame based on the specific date
-    filtered_subset = subset[subset['Date'].dt.normalize() == "2/15/2025"]
+    # # Filter the 'subset' DataFrame based on the specific date
+    # filtered_subset = subset[subset['Date'].dt.normalize() == "2/15/2025"]
     
-    # Reorder the columns as needed
-    desired_order = ['Date','Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
-    desired_df = filtered_subset[desired_order]
-    desired_df['Date'] = desired_df['Date'].dt.strftime('%Y-%m-%d')  # Format date for display
+    # # Reorder the columns as needed
+    # desired_order = ['Date','Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction', 'All Formulas Over', 'Offense Over 100', 'Defense Over 100'] 
+    # desired_df = filtered_subset[desired_order]
+    # desired_df['Date'] = desired_df['Date'].dt.strftime('%Y-%m-%d')  # Format date for display
 
-    if not desired_df.empty:
-        st.dataframe(desired_df)  # Display the filtered subset DataFrame for the selected date
-    else:
-        st.write(f"No data available for {today_date}.")
+    # if not desired_df.empty:
+    #     st.dataframe(desired_df)  # Display the filtered subset DataFrame for the selected date
+    # else:
+    #     st.write(f"No data available for {today_date}.")
 
 elif trend_option == "All Under":
     with st.expander("View Explanation of these Trends"):

@@ -1,5 +1,7 @@
 import pandas as pd
 import streamlit as st
+import matplotlib as plt
+import seaborn as sns
 
 # All Over Function (Regular Season) - All Seasons
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -539,3 +541,21 @@ def EFFover_count_win_loss_prev(df, offense_value, defense_value):
     loss_prev = count_prev - win_prev
 
     return count_prev, win_prev, loss_prev
+
+def display_total_difference_histogram(plot_df):
+    """
+    Plots the histogram of 'Total Difference' from book total for the provided filtered DataFrame.
+    The plot is centered and styled for Streamlit.
+    """
+    if not plot_df.empty:
+        fig, ax = plt.subplots(figsize=(4, 2.5))
+        sns.histplot(plot_df['Total Difference'], bins=20, kde=True, ax=ax, color='mediumseagreen')
+        ax.axvline(x=0, color='red', linestyle='--', label='Even Line')
+        ax.set_title('Distribution of Difference from Book Total', fontsize=10)
+        ax.set_xlabel('Total Difference (Actual - Book)', fontsize=9)
+        ax.set_ylabel('Frequency', fontsize=9)
+        ax.tick_params(axis='both', labelsize=8)
+        ax.legend(fontsize=8)
+        ax.grid(True)
+        
+        st.columns([1, 2, 1])[1].pyplot(fig)
