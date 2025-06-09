@@ -168,19 +168,17 @@ if trend_option == "All Over":
             st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
             display_metrics(percent_prev, win_prev, loss_prev)
 
-        if 'Result' not in df.columns and 'Total Points' in df.columns and 'Book Total' in df.columns:
-            df['Result'] = (df['Total Points'] > df['Book Total']).map({True: 'Over', False: 'Under'})
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['All Formulas Onder'] == 1) &
+        (df['Offense Onder 100'] == o) &
+        (df['Defense Onder 100'] == d)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
 
-        trend_df = df[
-        (df['All Formulas Over'] == 1) &
-        (df['Offense Over 100'] == o) &
-        (df['Defense Over 100'] == d)
-]
-
-        # Get today’s games with O/U records
-        today_games = ou_records_teams(df, trend_df)
 
         if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
             with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense over 100 EFF / {d} Defense over 100 EFF"):
                 st.dataframe(today_games)
         else:
