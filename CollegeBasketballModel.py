@@ -185,7 +185,7 @@ if trend_option == "All Over":
 
         if not today_games.empty:
             today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
-            with st.expander(f"📅 Games Today for {o} Offense over 100 EFF / {d} Defense over 100 EFF Subcategory Trend"):
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense over 100 EFF / {d} Defense over 100 EFF"):
                 st.dataframe(today_games)
         else:
             st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
