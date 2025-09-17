@@ -855,7 +855,7 @@ with tab8:
 
 with tab9:
     today_games = df[
-        (df['Date'].dt.date == today) &
+        (df['Date'].dt.date == '2/15/2025') &
         (df['All Formulas Over'] == 1) &
         (df['Offense Over 100'] == o) &
         (df['Defense Over 100'] == d)][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
