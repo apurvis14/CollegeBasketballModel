@@ -852,3 +852,31 @@ with tab8:
         ]
 
         display_total_difference_histogram(plot_df)
+
+with tab9:
+    today_games = df[(df['Date'].dt.date == "2/15/2025")]
+
+    for _, row in today_games.iterrows():
+        matchup = f"{row['Away Team']} @ {row['Home Team']} - Total: {row['Book Total']}"
+        with st.expander(matchup):
+            st.write(f"**Home Record:** {row['Home Team Record']}")
+        st.write(f"**Away Record:** {row['Away Team Record']}")
+
+        # Subcategory win % cards
+        col1, col2, col3 = st.columns(3)
+        key = (row['Offense Over 100'], row['Defense Over 100'])
+        pct_all, win_all, loss_all = results_all.get(key, (None,0,0))
+        pct_cur, win_cur, loss_cur = results_cur.get(key, (None,0,0))
+        pct_prev, win_prev, loss_prev = results_prev.get(key, (None,0,0))
+
+        col1.metric("All-Season Win %", f"{pct_all or 0:.1f}%", f"{win_all}-{loss_all}")
+        col2.metric("Current Season", f"{pct_cur or 0:.1f}%", f"{win_cur}-{loss_cur}")
+        col3.metric("Previous Season", f"{pct_prev or 0:.1f}%", f"{win_prev}-{loss_prev}")
+
+        # Optional histogram or chart specific to this subcategory
+        sub_df = subset[
+            (subset['Offense Over 100'] == key[0]) &
+            (subset['Defense Over 100'] == key[1])
+        ]
+        display_total_difference_histogram(sub_df)
+
