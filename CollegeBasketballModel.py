@@ -97,6 +97,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(['All Over', 'All
                                                           'EFF/PPG Over', 'Temp/EFF Over', 'PPG/Temp Over',
                                                           'Tempo Over', 'PPG Over', 'EFF Over', 'Practice'])
 
+
 with tab1: 
     with st.expander("View Explanation of these Trends"):
         st.markdown("""
