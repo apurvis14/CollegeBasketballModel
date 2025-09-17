@@ -94,7 +94,7 @@ st.image(logo, use_container_width=True)
 # )
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(['All Over', 'All Under', 
-                                                          'EFF/PPG Over', 'Temp/EFF Over', 'PPG/Temp Over', 
+                                                          'EFF/PPG Over', 'Temp/EFF Over', 'PPG/Temp Over',
                                                           'Tempo Over', 'PPG Over', 'EFF Over'])
 
 with tab1: 
