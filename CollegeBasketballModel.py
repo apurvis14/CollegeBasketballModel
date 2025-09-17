@@ -854,7 +854,11 @@ with tab8:
         display_total_difference_histogram(plot_df)
 
 with tab9:
-    today_games = df[(df['Date'].dt.date == "2/15/2025")]
+    today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['All Formulas Over'] == 1) &
+        (df['Offense Over 100'] == o) &
+        (df['Defense Over 100'] == d)][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
 
     for _, row in today_games.iterrows():
         matchup = f"{row['Away Team']} @ {row['Home Team']} - Total: {row['Book Total']}"
