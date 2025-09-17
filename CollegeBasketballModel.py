@@ -859,3 +859,127 @@ elif trend_option == "EFF Over":
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(['Trend 1', 'Trend 2', 'Trend 3', 'Trend 4', 'Trend 5', 'Trend 6',
                                                           'Trend 7', 'Trend 8'])
+
+with tab1: 
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - All Over means all 3 of my predictive formulas were over the book total.
+                    - The All Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 2 OFF EFF over 100 / 2 DEF EFF over 100 means All Formulas Predicted Over the Book Total while both teams' Offensive Efficiency and Defensive Efficiency over 100. 
+                    """,
+                    unsafe_allow_html=True)
+    
+    subset = df[(df['All Formulas Over'] == 1)]
+    combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
+
+    results_all = {}
+    results_cur = {}
+    results_prev = {}
+
+    for o, d in combinations:
+        key = (o, d)
+
+        count, win, loss = allover_count_win_loss(df, o, d)
+        if count != 0:
+            percent = round((win / count) * 100, 2)
+            results_all[key] = (percent, win, loss)
+
+        count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur[key] = (percent_cur, win_cur, loss_cur)
+
+        count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev[key] = (percent_prev, win_prev, loss_prev)
+
+    # Sort by All Seasons win %
+    sorted_combos = sorted(
+        results_all.items(), 
+        key=lambda x: (x[1][0] is None, -x[1][0] if x[1][0] is not None else 0)
+    )
+
+    for (o, d), (percent, win, loss) in sorted_combos:
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline; margin-bottom: 0.2rem;">
+                {o} Offense EFF over 100 / {d} Defense EFF over 100
+            </h3>
+            """,
+            unsafe_allow_html=True
+        )
+
+        percent_cur, win_cur, loss_cur = results_cur.get((o, d), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev.get((o, d), (None, 0, 0))
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_cur, win_cur, loss_cur)
+
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_prev, win_prev, loss_prev)
+
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['All Formulas Over'] == 1) &
+        (df['Offense Over 100'] == o) &
+        (df['Defense Over 100'] == d)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        # Step 1: Run your function to get records_df
+        records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+        # Step 2: Prepare mapping dictionaries for quick lookup
+        home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+        away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+        total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+        # Step 3: Add new columns to today_games by mapping from the dictionaries
+        today_games['Home Team Record'] = (
+        "Home: " + today_games['Home Team'].map(home_record_map).fillna("N/A") +
+        " | Total: " + today_games['Home Team'].map(total_record_map).fillna("N/A")
+        )
+
+        today_games['Away Team Record'] = (
+        "Away: " + today_games['Away Team'].map(away_record_map).fillna("N/A") +
+        " | Total: " + today_games['Away Team'].map(total_record_map).fillna("N/A")
+        )
+
+        def move_cols_after(df, cols_to_move, target_col):
+            # Extract columns
+            for col in cols_to_move:
+                series = df.pop(col)
+                target_idx = df.columns.get_loc(target_col) + 1
+                # Insert col after target_col
+                df.insert(target_idx, col, series)
+                # Increment target_idx for next insert so columns keep order
+                target_col = col  # So next col inserts after the last inserted
+
+        move_cols_after(today_games, ['Home Team Record'], 'Home Team')
+        move_cols_after(today_games, ['Away Team Record'], 'Away Team')
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense over 100 EFF / {d} Defense over 100 EFF"):
+                st.dataframe(today_games)
+                st.markdown("***This Record represents (Overs - Unders), so (4-1) would say that team has 4 overs and 1 under.***")
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        # Plot histogram
+        plot_df = subset[
+            (subset['Offense Over 100'] == o) & 
+            (subset['Defense Over 100'] == d)
+        ]
+
+        display_total_difference_histogram(plot_df)
