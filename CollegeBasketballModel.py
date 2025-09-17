@@ -864,8 +864,8 @@ with tab9:
     for _, row in today_games.iterrows():
         matchup = f"{row['Away Team']} @ {row['Home Team']} - Total: {row['Book Total']}"
         with st.expander(matchup):
-            st.write(f"**Home Record:** {row['Home Team Record']}")
-        st.write(f"**Away Record:** {row['Away Team Record']}")
+            st.write("**Home Record:** ")
+            st.write("**Away Record:** ")
 
         # # Subcategory win % cards
         # col1, col2, col3 = st.columns(3)
