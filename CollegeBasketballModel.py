@@ -856,3 +856,6 @@ elif trend_option == "EFF Over":
 
         display_total_difference_histogram(plot_df)
     
+
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(['Trend 1', 'Trend 2', 'Trend 3', 'Trend 4', 'Trend 5', 'Trend 6',
+                                                          'Trend 7', 'Trend 8'])
