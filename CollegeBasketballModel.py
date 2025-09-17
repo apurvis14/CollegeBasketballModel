@@ -857,9 +857,7 @@ with tab9:
     today = datetime(2025, 2, 15).date()  # explicit format
     mask = (
         (df['Date'].dt.date == today) &
-        (df['All Formulas Over'] == 1) &
-        (df['Offense Over 100'] == o) &
-        (df['Defense Over 100'] == d)
+        (df['All Formulas Over'] == 1)
     )
     today_games = df.loc[mask, [
         'Date','Home Team','Away Team','Book Total',
