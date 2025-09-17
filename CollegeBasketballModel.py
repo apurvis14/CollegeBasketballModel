@@ -864,7 +864,7 @@ with tab9:
     today_games = df.loc[mask, [
         'Date','Home Team','Away Team','Book Total',
         'Tempo Formula Prediction','PPG Prediction',
-        'Efficiency Prediction','Home Team Record','Away Team Record'
+        'Efficiency Prediction'
     ]]
 
     st.write(f"Games found: {today_games.shape[0]}")  # debug line
