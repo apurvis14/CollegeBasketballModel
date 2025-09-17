@@ -983,3 +983,634 @@ with tab1:
         ]
 
         display_total_difference_histogram(plot_df)
+
+with tab2:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - All Under means all 3 of my predictive formulas were under the book total.
+                    - The All Under trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 0 OFF EFF under 100 / 0 DEF EFF under 100 means All Formulas Predicted Under the Book Total while neither teams' Offensive Efficiency and Defensive Efficiency under 100. 
+                    """,
+                    unsafe_allow_html=True)
+
+    subset1 = df[(df['All Formulas Under'] == 1)]  # Filter based on condition
+    combinations = [(2, 2), (2, 1), (1, 2), (1, 1), (1, 0), (0, 1), (0, 0), (0, 2), (2, 0)]
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for o, d in combinations:
+        count, win, loss = allunder_count_win_loss(df, o, d)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append(((o, d), percent, win, loss))
+
+        count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append(((o, d), percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append(((o, d), None, 0, 0))
+
+        count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append(((o, d), percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append(((o, d), None, 0, 0))
+
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+
+    # Sort by All Seasons win %
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for (o, d), percent, win, loss in results:
+        st.markdown(
+        f"""
+        <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+            {o} Offense EFF Under 100 / {d} Defense EFF Under 100
+        </h3>
+        """,
+        unsafe_allow_html=True
+        )
+
+        percent_cur, win_cur, loss_cur = results_cur_dict.get((o, d), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev_dict.get((o, d), (None, 0, 0))
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics_under(percent, win, loss)
+
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            display_metrics_under(percent_cur, win_cur, loss_cur)
+
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            display_metrics_under(percent_prev, win_prev, loss_prev)
+
+        # Today's Games
+        today = datetime.strptime("2/15/2025", "%m/%d/%Y").date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+        (df['All Formulas Under'] == 1) &
+        (df['Offense Under 100'] == o) &
+        (df['Defense Under 100'] == d)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+        
+        # Step 1: Run your function to get records_df
+        records_df = home_away_over_under_by_team_all_under(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+        # Step 2: Prepare mapping dictionaries for quick lookup
+        home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+        away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+        total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+        # Step 3: Add new columns to today_games by mapping from the dictionaries
+        today_games['Home Team Record'] = (
+        "Home: " + today_games['Home Team'].map(home_record_map).fillna("N/A") +
+        " | Total: " + today_games['Home Team'].map(total_record_map).fillna("N/A")
+        )
+
+        today_games['Away Team Record'] = (
+        "Away: " + today_games['Away Team'].map(away_record_map).fillna("N/A") +
+        " | Total: " + today_games['Away Team'].map(total_record_map).fillna("N/A")
+        )
+
+        def move_cols_after(df, cols_to_move, target_col):
+            # Extract columns
+            for col in cols_to_move:
+                series = df.pop(col)
+                target_idx = df.columns.get_loc(target_col) + 1
+                # Insert col after target_col
+                df.insert(target_idx, col, series)
+                # Increment target_idx for next insert so columns keep order
+                target_col = col  # So next col inserts after the last inserted
+
+        move_cols_after(today_games, ['Home Team Record'], 'Home Team')
+        move_cols_after(today_games, ['Away Team Record'], 'Away Team')
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o} Offense under 100 EFF / {d} Defense under 100 EFF"):
+                st.dataframe(today_games)
+                st.markdown("***This Record represents (Unders - Overs), so (4-1) would say that team has 4 unders and 1 over.***")
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        plot_df = subset1[
+            (subset1['Offense Under 100'] == o) & 
+            (subset1['Defense Under 100'] == d)
+        ]
+
+        display_total_difference_histogram(plot_df)
+
+with tab3:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - EFF/PPG Over & Tempo Under means Efficiency and PPG predictive formulas were over the Book Total while Tempo predictive formula was under the Book Total.
+                    - The EFF/PPG Over & Tempo Under trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+                    - To provide better insights, offensive and defensive efficiency used two numbers each to create subcategories.
+
+                    - Example: 2 OFF EFF over 100 and 0 Over 110 / 2 DEF EFF under 100 and 0 under 95 Subcategory Trend means EFF and PPG Formulas Predicted over the Book Total and Tempo under the Book Total while both teams' Offensive Efficiency were over 100 but below 110 and both teams' Defensive Efficiency were under 100 but over 95. 
+                    """,
+                    unsafe_allow_html=True)
+
+    combinations = [(0, 0, 0, 0), (0, 0, 1, 0), (0, 0, 1, 1), (0, 0, 2, 0), (0, 0, 2, 1), (0, 0, 2, 2),
+    
+    (1, 0, 0, 0), (1, 0, 1, 0), (1, 0, 1, 1), (1, 0, 2, 0), (1, 0, 2, 1), (1, 0, 2, 2),
+    (1, 1, 0, 0), (1, 1, 1, 0), (1, 1, 1, 1), (1, 1, 2, 0), (1, 1, 2, 1), (1, 1, 2, 2),
+    
+    (2, 0, 0, 0), (2, 0, 1, 0), (2, 0, 1, 1), (2, 0, 2, 0), (2, 0, 2, 1), (2, 0, 2, 2),
+    (2, 1, 0, 0), (2, 1, 1, 0), (2, 1, 1, 1), (2, 1, 2, 0), (2, 1, 2, 1), (2, 1, 2, 2),
+    (2, 2, 0, 0), (2, 2, 1, 0), (2, 2, 1, 1), (2, 2, 2, 0), (2, 2, 2, 1), (2, 2, 2, 2)]
+
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for o1, o2, d1, d2 in combinations:
+        count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append(((o1, o2, d1, d2), percent, win, loss))
+
+        count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append(((o1, o2, d1, d2), percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append(((o1, o2, d1, d2), None, 0, 0))
+
+        count_prev, win_prev, loss_prev = EPOver_TempoUnder_count_win_loss_prev(df, o1, o2, d1, d2)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append(((o1, o2, d1, d2), percent_prev, win_prev, loss_prev))
+
+        else:
+            results_prev.append(((o1, o2, d1, d2), None, 0, 0))
+
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for (o1, o2, d1, d2), percent, win, loss in results:    
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+                {o1} Offense EFF Over 100 and {o2} Over 110 / {d1} Defense EFF Under 100 and {d2} Under 95
+                </h3>
+                """, unsafe_allow_html=True)
+        
+        percent_cur, win_cur, loss_cur = results_cur_dict.get((o1, o2, d1, d2), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev_dict.get((o1, o2, d1, d2), (None, 0, 0))
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+        
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_cur, win_cur, loss_cur)
+        
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_prev, win_prev, loss_prev)
+
+        # Today's Games
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Efficiency/PPG over  (Tempo under)'] == 1) &
+            (df['Count of OFF over 100'] == o1) &
+            (df['Count of OFF over 110'] == o2) &
+            (df['Count of DEF under 100'] == d1) &
+            (df['Count of DEF under 95'] == d2)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o1} Offense over 100 EFF and {o2} over 110 / {d1} Defense under 100 EFF and {d2} under 95"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[
+            (df['Efficiency/PPG over  (Tempo under)'] == 1) &
+            (df['Count of OFF over 100'] == o1) &
+            (df['Count of OFF over 110'] == o2) &
+            (df['Count of DEF under 100'] == d1) &
+            (df['Count of DEF under 95'] == d2)
+        ]
+        display_total_difference_histogram(plot_df)
+
+with tab4:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - Tempo/EFF Over & PPG Under means Tempo and Efficiency predictive formulas were over the Book Total while PPG predictive formula was under the Book Total.
+                    - The Tempo/EFF Over & PPG Under trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+                    - To provide better insights, offensive and defensive efficiency used two numbers each to create subcategories.
+
+                    - Example: 1 OFF EFF under 100 and 0 under 95 / 1 DEF EFF under 100 and 1 under 95 Subcategory Trend means EFF and Tempo Formulas Predicted over the Book Total and PPG under the Book Total while only one team's Offensive Efficiency was under 100 but above 95 and neither teams' Defensive Efficiency were under 100 or 95. 
+                    """,
+                    unsafe_allow_html=True)
+
+    combinations = [(0,0,0,0), (1,0,0,0), (1,1,0,0), (1,1,1,0), (1,0,1,1), (1,0,1,0), (2,0,0,0),(2,1,0,0),(2,1,1,0)]
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for o1, o2, d1, d2 in combinations:
+        count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append(((o1, o2, d1, d2), percent, win, loss))
+
+        count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append(((o1, o2, d1, d2), percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append(((o1, o2, d1, d2), None, 0, 0))
+
+        count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append(((o1, o2, d1, d2), percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append(((o1, o2, d1, d2), None, 0, 0))
+
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for (o1, o2, d1, d2), percent, win, loss in results:
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+                {o1} OFF EFF Under 100 and {o2} Under 95 / {d1} DEF EFF Under 100 and {d2} Under 95
+                </h3>
+                """, unsafe_allow_html=True)
+        
+        percent_cur, win_cur, loss_cur = results_cur_dict.get((o1, o2, d1, d2), (None, 0, 0))
+        percent_prev, win_prev, loss_prev = results_prev_dict.get((o1, o2, d1, d2), (None, 0, 0))
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_cur, win_cur, loss_cur)
+
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            display_metrics(percent_prev, win_prev, loss_prev)
+
+        # Today's Game
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Tempo and Efficiency over (PPG under)'] == 1) &
+            (df['OFF Under 100'] == o1) &
+            (df['OFF Under 95'] == o2) &
+            (df['DEF Under 100'] == d1) &
+            (df['DEF Under 95'] == d2)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o1} Offense under 100 EFF and {o2} under 95 / {d1} Defense under 100 EFF and {d2} under 95"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[
+            (df['Tempo and Efficiency over (PPG under)'] == 1) &
+            (df['OFF Under 100'] == o1) &
+            (df['OFF Under 95'] == o2) &
+            (df['DEF Under 100'] == d1) &
+            (df['DEF Under 95'] == d2)
+        ]
+        
+        display_total_difference_histogram(plot_df)
+
+with tab5:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - PPG/Tempo Over & EFF Under means PPG and Tempo predictive formulas were over the Book Total while Efficiency predictive formula was under the Book Total.
+                    - The Tempo/EFF Over & PPG Under trends do not have subcategories based on the offensive and defensive efficiency ratings due to low quantity of games.
+                    - 
+
+                    - Example: Trend means EFF and Tempo Formulas Predicted over the Book Total and PPG under the Book Total with no other constraints. 
+                    """,
+                    unsafe_allow_html=True)
+
+    count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+    if count != 0:
+        percent = round((win / count) * 100, 2)
+    else:
+        percent, win, loss = None, 0, 0
+
+    count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
+    if count_cur != 0:
+        percent_cur = round((win_cur / count_cur) * 100, 2)
+        results_cur = (percent_cur, win_cur, loss_cur)
+    else:
+        results_cur = (None, 0, 0)
+
+    count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
+    if count_prev != 0:
+        percent_prev = round((win_prev / count_prev) * 100, 2)
+        results_prev = (percent_prev, win_prev, loss_prev)
+    else:
+        results_prev = (None, 0, 0)
+    
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+        display_metrics(percent, win, loss)
+    with col2:
+        st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+        display_metrics(percent_cur, win_cur, loss_cur)
+    with col3:
+        st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+        display_metrics(percent_prev, win_prev, loss_prev)
+
+    # Today's Game
+    today = datetime.today().date()
+    today_games = df[
+    (df['Date'].dt.date == today) &
+    (df['Tempo and PPG over (Efficiency Under)'] == 1)
+
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+    if not today_games.empty:
+        today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+        with st.expander("📅 Games Today for This Trend"):
+            st.dataframe(today_games)
+    else:
+        st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+
+    # Plot below metrics, centered with Streamlit's default centering
+    plot_df = df[df['Tempo and PPG over (Efficiency Under)'] == 1]
+
+    display_total_difference_histogram(plot_df)
+
+with tab6:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - Tempo Over means Tempo predictive formulas were over the Book Total while Efficiency and PPG predictive formula was under the Book Total.
+                    - The Tempo Over trends are divided into subcategories based on the efficiency ratings, not specific to offensive or defensive.
+
+                    - Example: 2 EFF over 105 Subcategory Trend means Tempo Formula Predicted over the Book Total and EFF & PPG Formulas Predicted under the Book Total while 2 of the 4 team's efficiency ratings are over 105.
+                    """,
+                    unsafe_allow_html=True)
+
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for val in [0,1,2]:
+        count, win, loss = TempoOver_count_win_loss(df, val)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append((val, percent, win, loss))
+
+        count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append((val, percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append((val, None, 0, 0))
+        
+        count_prev, win_prev, loss_prev = TempoOver_count_win_loss_prev(df, val)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append((val, percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append((val, None, 0, 0))
+
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for val, percent, win, loss in results:
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+                {val} EFF Over 105
+            </h3>
+            """,unsafe_allow_html=True
+        )
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            percent_cur, win_cur, loss_cur = results_cur_dict.get(val, (None, 0, 0))
+            display_metrics(percent_cur, win_cur, loss_cur)
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            percent_prev, win_prev, loss_prev = results_prev_dict.get(val, (None, 0, 0))
+            display_metrics(percent_prev, win_prev, loss_prev)
+        
+        # Today's Game
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Just Tempo Over'] == 1) &
+                     (df['Over 105 EFF'] == val)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {val} Over 105 EFF"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)        
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[(df['Just Tempo Over'] == 1) &
+                     (df['Over 105 EFF'] == val)]
+        
+        display_total_difference_histogram(plot_df)
+
+with tab7:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - PPG Over means PPG predictive formulas were over the Book Total while Efficiency and Tempo predictive formula was under the Book Total.
+                    - The PPG Over trends are divided into subcategories based on the efficiency ratings, not specific to offensive or defensive.
+
+                    - Example: 3 EFF over 110 Subcategory Trend means PPG Formula Predicted over the Book Total and EFF & Tempo Formulas Predicted under the Book Total while 3 of the 4 team's efficiency ratings are over 110.
+                    """,
+                    unsafe_allow_html=True)
+
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for val in [0,1,2,3]:
+        count, win, loss = PPGover_count_win_loss(df, val)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append((val, percent, win, loss))
+        count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append((val, percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append((val, None, 0, 0))
+        count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append((val, percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append((val, None, 0, 0))
+    
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+    
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for val, percent, win, loss in results:
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+                {val} EFF Over 110
+            </h3>
+            """,unsafe_allow_html=True
+        )
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            percent_cur, win_cur, loss_cur = results_cur_dict.get(val, (None, 0, 0))
+            display_metrics(percent_cur, win_cur, loss_cur)
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            percent_prev, win_prev, loss_prev = results_prev_dict.get(val, (None, 0, 0))
+            display_metrics(percent_prev, win_prev, loss_prev)
+        
+        # Today's Game
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Just PPG Over'] == 1) &
+            (df['Over 110 EFF'] == val)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {val} Over 110 EFF"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[(df['Just PPG Over'] == 1) &
+                     (df['Over 110 EFF'] == val)]
+        
+        display_total_difference_histogram(plot_df)
+
+with tab8:
+    with st.expander("View Explanation of these Trends"):
+        st.markdown("""
+                    - EFF Over means Efficiency predictive formulas were over the Book Total while PPG and Tempo predictive formula was under the Book Total.
+                    - The EFF Over trends are divided into subcategories based on the offensive and defensive efficiency ratings.
+
+                    - Example: 0 OFF EFF over 105 and 0 DEF EFF over 105 Subcategory Trend means EFF Formula Predicted over the Book Total and PPG & Tempo Formulas Predicted under the Book Total while neither teams' offensive or defensive ratings were over 105.
+                    """,
+                    unsafe_allow_html=True)
+
+    combinations = [(0,0),(0,1),(1,0),(1,1),(2,0),(2,1),(2,2)]
+    results = []
+    results_cur = []
+    results_prev = []
+
+    for o, d in combinations:
+        count, win, loss = EFFover_count_win_loss(df, o, d)
+        if count != 0:
+            percent = round((win / count) * 100, 2) if count != 0 else None
+            results.append(((o, d), percent, win, loss))
+
+        count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
+        if count_cur != 0:
+            percent_cur = round((win_cur / count_cur) * 100, 2)
+            results_cur.append(((o, d), percent_cur, win_cur, loss_cur))
+        else:
+            results_cur.append(((o, d), None, 0, 0))
+        
+        count_prev, win_prev, loss_prev = EFFover_count_win_loss_prev(df, o, d)
+        if count_prev != 0:
+            percent_prev = round((win_prev / count_prev) * 100, 2)
+            results_prev.append(((o, d), percent_prev, win_prev, loss_prev))
+        else:
+            results_prev.append(((o, d), None, 0, 0))
+        
+    results_cur_dict = {k: v for k, *v in results_cur}
+    results_prev_dict = {k: v for k, *v in results_prev}
+
+    results.sort(key=lambda x: (x[1] is None, -x[1] if x[1] is not None else 0))
+
+    for (o, d), percent, win, loss in results:
+        st.markdown(
+            f"""
+            <h3 style="text-align: center; font-size: 32px; text-decoration: underline;">
+                {o} Offense EFF Over 105 / {d} Defense EFF Over 105
+            </h3>
+            """,unsafe_allow_html=True
+        )
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            display_metrics(percent, win, loss)
+        with col2:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            percent_cur, win_cur, loss_cur = results_cur_dict.get((o, d), (None, 0, 0))
+            display_metrics(percent_cur, win_cur, loss_cur)
+        with col3:
+            st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            percent_prev, win_prev, loss_prev = results_prev_dict.get((o, d), (None, 0, 0))
+            display_metrics(percent_prev, win_prev, loss_prev)
+        
+        # Today's Game
+        today = datetime.today().date()
+        today_games = df[
+        (df['Date'].dt.date == today) &
+            (df['Just Efficiency Over'] == 1) &
+            (df['OFF Over 105'] == o) &
+            (df['DEF Over 105'] == d)
+][['Date', 'Home Team', 'Away Team', 'Book Total', 'Tempo Formula Prediction', 'PPG Prediction', 'Efficiency Prediction']]
+
+        if not today_games.empty:
+            today_games['Date'] = today_games['Date'].dt.strftime('%Y-%m-%d')  # Optional formatting
+            with st.expander(f"📅 Games Today for Subcategory Trend -- {o} OFF Over 105 EFF and {d} DEF Over 105 EFF"):
+                st.dataframe(today_games)
+        else:
+            st.markdown("<p style='text-align:center; color:gray;'>No games today for this combination.</p>", unsafe_allow_html=True)
+
+        # Plot below metrics, centered with Streamlit's default centering
+        plot_df = df[
+            (df['Just Efficiency Over'] == 1) &
+            (df['OFF Over 105'] == o) &
+            (df['DEF Over 105'] == d)
+        ]
+
+        display_total_difference_histogram(plot_df)
