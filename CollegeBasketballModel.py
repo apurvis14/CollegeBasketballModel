@@ -911,7 +911,7 @@ with tab9:
                 home_team = game['Home Team']
                 away_team = game['Away Team']
 
-                cols1,cols2 = st.columns(2)
+                colsb1,cols1,cols2, colsb2 = st.columns([1,4,4,1])
 
                 with cols1:
                     st.markdown(
