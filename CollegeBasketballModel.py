@@ -877,7 +877,8 @@ with tab9:
 
                 count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
                 percent_prev = round((win_prev/count_prev)*100,2)
-                st.markdown(f"#### Trend: All Over -  {o} OFF EFF over 100 / {d} DEF EFF over 100")
+                st.markdown(f"<h4 style='text-align:center;'>Trend: All Over – {o} OFF EFF over 100 / {d} DEF EFF over 100</h4>", 
+                            unsafe_allow_html=True)
 
                 col1, col2, col3 = st.columns(3)
 
