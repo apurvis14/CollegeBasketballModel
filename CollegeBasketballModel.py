@@ -867,7 +867,7 @@ with tab9:
 
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Trend %: &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size:")
+                   f"Trend %: {percent_cur} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
 
         with st.expander(matchup):
