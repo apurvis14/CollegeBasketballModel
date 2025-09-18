@@ -180,7 +180,7 @@ def display_metrics(percent, win, loss):
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Record:</b> <span style='color:gold; font-size:16px;'>{win} - {loss} </span>
             </span style = 'font-size:16px;'>({percent_display})</span> &nbsp;&nbsp;&nbsp;
-            <div style='font-size: 13px; margin-top: 4px;'>
+            <div style='font-size: 14px; margin-top: 4px;'>
             <u>Over:</u> {units_display} units <br>
             <u>Under:</u> {fade_display} units
         </div>
@@ -227,9 +227,9 @@ def display_metrics_under(percent, win, loss):
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Under Hit Rate:</b> {percent_display}<br>
-            <b>Wins:</b> <span style='color:gold; font-size:18px;'>{win}</span> &nbsp;&nbsp;&nbsp;
-            <b>Losses:</b> <span style='color:gold; font-size:18px;'>{loss}</span><br>
-            <div style='font-size: 13px; margin-top: 4px;'>
+            <b>Wins:</b> <span style='color:gold; font-size:16px;'>{win}</span> &nbsp;&nbsp;&nbsp;
+            <b>Losses:</b> <span style='color:gold; font-size:16px;'>{loss}</span><br>
+            <div style='font-size: 14px; margin-top: 4px;'>
             <u>Under Net Units:</u> {units_display}<br>
             <u>Over Net Units:</u> {fade_display}
         </div>
