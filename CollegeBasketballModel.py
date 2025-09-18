@@ -903,10 +903,10 @@ with tab9:
                 away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
                 total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
 
-                home_record = game['Home Team'].map(home_record_map)
-                total_home = game['Home Team'].map(total_record_map)
-                away_record = game['Away Team'].map(away_record_map)
-                total_away = game['Away Team'].map(total_record_map)
+                home_record = home_record_map.get(game['Home Team'], "N/A")
+                total_home  = total_record_map.get(game['Home Team'], "N/A")
+                away_record = away_record_map.get(game['Away Team'], "N/A")
+                total_away  = total_record_map.get(game['Away Team'], "N/A")
 
                 cols1,cols2 = st.columns(2)
 
