@@ -908,13 +908,16 @@ with tab9:
                 away_record = away_record_map.get(game['Away Team'], "N/A")
                 total_away  = total_record_map.get(game['Away Team'], "N/A")
 
+                home_team = game['Home Team']
+                away_team = game['Away Team']
+
                 cols1,cols2 = st.columns(2)
 
                 with cols1:
                     st.markdown(
-                        """
+                        f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">Home Team</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team}</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -922,9 +925,9 @@ with tab9:
 
                 with cols2:
                     st.markdown(
-                        """
+                        f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">Away Team</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team}</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
