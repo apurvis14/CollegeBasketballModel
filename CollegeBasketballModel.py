@@ -917,7 +917,7 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} Record</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team}</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -927,7 +927,7 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} Record</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team}</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -938,8 +938,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;">Trend Total:  {total_home}</div>
+                            <div style="margin:0;">Trend Home:  {home_record}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -949,8 +949,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;">Trend Total:  {total_away}</div>
+                            <div style="margin:0;">Trend Away:  {away_record}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
