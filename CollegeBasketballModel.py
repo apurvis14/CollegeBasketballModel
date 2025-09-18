@@ -863,7 +863,9 @@ with tab9:
     st.write(f"Games found: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
-        matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
+        
+
+        matchup = f"{game['Away Team']} @ {game['Home Team']} |     Total: {game['Book Total']}     |   Trend %:    |   Trend Size:     "
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
@@ -911,7 +913,7 @@ with tab9:
                 home_team = game['Home Team']
                 away_team = game['Away Team']
 
-                colsb1,cols1,cols2, colsb2 = st.columns([1,4,4,1])
+                colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
 
                 with cols1:
                     st.markdown(
