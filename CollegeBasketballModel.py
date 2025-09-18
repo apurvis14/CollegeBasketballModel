@@ -866,7 +866,7 @@ with tab9:
         matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
         with st.expander(matchup):
             st.write("Expander Opened")
-            if int(game['All Formulas Over']) == 1:
+            if float(game['All Formulas Over']) == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
                 percent, win, loss = allover_count_win_loss(df, o, d)
