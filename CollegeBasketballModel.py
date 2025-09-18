@@ -914,9 +914,9 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center;">
-                            <span style="font-size:16px; font-weight:bold; text-decoration:underline;">Home Team</span><br>
-                            <span style="display:block; margin-bottom:2px;">Total: {total_home}</span>
-                            <span style="display:block;">Home: {home_record}</span>
+                            <h4 style="text-decoration:underline; margin-bottom:4px;">Home Team</h4>
+                            <div style="margin-bottom:2px;">Total: {total_home}</div>
+                            <div>Home: {home_record}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -926,9 +926,9 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center;">
-                            <span style="font-size:16px; font-weight:bold; text-decoration:underline;">Away Team</span><br>
-                            <span style="display:block; margin-bottom:2px;">Total: {total_away}</span>
-                            <span style="display:block;">Away: {away_record}</span>
+                            <h4 style="text-decoration:underline; margin-bottom:4px;">Away Team</h4>
+                            <div style="margin-bottom:2px;">Total: {total_away}</div>
+                            <div>Away: {away_record}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
