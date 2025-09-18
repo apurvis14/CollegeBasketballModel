@@ -910,12 +910,21 @@ with tab9:
 
                 cols1,cols2 = st.columns(2)
 
+                # First markdown: team headers
                 with cols1:
                     st.markdown(
-                        f"""
+                        """
                         <div style="text-align:center;">
-                            <h4 style="text-decoration:underline; margin-bottom:4px;">Home Team</h4>
-                            <div style="margin-bottom:4px;">Total: {total_home}</div>
+                            <h4 style="text-decoration:underline; margin-bottom:0px;">Home Team</h4>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin-top:2px;">
+                            <div style="margin-bottom:2px;">Total: {total_home}</div>
                             <div>Home: {home_record}</div>
                         </div>
                         """,
@@ -924,15 +933,23 @@ with tab9:
 
                 with cols2:
                     st.markdown(
-                        f"""
+                        """
                         <div style="text-align:center;">
-                            <h4 style="text-decoration:underline; margin-bottom:4px;">Away Team</h4>
-                            <div style="margin-bottom:4px;">Total: {total_away}</div>
-                            <div>Away: {away_record}</div>
+                            <h4 style="text-decoration:underline; margin-bottom:0px;">Away Team</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
+
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin-top:2px;">
+                            <div style="margin-bottom:2px;">Total: {total_away}</div>
+                            <div>Away: {away_record}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+    )
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
