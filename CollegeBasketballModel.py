@@ -859,11 +859,7 @@ with tab9:
         (df['Date'].dt.date == today) &
         (df['All Formulas Over'] == 1)
     )
-    today_games = df.loc[mask, [
-        'Date','Home Team','Away Team','Book Total',
-        'Tempo Formula Prediction','PPG Prediction',
-        'Efficiency Prediction'
-    ]]
+    today_games = df.loc[mask]
 
     st.write(f"Games found: {today_games.shape[0]}")  # debug line
 
