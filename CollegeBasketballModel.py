@@ -910,22 +910,11 @@ with tab9:
 
                 cols1,cols2 = st.columns(2)
 
-                # First markdown: team headers
                 with cols1:
                     st.markdown(
                         """
-                        <div style="text-align:center;">
-                            <h4 style="text-decoration:underline; margin-bottom:0px;">  Home Team</h4>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    
-                    st.markdown(
-                        f"""
-                        <div style="text-align:center; margin-top:-5px;">
-                            <div style="margin-bottom:5px;">Total: {total_home}</div>
-                            <div>Home: {home_record}</div>
+                        <div style="text-align:center; margin:0; padding:0;">
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">Home Team</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -934,22 +923,35 @@ with tab9:
                 with cols2:
                     st.markdown(
                         """
-                        <div style="text-align:center;">
-                            <h4 style="text-decoration:underline; margin-bottom:0px;">  Away Team</h4>
+                        <div style="text-align:center; margin:0; padding:0;">
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">Away Team</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
 
+                # Second markdown: records
+                with cols1:
                     st.markdown(
                         f"""
-                        <div style="text-align:center; margin-top:-5px;">
-                            <div style="margin-bottom:5px;">Total: {total_away}</div>
-                            <div>Away: {away_record}</div>
+                        <div style="text-align:center; margin-top:4px; padding:0;">
+                            <div style="margin:0;">Total: {total_home}</div>
+                            <div style="margin:0;">Home: {home_record}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
-    )
+                    )
+
+                with cols2:
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin-top:4px; padding:0;">
+                            <div style="margin:0;">Total: {total_away}</div>
+                            <div style="margin:0;">Away: {away_record}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
