@@ -873,7 +873,7 @@ with tab9:
                 percent = round((win/count) * 100,2)
 
                 count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
-                percent_cur = round((win_cur/loss_cur)*100,2)
+                percent_cur = round((win_cur/count_cur)*100,2)
 
                 count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
                 percent_prev = round((win_prev/count_prev)*100,2)
