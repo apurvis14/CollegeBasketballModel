@@ -914,9 +914,9 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center;">
-                            <b><u>Home Team</u></b><br>
-                            Total: {total_home}<br>
-                            Home: {home_record}
+                            <span style="font-size:16px; font-weight:bold; text-decoration:underline;">Home Team</span><br>
+                            <span style="display:block; margin-bottom:2px;">Total: {total_home}</span>
+                            <span style="display:block;">Home: {home_record}</span>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -926,16 +926,13 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center;">
-                            <b><u>Away Team</u></b><br>
-                            Total: {total_away}<br>
-                            Away: {away_record}
+                            <span style="font-size:16px; font-weight:bold; text-decoration:underline;">Away Team</span><br>
+                            <span style="display:block; margin-bottom:2px;">Total: {total_away}</span>
+                            <span style="display:block;">Away: {away_record}</span>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
-
-                                    
-
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
