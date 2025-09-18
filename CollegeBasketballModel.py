@@ -923,8 +923,8 @@ with tab9:
                     
                     st.markdown(
                         f"""
-                        <div style="text-align:center; margin-top:2px;">
-                            <div style="margin-bottom:2px;">Total: {total_home}</div>
+                        <div style="text-align:center; margin-top:-5px;">
+                            <div style="margin-bottom:5px;">Total: {total_home}</div>
                             <div>Home: {home_record}</div>
                         </div>
                         """,
@@ -943,8 +943,8 @@ with tab9:
 
                     st.markdown(
                         f"""
-                        <div style="text-align:center; margin-top:2px;">
-                            <div style="margin-bottom:2px;">Total: {total_away}</div>
+                        <div style="text-align:center; margin-top:-5px;">
+                            <div style="margin-bottom:5px;">Total: {total_away}</div>
                             <div>Away: {away_record}</div>
                         </div>
                         """,
