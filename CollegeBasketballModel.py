@@ -871,6 +871,7 @@ with tab9:
                 d = game['Defense Over 100']
 
                 count, win, loss = allover_count_win_loss(df, o, d)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: All Over")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
 
@@ -879,6 +880,7 @@ with tab9:
                 d = game['Defense Under 100']             
             
                 count, win, loss = allunder_count_win_loss(df, o, d)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: All Under")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
 
@@ -899,11 +901,13 @@ with tab9:
                 d2 = game['DEF Under 95']
 
                 count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Tempo/EFF Over - (PPG Under)")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
 
             elif game['Tempo and PPG over (Efficiency Under)'] == 1:
                 count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Tempo/PPG Over - (EFF Under)")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
 
@@ -911,6 +915,7 @@ with tab9:
                 val = game['Over 105 EFF']
 
                 count, win, loss = TempoOver_count_win_loss(df, val)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Only Tempo Over")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
 
@@ -918,34 +923,17 @@ with tab9:
                 val = game['Over 110 EFF']
 
                 count, win, loss = PPGover_count_win_loss(df, val)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Just PPG Over")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
-            elif game['Just EFF Over'] == 1:
+            elif game['Just Efficiency Over'] == 1:
                 o = game['OFF Over 105']
                 d = game['DEF Over 105']
 
                 count, win, loss = EFFover_count_win_loss(df, o, d)
+                percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Just EFF Over")
                 st.write(f"All Seasons: {win/count}% ({win}-{loss})")
             else: 
                 st.markdown('No Trends Active')
-                
-        # # Subcategory win % cards
-        # col1, col2, col3 = st.columns(3)
-        # key = (row['Offense Over 100'], row['Defense Over 100'])
-        # pct_all, win_all, loss_all = results_all.get(key, (None,0,0))
-        # pct_cur, win_cur, loss_cur = results_cur.get(key, (None,0,0))
-        # pct_prev, win_prev, loss_prev = results_prev.get(key, (None,0,0))
-
-        # col1.metric("All-Season Win %", f"{pct_all or 0:.1f}%", f"{win_all}-{loss_all}")
-        # col2.metric("Current Season", f"{pct_cur or 0:.1f}%", f"{win_cur}-{loss_cur}")
-        # col3.metric("Previous Season", f"{pct_prev or 0:.1f}%", f"{win_prev}-{loss_prev}")
-
-        # # Optional histogram or chart specific to this subcategory
-        # sub_df = subset[
-        #     (subset['Offense Over 100'] == key[0]) &
-        #     (subset['Defense Over 100'] == key[1])
-        # ]
-        # display_total_difference_histogram(sub_df)
-
