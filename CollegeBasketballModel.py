@@ -865,7 +865,9 @@ with tab9:
     for idx, game in today_games.iterrows():
         
 
-        matchup = f"{game['Away Team']:<15} | Total: {game['Book Total']:<8} | Trend %: {percent:<8} | Trend Size: {count}"
+        matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+                   f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+                   f"Trend %: &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size:")
 
 
         with st.expander(matchup):
