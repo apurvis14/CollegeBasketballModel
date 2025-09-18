@@ -865,6 +865,7 @@ with tab9:
     for _, game in today_games.iterrows():
         matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
         with st.expander(matchup):
+            st.write("Expander Opened")
             if ['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
