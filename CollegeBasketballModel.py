@@ -911,14 +911,28 @@ with tab9:
                 cols1,cols2 = st.columns(2)
 
                 with cols1:
-                    st.markdown("Home Team")
-                    st.markdown(f"Total: {total_home}")
-                    st.markdown(f"Home: {home_record}")
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center;">
+                            <b><u>Home Team</u></b><br>
+                            Total: {total_home}<br>
+                            Home: {home_record}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
                 with cols2:
-                    st.markdown("Away Team")
-                    st.markdown(f"Total: {total_away}")
-                    st.markdown(f"Away: {away_record}")
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center;">
+                            <b><u>Away Team</u></b><br>
+                            Total: {total_away}<br>
+                            Away: {away_record}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
                                     
 
