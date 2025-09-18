@@ -178,11 +178,14 @@ def display_metrics(percent, win, loss):
     st.markdown(
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
-            <b>Record:</b> <span style='color:gold; font-size:16px;'>{win} - {loss} </span>
-            </span style = 'font-size:16px;'>({percent_display})</span> &nbsp;&nbsp;&nbsp;
+            <b>Record:</b>
+            <span style='color:gold; font-size:16px;'>{win} - {loss}</span>
+            <span style='font-size:16px;'>({percent_display})</span>
+            &nbsp;&nbsp;&nbsp;
             <div style='font-size: 16px; margin-top: 4px;'>
-            Over: {units_display} units <br>
-            Under: {fade_display} units
+                Over: {units_display} units <br>
+                Under: {fade_display} units
+            </div>
         </div>
         """,
         unsafe_allow_html=True
