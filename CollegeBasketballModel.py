@@ -917,7 +917,7 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team}</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} Record</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -927,7 +927,7 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin:0; padding:0;">
-                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team}</h4>
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} Record</h4>
                         </div>
                         """,
                         unsafe_allow_html=True
