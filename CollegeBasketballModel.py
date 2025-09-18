@@ -894,6 +894,34 @@ with tab9:
                 with col3:
                     st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
                     display_metrics(percent_prev, win_prev, loss_prev)
+                
+                # Step 1: Run your function to get records_df
+                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+                # Step 2: Prepare mapping dictionaries for quick lookup
+                home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+                away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+                total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+                home_record = game['Home Team'].map(home_record_map)
+                total_home = game['Home Team'].map(total_record_map)
+                away_record = game['Away Team'].map(away_record_map)
+                total_away = game['Away Team'].map(total_record_map)
+
+                cols1,cols2 = st.columns(2)
+
+                with cols1:
+                    st.markdown("Home Team")
+                    st.markdown(f"Total: {total_home}")
+                    st.markdown(f"Home: {home_record}")
+
+                with cols2:
+                    st.markdown("Away Team")
+                    st.markdown(f"Total: {total_away}")
+                    st.markdown(f"Away: {away_record}")
+
+                                    
+
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
