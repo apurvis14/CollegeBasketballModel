@@ -873,7 +873,7 @@ with tab9:
                 count, win, loss = allover_count_win_loss(df, o, d)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: All Over")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
@@ -882,7 +882,7 @@ with tab9:
                 count, win, loss = allunder_count_win_loss(df, o, d)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: All Under")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Efficiency/PPG over  (Tempo under)'] == 1:
                 o1 = game['Count of OFF over 100']
@@ -892,7 +892,7 @@ with tab9:
 
                 count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
                 st.markdown("### Trend: EFF/PPG Over - (Tempo Under)")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Tempo and Efficiency over (PPG under)'] == 1:
                 o1 = game['OFF Under 100']
@@ -903,13 +903,13 @@ with tab9:
                 count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Tempo/EFF Over - (PPG Under)")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Tempo and PPG over (Efficiency Under)'] == 1:
                 count, win, loss = TPOver_EFFUnder_count_win_loss(df)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Tempo/PPG Over - (EFF Under)")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Just Tempo Over'] == 1:
                 val = game['Over 105 EFF']
@@ -917,7 +917,7 @@ with tab9:
                 count, win, loss = TempoOver_count_win_loss(df, val)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Only Tempo Over")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Just PPG Over'] == 1:
                 val = game['Over 110 EFF']
@@ -934,6 +934,6 @@ with tab9:
                 count, win, loss = EFFover_count_win_loss(df, o, d)
                 percent = round((win/count) * 100,2)
                 st.markdown("### Trend: Just EFF Over")
-                st.write(f"All Seasons: {win/count}% ({win}-{loss})")
+                st.write(f"All Seasons: {percent}% ({win}-{loss})")
             else: 
                 st.markdown('No Trends Active')
