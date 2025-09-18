@@ -877,8 +877,7 @@ with tab9:
 
                 count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
                 percent_prev = round((win_prev/count_prev)*100,2)
-                st.markdown("### Trend: All Over")
-                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
+                st.markdown("### Trend: All Over -  {o} Offense EFF over 100 / {d} Defense EFF over 100")
 
                 col1, col2, col3 = st.columns(3)
 
