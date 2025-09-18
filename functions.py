@@ -179,10 +179,10 @@ def display_metrics(percent, win, loss):
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Record:</b> <span style='color:gold; font-size:16px;'>{win} - {loss} </span>
-            </span style = 'font-size=16px;'>({percent_display})</span> &nbsp;&nbsp;&nbsp;
+            </span style = 'font-size:16px;'>({percent_display})</span> &nbsp;&nbsp;&nbsp;
             <div style='font-size: 13px; margin-top: 4px;'>
-            <u>Over Net Units:</u> {units_display}<br>
-            <u>Under Net Units:</u> {fade_display}
+            <u>Over:</u> {units_display} units <br>
+            <u>Under:</u> {fade_display} units
         </div>
         """,
         unsafe_allow_html=True
