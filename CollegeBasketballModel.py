@@ -865,15 +865,34 @@ with tab9:
     for idx, game in today_games.iterrows():
         matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
         with st.expander(matchup):
-            st.write("Expander Opened")
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
 
                 count, win, loss = allover_count_win_loss(df, o, d)
                 percent = round((win/count) * 100,2)
+
+                count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
+                percent_cur = round((win_cur/loss_cur)*100,2)
+
+                count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
+                percent_prev = round((win_prev/count_prev)*100,2)
                 st.markdown("### Trend: All Over")
-                st.write(f"All Seasons: {percent}% ({win}-{loss})")
+                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
+
+                col1, col2, col3 = st.columns(3)
+
+                with col1:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+                    display_metrics(percent, win, loss)
+
+                with col2:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+                    display_metrics(percent_cur, win_cur, loss_cur)
+
+                with col3:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+                    display_metrics(percent_prev, win_prev, loss_prev)
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
