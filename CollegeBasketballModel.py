@@ -862,7 +862,7 @@ with tab9:
 
     st.write(f"Games found: {today_games.shape[0]}")  # debug line
 
-    for _, game in today_games.iterrows():
+    for idx, game in today_games.iterrows():
         matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
         with st.expander(matchup):
             st.write("Expander Opened")
