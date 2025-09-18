@@ -865,7 +865,8 @@ with tab9:
     for idx, game in today_games.iterrows():
         
 
-        matchup = f"{game['Away Team']} @ {game['Home Team']} |     Total: {game['Book Total']}     |   Trend %:    |   Trend Size:     "
+        matchup = f"{game['Away Team']:<15} | Total: {game['Book Total']:<8} | Trend %: {percent:<8} | Trend Size: {count}"
+
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
