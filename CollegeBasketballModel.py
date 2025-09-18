@@ -864,6 +864,26 @@ with tab9:
 
     for idx, game in today_games.iterrows():
         matchup = f"{game['Away Team']} @ {game['Home Team']} - Total: {game['Book Total']}"
+
+        st.markdown(
+            """
+            <style>
+            /* Light gray background for expander header and body */
+            .streamlit-expanderHeader,
+            .streamlit-expanderContent {
+                background-color: #f0f0f0 !important;
+            }
+
+            /* Optional: keep text dark for contrast */
+            .streamlit-expanderHeader p,
+            .streamlit-expanderContent p {
+                color: #0000 !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
