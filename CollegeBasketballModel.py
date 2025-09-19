@@ -31,8 +31,8 @@ from functions import (
     display_total_difference_histogram,
     home_away_over_under_by_team,
     home_away_over_under_by_team_all_under,
-    home_away_over_under_by_team_EP_over
-)
+    home_away_over_under_by_team_EP_over)
+
 from datetime import datetime
 from PIL import Image
 

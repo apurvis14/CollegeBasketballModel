@@ -631,12 +631,12 @@ def home_away_over_under_by_team_all_under(df, o, d):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
-def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, defense_value1, defense_value2):
+def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, defense_value, defense_value1):
     # Filter dataframe by offense, defense, and RS/PS criteria first
     filtered_df = df[(df['Count of OFF over 100'] == offense_value1) &
                      (df['Count of OFF over 110'] == offense_value2) &
-                     (df['Count of DEF under 100'] == defense_value1) &
-                     (df['Count of DEF under 95'] == defense_value2) &
+                     (df['Count of DEF under 100'] == defense_value) &
+                     (df['Count of DEF under 95'] == defense_value1) &
                      (df['RS/PS'] == 'RS')]
     
     teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
