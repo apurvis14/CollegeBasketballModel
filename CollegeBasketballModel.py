@@ -868,7 +868,63 @@ with tab9:
     st.write(f"Games found: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
-        
+        if game['All Formulas Over'] == 1:
+            o = game['Offense Over 100']
+            d = game['Defense Over 100']
+
+            count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['All Formulas Under'] == 1:
+            o = game['Offense Under 100']
+            d = game['Defense Under 100']
+
+            count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+            o1 = game['Count of OFF over 100']
+            o2 = game['Count of OFF over 110']
+            d1 = game['Count of DEF under 100']
+            d2 = game['Count of DEF under 95']
+
+            count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Tempo and Efficiency over (PPG under)'] == 1:
+            o1 = game['OFF Under 100']
+            o2 = game['OFF Under 95']
+            d1 = game['DEF Under 100']
+            d2 = game['DEF Under 95']
+
+            count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+            count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Just Tempo Over'] == 1:
+            val = game['Over 105 EFF']
+
+            count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Just PPG Over'] == 1:
+            val = game['Over 110 EFF']
+
+            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, o, d)
+            percent_cur = round((win_cur/count_cur)*100,2)
+
+        elif game['Just Efficiency Over'] == 1:
+            o = game['OFF Over 105']
+            d = game['DEF Over 105']
+            count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
+            percent_cur = round((win_cur/count_cur)*100,2)
+            
+        else:
+            percent_cur = 'None'
+            count_cur = 0
 
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
