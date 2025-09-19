@@ -934,17 +934,8 @@ with tab9:
         st.markdown(
             """
             <style>
-            /* Header background */
-            div[data-testid="stExpander"] div[role="button"] {
-                background-color: #f0f0f0 !important;  /* force background */
-                color: #000000 !important;             /* header text color */
-                border-radius: 6px;
-                padding: 6px 12px;
-            }
-
-            /* Content background */
             div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                background-color: #ffffff !important;  /* force content background */
+                background-color: #ffffff !important;
                 color: #000000 !important;
                 border-radius: 0 0 6px 6px;
                 padding: 12px;
