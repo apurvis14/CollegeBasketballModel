@@ -829,3 +829,19 @@ def home_away_over_under_by_team_E_over(df, offense, defense):
         }
     
     return pd.DataFrame.from_dict(records, orient='index')
+
+def display_metrics_expand(percent):
+    if percent is None:
+        percent_display = "N/A"
+    elif percent >= 60:
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent >= 55:
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif 40 <= percent <= 46:
+        percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent < 40:
+        percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+    else:
+        percent_display = f"<i>{percent}%</i>"
+
+    return percent_display

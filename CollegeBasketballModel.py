@@ -12,6 +12,7 @@ from functions import (
     EFFover_count_win_loss,
     display_metrics,
     display_metrics_under,
+    display_metrics_expand,
     allover_count_win_loss_current,
     allover_count_win_loss_prev,
     allunder_count_win_loss_current,
@@ -928,7 +929,7 @@ with tab9:
 
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Trend %: {percent_cur} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}") # NEED TO ADJUST THIS
+                   f"Trend %: {display_metrics_expand(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
 
         with st.expander(matchup):
