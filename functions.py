@@ -631,6 +631,41 @@ def home_away_over_under_by_team_all_under(df, o, d):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
+def home_away_over_under_by_team_TE_over(df, offense_value1, offense_value2, defense_value, defense_value1):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['OFF Under 100'] == offense_value1) &
+                     (df['OFF Under 95'] == offense_value2) &
+                     (df['DEF Under 100'] == defense_value) &
+                     (df['DEF Under 95'] == defense_value1) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        year = 2024
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.2'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.2'] == " ") & (home_games['Year'] == year)).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.2'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.2'] == " ") & (away_games['Year'] == year)).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
 def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, defense_value, defense_value1):
     # Filter dataframe by offense, defense, and RS/PS criteria first
     filtered_df = df[(df['Count of OFF over 100'] == offense_value1) &
