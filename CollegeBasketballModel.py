@@ -930,6 +930,29 @@ with tab9:
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Trend %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
+        
+        st.markdown(
+            """
+            <style>
+            /* Header background */
+            div[data-testid="stExpander"] div[role="button"] {
+                background-color: #f0f0f0 !important;  /* force background */
+                color: #000000 !important;             /* header text color */
+                border-radius: 6px;
+                padding: 6px 12px;
+            }
+
+            /* Content background */
+            div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
+                background-color: #ffffff !important;  /* force content background */
+                color: #000000 !important;
+                border-radius: 0 0 6px 6px;
+                padding: 12px;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
