@@ -30,12 +30,11 @@ from functions import (
     EFFover_count_win_loss_prev,
     display_total_difference_histogram,
     home_away_over_under_by_team,
-    home_away_over_under_by_team_all_under
+    home_away_over_under_by_team_all_under,
+    home_away_over_under_by_team_EP_over
 )
 from datetime import datetime
 from PIL import Image
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
@@ -1083,7 +1082,7 @@ with tab9:
                     display_metrics(percent_prev, win_prev, loss_prev)
                 
                 # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
-                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+                records_df = home_away_over_under_by_team_EP_over(df, o1, o2, d1, d2).reset_index().rename(columns={'index': 'Team'})
 
                 # Step 2: Prepare mapping dictionaries for quick lookup
                 home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
