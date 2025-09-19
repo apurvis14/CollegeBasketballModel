@@ -32,7 +32,11 @@ from functions import (
     home_away_over_under_by_team,
     home_away_over_under_by_team_all_under,
     home_away_over_under_by_team_EP_over,
-    home_away_over_under_by_team_TE_over
+    home_away_over_under_by_team_TE_over,
+    home_away_over_under_by_team_TP_over,
+    home_away_over_under_by_team_T_over, 
+    home_away_over_under_by_team_P_over,
+    home_away_over_under_by_team_E_over
     )
 
 from datetime import datetime
@@ -1263,7 +1267,7 @@ with tab9:
                     display_metrics(percent_prev, win_prev, loss_prev)
                 
                 # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
-                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+                records_df = home_away_over_under_by_team_TP_over(df).reset_index().rename(columns={'index': 'Team'})
 
                 # Step 2: Prepare mapping dictionaries for quick lookup
                 home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
@@ -1351,7 +1355,7 @@ with tab9:
                     display_metrics(percent_prev, win_prev, loss_prev)
                 
                 # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
-                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+                records_df = home_away_over_under_by_team_T_over(df, val).reset_index().rename(columns={'index': 'Team'})
 
                 # Step 2: Prepare mapping dictionaries for quick lookup
                 home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
@@ -1410,12 +1414,6 @@ with tab9:
                         """,
                         unsafe_allow_html=True
                     )
-
-
-                # count, win, loss = TempoOver_count_win_loss(df, val)
-                # percent = round((win/count) * 100,2)
-                # st.markdown("### Trend: Only Tempo Over")
-                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Just PPG Over'] == 1:
                 val = game['Over 110 EFF']
@@ -1445,7 +1443,7 @@ with tab9:
                     display_metrics(percent_prev, win_prev, loss_prev)
                 
                 # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
-                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+                records_df = home_away_over_under_by_team_P_over(df, val).reset_index().rename(columns={'index': 'Team'})
 
                 # Step 2: Prepare mapping dictionaries for quick lookup
                 home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
@@ -1504,11 +1502,6 @@ with tab9:
                         """,
                         unsafe_allow_html=True
                     )
-
-                # count, win, loss = PPGover_count_win_loss(df, val)
-                # percent = round((win/count) * 100,2)
-                # st.markdown("### Trend: Just PPG Over")
-                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Just Efficiency Over'] == 1:
                 o = game['OFF Over 105']
@@ -1539,8 +1532,8 @@ with tab9:
                     st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
                     display_metrics(percent_prev, win_prev, loss_prev)
                 
-                # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
-                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+                # Step 1: Run your function to get records_df
+                records_df = home_away_over_under_by_team_E_over(df, o, d).reset_index().rename(columns={'index': 'Team'})
 
                 # Step 2: Prepare mapping dictionaries for quick lookup
                 home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
