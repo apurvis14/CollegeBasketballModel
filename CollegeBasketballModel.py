@@ -865,7 +865,7 @@ with tab9:
     )
     today_games = df.loc[mask]
 
-    st.write(f"Games found: {today_games.shape[0]}")  # debug line
+    st.header(f"# of Games for Today: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
