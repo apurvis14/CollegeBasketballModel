@@ -636,7 +636,7 @@ def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, def
     filtered_df = df[(df['Count of OFF over 100'] == offense_value1) &
                      (df['Count of OFF over 110'] == offense_value2) &
                      (df['Count of DEF under 100'] == defense_value1) &
-                     (df['Count of DEF under 95'] == defense_value2) 
+                     (df['Count of DEF under 95'] == defense_value2) &
                      (df['RS/PS'] == 'RS')]
     
     teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
