@@ -933,22 +933,41 @@ with tab9:
         st.markdown(
             """
             <style>
-            /* Header (clickable bar) */
-            div[data-testid="stExpander"] > div:first-child {
-                background-color: #f4e8d1;  /* example light tan */
-                color: #333333;             /* header text color */
-                font-weight: 600;
+            /* --- Header selectors for multiple Streamlit versions --- */
+            div[data-testid="stExpander"] > div:first-child,
+            section[data-testid="stExpander"] > div:first-child,
+            div[data-testid="stExpander"] > div[role="button"],
+            section[data-testid="stExpander"] > div[role="button"] {
+                background-color: #f0f0f0 !important;   /* change to your gray */
+                color: #000000 !important;
+                border-radius: 6px !important;
+                padding: 0.35rem 0.6rem !important;
+                font-weight: 600 !important;
             }
 
-            /* Body (inside panel) */
-            div[data-testid="stExpander"] > div:nth-child(2) {
-                background-color: #fff8e7;  /* inside background */
-                color: black;               /* content text color */
-                padding: 0.75rem;
+            /* --- Body (expanded content) --- */
+            div[data-testid="stExpander"] > div:nth-child(2),
+            section[data-testid="stExpander"] > div:nth-child(2) {
+                background-color: #ffffff !important;   /* content background */
+                color: #000000 !important;
+                padding: 0.6rem !important;
+                border-radius: 0 0 6px 6px !important;
+            }
+
+            /* ensure inner text inherits color (helps when elements inside set their own color) */
+            div[data-testid="stExpander"] * {
+                color: inherit !important;
+            }
+
+            /* Backwards-compat selectors (older Streamlit versions) */
+            .streamlit-expanderHeader,
+            .streamlit-expanderContent {
+                background-color: #f0f0f0 !important;
+                color: #000000 !important;
             }
             </style>
             """,
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
 
         with st.expander(matchup):
