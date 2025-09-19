@@ -931,18 +931,23 @@ with tab9:
                    f"Trend %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
         st.markdown(
-            '''
+            """
             <style>
-            .streamlit-expanderHeader {
-                background-color: white;
-                color: white; # Adjust this for expander header color
+            /* Header (clickable bar) */
+            div[data-testid="stExpander"] > div:first-child {
+                background-color: #f4e8d1;  /* example light tan */
+                color: #333333;             /* header text color */
+                font-weight: 600;
             }
-            .streamlit-expanderContent {
-                background-color: white;
-                color: black; # Expander content color
+
+            /* Body (inside panel) */
+            div[data-testid="stExpander"] > div:nth-child(2) {
+                background-color: #fff8e7;  /* inside background */
+                color: black;               /* content text color */
+                padding: 0.75rem;
             }
             </style>
-            ''',
+            """,
             unsafe_allow_html=True
         )
 
