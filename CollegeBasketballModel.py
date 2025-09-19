@@ -931,6 +931,21 @@ with tab9:
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Trend %: {display_metrics_expand(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
+        st.markdown(
+            '''
+            <style>
+            .streamlit-expanderHeader {
+                background-color: white;
+                color: black; # Adjust this for expander header color
+            }
+            .streamlit-expanderContent {
+                background-color: white;
+                color: black; # Expander content color
+            }
+            </style>
+            ''',
+            unsafe_allow_html=True
+        )
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
