@@ -931,29 +931,6 @@ with tab9:
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Trend %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
-        st.markdown(
-            """
-            <style>
-            /* Expander header background and text color */
-            div[data-testid="stExpander"] div[role="button"] {
-                background-color: #222222;    /* <-- change to your desired header color */
-                color: #000000;               /* text color in header */
-                border-radius: 6px;
-                padding: 6px 12px;
-            }
-
-            /* Expander content background and text color */
-            div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                background-color: #222222;    /* <-- change to your desired body color */
-                color: #000000;               /* text color in body */
-                border-radius: 0 0 6px 6px;
-                padding: 12px;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
