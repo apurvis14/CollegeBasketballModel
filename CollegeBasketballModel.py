@@ -935,7 +935,7 @@ with tab9:
             <style>
             .streamlit-expanderHeader {
                 background-color: white;
-                color: black; # Adjust this for expander header color
+                color: white; # Adjust this for expander header color
             }
             .streamlit-expanderContent {
                 background-color: white;
