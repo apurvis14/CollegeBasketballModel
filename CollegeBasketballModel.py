@@ -935,7 +935,7 @@ with tab9:
             <style>
             /* Expander header background and text color */
             div[data-testid="stExpander"] div[role="button"] {
-                background-color: #f0f0f0;    /* <-- change to your desired header color */
+                background-color: #222222;    /* <-- change to your desired header color */
                 color: #000000;               /* text color in header */
                 border-radius: 6px;
                 padding: 6px 12px;
@@ -943,7 +943,7 @@ with tab9:
 
             /* Expander content background and text color */
             div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                background-color: #ffffff;    /* <-- change to your desired body color */
+                background-color: #222222;    /* <-- change to your desired body color */
                 color: #000000;               /* text color in body */
                 border-radius: 0 0 6px 6px;
                 padding: 12px;
