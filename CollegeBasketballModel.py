@@ -1153,15 +1153,15 @@ with tab9:
                 d1 = game['DEF Under 100']
                 d2 = game['DEF Under 95']
 
-                count, win, loss = TPOver_EFFUnder_count_win_loss(df, o1, o2, d1, d2)
+                count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
                 percent = round((win/count) * 100,2)
 
-                count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df, o1, o2, d1, d2)
+                count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
                 percent_cur = round((win_cur/count_cur)*100,2)
 
-                count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df, o1, o2, d1, d2)
+                count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
                 percent_prev = round((win_prev/count_prev)*100,2)
-                st.markdown(f"<h4 style='text-align:center;'>Trend: Tempo/PPG Over – {o1} and {o2} OFF EFF under 100 and 95 / {d1} and {d2} DEF EFF under 100 and 95</h4>", 
+                st.markdown(f"<h4 style='text-align:center;'>Trend: Tempo/EFF Over – {o1} and {o2} OFF EFF under 100 and 95 / {d1} and {d2} DEF EFF under 100 and 95</h4>", 
                             unsafe_allow_html=True)
 
                 col1, col2, col3 = st.columns(3)
@@ -1247,8 +1247,95 @@ with tab9:
             elif game['Tempo and PPG over (Efficiency Under)'] == 1:
                 count, win, loss = TPOver_EFFUnder_count_win_loss(df)
                 percent = round((win/count) * 100,2)
-                st.markdown("### Trend: Tempo/PPG Over - (EFF Under)")
-                st.write(f"All Seasons: {percent}% ({win}-{loss})")
+
+                count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
+                percent_cur = round((win_cur/count_cur)*100,2)
+
+                count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
+                percent_prev = round((win_prev/count_prev)*100,2)
+                st.markdown("<h4 style='text-align:center;'>Trend: Tempo/PPG Over and EFF Under </h4>", 
+                            unsafe_allow_html=True)
+
+                col1, col2, col3 = st.columns(3)
+
+                with col1:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+                    display_metrics(percent, win, loss)
+
+                with col2:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+                    display_metrics(percent_cur, win_cur, loss_cur)
+
+                with col3:
+                    st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+                    display_metrics(percent_prev, win_prev, loss_prev)
+                
+                # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+                records_df = home_away_over_under_by_team(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+                # Step 2: Prepare mapping dictionaries for quick lookup
+                home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+                away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+                total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+                home_record = home_record_map.get(game['Home Team'], "N/A")
+                total_home  = total_record_map.get(game['Home Team'], "N/A")
+                away_record = away_record_map.get(game['Away Team'], "N/A")
+                total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+                home_team = game['Home Team']
+                away_team = game['Away Team']
+
+                colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+                with cols1:
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin:0; padding:0;">
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                with cols2:
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin:0; padding:0;">
+                            <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                # Second markdown: records
+                with cols1:
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin-top:4px; padding:0;">
+                            <div style="margin:0;">Total:  {total_home}</div>
+                            <div style="margin:0;">Home:  {home_record}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                with cols2:
+                    st.markdown(
+                        f"""
+                        <div style="text-align:center; margin-top:4px; padding:0;">
+                            <div style="margin:0;">Total:  {total_away}</div>
+                            <div style="margin:0;">Away:  {away_record}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+
+                # count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+                # percent = round((win/count) * 100,2)
+                # st.markdown("### Trend: Tempo/PPG Over - (EFF Under)")
+                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
 
             elif game['Just Tempo Over'] == 1:
                 val = game['Over 105 EFF']
