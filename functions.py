@@ -631,7 +631,7 @@ def home_away_over_under_by_team_all_under(df, o, d):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
-def home_away_over_under_by_tea_EP_over(df, offense_value1, offense_value2, defense_value1, defense_value2):
+def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, defense_value1, defense_value2):
     # Filter dataframe by offense, defense, and RS/PS criteria first
     filtered_df = df[(df['Count of OFF over 100'] == offense_value1) &
                      (df['Count of OFF over 110'] == offense_value2) &
