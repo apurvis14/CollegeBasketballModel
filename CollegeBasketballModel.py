@@ -905,13 +905,9 @@ with tab9:
                         """,
                         unsafe_allow_html=True
                     )
-                # count, win, loss = EFFover_count_win_loss(df, o, d)
-                # percent = round((win/count) * 100,2)
-                # st.markdown("### Trend: Just EFF Over")
-                # st.write(f"All Seasons: {percent}% ({win}-{loss})")
             else: 
                 st.markdown('No Trends Active')
-                
+
 with tab1: 
     ## Trend Selection
     trend_option = st.selectbox("Choose Trend Type", [
