@@ -78,17 +78,7 @@ logo = Image.open("data/CBB Horizontal Logo.png")
 st.image(logo, use_container_width=True)
 
 
-# st.markdown(
-#     """
-#     <h1 style='text-align: center;'>College Basketball Trends Dashboard</h1>
-#     <p style='text-align: center;'>
-#     This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
-#     PPG, EFF, and tempo. Select a trend to see performance stats.<br> 
-#     <u> Under each trend are today's games for that trend.</u><br>
-#     </p>
-#     """,
-#     unsafe_allow_html=True
-# )
+
 
 # st.markdown("""
 #     <p style='text-align: center;'>
@@ -103,13 +93,24 @@ tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info']
 
 
 with tab9:
+
+    st.markdown(
+        """
+        <h1 style='text-align: center;'>College Basketball Today's Games</h1>
+        <p style='text-align: center;'>
+        This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
+        PPG, EFF, and tempo.<br>
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
     today = datetime(2025, 2, 15).date()  # explicit format
     mask = (
         (df['Date'].dt.date == today)
     )
     today_games = df.loc[mask]
 
-    st.header(f"# of Games for Today: {today_games.shape[0]}")  # debug line
+    st.header(f"#### of Games for Today: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
