@@ -109,7 +109,7 @@ with tab9:
     )
     today_games = df.loc[mask]
 
-    st.markdown(f"# of Games for Today: {today_games.shape[0]}")  # debug line
+    st.markdown(f"### Number of Games for Today: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
