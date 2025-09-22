@@ -77,20 +77,7 @@ st.markdown(
 logo = Image.open("data/CBB Horizontal Logo.png")
 st.image(logo, use_container_width=True)
 
-
-
-
-# st.markdown("""
-#     <p style='text-align: center;'>
-#     **Over Net Units means how many units won by betting on the Over on every game in that trend** <br>
-#     **Under Net Units means how many units won by betting on the Under on every game in that trend** <br>
-#     """,
-#     unsafe_allow_html=True
-# )
-
 tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info'])
-
-
 
 with tab9:
 
@@ -172,7 +159,7 @@ with tab9:
 
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Trend %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
+                   f"Trend's Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         st.markdown(
             """
