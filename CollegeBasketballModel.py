@@ -158,7 +158,7 @@ with tab9:
             count_cur = 0
 
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+                   f"Book Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         st.markdown(
