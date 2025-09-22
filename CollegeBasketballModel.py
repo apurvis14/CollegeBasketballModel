@@ -98,8 +98,7 @@ with tab9:
         """
         <h1 style='text-align: center;'>College Basketball Today's Games</h1>
         <p style='text-align: center;'>
-        This dashboard explores win/loss for various trends across multiple calculations using offensive/defensive ratings, 
-        PPG, EFF, and tempo.<br>
+        **ADD SHORT DESCRIPTION**<br>
         </p>
         """,
         unsafe_allow_html=True
@@ -110,7 +109,7 @@ with tab9:
     )
     today_games = df.loc[mask]
 
-    st.header(f"#### of Games for Today: {today_games.shape[0]}")  # debug line
+    st.markdown(f"# of Games for Today: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
