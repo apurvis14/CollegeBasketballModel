@@ -31,7 +31,7 @@ def allunder_count_win_loss(df, offense_value, defense_value):
     win = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
                  (df['Defense Under 100'] == defense_value) & 
-                 (df['Under Hit'] == 1) &
+                 (df['Over Hit.1'] == 1) &
                  (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -52,7 +52,7 @@ def EPOver_TempoUnder_count_win_loss(df, offense_value, offense_value_1, defense
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
                    (df['Count of DEF under 95'] == defense_value_1) &
-                   (df['Over Hit.1'] == 1)
+                   (df['Over Hit.2'] == 1)
                    & (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -73,7 +73,7 @@ def TEOver_PPGUnder_count_win_loss(df, offense_value, offense_value_1, defense_v
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
                    (df['DEF Under 95'] == defense_value_1) &
-                   (df['Over Hit.2'] == 1) &
+                   (df['Over Hit.3'] == 1) &
                    (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -86,7 +86,7 @@ def TPOver_EFFUnder_count_win_loss(df):
                 (df['RS/PS'] == 'RS')])
     
     win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
-                (df['Over Hit.3'] == 1) &
+                (df['Over Hit.4'] == 1) &
                 (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -101,7 +101,7 @@ def TempoOver_count_win_loss(df, eff_value):
     
     win = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
-                   (df['Over Hit.4'] == 1) &
+                   (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -116,7 +116,7 @@ def PPGover_count_win_loss(df,eff_value):
     
     win = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
-                   (df['Over Hit.5'] == 1) &
+                   (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -133,7 +133,7 @@ def EFFover_count_win_loss(df,offense_value, defense_value):
     win = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
-                   (df['Over Hit.6'] == 1) &
+                   (df['Over Hit.7'] == 1) &
                    (df['RS/PS'] == 'RS')])
     
     loss = count - win
@@ -270,7 +270,7 @@ def allunder_count_win_loss_current(df, offense_value, defense_value):
     win_cur = len(df[(df['All Formulas Under'] == 1) &
                         (df['Offense Under 100'] == offense_value) &
                         (df['Defense Under 100'] == defense_value) &
-                        (df['Under Hit'] == 1) &
+                        (df['Over Hit.1'] == 1) &
                         (df['RS/PS'] == 'RS') &
                         (df['Year'] == 2024)])
     
@@ -293,7 +293,7 @@ def EPOver_TempoUnder_count_win_loss_current(df, offense_value, offense_value_1,
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
                    (df['Count of DEF under 95'] == defense_value_1) &
-                   (df['Over Hit.1'] == 1) &
+                   (df['Over Hit.2'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
@@ -316,7 +316,7 @@ def TEOver_PPGUnder_count_win_loss_current(df, offense_value, offense_value_1, d
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
                    (df['DEF Under 95'] == defense_value_1) &
-                   (df['Over Hit.2'] == 1) &
+                   (df['Over Hit.3'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
@@ -331,7 +331,7 @@ def TPOver_EFFUnder_count_win_loss_current(df):
                    (df['Year'] == 2024)])
     
     win_cur = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
-                (df['Over Hit.3'] == 1) &
+                (df['Over Hit.4'] == 1) &
                 (df['RS/PS'] == 'RS') &
                 (df['Year'] == 2024)])
     
@@ -348,7 +348,7 @@ def TempoOver_count_win_loss_current(df, eff_value):
     
     win_cur = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
-                   (df['Over Hit.4'] == 1) &
+                   (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
@@ -365,7 +365,7 @@ def PPGover_count_win_loss_current(df, eff_value):
     
     win_cur = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
-                   (df['Over Hit.5'] == 1) &
+                   (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
@@ -384,7 +384,7 @@ def EFFover_count_win_loss_current(df, offense_value, defense_value):
     win_cur = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
-                   (df['Over Hit.6'] == 1) &
+                   (df['Over Hit.7'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2024)])
     
@@ -422,7 +422,7 @@ def allunder_count_win_loss_prev(df, offense_value, defense_value):
     win_prev = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
                  (df['Defense Under 100'] == defense_value) & 
-                 (df['Under Hit'] == 1) &
+                 (df['Over Hit.1'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Year'] == 2023)])
     
@@ -445,7 +445,7 @@ def EPOver_TempoUnder_count_win_loss_prev(df, offense_value, offense_value_1, de
                    (df['Count of OFF over 110'] == offense_value_1) &
                    (df['Count of DEF under 100'] == defense_value) &
                    (df['Count of DEF under 95'] == defense_value_1) &
-                   (df['Over Hit.1'] == 1) &
+                   (df['Over Hit.2'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
@@ -468,7 +468,7 @@ def TEOver_PPGUnder_count_win_loss_prev(df, offense_value, offense_value_1, defe
                    (df['OFF Under 95'] == offense_value_1) &
                    (df['DEF Under 100'] == defense_value) &
                    (df['DEF Under 95'] == defense_value_1) &
-                   (df['Over Hit.2'] == 1) &
+                   (df['Over Hit.3'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
@@ -483,7 +483,7 @@ def TPOver_EFFUnder_count_win_loss_prev(df):
                    (df['Year'] == 2023)])
     
     win_prev = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
-                (df['Over Hit.3'] == 1) &
+                (df['Over Hit.4'] == 1) &
                 (df['RS/PS'] == 'RS') &
                 (df['Year'] == 2023)])
     
@@ -500,7 +500,7 @@ def TempoOver_count_win_loss_prev(df, eff_value):
     
     win_prev = len(df[(df['Just Tempo Over'] == 1) & 
                    (df['Over 105 EFF'] == eff_value) &
-                   (df['Over Hit.4'] == 1) &
+                   (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
@@ -517,7 +517,7 @@ def PPGover_count_win_loss_prev(df, eff_value):
     
     win_prev = len(df[(df['Just PPG Over'] == 1) &
                    (df['Over 110 EFF'] == eff_value) &
-                   (df['Over Hit.5'] == 1) &
+                   (df['Over Hit.6'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
@@ -536,7 +536,7 @@ def EFFover_count_win_loss_prev(df, offense_value, defense_value):
     win_prev = len(df[(df['Just Efficiency Over'] == 1) &
                    (df['OFF Over 105'] == offense_value) &
                    (df['DEF Over 105'] == defense_value) &
-                   (df['Over Hit.6'] == 1) &
+                   (df['Over Hit.7'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Year'] == 2023)])
     
@@ -611,13 +611,13 @@ def home_away_over_under_by_team_all_under(df, o, d):
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['All Formulas Under'] == 1) & (home_games['Under Hit'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['All Formulas Under'] == 1) & (home_games['Under Hit'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['All Formulas Under'] == 1) & (home_games['Over Hit.1'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['All Formulas Under'] == 1) & (home_games['Over Hit.1'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['All Formulas Under'] == 1) & (away_games['Under Hit'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['All Formulas Under'] == 1) & (away_games['Under Hit'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['All Formulas Under'] == 1) & (away_games['Over Hit.1'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['All Formulas Under'] == 1) & (away_games['Over Hit.1'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -646,13 +646,13 @@ def home_away_over_under_by_team_EP_over(df, offense_value1, offense_value2, def
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.1'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.1'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.2'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.2'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.1'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.1'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.2'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.2'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -681,13 +681,13 @@ def home_away_over_under_by_team_TE_over(df, offense_value1, offense_value2, def
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.2'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.2'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.3'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.3'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.2'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.2'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.3'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.3'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -712,13 +712,13 @@ def home_away_over_under_by_team_TP_over(df):
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (home_games['Over Hit.3'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Efficiency/PPG over  (Efficiency Under)'] == 1) & (home_games['Over Hit.3'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Efficiency/PPG over  (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.3'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.3'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -744,13 +744,13 @@ def home_away_over_under_by_team_T_over(df, val):
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.4'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.4'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.5'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.5'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.4'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.4'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.5'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.5'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -777,13 +777,13 @@ def home_away_over_under_by_team_P_over(df, val):
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.5'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.5'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.6'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.6'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.5'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.5'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.6'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.6'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
@@ -810,13 +810,13 @@ def home_away_over_under_by_team_E_over(df, offense, defense):
         year = 2024
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
-        home_overs = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.6'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.6'] == " ") & (home_games['Year'] == year)).sum()
+        home_overs = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.7'] == 1) & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.7'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.6'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.6'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.7'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.7'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
