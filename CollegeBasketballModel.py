@@ -160,44 +160,6 @@ with tab9:
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
-        
-        # st.markdown(
-        #     """
-        #     <style>
-        #     /* Outer box & header (closed and open) */
-        #     div[data-testid="stExpander"] {
-        #         background-color: #ffffff;        /* header & frame background */
-        #         border-radius: 8px;
-        #         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        #         margin-bottom: 1rem;
-        #         color: #000000 !important;
-        #     }
-
-        #     div[data-testid="stExpander"] > div:first-child {
-        #         background-color: #ffffff;        /* header bar background */
-        #         color: #000000 !important;        /* header text color */
-        #         border-radius: 8px;
-        #     }
-
-        #     /* Content that appears only when expanded */
-        #     div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-        #         background-color: #000000 !important;        /* <- different background when open */
-        #         color: #000000 !important;        /* black text */
-        #         border-radius: 0 0 8px 8px;       /* rounded lower corners */
-        #         padding: 12px;
-        #     }
-
-        #     /* Expanded body (the part that appears after click) */
-        #     div[data-testid="stExpander"] div[role="region"] {
-        #         background-color: #000000 !important;   /* your dark background */
-        #         color: #ffffff !important;              /* white text so it’s readable */
-        #         border-radius: 0 0 8px 8px;
-        #         padding: 12px;
-        #     }
-        #     </style>
-        #     """,
-        #     unsafe_allow_html=True
-        # )
 
         st.markdown(
             """
@@ -213,8 +175,8 @@ with tab9:
 
             /* ==========  Header Bar  ========== */
             div[data-testid="stExpander"] > div:first-child {
-                background-color: #ffffff;        /* header background */
-                color: #000000 !important;        /* header text */
+                background-color: #000000;        /* header background */
+                color: #ffffff !important;        /* header text */
                 border-radius: 8px 8px 0 0;       /* round top corners only */
                 padding: 0.5rem 0.75rem;
                 font-weight: 600;                 /* optional: slightly bolder header */
