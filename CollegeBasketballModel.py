@@ -186,6 +186,14 @@ with tab9:
                 border-radius: 0 0 8px 8px;       /* rounded lower corners */
                 padding: 12px;
             }
+
+            /* Expanded body (the part that appears after click) */
+            div[data-testid="stExpander"] div[role="region"] {
+                background-color: #000000 !important;   /* your dark background */
+                color: #ffffff !important;              /* white text so it’s readable */
+                border-radius: 0 0 8px 8px;
+                padding: 12px;
+            }
             </style>
             """,
             unsafe_allow_html=True
