@@ -176,7 +176,7 @@ with tab9:
 
                 /* Optional: header tweaks */
                 div[data-testid="stExpander"] > div:first-child {
-                    background-color: #ffffff;   /* keep header same as box */
+                    background-color: #565252ff;   /* keep header same as box */
                     color: #000000 !important;
                     border-radius: 8px;
                 }
