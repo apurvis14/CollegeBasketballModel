@@ -232,8 +232,8 @@ def display_metrics_under(percent, win, loss):
         f"""
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Under Hit Rate:</b> {percent_display}<br>
-            <b>Wins:</b> <span style='color:gold; font-size:16px;'>{win}</span> &nbsp;&nbsp;&nbsp;
-            <b>Losses:</b> <span style='color:gold; font-size:16px;'>{loss}</span><br>
+            <b>Wins:</b> <span style='color:goldenrod; font-size:16px;'>{win}</span> &nbsp;&nbsp;&nbsp;
+            <b>Losses:</b> <span style='color:goldenrod; font-size:16px;'>{loss}</span><br>
             <div style='font-size: 14px; margin-top: 4px;'>
             <u>Under Net Units:</u> {units_display}<br>
             <u>Over Net Units:</u> {fade_display}
