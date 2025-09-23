@@ -182,7 +182,7 @@ def display_metrics(percent, win, loss):
         <div style='text-align: center; font-size: 16px; margin-bottom: 1rem;'>
             <b>Record:</b>
             <span style='color:goldenrod; font-size:16px; font-weight:bold'>{win} - {loss}</span>
-            <span style='font-size:16px;'>({percent_display})</span>
+            <span style='font-size:16px;'><b>(<b>{percent_display}<b>)<b></span>
             &nbsp;&nbsp;&nbsp;
             <div style='font-size: 16px; margin-top: 4px;'>
                 <b>Over<b>: {units_display} <b>units<b> <br>
