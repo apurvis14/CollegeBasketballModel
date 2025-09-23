@@ -162,18 +162,27 @@ with tab9:
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         st.markdown(
-            """
-            <style>
-            div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                border-radius: 0 0 6px 6px;
-                padding: 12px;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+                """
+                <style>
+                /* Outer box of every expander */
+                div[data-testid="stExpander"] {
+                    background-color: #ffffff;   /* white background */
+                    border-radius: 8px;          /* rounded corners */
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* subtle shadow */
+                    padding: 0.5rem;             /* space inside the box */
+                    margin-bottom: 1rem;         /* space between boxes */
+                }
+
+                /* Optional: header tweaks */
+                div[data-testid="stExpander"] > div:first-child {
+                    background-color: #ffffff;   /* keep header same as box */
+                    color: #000000;
+                    border-radius: 8px;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
