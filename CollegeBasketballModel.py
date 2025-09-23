@@ -162,33 +162,34 @@ with tab9:
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         st.markdown(
-                """
-                <style>
-                /* Outer box of every expander */
-                div[data-testid="stExpander"] {
-                    background-color: #ffffff;   /* white background */
-                    border-radius: 8px;          /* rounded corners */
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* subtle shadow */
-                    padding: 0.5rem;             /* space inside the box */
-                    margin-bottom: 1rem;         /* space between boxes */
-                    color: #000000 !important;        /* <-- force black text */
-                }
+            """
+            <style>
+            /* Outer box & header (closed and open) */
+            div[data-testid="stExpander"] {
+                background-color: #ffffff;        /* header & frame background */
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                margin-bottom: 1rem;
+                color: #000000 !important;
+            }
 
-                /* Optional: header tweaks */
-                div[data-testid="stExpander"] > div:first-child {
-                    background-color: #565252ff;   /* keep header same as box */
-                    color: #000000 !important;
-                    border-radius: 8px;
-                }
+            div[data-testid="stExpander"] > div:first-child {
+                background-color: #ffffff;        /* header bar background */
+                color: #000000 !important;        /* header text color */
+                border-radius: 8px;
+            }
 
-                /* Content text inside the expander */
-                div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                    color: #000000 !important;        /* <-- black body text */
-                }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+            /* Content that appears only when expanded */
+            div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
+                background-color: #f2f2f2;        /* <- different background when open */
+                color: #000000 !important;        /* black text */
+                border-radius: 0 0 8px 8px;       /* rounded lower corners */
+                padding: 12px;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
