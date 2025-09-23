@@ -181,7 +181,7 @@ with tab9:
 
             /* Content that appears only when expanded */
             div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
-                background-color: #f2f2f2;        /* <- different background when open */
+                background-color: #000000;        /* <- different background when open */
                 color: #000000 !important;        /* black text */
                 border-radius: 0 0 8px 8px;       /* rounded lower corners */
                 padding: 12px;
