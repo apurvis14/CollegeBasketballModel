@@ -171,13 +171,19 @@ with tab9:
                     box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* subtle shadow */
                     padding: 0.5rem;             /* space inside the box */
                     margin-bottom: 1rem;         /* space between boxes */
+                    color: #000000 !important;        /* <-- force black text */
                 }
 
                 /* Optional: header tweaks */
                 div[data-testid="stExpander"] > div:first-child {
                     background-color: #ffffff;   /* keep header same as box */
-                    color: #000000;
+                    color: #000000 !important;
                     border-radius: 8px;
+                }
+
+                /* Content text inside the expander */
+                div[data-testid="stExpander"] div[data-testid="stExpanderContent"] {
+                    color: #000000 !important;        /* <-- black body text */
                 }
                 </style>
                 """,
