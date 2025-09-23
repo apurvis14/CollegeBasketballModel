@@ -268,8 +268,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -279,8 +279,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -358,8 +358,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -369,8 +369,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -450,8 +450,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -461,8 +461,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -542,8 +542,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -553,8 +553,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -629,8 +629,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -640,8 +640,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -717,8 +717,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -728,8 +728,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -805,8 +805,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -816,8 +816,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -895,8 +895,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_home}</div>
-                            <div style="margin:0;">Home:  {home_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                            <div style="margin:0;"><b>Home:  {home_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -906,8 +906,8 @@ with tab9:
                     st.markdown(
                         f"""
                         <div style="text-align:center; margin-top:4px; padding:0;">
-                            <div style="margin:0;">Total:  {total_away}</div>
-                            <div style="margin:0;">Away:  {away_record}</div>
+                            <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                            <div style="margin:0;"><b>Away:  {away_record}<b></div>
                         </div>
                         """,
                         unsafe_allow_html=True
