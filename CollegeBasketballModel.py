@@ -156,7 +156,7 @@ with tab9:
                 margin-top: 20px;
                 font-size: 20px;
                 width: 300px;
-                height: 36px;
+                height: 40px;
                 background-color: #DAA520;
                 text-align: center;
                 color: #000000">
