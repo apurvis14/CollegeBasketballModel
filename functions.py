@@ -898,7 +898,7 @@ def show_trend(title: str,
         return f"""
         <div style="text-align:center;margin:0;padding:0;">
             <h4 style="text-decoration:underline;margin:0;">{team} vs Trend</h4>
-            <div style="margin-top:4px;"><b>Total: {total}</b></div>
+            <div style="margin-top:0px;"><b>Total: {total}</b></div>
             <div style="margin:0;"><b>{home_away}</b></div>
         </div>
         """
