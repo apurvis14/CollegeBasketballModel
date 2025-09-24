@@ -854,6 +854,8 @@ def get_base64(path):
 
 def show_trend(title: str,
                metrics_func,         # e.g. allover_count_win_loss
+               metrics_func1,
+               metrics_func2,
                records_func,         # e.g. home_away_over_under_by_team
                df: pd.DataFrame,
                *args):               # variable extra params like o, d, etc.
@@ -863,8 +865,8 @@ def show_trend(title: str,
     """
     # ---- Win/Loss metrics
     count, win, loss = metrics_func(df, *args)
-    count_cur, win_cur, loss_cur = metrics_func(df, *args, season=2024)
-    count_prev, win_prev, loss_prev = metrics_func(df, *args, season=2023)
+    count_cur, win_cur, loss_cur = metrics_func1(df, *args)
+    count_prev, win_prev, loss_prev = metrics_func2(df, *args)
 
     def pct(w, c): return round((w / c) * 100, 2) if c else 0
 

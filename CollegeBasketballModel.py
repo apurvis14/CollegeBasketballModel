@@ -373,6 +373,8 @@ with tab9:
                     show_trend(
                         f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
                         allover_count_win_loss,
+                        allover_count_win_loss_current,
+                        allover_count_win_loss_prev,
                         home_away_over_under_by_team,
                         df,
                         game['Offense Over 100'],
