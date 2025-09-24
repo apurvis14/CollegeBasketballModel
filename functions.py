@@ -892,7 +892,7 @@ def show_trend(title: str,
     total_map = records_df.set_index('Team')['Total Record'].to_dict()
 
     home, away = game['Home Team'], game['Away Team']
-    colsb1, c1, c2, colsb2 = st.columns([1,4,4,1])
+    colsb1, c1, c2, colsb2 = st.columns([0.5,5,5,0.5])
 
     def team_block(team, total, home_away):
         return f"""
