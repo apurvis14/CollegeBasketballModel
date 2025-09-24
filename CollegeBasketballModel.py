@@ -158,6 +158,7 @@ with tab9:
                 width: 300px;
                 height: 36px;
                 background-color: #DAA520;
+                text-align: right;
                 color: #000000">
                 Number of Games for Today: {today_games.shape[0]}
             </div>
