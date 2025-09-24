@@ -876,13 +876,13 @@ def show_trend(title: str,
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-20px'>All Seasons</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-30px'>All Seasons</h4>", unsafe_allow_html=True)
         display_metrics(pct(win, count), win, loss)
     with col2:
-        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-20px'>Current Season</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-30px'>Current Season</h4>", unsafe_allow_html=True)
         display_metrics(pct(win_cur, count_cur), win_cur, loss_cur)
     with col3:
-        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-20px'>Previous Season</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;margin-bottom:-30px'>Previous Season</h4>", unsafe_allow_html=True)
         display_metrics(pct(win_prev, count_prev), win_prev, loss_prev)
 
     # ---- Team-specific records
