@@ -124,7 +124,8 @@ with tab9:
     cola, colc = st.columns([3.25,10])
     with cola:
         selected_conf = st.selectbox("",
-            options=["All Conferences"] + all_confs
+            options=["All Conferences"] + all_confs,
+            label_visibility="collapsed"
         )
 
     # --- Base mask: only today's games ---
