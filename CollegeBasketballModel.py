@@ -84,14 +84,15 @@ with tab9:
     st.markdown(
             """
             <div style="
-                align: center;
+                display: inline-block;
+                float: center; 
                 border: 1px solid white; 
                 padding: 6px; 
                 border-radius: 10px; 
                 margin-top: 0px;
                 font-size: 60px;
                 font-weight: bold;
-                width: 250px;
+                width: 500px;
                 height: 80px;
                 background-color: #DAA520;
                 text-align: center;
