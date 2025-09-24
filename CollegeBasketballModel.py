@@ -82,14 +82,35 @@ tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info']
 with tab9:
 
     st.markdown(
-        """
-        <h1 style='text-align: center;'>College Basketball Today's Games</h1>
-        <p style='text-align: center;'>
-        **ADD SHORT DESCRIPTION**<br>
-        </p>
-        """,
-        unsafe_allow_html=True
-    )
+            """
+            <div style="
+                display: inline-block;
+                float: center;
+                border: 1px solid white; 
+                padding: 6px; 
+                border-radius: 10px; 
+                margin-top: 18px;
+                font-size: 16px;
+                width: 250px;
+                height: 40px;
+                background-color: #DAA520;
+                text-align: center;
+                color: #000000">
+                Today's Games
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    
+    # st.markdown(
+    #     """
+    #     <h1 style='text-align: center;'>College Basketball Today's Games</h1>
+    #     <p style='text-align: center;'>
+    #     **ADD SHORT DESCRIPTION**<br>
+    #     </p>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
 
     today = datetime(2025, 2, 15).date()
 
