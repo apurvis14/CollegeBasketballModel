@@ -419,7 +419,7 @@ with tab9:
                     </span>
                 </summary>
                 <div>
-                    {trend_html}
+                    {trend_html}  <!-- This must be raw HTML string -->
                 </div>
             </details>
             """, unsafe_allow_html=True)
