@@ -411,14 +411,12 @@ with tab9:
                 border-radius: 0 0 8px 8px;
             }}
             </style>
-
-            <details>
-                </summary>
-                <div>
                     {trend_html}  <!-- This must be raw HTML string -->
                 </div>
             </details>
             """, unsafe_allow_html=True)
+
+            st.markdown(trend_html, unsafe_allow_html=True)
 
             # Render Python output immediately after the Markdown
             # It will appear inside the black box if you style it with margin-top: -16px to pull it up
