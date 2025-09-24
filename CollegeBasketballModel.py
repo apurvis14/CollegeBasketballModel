@@ -413,10 +413,6 @@ with tab9:
             </style>
 
             <details>
-                <summary>
-                    <span style="font-size:18px; font-weight:bold;">
-                        {game['Away Team']} @ {game['Home Team']} | Total: {game['Book Total']}
-                    </span>
                 </summary>
                 <div>
                     {trend_html}  <!-- This must be raw HTML string -->
