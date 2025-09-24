@@ -275,7 +275,7 @@ with tab9:
                     <img src='Team Logo/{game['Home Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'> 
                     {game['Home Team']}
                 </span>
-                <span>Total: {game['Book_Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
+                <span>Total: {game['Book Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
             </div>
             """
 
