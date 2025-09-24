@@ -189,7 +189,7 @@ with tab9:
         )
     
     st.markdown(
-    "<hr style='border: 2px solid #ffffff; color:goldenrod; margin-top: 0.5rem; margin-bottom: 0rem;'>",
+    "<hr style='border: 2px solid goldenrod; margin-top: 0.5rem; margin-bottom: 0rem;'>",
     unsafe_allow_html=True)
 
     for idx, game in today_games.iterrows():
