@@ -86,7 +86,7 @@ with tab9:
             <div style="
                 display: block;
                 margin: 0 auto; 
-                border: 1px solid white; 
+                border: 1px solid goldenrod; 
                 padding: 2px; 
                 border-radius: 10px; 
                 margin-top: 0px;
