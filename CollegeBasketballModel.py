@@ -309,7 +309,7 @@ with tab9:
                 f"""
                 <details>
                     <summary>
-                        <div style="line-height:1.3;">
+                        <div style="line-height:1.3; background-color:#ffffff; color:#000000;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {game['Away Team']} @ {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                             </span><br>
