@@ -259,27 +259,16 @@ with tab9:
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
-        # matchup_html = f"""
-        # <div style="
-        #     background-color: #000000; 
-        #     color: #ffffff; 
-        #     border-radius: 8px; 
-        #     padding: 0.5rem 0.75rem; 
-        #     font-weight: 600;
-        #     display: flex; 
-        #     align-items: center;
-        #     justify-content: space-between;
-        # ">
-        #     <span>
-        #         <img src='data:image/jpeg;base64,{away_logo}' width='30' style='vertical-align:middle; margin-right:5px;'/> 
-        #         {game['Away Team']} @ 
-        #         <img src='data:image/jpeg;base64,{home_logo}' width='30' style='vertical-align:middle; margin-right:5px;'/> 
-        #         {game['Home Team']}
-        #     </span>
-        #     <span>Total: {game['Book Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
-        # </div>
-        # """
-        
+        matchup_header = f"""
+                <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">
+                        {game['Away Team']} @ {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
+                    </span><br>
+                    <span style="font-size:14px; color:#cccccc;">
+                        Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
+                    </span>
+                </div>
+                """
 
         st.markdown(
             """
@@ -315,7 +304,7 @@ with tab9:
             unsafe_allow_html=True
         )
 
-        with st.expander(matchup):
+        with st.expander(matchup_header):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
