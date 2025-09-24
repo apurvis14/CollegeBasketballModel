@@ -537,6 +537,7 @@ with tab9:
                         unsafe_allow_html=True
                     )
 
+
                 # Second markdown: records
                 with cols1:
                     st.markdown(
