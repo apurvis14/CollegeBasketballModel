@@ -93,28 +93,42 @@ with tab9:
 
     today = datetime(2025, 2, 15).date()
 
-    # ---- NEW: Conference dropdown ----
-    # Assumes df has 'Home Conference' and 'Away Conference' columns
-    all_confs = sorted(
-        set(df['Home Conference'].dropna().unique()) |
-        set(df['Away Conference'].dropna().unique())
-    )
+        # --- Column names for convenience ---
+    home_col = 'Home Conference'
+    away_col = 'Away Conference'
+
+    # --- Build a clean, sorted conference list ---
+    conf_series = pd.concat([
+        df[home_col].replace(0, pd.NA),
+        df[away_col].replace(0, pd.NA)
+    ]).dropna().astype(str).str.strip()
+
+    all_confs = sorted(conf_series.unique(), key=lambda s: s.lower())
+
+    # --- Dropdown for conference filter ---
     selected_conf = st.selectbox(
         "Filter by Conference (Home OR Away)",
         options=["All Conferences"] + all_confs
     )
 
-    # ---- Base mask for today's games ----
-    mask = df['Date'].dt.date == today
+    # --- Base mask: only today's games ---
+    date_mask = df['Date'].dt.date == today
 
-    # ---- Apply conference filter if not "All Conferences" ----
+    # --- Conference mask (only if a conference is selected) ---
     if selected_conf != "All Conferences":
-        mask &= (
-            (df['Home Conference'] == selected_conf) |
-            (df['Away Conference'] == selected_conf)
+        conf_mask = (
+            (df[home_col].astype(str).str.strip() == selected_conf) |
+            (df[away_col].astype(str).str.strip() == selected_conf)
         )
+        mask = date_mask & conf_mask
+    else:
+        mask = date_mask
 
+    # --- Filtered DataFrame ---
     today_games = df.loc[mask]
+
+    st.markdown(f"### Number of Games for Today: {today_games.shape[0]}")
+
     # st.markdown(
     #     """
     #     <h1 style='text-align: center;'>College Basketball Today's Games</h1>
