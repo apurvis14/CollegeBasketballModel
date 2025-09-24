@@ -863,8 +863,8 @@ def show_trend(title: str,
     """
     # ---- Win/Loss metrics
     count, win, loss = metrics_func(df, *args)
-    count_cur, win_cur, loss_cur = metrics_func(df, *args, season='current')
-    count_prev, win_prev, loss_prev = metrics_func(df, *args, season='previous')
+    count_cur, win_cur, loss_cur = metrics_func(df, *args, season=2024)
+    count_prev, win_prev, loss_prev = metrics_func(df, *args, season=2023)
 
     def pct(w, c): return round((w / c) * 100, 2) if c else 0
 
