@@ -420,20 +420,20 @@ with tab9:
 
             # Render Python output immediately after the Markdown
             # It will appear inside the black box if you style it with margin-top: -16px to pull it up
-            # if game['All Formulas Over'] == 1:
-            #     st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-            #     show_trend(
-            #         f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-            #         allover_count_win_loss,
-            #         allover_count_win_loss_current,
-            #         allover_count_win_loss_prev,
-            #         home_away_over_under_by_team,
-            #         df,
-            #         game,
-            #         game['Offense Over 100'],
-            #         game['Defense Over 100']
-            #     )
-            #     st.markdown("</div>", unsafe_allow_html=True)
+            if game['All Formulas Over'] == 1:
+                st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
+                show_trend(
+                    f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )
+                st.markdown("</div>", unsafe_allow_html=True)
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
