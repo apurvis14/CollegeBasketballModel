@@ -150,7 +150,7 @@ def display_metrics(percent, win, loss):
     elif percent >= 55:
         percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
     elif 46 < percent < 55:
-        percent_display = f"<span style='color:black; font-weight:bold'><i>{percent}%</i></span>"
+        percent_display = f"<span style='color:white; font-weight:bold'><i>{percent}%</i></span>"
     elif 40 <= percent <= 46:
         percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
