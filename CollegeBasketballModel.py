@@ -327,7 +327,7 @@ with tab9:
                 unsafe_allow_html=True
             )
 
-        with st.expander(matchup_header):
+        with st.expander(matchup):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
