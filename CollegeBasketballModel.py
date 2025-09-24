@@ -90,13 +90,47 @@ with tab9:
         """,
         unsafe_allow_html=True
     )
-    today = datetime(2025, 2, 15).date()  # explicit format
-    mask = (
-        (df['Date'].dt.date == today)
-    )
-    today_games = df.loc[mask]
 
-    st.markdown(f"### Number of Games for Today: {today_games.shape[0]}")  # debug line
+    today = datetime(2025, 2, 15).date()
+
+    # ---- NEW: Conference dropdown ----
+    # Assumes df has 'Home Conference' and 'Away Conference' columns
+    all_confs = sorted(
+        set(df['Home Conference'].dropna().unique()) |
+        set(df['Away Conference'].dropna().unique())
+    )
+    selected_conf = st.selectbox(
+        "Filter by Conference (Home OR Away)",
+        options=["All Conferences"] + all_confs
+    )
+
+    # ---- Base mask for today's games ----
+    mask = df['Date'].dt.date == today
+
+    # ---- Apply conference filter if not "All Conferences" ----
+    if selected_conf != "All Conferences":
+        mask &= (
+            (df['Home Conference'] == selected_conf) |
+            (df['Away Conference'] == selected_conf)
+        )
+
+    today_games = df.loc[mask]
+    # st.markdown(
+    #     """
+    #     <h1 style='text-align: center;'>College Basketball Today's Games</h1>
+    #     <p style='text-align: center;'>
+    #     **ADD SHORT DESCRIPTION**<br>
+    #     </p>
+    #     """,
+    #     unsafe_allow_html=True
+    # )
+    # today = datetime(2025, 2, 15).date()  # explicit format
+    # mask = (
+    #     (df['Date'].dt.date == today)
+    # )
+    # today_games = df.loc[mask]
+
+    # st.markdown(f"### Number of Games for Today: {today_games.shape[0]}")  # debug line
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
