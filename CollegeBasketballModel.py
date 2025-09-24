@@ -179,9 +179,9 @@ with tab9:
                 font-size: 16px;
                 width: 250px;
                 height: 40px;
-                background-color: #DAA520;
+                background-color: #545353ff;
                 text-align: center;
-                color: #000000">
+                color: #ffffff">
                 Number of Games for Today: {today_games.shape[0]}
             </div>
             """,
