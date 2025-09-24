@@ -153,8 +153,8 @@ with tab9:
                 border: 1px solid white; 
                 padding: 2px; 
                 border-radius: 10px; 
-                margin-top: 10px;
-                font-size: 20px;
+                margin-top: 15px;
+                font-size: 16px;
                 width: 300px;
                 background-color: #DAA520;
                 color: #000000">
