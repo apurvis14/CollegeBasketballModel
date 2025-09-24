@@ -85,7 +85,7 @@ with tab9:
             """
             <div style="
                 display: inline-block;
-                float: center; 
+                float: centered; 
                 border: 1px solid white; 
                 padding: 2px; 
                 border-radius: 10px; 
