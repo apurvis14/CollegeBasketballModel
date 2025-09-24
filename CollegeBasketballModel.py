@@ -110,7 +110,7 @@ with tab9:
     <style>
     /* --- Fix selectbox background & text color --- */
     div[data-baseweb="select"] > div {
-        background-color: #000000 !important;   /* white dropdown background */
+        background-color: #DAA520 !important;   /* white dropdown background */
         color: #ffffff !important;              /* black text */
     }
     div[data-baseweb="select"] span {
