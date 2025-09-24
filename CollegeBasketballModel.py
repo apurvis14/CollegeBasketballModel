@@ -469,6 +469,7 @@ with tab9:
                 #         """,
                 #         unsafe_allow_html=True
                 #     )
+                
 
             elif game['All Formulas Under'] == 1:
                 o = game['Offense Under 100']
