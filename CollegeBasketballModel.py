@@ -423,7 +423,7 @@ with tab9:
             if game['All Formulas Over'] == 1:
                 st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
                 show_trend(
-                    f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    "System Active: All Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
                     allover_count_win_loss,
                     allover_count_win_loss_current,
                     allover_count_win_loss_prev,
@@ -434,6 +434,21 @@ with tab9:
                     game['Defense Over 100']
                 )
                 st.markdown("</div>", unsafe_allow_html=True)
+
+            elif game['All Formulas Under'] == 1:
+                st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
+                show_trend(
+                    "System Active: All Under", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    allunder_count_win_loss,
+                    allunder_count_win_loss_current,
+                    allunder_count_win_loss_prev,
+                    home_away_over_under_by_team_all_under,
+                    df,
+                    game,
+                    game['Offense Under 100'],
+                    game['Defense Under 100']
+                )
+                st.markdown("</div>", unsafe_allow_html=True)            
 
 
         with st.expander(matchup):
