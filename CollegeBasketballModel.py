@@ -251,8 +251,8 @@ with tab9:
             percent_cur = 'None'
             count_cur = 0
         
-        away_logo = f"<img src='Team Logo/{game['Away Team']}.png' width='30' style='vertical-align:middle; margin-right:5px;'>"
-        home_logo = f"<img src='Team Logo/{game['Home Team']}.png' width='30' style='vertical-align:middle; margin-right:5px;'>"
+        away_logo = f"<img src='Team Logo/{game['Away Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'>"
+        home_logo = f"<img src='Team Logo/{game['Home Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'>"
 
         matchup = (f"{away_logo} {game['Away Team']} @ {home_logo} {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
