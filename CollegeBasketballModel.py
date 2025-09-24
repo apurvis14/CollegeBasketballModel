@@ -149,6 +149,8 @@ with tab9:
         f"<p style='text-align:right; font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
         unsafe_allow_html=True
         )
+    
+    st.markdown("-")
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
