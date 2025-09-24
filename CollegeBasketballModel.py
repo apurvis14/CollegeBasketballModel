@@ -151,7 +151,7 @@ with tab9:
                 display: inline-block;
                 float: right;
                 border: 1px solid white; 
-                padding: 2px; 
+                padding: 4px; 
                 border-radius: 10px; 
                 margin-top: 18px;
                 font-size: 16px;
