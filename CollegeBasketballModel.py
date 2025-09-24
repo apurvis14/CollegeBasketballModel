@@ -156,7 +156,7 @@ with tab9:
                 margin-top: 15px;
                 font-size: 20px;
                 width: 300px;
-                height: 24px
+                height: 24px;
                 background-color: #DAA520;
                 color: #000000">
                 Number of Games for Today: {today_games.shape[0]}
