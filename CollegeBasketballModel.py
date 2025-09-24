@@ -146,7 +146,7 @@ with tab9:
 
     with colc:
         st.markdown(
-        f"<p style='text-align:center; font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
+        f"<p style='text-align:right; font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
         unsafe_allow_html=True
         )
 
