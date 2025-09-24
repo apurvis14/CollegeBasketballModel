@@ -150,7 +150,7 @@ with tab9:
         unsafe_allow_html=True
         )
     
-    st.markdown("-")
+    st.markdown("<hr>", unsafe_allow_html=True)
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
