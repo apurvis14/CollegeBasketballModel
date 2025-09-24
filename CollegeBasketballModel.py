@@ -370,7 +370,7 @@ with tab9:
                         </div>
                     </summary>
                     <div id="trend_placeholder">
-                        <!-- Python output will go visually here -->
+                        {trend_html}<!-- Python output will go visually here -->
                     </div>
                 </details>
                 """,
