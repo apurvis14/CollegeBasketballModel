@@ -255,7 +255,7 @@ with tab9:
         away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
         home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
 
-        matchup = (f"{away_logo} {game['Away Team']} @ {home_logo} {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+        matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
