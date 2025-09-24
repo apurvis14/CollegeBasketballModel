@@ -121,10 +121,12 @@ with tab9:
     unsafe_allow_html=True)
 
     # --- Dropdown for conference filter ---
-    selected_conf = st.selectbox(
-        "Filter by Conference (Home OR Away)",
-        options=["All Conferences"] + all_confs
-    )
+    cola, colb, colc = st.columns([1,5,5])
+    with cola:
+        selected_conf = st.selectbox(
+            "Filter by Conference",
+            options=["All Conferences"] + all_confs
+        )
 
     # --- Base mask: only today's games ---
     date_mask = df['Date'].dt.date == today
