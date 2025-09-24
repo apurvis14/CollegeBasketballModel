@@ -121,7 +121,7 @@ with tab9:
     unsafe_allow_html=True)
 
     # --- Dropdown for conference filter ---
-    cola, colb, colc = st.columns([4,5,5])
+    cola, colb, colc = st.columns([3.75,5,5])
     with cola:
         selected_conf = st.selectbox(
             "Filter by Conference",
