@@ -307,19 +307,59 @@ with tab9:
         with st.container(border=True):
             st.markdown(
                 f"""
+                <style>
+                /* ----- Ensure the whole container is white ----- */
+                details {{
+                    background-color: #ffffff;
+                    color: #000000;
+                    border-radius: 8px;
+                    padding: 0;            /* remove default padding */
+                    margin: 0;             /* remove default margin */
+                }}
+
+                /* ----- Remove extra padding and align arrow & text ----- */
+                summary {{
+                    list-style: none;      /* hide default triangle */
+                    cursor: pointer;
+                    display: flex;         /* flex so we can add our own arrow */
+                    align-items: center;   /* vertical alignment */
+                    padding: 0.75rem 1rem; /* spacing inside the header */
+                    font-weight: 600;
+                }}
+
+                /* ----- Add our own arrow icon that rotates when open ----- */
+                summary::before {{
+                    content: "▶";          /* right-pointing arrow */
+                    display: inline-block;
+                    margin-right: 8px;
+                    transition: transform 0.2s ease;
+                }}
+
+                details[open] summary::before {{
+                    transform: rotate(90deg);  /* down-pointing arrow when open */
+                }}
+
+                /* ----- Optional: style the expanded area ----- */
+                details > div {{
+                    background-color: #000000;
+                    color: #ffffff;
+                    padding: 12px 16px;
+                    border-radius: 0 0 8px 8px;
+                }}
+                </style>
+
                 <details>
                     <summary>
-                        <div style="line-height:1.3; background-color:#ffffff; color:#000000;">
+                        <div style="line-height:1.3;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {game['Away Team']} @ {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                             </span><br>
-                            <span style="font-size:14px; color:#cccccc;">
+                            <span style="font-size:14px; color:#555555;">
                                 Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
                             </span>
                         </div>
                     </summary>
-                    <div style="background-color:#000000; color:#ffffff; padding:12px; border-radius:0 0 8px 8px;">
-                        <!-- Your expanded content goes here -->
+                    <div>
                         {game['Away Team']} vs {game['Home Team']} deeper stats…
                     </div>
                 </details>
