@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import base64
 
 # All Over Function (Regular Season) - All Seasons
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -847,3 +848,8 @@ def display_metrics_expand(percent):
         percent_display = f"<i>{percent}%</i>"
 
     return percent_display
+
+def get_base64(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()

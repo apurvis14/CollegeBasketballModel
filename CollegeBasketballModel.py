@@ -36,7 +36,8 @@ from functions import (
     home_away_over_under_by_team_TP_over,
     home_away_over_under_by_team_T_over, 
     home_away_over_under_by_team_P_over,
-    home_away_over_under_by_team_E_over
+    home_away_over_under_by_team_E_over,
+    get_base64
     )
 
 from datetime import datetime
@@ -251,36 +252,33 @@ with tab9:
             percent_cur = 'None'
             count_cur = 0
         
-        away_logo = f"<img src='Team Logo/{game['Away Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'>"
-        home_logo = f"<img src='Team Logo/{game['Home Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'>"
+        away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
+        home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
 
         matchup = (f"{away_logo} {game['Away Team']} @ {home_logo} {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         matchup_html = f"""
-            <div style="
-                background-color: #000000; 
-                color: #ffffff; 
-                border-radius: 8px; 
-                padding: 0.5rem 0.75rem; 
-                font-weight: 600;
-                display: flex; 
-                align-items: center;
-                justify-content: space-between;
-            ">
-                <span>
-                    <img src='Team Logo/{game['Away Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'> 
-                    {game['Away Team']} @ 
-                    <img src='Team Logo/{game['Home Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'> 
-                    {game['Home Team']}
-                </span>
-                <span>Total: {game['Book Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
-            </div>
-            """
-
-            # Display fake header
-        st.markdown(matchup_html, unsafe_allow_html=True)
+        <div style="
+            background-color: #000000; 
+            color: #ffffff; 
+            border-radius: 8px; 
+            padding: 0.5rem 0.75rem; 
+            font-weight: 600;
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+        ">
+            <span>
+                <img src='data:image/jpeg;base64,{away_logo}' width='30' style='vertical-align:middle; margin-right:5px;'/> 
+                {game['Away Team']} @ 
+                <img src='data:image/jpeg;base64,{home_logo}' width='30' style='vertical-align:middle; margin-right:5px;'/> 
+                {game['Home Team']}
+            </span>
+            <span>Total: {game['Book Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
+        </div>
+        """
         
 
         # st.markdown(
@@ -317,7 +315,7 @@ with tab9:
         #     unsafe_allow_html=True
         # )
 
-        with st.expander(" "):
+        with st.expander(matchup_html):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
