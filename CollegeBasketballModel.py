@@ -149,11 +149,11 @@ with tab9:
             f"""
             <div style="
                 display: inline-block;
-                width: 200px
                 border: 2px solid white; 
                 padding: 10px; 
                 border-radius: 4px; 
                 text-align: right; 
+                width: 200px
                 font-size: 20px; 
                 font-weight: bold;
                 background-color: #DAA520;">
