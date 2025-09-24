@@ -369,9 +369,6 @@ with tab9:
                             </span>
                         </div>
                     </summary>
-                    <div id="trend_placeholder">
-                        {trend_html}<!-- Python output will go visually here -->
-                    </div>
                 </details>
                 """,
                 unsafe_allow_html=True
