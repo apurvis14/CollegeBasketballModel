@@ -347,7 +347,7 @@ with tab9:
                 }}
 
                 details[open] summary::before {{
-                    transform: rotate(90deg);
+                    transform: rotate(0deg);
                 }}
 
                 details > div {{
