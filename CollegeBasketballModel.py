@@ -377,6 +377,7 @@ with tab9:
                         allover_count_win_loss_prev,
                         home_away_over_under_by_team,
                         df,
+                        game,
                         game['Offense Over 100'],
                         game['Defense Over 100']
                     )

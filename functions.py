@@ -858,6 +858,7 @@ def show_trend(title: str,
                metrics_func2,
                records_func,         # e.g. home_away_over_under_by_team
                df: pd.DataFrame,
+               game: pd.DataFrame,
                *args):               # variable extra params like o, d, etc.
     """
     Handles: metrics for all/current/previous seasons
@@ -890,7 +891,7 @@ def show_trend(title: str,
     away_map = records_df.set_index('Team')['Away Record'].to_dict()
     total_map = records_df.set_index('Team')['Total Record'].to_dict()
 
-    home, away = df['Home Team'], df['Away Team']
+    home, away = game['Home Team'], game['Away Team']
     colsb1, c1, c2, colsb2 = st.columns([1,4,4,1])
 
     def team_block(team, total, home_away):
