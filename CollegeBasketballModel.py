@@ -154,7 +154,7 @@ with tab9:
                 padding: 2px; 
                 border-radius: 10px; 
                 margin-top: 18px;
-                font-size: 20px;
+                font-size: 16px;
                 width: 300px;
                 height: 40px;
                 background-color: #DAA520;
