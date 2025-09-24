@@ -149,13 +149,13 @@ with tab9:
             f"""
             <div style="
                 display: inline-block;
-                border: 2px solid white; 
+                float: right;
+                border: 1px solid white; 
                 padding: 2px; 
-                border-radius: 4px; 
-                text-align: right; 
-                width: 200px
+                border-radius: 2px; 
                 font-size: 20px; 
                 font-weight: bold;
+                width: 200px
                 background-color: #DAA520;">
                 Number of Games for Today: {today_games.shape[0]}
             </div>
