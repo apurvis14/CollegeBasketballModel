@@ -143,7 +143,7 @@ with tab9:
     today_games = df.loc[mask]
 
     st.markdown(
-    f"<p style='font-size:14px;'>Number of Games for Today: {today_games.shape[0]}</p>",
+    f"<p style='font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
     unsafe_allow_html=True
     )
 
