@@ -304,7 +304,7 @@ with tab9:
             unsafe_allow_html=True
         )
 
-        with st.container(border=True):
+        with st.container(border=False):
             st.markdown(
                 f"""
                 <style>
