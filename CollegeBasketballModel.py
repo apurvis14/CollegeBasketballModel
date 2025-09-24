@@ -124,7 +124,6 @@ with tab9:
     cola, colc = st.columns([3.25,10])
     with cola:
         selected_conf = st.selectbox(
-            "Filter by Conference",
             options=["All Conferences"] + all_confs
         )
 
