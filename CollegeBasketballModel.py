@@ -92,7 +92,7 @@ with tab9:
                 margin-top: 0px;
                 font-size: 48px;
                 font-weight: bold;
-                width: 500px;
+                width: 375px;
                 height: 80px;
                 background-color: #DAA520;
                 text-align: center;
