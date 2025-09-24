@@ -148,13 +148,13 @@ with tab9:
         st.markdown(
             f"""
             <div style="
-                border: 2px solid goldenrod; 
+                border: 2px solid white; 
                 padding: 10px; 
-                border-radius: 8px; 
+                border-radius: 4px; 
                 text-align: right; 
                 font-size: 20px; 
                 font-weight: bold;
-                background-color: #fff8dc;">
+                background-color: #DAA520;">
                 Number of Games for Today: {today_games.shape[0]}
             </div>
             """,
