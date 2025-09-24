@@ -121,12 +121,14 @@ with tab9:
     unsafe_allow_html=True)
 
     # --- Dropdown for conference filter ---
-    cola, colb, colc = st.columns([3.25,5,5])
+    cola, colc = st.columns([3.25,10])
     with cola:
         selected_conf = st.selectbox(
             "Filter by Conference",
             options=["All Conferences"] + all_confs
         )
+
+    
 
     # --- Base mask: only today's games ---
     date_mask = df['Date'].dt.date == today
@@ -144,10 +146,11 @@ with tab9:
     # --- Filtered DataFrame ---
     today_games = df.loc[mask]
 
-    st.markdown(
-    f"<p style='text-align:center; font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
-    unsafe_allow_html=True
-    )
+    with colc:
+        st.markdown(
+        f"<p style='text-align:center; font-size:20px; font-weight:bold'>Number of Games for Today: {today_games.shape[0]}</p>",
+        unsafe_allow_html=True
+        )
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
