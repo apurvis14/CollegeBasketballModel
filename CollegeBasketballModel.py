@@ -103,7 +103,22 @@ with tab9:
         df[away_col].replace(0, pd.NA)
     ]).dropna().astype(str).str.strip()
 
-    all_confs = sorted(conf_series.unique(), key=lambda s: s.lower())
+    all_confs = sorted(conf_series.unique(), key=lambda s: s.upper())
+
+    st.markdown(
+    """
+    <style>
+    /* --- Fix selectbox background & text color --- */
+    div[data-baseweb="select"] > div {
+        background-color: #ffffff !important;   /* white dropdown background */
+        color: #000000 !important;              /* black text */
+    }
+    div[data-baseweb="select"] span {
+        color: #000000 !important;              /* ensure label text is black */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
 
     # --- Dropdown for conference filter ---
     selected_conf = st.selectbox(
