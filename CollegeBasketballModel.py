@@ -150,7 +150,9 @@ with tab9:
         unsafe_allow_html=True
         )
     
-    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown(
+    "<hr style='border: 2px solid #000000; margin-top: 0rem; margin-bottom: 0rem;'>",
+    unsafe_allow_html=True)
 
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
