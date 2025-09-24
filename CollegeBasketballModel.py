@@ -84,7 +84,7 @@ with tab9:
     st.markdown(
             """
             <div style="
-                display: inline-block;
+                display: block;
                 margin: 0 auto; 
                 border: 1px solid white; 
                 padding: 2px; 
