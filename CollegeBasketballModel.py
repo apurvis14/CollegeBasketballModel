@@ -150,7 +150,7 @@ with tab9:
             <div style="
                 display: inline-block;
                 border: 2px solid white; 
-                padding: 10px; 
+                padding: 2px; 
                 border-radius: 4px; 
                 text-align: right; 
                 width: 200px
