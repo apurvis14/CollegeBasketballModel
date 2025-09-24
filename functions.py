@@ -600,7 +600,6 @@ def home_away_over_under_by_team(df, offense_value, defense_value):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
-
 def home_away_over_under_by_team_all_under(df, o, d):
     # Filter dataframe by offense, defense, and RS/PS criteria first
     filtered_df = df[(df['Offense Under 100'] == o) & 
@@ -767,7 +766,6 @@ def home_away_over_under_by_team_T_over(df, val):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
-
 def home_away_over_under_by_team_P_over(df, val):
     # Filter dataframe by offense, defense, and RS/PS criteria first
     filtered_df = df[(df['Over 110 EFF'] == val) &
@@ -853,3 +851,62 @@ def get_base64(path):
     with open(path, "rb") as f:
         data = f.read()
     return base64.b64encode(data).decode()
+
+def show_trend(title: str,
+               metrics_func,         # e.g. allover_count_win_loss
+               records_func,         # e.g. home_away_over_under_by_team
+               df: pd.DataFrame,
+               *args):               # variable extra params like o, d, etc.
+    """
+    Handles: metrics for all/current/previous seasons
+             and home/away record display
+    """
+    # ---- Win/Loss metrics
+    count, win, loss = metrics_func(df, *args)
+    count_cur, win_cur, loss_cur = metrics_func(df, *args, season='current')
+    count_prev, win_prev, loss_prev = metrics_func(df, *args, season='previous')
+
+    def pct(w, c): return round((w / c) * 100, 2) if c else 0
+
+    st.markdown(f"<h4 style='text-align:center;'>{title}</h4>",
+                unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;'>All Seasons</h4>", unsafe_allow_html=True)
+        display_metrics(pct(win, count), win, loss)
+    with col2:
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;'>Current Season</h4>", unsafe_allow_html=True)
+        display_metrics(pct(win_cur, count_cur), win_cur, loss_cur)
+    with col3:
+        st.markdown("<h4 style='text-align:center;text-decoration:underline;'>Previous Season</h4>", unsafe_allow_html=True)
+        display_metrics(pct(win_prev, count_prev), win_prev, loss_prev)
+
+    # ---- Team-specific records
+    records_df = records_func(df, *args).reset_index().rename(columns={'index': 'Team'})
+    home_map = records_df.set_index('Team')['Home Record'].to_dict()
+    away_map = records_df.set_index('Team')['Away Record'].to_dict()
+    total_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+    home, away = df['Home Team'], df['Away Team']
+    colsb1, c1, c2, colsb2 = st.columns([1,4,4,1])
+
+    def team_block(team, total, home_away):
+        return f"""
+        <div style="text-align:center;margin:0;padding:0;">
+            <h4 style="text-decoration:underline;margin:0;">{team} vs Trend</h4>
+            <div style="margin-top:4px;"><b>Total: {total}</b></div>
+            <div style="margin:0;"><b>{home_away}</b></div>
+        </div>
+        """
+
+    with c1:
+        st.markdown(team_block(home,
+                               total_map.get(home,"N/A"),
+                               f"Home: {home_map.get(home,'N/A')}"),
+                    unsafe_allow_html=True)
+    with c2:
+        st.markdown(team_block(away,
+                               total_map.get(away,"N/A"),
+                               f"Away: {away_map.get(away,'N/A')}"),
+                    unsafe_allow_html=True)
