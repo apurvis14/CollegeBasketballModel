@@ -304,6 +304,29 @@ with tab9:
             unsafe_allow_html=True
         )
 
+        with st.container(border=True):
+            st.markdown(
+                f"""
+                <details>
+                    <summary>
+                        <div style="line-height:1.3;">
+                            <span style="font-size:22px; font-weight:bold;">
+                                {game['Away Team']} @ {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
+                            </span><br>
+                            <span style="font-size:14px; color:#cccccc;">
+                                Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
+                            </span>
+                        </div>
+                    </summary>
+                    <div style="background-color:#000000; color:#ffffff; padding:12px; border-radius:0 0 8px 8px;">
+                        <!-- Your expanded content goes here -->
+                        {game['Away Team']} vs {game['Home Team']} deeper stats…
+                    </div>
+                </details>
+                """,
+                unsafe_allow_html=True
+            )
+
         with st.expander(matchup_header):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
