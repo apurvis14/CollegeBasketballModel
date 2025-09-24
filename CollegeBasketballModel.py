@@ -87,10 +87,10 @@ with tab9:
                 display: inline-block;
                 float: center; 
                 border: 1px solid white; 
-                padding: 6px; 
+                padding: 2px; 
                 border-radius: 10px; 
                 margin-top: 0px;
-                font-size: 60px;
+                font-size: 48px;
                 font-weight: bold;
                 width: 500px;
                 height: 80px;
