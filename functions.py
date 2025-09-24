@@ -871,7 +871,7 @@ def show_trend(title: str,
 
     def pct(w, c): return round((w / c) * 100, 2) if c else 0
 
-    st.markdown(f"<h4 style='text-align:center;'>{title}</h4>",
+    st.markdown(f"<h4 style='text-align:center;bottom-margin:-15px'>{title}</h4>",
                 unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
