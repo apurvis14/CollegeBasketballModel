@@ -25,4 +25,4 @@ away_counts = df['Away Team'].value_counts()
 combined_counts = home_counts.add(away_counts, fill_value=0).astype(int).sort_values(ascending=False)
 print("\nTotal Appearances (Home + Away):\n", combined_counts)
 
-combined_counts.to_csv('Counts.csv')
+

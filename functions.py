@@ -953,7 +953,6 @@ def show_trend_html(title,
     <details style="margin-bottom:12px;">
         <summary style="font-size:18px; font-weight:bold; cursor:pointer; margin-bottom:6px;">
             {away_team} @ {home_team} | Total: {game['Book Total']}
-        </summary>
         <div style="border:1px solid #cccccc; border-radius:8px; padding:12px; background-color:#ffffff; margin-top:8px;">
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
