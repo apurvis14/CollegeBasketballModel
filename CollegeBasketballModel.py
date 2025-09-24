@@ -309,38 +309,34 @@ with tab9:
             st.markdown(
                 f"""
                 <style>
-                /* ----- Ensure the whole container is white ----- */
                 details {{
                     background-color: #ffffff;
                     color: #000000;
                     border-radius: 8px;
-                    padding: 0;            /* remove default padding */
-                    margin: 0;             /* remove default margin */
+                    padding: 0;
+                    margin: 0;
                 }}
 
-                /* ----- Remove extra padding and align arrow & text ----- */
                 summary {{
-                    list-style: none;      /* hide default triangle */
+                    list-style: none;
                     cursor: pointer;
-                    display: flex;         /* flex so we can add our own arrow */
-                    align-items: center;   /* vertical alignment */
-                    padding: 0.75rem 1rem; /* spacing inside the header */
+                    display: flex;
+                    align-items: center;
+                    padding: 0.75rem 1rem;
                     font-weight: 600;
                 }}
 
-                /* ----- Add our own arrow icon that rotates when open ----- */
                 summary::before {{
-                    content: "▶";          /* right-pointing arrow */
+                    content: "▶";
                     display: inline-block;
                     margin-right: 8px;
                     transition: transform 0.2s ease;
                 }}
 
                 details[open] summary::before {{
-                    transform: rotate(90deg);  /* down-pointing arrow when open */
+                    transform: rotate(90deg);
                 }}
 
-                /* ----- Optional: style the expanded area ----- */
                 details > div {{
                     background-color: #000000;
                     color: #ffffff;
@@ -360,13 +356,30 @@ with tab9:
                             </span>
                         </div>
                     </summary>
-                    <div>
-                        {game['Away Team']} vs {game['Home Team']} deeper stats…
+                    <div id="trend_placeholder">
+                        <!-- Python output will go visually here -->
                     </div>
                 </details>
                 """,
                 unsafe_allow_html=True
             )
+
+            # Render Python output immediately after the Markdown
+            # It will appear inside the black box if you style it with margin-top: -16px to pull it up
+            if game['All Formulas Over'] == 1:
+                st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
+                show_trend(
+                    f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )
+                st.markdown("</div>", unsafe_allow_html=True)
 
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
