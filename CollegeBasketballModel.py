@@ -250,8 +250,11 @@ with tab9:
         else:
             percent_cur = 'None'
             count_cur = 0
+        
+        away_logo = f"<img src='Team Logo/{game['Away Team']}.png' width='30' style='vertical-align:middle; margin-right:5px;'>"
+        home_logo = f"<img src='Team Logo/{game['Home Team']}.png' width='30' style='vertical-align:middle; margin-right:5px;'>"
 
-        matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+        matchup = (f"{away_logo} {game['Away Team']} @ {home_logo} {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
 
