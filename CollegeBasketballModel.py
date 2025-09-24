@@ -257,42 +257,67 @@ with tab9:
         matchup = (f"{away_logo} {game['Away Team']} @ {home_logo} {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
-
-        st.markdown(
+        
+        matchup_html = f"""
+            <div style="
+                background-color: #000000; 
+                color: #ffffff; 
+                border-radius: 8px; 
+                padding: 0.5rem 0.75rem; 
+                font-weight: 600;
+                display: flex; 
+                align-items: center;
+                justify-content: space-between;
+            ">
+                <span>
+                    <img src='Team Logo/{game['Away Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'> 
+                    {game['Away Team']} @ 
+                    <img src='Team Logo/{game['Home Team']}.jpg' width='30' style='vertical-align:middle; margin-right:5px;'> 
+                    {game['Home Team']}
+                </span>
+                <span>Total: {game['Book_Total']} | Season Trend Over Win %: {percent_cur} | Trend Size: {count_cur}</span>
+            </div>
             """
-            <style>
-            /* ==========  Expander Overall Card  ========== */
-            div[data-testid="stExpander"] {
-                background-color: #ffffff;        /* white frame around the expander */
-                border-radius: 8px;               /* rounded corners */
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow */
-                margin-bottom: 1rem;
-                color: #000000 !important;        /* default text color (header) */
-            }
 
-            /* ==========  Header Bar  ========== */
-            div[data-testid="stExpander"] > div:first-child {
-                background-color: #000000;        /* header background */
-                color: #ffffff !important;        /* header text */
-                border-radius: 8px 8px 0 0;       /* round top corners only */
-                padding: 0.5rem 0.75rem;
-                font-weight: 600;                 /* optional: slightly bolder header */
-            }
+            # Display fake header
+        st.markdown(matchup_html, unsafe_allow_html=True)
+        
 
-            /* ==========  Expanded Body  ========== */
-            /* This targets the actual container revealed when you expand */
-            div[data-testid="stExpander"] div[role="region"] {
-                background-color: #000000 !important; /* black background */
-                color: #ffffff !important;            /* white text for contrast */
-                border-radius: 0 0 8px 8px;           /* round bottom corners */
-                padding: 12px;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+        # st.markdown(
+        #     """
+        #     <style>
+        #     /* ==========  Expander Overall Card  ========== */
+        #     div[data-testid="stExpander"] {
+        #         background-color: #ffffff;        /* white frame around the expander */
+        #         border-radius: 8px;               /* rounded corners */
+        #         box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow */
+        #         margin-bottom: 1rem;
+        #         color: #000000 !important;        /* default text color (header) */
+        #     }
 
-        with st.expander(matchup):
+        #     /* ==========  Header Bar  ========== */
+        #     div[data-testid="stExpander"] > div:first-child {
+        #         background-color: #000000;        /* header background */
+        #         color: #ffffff !important;        /* header text */
+        #         border-radius: 8px 8px 0 0;       /* round top corners only */
+        #         padding: 0.5rem 0.75rem;
+        #         font-weight: 600;                 /* optional: slightly bolder header */
+        #     }
+
+        #     /* ==========  Expanded Body  ========== */
+        #     /* This targets the actual container revealed when you expand */
+        #     div[data-testid="stExpander"] div[role="region"] {
+        #         background-color: #000000 !important; /* black background */
+        #         color: #ffffff !important;            /* white text for contrast */
+        #         border-radius: 0 0 8px 8px;           /* round bottom corners */
+        #         padding: 12px;
+        #     }
+        #     </style>
+        #     """,
+        #     unsafe_allow_html=True
+        # )
+
+        with st.expander(" "):
             if game['All Formulas Over'] == 1:
                 o = game['Offense Over 100']
                 d = game['Defense Over 100']
