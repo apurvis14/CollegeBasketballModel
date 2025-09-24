@@ -913,3 +913,89 @@ def show_trend(title: str,
                                total_map.get(away,"N/A"),
                                f"Away: {away_map.get(away,'N/A')}"),
                     unsafe_allow_html=True)
+        
+def show_trend_html(title,
+                     metrics,
+                     metricscurrent,
+                     metricsprev,
+                     records_func,
+                     df: pd.DataFrame,
+                     game: pd.DataFrame,
+                     *args):
+    
+    # ---- Win/Loss metrics
+    count, win, loss = metrics(df, *args)
+    count_cur, win_cur, loss_cur = metricscurrent(df, *args)
+    count_prev, win_prev, loss_prev = metricsprev(df, *args)
+
+    def pct(w, c): 
+        return round((w / c) * 100, 2) if c else 0
+    
+    pct_all = pct(win, count)
+    pct_cur = pct(win_cur, count_cur)
+    pct_prev = pct(win_prev, count_prev)
+
+        # --- Prepare mappings for quick lookup ---
+    records_df = records_func(df, *args).reset_index().rename(columns={'index': 'Team'})
+    home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+    away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+    total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+    home_team = game['Home Team']
+    away_team = game['Away Team']
+
+    home_record = home_record_map.get(home_team, "N/A")
+    total_home = total_record_map.get(home_team, "N/A")
+    away_record = away_record_map.get(away_team, "N/A")
+    total_away = total_record_map.get(away_team, "N/A")
+    
+    html = f"""
+    <div style="border:1px solid #cccccc; border-radius:8px; padding:12px; background-color:#ffffff; margin-bottom:8px;">
+        <!-- Title -->
+        <div style="text-align:center; margin-bottom:8px;">
+            <h3 style="margin:0; font-weight:bold;">{title}</h3>
+        </div>
+
+        <!-- Team headers -->
+        <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+            <div style="text-align:center;">
+                 <h4 style="text-decoration:underline; margin:0;">{home_team} vs Trend</h4>
+            </div>
+            <div style="text-align:center;">
+                <h4 style="text-decoration:underline; margin:0;">{away_team} vs Trend</h4>
+            </div>
+        </div>
+
+        <!-- Records -->
+        <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:8px;">
+            <div style="text-align:center;">
+                <div><b>Total: {total_home}</b></div>
+                <div><b>Home: {home_record}</b></div>
+            </div>
+            <div style="text-align:center;">
+                <div><b>Total: {total_away}</b></div>
+                <div><b>Away: {away_record}</b></div>
+            </div>
+        </div>
+
+        <!-- Win metrics -->
+        <div style="display:flex; justify-content:space-around; font-size:14px;">
+            <div style="text-align:center;">
+                <strong>All Seasons</strong><br>
+                Win%: {pct_all}<br>
+                W: {win} / L: {loss}
+            </div>
+            <div style="text-align:center;">
+                <strong>Current Season</strong><br>
+                Win%: {pct_cur}<br>
+                W: {win_cur} / L: {loss_cur}
+            </div>
+            <div style="text-align:center;">
+                <strong>Previous Season</strong><br>
+                Win%: {pct_prev}<br>
+                W: {win_prev} / L: {loss_prev}
+            </div>
+        </div>
+    </div>
+    """
+    return html

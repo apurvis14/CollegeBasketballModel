@@ -38,7 +38,8 @@ from functions import (
     home_away_over_under_by_team_P_over,
     home_away_over_under_by_team_E_over,
     get_base64,
-    show_trend
+    show_trend, 
+    show_trend_html
     )
 
 from datetime import datetime
@@ -306,6 +307,18 @@ with tab9:
         )
 
         with st.container(border=False):
+            trend_html = show_trend_html(
+                    f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )    
+
             st.markdown(
                 f"""
                 <style>
@@ -357,7 +370,7 @@ with tab9:
                         </div>
                     </summary>
                     <div id="trend_placeholder">
-                        <!-- Python output will go visually here -->
+                        {trend_html} <!-- Python output will go visually here -->
                     </div>
                 </details>
                 """,
