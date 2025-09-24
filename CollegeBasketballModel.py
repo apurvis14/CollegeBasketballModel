@@ -376,45 +376,45 @@ with tab9:
             #     """,
             #     unsafe_allow_html=True
             # )
-            st.markdown(f"""
-            <style>
-            details {{
-                background-color: #ffffff;
-                color: #000000;
-                border-radius: 8px;
-                padding: 0;
-                margin: 0 0 8px 0;
-            }}
+            # st.markdown(f"""
+            # <style>
+            # details {{
+            #     background-color: #ffffff;
+            #     color: #000000;
+            #     border-radius: 8px;
+            #     padding: 0;
+            #     margin: 0 0 8px 0;
+            # }}
 
-            summary {{
-                list-style: none;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                padding: 0.75rem 1rem;
-                font-weight: 600;
-            }}
+            # summary {{
+            #     list-style: none;
+            #     cursor: pointer;
+            #     display: flex;
+            #     align-items: center;
+            #     padding: 0.75rem 1rem;
+            #     font-weight: 600;
+            # }}
 
-            summary::before {{
-                content: "▶";
-                display: inline-block;
-                margin-right: 8px;
-                transition: transform 0.2s ease;
-            }}
+            # summary::before {{
+            #     content: "▶";
+            #     display: inline-block;
+            #     margin-right: 8px;
+            #     transition: transform 0.2s ease;
+            # }}
 
-            details[open] summary::before {{
-                transform: rotate(90deg);
-            }}
+            # details[open] summary::before {{
+            #     transform: rotate(90deg);
+            # }}
 
-            details > div {{
-                padding: 12px;
-                border-radius: 0 0 8px 8px;
-            }}
-            </style>
-                    {trend_html}  <!-- This must be raw HTML string -->
-                </div>
-            </details>
-            """, unsafe_allow_html=True)
+            # details > div {{
+            #     padding: 12px;
+            #     border-radius: 0 0 8px 8px;
+            # }}
+            # </style>
+            #         {trend_html}  <!-- This must be raw HTML string -->
+            #     </div>
+            # </details>
+            # """, unsafe_allow_html=True)
 
             st.markdown(trend_html, unsafe_allow_html=True)
 
