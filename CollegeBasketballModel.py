@@ -435,7 +435,6 @@ with tab9:
                 )
                 st.markdown("</div>", unsafe_allow_html=True)
 
-
         with st.expander(matchup):
             if game['All Formulas Over'] == 1:
                     show_trend(

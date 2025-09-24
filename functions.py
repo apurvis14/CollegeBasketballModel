@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import base64
-import html
+import html as html
 
 # All Over Function (Regular Season) - All Seasons
 def allover_count_win_loss(df, offense_value, defense_value):
@@ -942,15 +942,18 @@ def show_trend_html(
     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
 
-    home_team = html.escape(game['Home Team'])
-    away_team = html.escape(game['Away Team'])
+    home_team = game['Home Team']
+    away_team = game['Away Team']
 
-    home_record = home_record_map.get(home_team, "N/A")
-    total_home = total_record_map.get(home_team, "N/A")
-    away_record = away_record_map.get(away_team, "N/A")
-    total_away = total_record_map.get(away_team, "N/A")
+    safe_home_team = html.escape(home_team)
+    safe_away_team = html.escape(away_team)
+
+    home_record = home_record_map.get(safe_home_team, "N/A")
+    total_home = total_record_map.get(safe_home_team, "N/A")
+    away_record = away_record_map.get(safe_away_team, "N/A")
+    total_away = total_record_map.get(safe_away_team, "N/A")
     
-    html = f"""
+    html1 = f"""
     <details style="margin-bottom:12px;">
         <summary style="font-size:18px; font-weight:bold; cursor:pointer; margin-bottom:6px;">
             </summary>{away_team} @ {home_team} | Total: {game['Book Total']}
@@ -999,4 +1002,4 @@ def show_trend_html(
         </div>
     </details>
     """
-    return html
+    return html1
