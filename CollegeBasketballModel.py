@@ -149,7 +149,7 @@ with tab9:
             f"""
             <div style="
                 border: 2px solid white; 
-                padding: 10px; 
+                padding: 2px; 
                 border-radius: 4px; 
                 text-align: right; 
                 font-size: 20px; 
