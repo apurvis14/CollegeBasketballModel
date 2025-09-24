@@ -317,7 +317,7 @@ with tab9:
                     game,
                     game['Offense Over 100'],
                     game['Defense Over 100']
-                )    
+                )
 
             # st.markdown(
             #     f"""

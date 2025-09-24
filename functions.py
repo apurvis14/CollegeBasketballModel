@@ -950,52 +950,52 @@ def show_trend_html(title,
     total_away = total_record_map.get(away_team, "N/A")
     
     html = f"""
-    <div style="border:1px solid #cccccc; border-radius:8px; padding:12px; background-color:#ffffff; margin-bottom:8px;">
-        <!-- Title -->
-        <div style="text-align:center; margin-bottom:8px;">
-            <h3 style="margin:0; font-weight:bold;">{title}</h3>
-        </div>
+    <details style="margin-bottom:12px;">
+        <summary style="font-size:18px; font-weight:bold; cursor:pointer; margin-bottom:6px;">
+            {title} — {away_team} @ {home_team} | Total: {game['Book Total']}
+        </summary>
+        <div style="border:1px solid #cccccc; border-radius:8px; padding:12px; background-color:#ffffff; margin-top:8px;">
+            <!-- Team headers -->
+            <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+                <div style="text-align:center;">
+                     <h4 style="text-decoration:underline; margin:0;">{home_team} vs Trend</h4>
+                </div>
+                <div style="text-align:center;">
+                    <h4 style="text-decoration:underline; margin:0;">{away_team} vs Trend</h4>
+                </div>
+            </div>
 
-        <!-- Team headers -->
-        <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
-            <div style="text-align:center;">
-                 <h4 style="text-decoration:underline; margin:0;">{home_team} vs Trend</h4>
+            <!-- Records -->
+            <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:8px;">
+                <div style="text-align:center;">
+                    <div><b>Total: {total_home}</b></div>
+                    <div><b>Home: {home_record}</b></div>
+                </div>
+                <div style="text-align:center;">
+                    <div><b>Total: {total_away}</b></div>
+                    <div><b>Away: {away_record}</b></div>
+                </div>
             </div>
-            <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">{away_team} vs Trend</h4>
-            </div>
-        </div>
 
-        <!-- Records -->
-        <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:8px;">
-            <div style="text-align:center;">
-                <div><b>Total: {total_home}</b></div>
-                <div><b>Home: {home_record}</b></div>
-            </div>
-            <div style="text-align:center;">
-                <div><b>Total: {total_away}</b></div>
-                <div><b>Away: {away_record}</b></div>
-            </div>
-        </div>
-
-        <!-- Win metrics -->
-        <div style="display:flex; justify-content:space-around; font-size:14px;">
-            <div style="text-align:center;">
-                <strong>All Seasons</strong><br>
-                Win%: {pct_all}<br>
-                W: {win} / L: {loss}
-            </div>
-            <div style="text-align:center;">
-                <strong>Current Season</strong><br>
-                Win%: {pct_cur}<br>
-                W: {win_cur} / L: {loss_cur}
-            </div>
-            <div style="text-align:center;">
-                <strong>Previous Season</strong><br>
-                Win%: {pct_prev}<br>
-                W: {win_prev} / L: {loss_prev}
+            <!-- Win metrics -->
+            <div style="display:flex; justify-content:space-around; font-size:14px;">
+                <div style="text-align:center;">
+                    <strong>All Seasons</strong><br>
+                    Win%: {pct_all}<br>
+                    W: {win} / L: {loss}
+                </div>
+                <div style="text-align:center;">
+                    <strong>Current Season</strong><br>
+                    Win%: {pct_cur}<br>
+                    W: {win_cur} / L: {loss_cur}
+                </div>
+                <div style="text-align:center;">
+                    <strong>Previous Season</strong><br>
+                    Win%: {pct_prev}<br>
+                    W: {win_prev} / L: {loss_prev}
+                </div>
             </div>
         </div>
-    </div>
+    </details>
     """
     return html
