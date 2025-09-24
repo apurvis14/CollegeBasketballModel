@@ -962,10 +962,10 @@ def show_trend_html(
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
                 <div style="text-align:center;">
-                     <h4 style="text-decoration:underline; margin:0;">{home_team} vs Trend</h4>
+                     <h4 style="text-decoration:underline; margin:0;">{safe_home_team} vs Trend</h4>
                 </div>
                 <div style="text-align:center;">
-                    <h4 style="text-decoration:underline; margin:0;">{away_team} vs Trend</h4>
+                    <h4 style="text-decoration:underline; margin:0;">{safe_away_team} vs Trend</h4>
                 </div>
             </div>
 
