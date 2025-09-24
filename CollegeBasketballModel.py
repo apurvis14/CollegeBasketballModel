@@ -148,8 +148,10 @@ with tab9:
         st.markdown(
             f"""
             <div style="
+                display: inline-block;
+                width: 200px
                 border: 2px solid white; 
-                padding: 2px; 
+                padding: 10px; 
                 border-radius: 4px; 
                 text-align: right; 
                 font-size: 20px; 
