@@ -914,7 +914,7 @@ def show_trend(title: str,
                                f"Away: {away_map.get(away,'N/A')}"),
                     unsafe_allow_html=True)
         
-def show_trend_html(title,
+def show_trend_html(
                      metrics,
                      metricscurrent,
                      metricsprev,
