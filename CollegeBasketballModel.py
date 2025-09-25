@@ -522,7 +522,7 @@ with tab9:
                 )
                 st.markdown("</div>", unsafe_allow_html=True)
 
-            elif game['Just Tempo Over'] == 1:
+            elif game['Just Efficiency Over'] == 1:
                 st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
                 show_trend(
                     "System Active: Only Efficiency Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
@@ -542,7 +542,7 @@ with tab9:
                 st.markdown("No Trend Active", unsafe_allow_html=True)
 
         with st.expander(matchup):
-            if game['Just Tempo Over'] == 1:
+            if game['All Formulas Over'] == 1:
                     show_trend(
                         f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
                         allover_count_win_loss,
@@ -733,7 +733,7 @@ with tab9:
                 )
                 st.markdown("</div>", unsafe_allow_html=True)
 
-            elif game['Just Tempo Over'] == 1:
+            elif game['Just Efficiency Over'] == 1:
                 st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
                 show_trend(
                     "System Active: Only Efficiency Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
