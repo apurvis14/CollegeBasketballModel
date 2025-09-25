@@ -232,7 +232,7 @@ with tab9:
         matchup_header = f"""
                 <div style="line-height:1.3;">
                     <span style="font-size:22px; font-weight:bold;">
-                        {game['Away Team']} @ {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
+                        {away_logo}{game['Away Team']} @ {home_logo}{game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#cccccc;">
                         Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
