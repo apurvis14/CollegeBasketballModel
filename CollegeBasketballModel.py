@@ -225,6 +225,10 @@ with tab9:
         away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
         home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
 
+        away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
+        home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
+
+
         matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
                    f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
@@ -232,7 +236,7 @@ with tab9:
         matchup_header = f"""
                 <div style="line-height:1.3;">
                     <span style="font-size:22px; font-weight:bold;">
-                        {away_logo}{game['Away Team']} @ {home_logo}{game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
+                        {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#cccccc;">
                         Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
