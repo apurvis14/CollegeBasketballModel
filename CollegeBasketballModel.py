@@ -10,7 +10,7 @@ from functions import (
     TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev,
     TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, PPGover_count_win_loss_current, PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current, EFFover_count_win_loss_prev,
-    display_total_difference_histogram,
+    display_total_difference_histogram, display_metrics_expand,
     home_away_over_under_by_team, home_away_over_under_by_team_all_under, home_away_over_under_by_team_EP_over,
     home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TP_over,
     home_away_over_under_by_team_T_over, home_away_over_under_by_team_P_over, home_away_over_under_by_team_E_over,
@@ -221,6 +221,8 @@ with tab9:
         else:
             percent_cur = 'None'
             count_cur = 0
+
+        percent_cur = display_metrics_expand(percent_cur)
         
         away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
         home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
@@ -239,7 +241,7 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#545353ff;">
-                        Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
+                        Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Season Trend Size: {count_cur}
                     </span>
                 </div>
                 """
