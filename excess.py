@@ -767,3 +767,632 @@
 #         ]
 
 #         display_total_difference_histogram(plot_df)
+
+
+#### Display Metrics
+
+                # o = game['Offense Under 100']
+                # d = game['Defense Under 100']
+
+                # count, win, loss = allunder_count_win_loss(df, o, d)
+                # percent = round((win/count) * 100,2)
+
+                # count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
+                # percent_cur = round((win_cur/count_cur)*100,2)
+
+                # count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
+                # percent_prev = round((win_prev/count_prev)*100,2)
+                # st.markdown(f"<h4 style='text-align:center;'>Trend: All Under – {o} OFF EFF under 100 / {d} DEF EFF under 100</h4>", 
+                #             unsafe_allow_html=True)
+
+                # col1, col2, col3 = st.columns(3)
+
+                # with col1:
+                #     st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+                #     display_metrics(percent, win, loss)
+
+                # with col2:
+                #     st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+                #     display_metrics(percent_cur, win_cur, loss_cur)
+
+                # with col3:
+                #     st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+                #     display_metrics(percent_prev, win_prev, loss_prev)
+                
+                # # Step 1: Run your function to get records_df
+                # records_df = home_away_over_under_by_team_all_under(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+                # # Step 2: Prepare mapping dictionaries for quick lookup
+                # home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+                # away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+                # total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+                # home_record = home_record_map.get(game['Home Team'], "N/A")
+                # total_home  = total_record_map.get(game['Home Team'], "N/A")
+                # away_record = away_record_map.get(game['Away Team'], "N/A")
+                # total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+                # home_team = game['Home Team']
+                # away_team = game['Away Team']
+
+                # colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+                # with cols1:
+                #     st.markdown(
+                #         f"""
+                #         <div style="text-align:center; margin:0; padding:0;">
+                #             <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+                #         </div>
+                #         """,
+                #         unsafe_allow_html=True
+                #     )
+
+                # with cols2:
+                #     st.markdown(
+                #         f"""
+                #         <div style="text-align:center; margin:0; padding:0;">
+                #             <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+                #         </div>
+                #         """,
+                #         unsafe_allow_html=True
+                #     )
+
+                # # Second markdown: records
+                # with cols1:
+                #     st.markdown(
+                #         f"""
+                #         <div style="text-align:center; margin-top:4px; padding:0;">
+                #             <div style="margin:0;"><b>Total:  {total_home}<b></div>
+                #             <div style="margin:0;"><b>Home:  {home_record}<b></div>
+                #         </div>
+                #         """,
+                #         unsafe_allow_html=True
+                #     )
+
+                # with cols2:
+                #     st.markdown(
+                #         f"""
+                #         <div style="text-align:center; margin-top:4px; padding:0;">
+                #             <div style="margin:0;"><b>Total:  {total_away}<b></div>
+                #             <div style="margin:0;"><b>Away:  {away_record}<b></div>
+                #         </div>
+                #         """,
+                #         unsafe_allow_html=True
+                #     )
+
+            # elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+            #     o1 = game['Count of OFF over 100']
+            #     o2 = game['Count of OFF over 110']
+            #     d1 = game['Count of DEF under 100']
+            #     d2 = game['Count of DEF under 95']
+
+            #     count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = EPOver_TempoUnder_count_win_loss_prev(df, o1, o2, d1, d2)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown(f"<h4 style='text-align:center;'>Trend: EFF/PPG Over – {o1} and {o2} OFF EFF over 100 and 110 / {d1} and {d2} DEF EFF under 100 and 95</h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+            #     records_df = home_away_over_under_by_team_EP_over(df, o1, o2, d1, d2).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            # elif game['Tempo and Efficiency over (PPG under)'] == 1:
+            #     o1 = game['OFF Under 100']
+            #     o2 = game['OFF Under 95']
+            #     d1 = game['DEF Under 100']
+            #     d2 = game['DEF Under 95']
+
+            #     count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown(f"<h4 style='text-align:center;'>Trend: Tempo/EFF Over – {o1} and {o2} OFF EFF under 100 and 95 / {d1} and {d2} DEF EFF under 100 and 95</h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+            #     records_df = home_away_over_under_by_team_TE_over(df, o1, o2, d1, d2).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            # elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+            #     count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown("<h4 style='text-align:center;'>Trend: Tempo/PPG Over and EFF Under </h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+            #     records_df = home_away_over_under_by_team_TP_over(df).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            # elif game['Just Tempo Over'] == 1:
+            #     val = game['Over 105 EFF']
+            #     count, win, loss = TempoOver_count_win_loss(df, val)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = TempoOver_count_win_loss_prev(df, val)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown(f"<h4 style='text-align:center;'>Trend: Just Tempo Over - {val} EFF Over 105 </h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+            #     records_df = home_away_over_under_by_team_T_over(df, val).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            # elif game['Just PPG Over'] == 1:
+            #     val = game['Over 110 EFF']
+            #     count, win, loss = PPGover_count_win_loss(df, val)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown(f"<h4 style='text-align:center;'>Trend: Just PPG Over - {val} EFF Over 110 </h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df -- CREATE NEW FORMULA FOR THIS
+            #     records_df = home_away_over_under_by_team_P_over(df, val).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            # elif game['Just Efficiency Over'] == 1:
+            #     o = game['OFF Over 105']
+            #     d = game['DEF Over 105']
+
+            #     count, win, loss = EFFover_count_win_loss(df, o, d)
+            #     percent = round((win/count) * 100,2)
+
+            #     count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
+            #     percent_cur = round((win_cur/count_cur)*100,2)
+
+            #     count_prev, win_prev, loss_prev = EFFover_count_win_loss_prev(df, o, d)
+            #     percent_prev = round((win_prev/count_prev)*100,2)
+            #     st.markdown(f"<h4 style='text-align:center;'>Trend: Just EFF Over - {o} OFF EFF Over 105 and {d} DEF EFF Over 105 </h4>", 
+            #                 unsafe_allow_html=True)
+
+            #     col1, col2, col3 = st.columns(3)
+
+            #     with col1:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>All Seasons</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent, win, loss)
+
+            #     with col2:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Current Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_cur, win_cur, loss_cur)
+
+            #     with col3:
+            #         st.markdown("<h4 style='text-align:center; text-decoration: underline;'>Previous Season</h4>", unsafe_allow_html=True)
+            #         display_metrics(percent_prev, win_prev, loss_prev)
+                
+            #     # Step 1: Run your function to get records_df
+            #     records_df = home_away_over_under_by_team_E_over(df, o, d).reset_index().rename(columns={'index': 'Team'})
+
+            #     # Step 2: Prepare mapping dictionaries for quick lookup
+            #     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
+            #     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
+            #     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
+
+            #     home_record = home_record_map.get(game['Home Team'], "N/A")
+            #     total_home  = total_record_map.get(game['Home Team'], "N/A")
+            #     away_record = away_record_map.get(game['Away Team'], "N/A")
+            #     total_away  = total_record_map.get(game['Away Team'], "N/A")
+
+            #     home_team = game['Home Team']
+            #     away_team = game['Away Team']
+
+            #     colsb1, cols1, cols2, colsb2 = st.columns([1,4,4,1])
+
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{home_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin:0; padding:0;">
+            #                 <h4 style="text-decoration:underline; margin:0; padding:0;">{away_team} vs Trend</h4>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     # Second markdown: records
+            #     with cols1:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_home}<b></div>
+            #                 <div style="margin:0;"><b>Home:  {home_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
+
+            #     with cols2:
+            #         st.markdown(
+            #             f"""
+            #             <div style="text-align:center; margin-top:4px; padding:0;">
+            #                 <div style="margin:0;"><b>Total:  {total_away}<b></div>
+            #                 <div style="margin:0;"><b>Away:  {away_record}<b></div>
+            #             </div>
+            #             """,
+            #             unsafe_allow_html=True
+            #         )
