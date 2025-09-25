@@ -335,10 +335,6 @@ with tab9:
                         <div style="line-height:1.3;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {matchup_header}
-                            </span><br>
-                            <span style="font-size:14px; color:#555555;">
-                                Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Trend Size: {count_cur}
-                            </span>
                         </div>
                     </summary>
                 </details>
