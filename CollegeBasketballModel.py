@@ -222,7 +222,7 @@ with tab9:
             percent_cur = 'None'
             count_cur = 0
 
-        percent_cur = display_metrics_expand(percent_cur)
+        percent_cur1 = display_metrics_expand(percent_cur)
         
         away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
         home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
@@ -241,7 +241,7 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#545353ff;">
-                        Season Trend Over Win %: {percent_cur} &nbsp;|&nbsp; Season Trend Size: {count_cur}
+                        Season Trend Over Win %: {percent_cur1} &nbsp;|&nbsp; Season Trend Size: {count_cur}
                     </span>
                 </div>
                 """
