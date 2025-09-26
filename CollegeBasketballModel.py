@@ -377,10 +377,23 @@ with tab9:
         {trend_html}
 
         </details>
+        <script>
+        // Post the body height to Streamlit whenever <details> toggles
+        const details = document.getElementById('trend-details');
+        const resize = () => {{
+            const h = document.body.scrollHeight;
+            window.parent.postMessage({{ streamlitResize: h }}, '*');
+        }};
+        details.addEventListener('toggle', resize);
+        window.addEventListener('load', resize);
+        </script>
+
+        </body>
+        </html>
         """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-        st_html(full_html, height=100, scrolling=True)
+        st_html(full_html, height=100, scrolling=False)
             # st.markdown(f"""
             # <style>
             # details {{
