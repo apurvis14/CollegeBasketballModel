@@ -406,7 +406,7 @@ with tab9:
         <script>
         function resizeIframeToContent() {{
             const height = document.body.scrollHeight;
-            window.parent.postMessage({{ type: 'streamlit:resize', height: height }}, '*');
+            window.parent.postMessage({{ type: 'streamlit:resize', height: height * 2 }}, '*');
         }}
 
         window.addEventListener('load', resizeIframeToContent);
