@@ -97,8 +97,6 @@ with tab9:
 
     # Put All Conferences into Variable
     all_confs = sorted(conf_series.unique(), key=lambda s: s.upper())
-
-
     st.markdown(
     """
     <style>
@@ -283,15 +281,16 @@ with tab9:
 
         with st.container(border=False):
             trend_html = show_trend_html(
-                allover_count_win_loss,
-                allover_count_win_loss_current,
-                allover_count_win_loss_prev,
-                home_away_over_under_by_team,
-                df,
-                game,
-                game['Offense Over 100'],
-                game['Defense Over 100']
-            )
+                    # f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )
 
             st.markdown(
                 f"""
@@ -321,7 +320,14 @@ with tab9:
                 }}
 
                 details[open] summary::before {{
-                    transform: rotate(90deg);
+                    transform: rotate(0deg);
+                }}
+
+                details > div {{
+                    background-color: #000000;
+                    color: #ffffff;
+                    padding: 12px 16px;
+                    border-radius: 0 0 8px 8px;
                 }}
                 </style>
 
@@ -330,18 +336,10 @@ with tab9:
                         <div style="line-height:1.3;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {matchup_header}
-                            </span>
-                        </div>
-                    </summary>
-
-                    {trend_html}
-
                 </details>
                 """,
                 unsafe_allow_html=True
             )
-
-
             # st.markdown(f"""
             # <style>
             # details {{
