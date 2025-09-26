@@ -229,11 +229,6 @@ with tab9:
 
         away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
         home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">' 
-
-
-        # matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-        #            f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-        #            f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         matchup_header = f"""
                 <div style="line-height:1.3;">
@@ -303,7 +298,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
             
             elif game['All Formulas Under'] == 1:
                 trend_html = show_trend_html(
@@ -361,7 +356,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
             
             elif game['Efficiency/PPG over  (Tempo under)'] == 1:
                 trend_html = show_trend_html(
@@ -421,7 +416,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
 
             elif game['Tempo and Efficiency over (PPG under)'] == 1:
                 trend_html = show_trend_html(
@@ -481,7 +476,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
             
             elif game['Tempo and PPG over (Efficiency Under)'] == 1:
                 trend_html = show_trend_html(
@@ -537,7 +532,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
 
             elif game['Just Tempo Over'] == 1:
                 trend_html = show_trend_html(
@@ -594,7 +589,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
             
             elif game['Just PPG Over'] == 1:
                 trend_html = show_trend_html(
@@ -651,7 +646,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
+                st_html(full_html, height=350, scrolling=True)
 
             elif game['Just Efficiency Over'] == 1:
                 trend_html = show_trend_html(
@@ -709,295 +704,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=False)
-            # st.markdown(f"""
-            # <style>
-            # details {{
-            #     background-color: #ffffff;
-            #     color: #000000;
-            #     border-radius: 8px;
-            #     padding: 0;
-            #     margin: 0 0 8px 0;
-            # }}
-
-            # summary {{
-            #     list-style: none;
-            #     cursor: pointer;
-            #     display: flex;
-            #     align-items: center;
-            #     padding: 0.75rem 1rem;
-            #     font-weight: 600;
-            # }}
-
-            # summary::before {{
-            #     content: "▶";
-            #     display: inline-block;
-            #     margin-right: 8px;
-            #     transition: transform 0.2s ease;
-            # }}
-
-            # details[open] summary::before {{
-            #     transform: rotate(90deg);
-            # }}
-
-            # details > div {{
-            #     padding: 12px;
-            #     border-radius: 0 0 8px 8px;
-            # }}
-            # </style>
-            #         {trend_html}  <!-- This must be raw HTML string -->
-            #     </div>
-            # </details>
-            # """, unsafe_allow_html=True)
-
-            # st.markdown(trend_html, unsafe_allow_html=True)
-
-            # Render Python output immediately after the Markdown
-            # It will appear inside the black box if you style it with margin-top: -16px to pull it up
-        #     if game['All Formulas Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: All Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             allover_count_win_loss,
-        #             allover_count_win_loss_current,
-        #             allover_count_win_loss_prev,
-        #             home_away_over_under_by_team,
-        #             df,
-        #             game,
-        #             game['Offense Over 100'],
-        #             game['Defense Over 100']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['All Formulas Under'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: All Under", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             allunder_count_win_loss,
-        #             allunder_count_win_loss_current,
-        #             allunder_count_win_loss_prev,
-        #             home_away_over_under_by_team_all_under,
-        #             df,
-        #             game,
-        #             game['Offense Under 100'],
-        #             game['Defense Under 100']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Efficiency/PPG over  (Tempo under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Efficiency & PPG Formulas Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             EPOver_TempoUnder_count_win_loss,
-        #             EPOver_TempoUnder_count_win_loss_current,
-        #             EPOver_TempoUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_EP_over,
-        #             df,
-        #             game,
-        #             game['Count of OFF over 100'],
-        #             game['Count of OFF over 110'],
-        #             game['Count of DEF under 100'],
-        #             game['Count of DEF under 95']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Tempo and Efficiency over (PPG under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo and Efficiency Formulas Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TEOver_PPGUnder_count_win_loss,
-        #             TEOver_PPGUnder_count_win_loss_current,
-        #             TEOver_PPGUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_TE_over,
-        #             df,
-        #             game,
-        #             game['OFF Under 100'],
-        #             game['OFF Under 95'],
-        #             game['DEF Under 100'],
-        #             game['DEF Under 95']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True) 
-
-        #     elif game['Tempo and PPG over (Efficiency Under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo and PPG Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TPOver_EFFUnder_count_win_loss,
-        #             TPOver_EFFUnder_count_win_loss_current,
-        #             TPOver_EFFUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_TP_over,
-        #             df,
-        #             game
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Just Tempo Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TempoOver_count_win_loss,
-        #             TempoOver_count_win_loss_current,
-        #             TempoOver_count_win_loss_prev,
-        #             home_away_over_under_by_team_T_over,
-        #             df,
-        #             game,
-        #             game['Over 105 EFF']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)            
-
-        #     elif game['Just PPG Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only PPG Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             PPGover_count_win_loss,
-        #             PPGover_count_win_loss_current,
-        #             PPGover_count_win_loss_prev,
-        #             home_away_over_under_by_team_P_over,
-        #             df,
-        #             game,
-        #             game['Over 110 EFF']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Just Efficiency Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Efficiency Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             EFFover_count_win_loss,
-        #             EFFover_count_win_loss_current,
-        #             EFFover_count_win_loss_prev,
-        #             home_away_over_under_by_team_E_over,
-        #             df,
-        #             game,
-        #             game['OFF Over 105'],
-        #             game['DEF Over 105']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     else:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)  
-        #         st.markdown("No Trend Active", unsafe_allow_html=True)
-
-        # with st.expander(matchup):
-        #     if game['All Formulas Over'] == 1:
-        #             show_trend(
-        #                 f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #                 allover_count_win_loss,
-        #                 allover_count_win_loss_current,
-        #                 allover_count_win_loss_prev,
-        #                 home_away_over_under_by_team,
-        #                 df,
-        #                 game,
-        #                 game['Offense Over 100'],
-        #                 game['Defense Over 100']
-        #             )
-
-        #     elif game['All Formulas Under'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: All Under", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             allunder_count_win_loss,
-        #             allunder_count_win_loss_current,
-        #             allunder_count_win_loss_prev,
-        #             home_away_over_under_by_team_all_under,
-        #             df,
-        #             game,
-        #             game['Offense Under 100'],
-        #             game['Defense Under 100']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Efficiency/PPG over  (Tempo under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Efficiency & PPG Formulas Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             EPOver_TempoUnder_count_win_loss,
-        #             EPOver_TempoUnder_count_win_loss_current,
-        #             EPOver_TempoUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_EP_over,
-        #             df,
-        #             game,
-        #             game['Count of OFF over 100'],
-        #             game['Count of OFF over 110'],
-        #             game['Count of DEF under 100'],
-        #             game['Count of DEF under 95']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Tempo and Efficiency over (PPG under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo and Efficiency Formulas Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TEOver_PPGUnder_count_win_loss,
-        #             TEOver_PPGUnder_count_win_loss_current,
-        #             TEOver_PPGUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_TE_over,
-        #             df,
-        #             game,
-        #             game['OFF Under 100'],
-        #             game['OFF Under 95'],
-        #             game['DEF Under 100'],
-        #             game['DEF Under 95']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True) 
-
-        #     elif game['Tempo and PPG over (Efficiency Under)'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo and PPG Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TPOver_EFFUnder_count_win_loss,
-        #             TPOver_EFFUnder_count_win_loss_current,
-        #             TPOver_EFFUnder_count_win_loss_prev,
-        #             home_away_over_under_by_team_TP_over,
-        #             df,
-        #             game
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Just Tempo Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Tempo Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             TempoOver_count_win_loss,
-        #             TempoOver_count_win_loss_current,
-        #             TempoOver_count_win_loss_prev,
-        #             home_away_over_under_by_team_T_over,
-        #             df,
-        #             game,
-        #             game['Over 105 EFF']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)            
-
-        #     elif game['Just PPG Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only PPG Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             PPGover_count_win_loss,
-        #             PPGover_count_win_loss_current,
-        #             PPGover_count_win_loss_prev,
-        #             home_away_over_under_by_team_P_over,
-        #             df,
-        #             game,
-        #             game['Over 110 EFF']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-
-        #     elif game['Just Efficiency Over'] == 1:
-        #         st.markdown("<div style='margin-top:-16px'>", unsafe_allow_html=True)
-        #         show_trend(
-        #             "System Active: Only Efficiency Formula Over", #{game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-        #             EFFover_count_win_loss,
-        #             EFFover_count_win_loss_current,
-        #             EFFover_count_win_loss_prev,
-        #             home_away_over_under_by_team_E_over,
-        #             df,
-        #             game,
-        #             game['OFF Over 105'],
-        #             game['DEF Over 105']
-        #         )
-        #         st.markdown("</div>", unsafe_allow_html=True)
-        #     else: 
-        #         st.markdown('No Trends Active')
+                st_html(full_html, height=350, scrolling=True)
 
 with tab1: 
     ## Trend Selection
