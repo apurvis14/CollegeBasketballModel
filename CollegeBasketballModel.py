@@ -340,9 +340,9 @@ with tab9:
             
             elif game['All Formulas Under'] == 1:
                 trend_html = show_trend_html(
-                    allover_count_win_loss,
-                    allover_count_win_loss_current,
-                    allover_count_win_loss_prev,
+                    allunder_count_win_loss,
+                    allunder_count_win_loss_current,
+                    allunder_count_win_loss_prev,
                     home_away_over_under_by_team_all_under,
                     df,
                     game,
