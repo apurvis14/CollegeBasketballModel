@@ -395,7 +395,7 @@ with tab9:
         <details id="trend-details">
         <summary>
             <div style="line-height:1.3;">
-            <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+            <span style="font-size:22px; font-weight:bold;">{safe_header}</span>
             </div>
         </summary>
 
@@ -403,23 +403,21 @@ with tab9:
 
         </details>
 
-        <!-- Include iframe-resizer script -->
-        <script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
-
         <script>
-        // Function to resize iframe dynamically
-        function resizeIframe() {{
-            iFrameResizer.resize();
+        function resizeIframeToContent() {{
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({{ type: 'streamlit:resize', height: height }}, '*');
         }}
 
-        // Resize on load
-        window.addEventListener('load', resizeIframe);
+        window.addEventListener('load', resizeIframeToContent);
 
-        // Resize whenever <details> is toggled
-        document.getElementById('trend-details').addEventListener('toggle', resizeIframe);
+        document.getElementById('trend-details').addEventListener('toggle', () => {{
+            setTimeout(resizeIframeToContent, 300);
+        }});
 
-        // Optional: Resize if content changes dynamically (tables, charts, etc.)
-        const observer = new MutationObserver(resizeIframe);
+        const observer = new MutationObserver(() => {{
+            setTimeout(resizeIframeToContent, 300);
+        }});
         observer.observe(document.body, {{ childList: true, subtree: true }});
         </script>
 
@@ -428,10 +426,8 @@ with tab9:
         """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-        st_html(full_html, height=None, scrolling=False)
+        st_html(full_html, height=200, scrolling=True)
 
-        with st.expander(matchup_header, expanded=False):
-            st.components.v1.html(trend_html, height=600, scrolling=True)
             # st.markdown(f"""
             # <style>
             # details {{
