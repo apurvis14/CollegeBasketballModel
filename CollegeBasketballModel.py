@@ -406,7 +406,7 @@ with tab9:
         <script>
         function resizeIframeToContent() {{
             const height = document.body.scrollHeight;
-            window.parent.postMessage({{ type: 'streamlit:resize', height: height * 2 }}, '*');
+            window.parent.postMessage({{ type: 'streamlit:resize', height: height}}, '*');
         }}
 
         window.addEventListener('load', resizeIframeToContent);
@@ -426,7 +426,7 @@ with tab9:
         """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-        st_html(full_html, height=200, scrolling=True)
+        st_html(full_html, height=300, scrolling=False)
 
             # st.markdown(f"""
             # <style>
