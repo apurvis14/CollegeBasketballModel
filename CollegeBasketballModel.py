@@ -282,17 +282,17 @@ with tab9:
         )
 
         with st.container(border=False):
+            # Get the HTML snippet from your function
             trend_html = show_trend_html(
-                    # f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
-                    allover_count_win_loss,
-                    allover_count_win_loss_current,
-                    allover_count_win_loss_prev,
-                    home_away_over_under_by_team,
-                    df,
-                    game,
-                    game['Offense Over 100'],
-                    game['Defense Over 100']
-                )
+                allover_count_win_loss,
+                allover_count_win_loss_current,
+                allover_count_win_loss_prev,
+                home_away_over_under_by_team,
+                df,
+                game,
+                game['Offense Over 100'],
+                game['Defense Over 100']
+            )
 
             st.markdown(
                 f"""
@@ -322,7 +322,7 @@ with tab9:
                 }}
 
                 details[open] summary::before {{
-                    transform: rotate(0deg);
+                    transform: rotate(90deg);  /* rotate arrow when open */
                 }}
 
                 details > div {{
@@ -338,10 +338,17 @@ with tab9:
                         <div style="line-height:1.3;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {matchup_header}
+                            </span>
+                        </div>
+                    </summary>
+                    <div>
+                        {trend_html}
+                    </div>
                 </details>
                 """,
                 unsafe_allow_html=True
             )
+            
             # st.markdown(f"""
             # <style>
             # details {{
