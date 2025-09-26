@@ -430,7 +430,7 @@ with tab9:
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
         st_html(full_html, height=None, scrolling=False)
 
-        with st.expadner(matchup_header, expanded=False):
+        with st.expander(matchup_header, expanded=False):
             st.components.v1.html(trend_html, height=600, scrolling=True)
             # st.markdown(f"""
             # <style>
