@@ -273,7 +273,7 @@ with tab9:
                 background-color: #000000 !important; /* black background */
                 color: #ffffff !important;            /* white text for contrast */
                 border-radius: 0 0 8px 8px;           /* round bottom corners */
-                padding: 12px;
+                padding: 0px;
             }
             </style>
             """,
