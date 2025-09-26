@@ -1461,3 +1461,40 @@
         #     )
 
             # get the HTML snippet from your function (don't escape the whole block)
+
+
+
+
+        # st.markdown(
+        #     """
+        #     <style>
+        #     /* ==========  Expander Overall Card  ========== */
+        #     div[data-testid="stExpander"] {
+        #         background-color: #ffffff;        /* white frame around the expander */
+        #         border-radius: 8px;               /* rounded corners */
+        #         box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow */
+        #         margin-bottom: 1rem;
+        #         color: #000000 !important;        /* default text color (header) */
+        #     }
+
+        #     /* ==========  Header Bar  ========== */
+        #     div[data-testid="stExpander"] > div:first-child {
+        #         background-color: #000000;        /* header background */
+        #         color: #ffffff !important;        /* header text */
+        #         border-radius: 8px 8px 0 0;       /* round top corners only */
+        #         padding: 0.5rem 0.75rem;
+        #         font-weight: 600;                 /* optional: slightly bolder header */
+        #     }
+
+        #     /* ==========  Expanded Body  ========== */
+        #     /* This targets the actual container revealed when you expand */
+        #     div[data-testid="stExpander"] div[role="region"] {
+        #         background-color: #000000 !important; /* black background */
+        #         color: #ffffff !important;            /* white text for contrast */
+        #         border-radius: 0 0 8px 8px;           /* round bottom corners */
+        #         padding: 0px;
+        #     }
+        #     </style>
+        #     """,
+        #     unsafe_allow_html=True
+        # )

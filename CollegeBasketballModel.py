@@ -231,9 +231,9 @@ with tab9:
         home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">' 
 
 
-        matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
-                   f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
+        # matchup = (f"{game['Away Team']} @ {game['Home Team']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+        #            f"Total: {game['Book Total']} &nbsp;&nbsp;|&nbsp;&nbsp; "
+        #            f"Season Trend Over Win %: {(percent_cur)} &nbsp;&nbsp;|&nbsp;&nbsp; Trend Size: {count_cur}")
         
         matchup_header = f"""
                 <div style="line-height:1.3;">
@@ -246,39 +246,6 @@ with tab9:
                 </div>
                 """
 
-        # st.markdown(
-        #     """
-        #     <style>
-        #     /* ==========  Expander Overall Card  ========== */
-        #     div[data-testid="stExpander"] {
-        #         background-color: #ffffff;        /* white frame around the expander */
-        #         border-radius: 8px;               /* rounded corners */
-        #         box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow */
-        #         margin-bottom: 1rem;
-        #         color: #000000 !important;        /* default text color (header) */
-        #     }
-
-        #     /* ==========  Header Bar  ========== */
-        #     div[data-testid="stExpander"] > div:first-child {
-        #         background-color: #000000;        /* header background */
-        #         color: #ffffff !important;        /* header text */
-        #         border-radius: 8px 8px 0 0;       /* round top corners only */
-        #         padding: 0.5rem 0.75rem;
-        #         font-weight: 600;                 /* optional: slightly bolder header */
-        #     }
-
-        #     /* ==========  Expanded Body  ========== */
-        #     /* This targets the actual container revealed when you expand */
-        #     div[data-testid="stExpander"] div[role="region"] {
-        #         background-color: #000000 !important; /* black background */
-        #         color: #ffffff !important;            /* white text for contrast */
-        #         border-radius: 0 0 8px 8px;           /* round bottom corners */
-        #         padding: 0px;
-        #     }
-        #     </style>
-        #     """,
-        #     unsafe_allow_html=True
-        # )
         with st.container(border=False):
             if game['All Formulas Over'] == 1:
                 trend_html = show_trend_html(
