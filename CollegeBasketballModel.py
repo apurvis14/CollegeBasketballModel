@@ -336,6 +336,10 @@ with tab9:
                         <div style="line-height:1.3;">
                             <span style="font-size:22px; font-weight:bold;">
                                 {matchup_header}
+                    </summary>
+
+                    {trend_html}
+                    
                 </details>
                 """,
                 unsafe_allow_html=True
