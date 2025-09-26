@@ -360,6 +360,10 @@ with tab9:
         safe_header = py_html.escape(matchup_header)
 
         full_html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
         <style>
         details {{ background-color:#ffffff; color:#000; border-radius:8px; padding:0; margin:0; }}
         summary {{ list-style:none; cursor:pointer; display:flex; align-items:center; padding:0.75rem 1rem; font-weight:600; }}
