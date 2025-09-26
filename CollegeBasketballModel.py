@@ -86,7 +86,7 @@ with tab9:
     today = datetime(2025, 2, 27).date()
 
     # Names of Columns
-    home_col = 'Home Conference'
+    home_col = 'Home Conference' 
     away_col = 'Away Conference'
 
     # Clean Sorted conference list

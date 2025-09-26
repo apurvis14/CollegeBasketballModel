@@ -920,7 +920,56 @@ def show_trend(title: str,
                                total_map.get(away,"N/A"),
                                f"Away: {away_map.get(away,'N/A')}"),
                     unsafe_allow_html=True)
-        
+
+def metric_html(label, percent, win, loss):
+    """Return a colored HTML snippet for a single record box."""
+    if percent is None:
+        percent_display = "N/A"
+    elif percent >= 60:
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent >= 55:
+        percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
+    elif 46 < percent < 55:
+        percent_display = f"<span style='color:white; font-weight:bold'><i>{percent}%</i></span>"
+    elif 40 <= percent <= 46:
+        percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent < 40:
+        percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+    else:
+        percent_display = f"<i>{percent}%</i>"
+
+    units = round(win * 0.909 - loss, 2)
+    if units >= 15:
+        units_display = f"<span style='color:darkgreen; font-weight:bold'>{units}</span>"
+    elif 10 <= units < 15:
+        units_display = f"<span style='color:green; font-weight:bold'>{units}</span>"
+    elif 0 <= units < 10:
+        units_display = f"<span style='color:lightgreen; font-weight:bold'>{units}</span>"
+    else:
+        units_display = f"<span style='color:red; font-weight:bold'>{units}</span>"
+
+    fade_units = round(loss * 0.909 - win, 2)
+    if fade_units >= 15:
+        fade_display = f"<span style='color:darkgreen; font-weight:bold'>({fade_units})</span>"
+    elif 10 <= fade_units < 15:
+        fade_display = f"<span style='color:green; font-weight:bold'>({fade_units})</span>"
+    elif 0 <= fade_units < 10:
+        fade_display = f"<span style='color:lightgreen; font-weight:bold'>({fade_units})</span>"
+    else:
+        fade_display = f"<span style='color:red; font-weight:bold'>({fade_units})</span>"
+
+    # Box for this metric
+    return f"""
+        <div style='text-align:center; padding:4px 8px;'>
+            <div style='font-size:15px; font-weight:bold; margin-bottom:4px;'>{label}</div>
+            <div>Record: <span style='color:goldenrod'>{win}-{loss}</span></div>
+            <div>Win%: {percent_display}</div>
+            <div>Over: {units_display} units</div>
+            <div>Under: {fade_display} units</div>
+        </div>
+    """
+
+
 def show_trend_html(
                      metrics,
                      metricscurrent,
@@ -963,24 +1012,17 @@ def show_trend_html(
     away_record = away_record_map.get(safe_away_team, "N/A")
     total_away = total_record_map.get(safe_away_team, "N/A")
 
+    metric_html_all = metric_html("All Seasons", pct_all, win, loss)
+    metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
+    metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
+
     html1 = f"""
-    <div style="border:3px solid #DAA520; border-radius:8px; padding:0px; background-color:#ffffff; margin-bottom:0px;">
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:-100px;">
         <!-- Win metrics -->
         <div style="display:flex; justify-content:space-around; font-size:14px;">
-            <div style="text-align:center;">
-                <strong>All Seasons</strong><br>
-                Win%: {pct_all}<br>
-                W: {win} / L: {loss} <br>
-            </div>
-            <div style="text-align:center;">
-                <strong>Current Season</strong><br>
-                Win%: {pct_cur}<br>
-                W: {win_cur} / L: {loss_cur} <br>
-            </div>
-            <div style="text-align:center;">
-                <strong>Previous Season</strong><br>
-                Win%: {pct_prev}<br>
-                W: {win_prev} / L: {loss_prev} <br>
+            {metric_html_all}
+            {metric_html_current}
+            {metric_html_prev}
             </div>
         </div>    
     
