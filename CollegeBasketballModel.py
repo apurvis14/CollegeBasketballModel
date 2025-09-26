@@ -282,7 +282,6 @@ with tab9:
         )
 
         with st.container(border=False):
-            # Get the HTML snippet from your function
             trend_html = show_trend_html(
                 allover_count_win_loss,
                 allover_count_win_loss_current,
@@ -322,14 +321,7 @@ with tab9:
                 }}
 
                 details[open] summary::before {{
-                    transform: rotate(90deg);  /* rotate arrow when open */
-                }}
-
-                details > div {{
-                    background-color: #000000;
-                    color: #ffffff;
-                    padding: 12px 16px;
-                    border-radius: 0 0 8px 8px;
+                    transform: rotate(90deg);
                 }}
                 </style>
 
@@ -341,14 +333,15 @@ with tab9:
                             </span>
                         </div>
                     </summary>
-                    <div>
-                        {trend_html}
-                    </div>
+
+                    {trend_html}
+
                 </details>
                 """,
                 unsafe_allow_html=True
             )
-            
+
+
             # st.markdown(f"""
             # <style>
             # details {{
