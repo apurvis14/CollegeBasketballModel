@@ -1396,3 +1396,68 @@
             #             """,
             #             unsafe_allow_html=True
             #         )
+
+        # with st.container(border=False):
+        #     trend_html = show_trend_html(
+        #             # f"Trend: All Over – {game['Offense Over 100']} OFF EFF over 100 / {game['Defense Over 100']} DEF EFF over 100",
+        #             allover_count_win_loss,
+        #             allover_count_win_loss_current,
+        #             allover_count_win_loss_prev,
+        #             home_away_over_under_by_team,
+        #             df,
+        #             game,
+        #             game['Offense Over 100'],
+        #             game['Defense Over 100']
+        #         )
+
+        #     st.markdown(
+        #         f"""
+        #         <style>
+        #         details {{
+        #             background-color: #ffffff;
+        #             color: #000000;
+        #             border-radius: 8px;
+        #             padding: 0;
+        #             margin: 0;
+        #         }}
+
+        #         summary {{
+        #             list-style: none;
+        #             cursor: pointer;
+        #             display: flex;
+        #             align-items: center;
+        #             padding: 0.75rem 1rem;
+        #             font-weight: 600;
+        #         }}
+
+        #         summary::before {{
+        #             content: "▶";
+        #             display: inline-block;
+        #             margin-right: 8px;
+        #             transition: transform 0.2s ease;
+        #         }}
+
+        #         details[open] summary::before {{
+        #             transform: rotate(0deg);
+        #         }}
+
+        #         details > div {{
+        #             background-color: #000000;
+        #             color: #ffffff;
+        #             padding: 12px 16px;
+        #             border-radius: 0 0 8px 8px;
+        #         }}
+        #         </style>
+
+        #         <details>
+        #             <summary>
+        #                 <div style="line-height:1.3;">
+        #                     <span style="font-size:22px; font-weight:bold;">
+        #                         {matchup_header}
+
+        #         </details>
+        #         """,
+        #         unsafe_allow_html=True
+        #     )
+
+            # get the HTML snippet from your function (don't escape the whole block)
