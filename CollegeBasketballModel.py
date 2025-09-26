@@ -98,6 +98,7 @@ with tab9:
     # Put All Conferences into Variable
     all_confs = sorted(conf_series.unique(), key=lambda s: s.upper())
 
+
     st.markdown(
     """
     <style>
