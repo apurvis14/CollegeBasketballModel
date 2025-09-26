@@ -1029,8 +1029,8 @@ def show_trend_html(
     away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
     home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
 
-    away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:12px; vertical-align:middle;">'
-    home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:12px; vertical-align:middle;">'
+    away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:15px; vertical-align:middle;">'
+    home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:15px; vertical-align:middle;">'
 
     html1 = f"""
     <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
