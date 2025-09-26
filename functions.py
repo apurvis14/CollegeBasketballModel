@@ -963,7 +963,7 @@ def metric_html(label, percent, win, loss):
         <div style='text-align:center; padding:4px 8px;'>
             <!-- Label (bigger + underlined) -->
             <div style='
-                font-size:18px;            /* bigger text */
+                font-size:20px;            /* bigger text */
                 font-weight:bold;
                 text-decoration:underline; /* underline */
                 margin-bottom:10px;        /* extra space below label */
@@ -972,14 +972,11 @@ def metric_html(label, percent, win, loss):
             </div>
 
             <!-- Record -->
-            <div style='margin-bottom:6px;'>Record: <span style='color:goldenrod'>{win}-{loss}</span></div>
-
-            <!-- Win % -->
-            <div style='margin-bottom:6px;'>Win%: {percent_display}</div>
+            <div style='margin-bottom:6px; font-weight:bold;'>Record: <span style='color:goldenrod'>{win}-{loss} ({percent_display})</span></div>
 
             <!-- Over/Under Units -->
-            <div style='margin-bottom:6px;'>Over: {units_display} units</div>
-            <div style='margin-bottom:6px;'>Under: {fade_display} units</div>
+            <div style='margin-bottom:6px; font-weight:bold;'>Over: {units_display} units</div>
+            <div style='margin-bottom:6px; font-weight:bold;'>Under: {fade_display} units</div>
         </div>
     """
 
@@ -1030,7 +1027,7 @@ def show_trend_html(
     metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
 
     html1 = f"""
-    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:0px;">
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
         <!-- Win metrics -->
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             {metric_html_all}
