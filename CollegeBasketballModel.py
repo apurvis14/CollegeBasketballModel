@@ -395,7 +395,7 @@ with tab9:
         <details id="trend-details">
         <summary>
             <div style="line-height:1.3;">
-            <span style="font-size:22px; font-weight:bold;">{safe_header}</span>
+            <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
             </div>
         </summary>
 
