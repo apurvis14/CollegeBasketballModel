@@ -1026,6 +1026,12 @@ def show_trend_html(
     metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
     metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
 
+    away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
+    home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
+
+    away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
+    home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
+
     html1 = f"""
     <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
         <!-- Win metrics -->
@@ -1038,22 +1044,22 @@ def show_trend_html(
         <!-- Team headers -->
         <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
             <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">{safe_home_team} vs Trend</h4>
+                <h4 style="text-decoration:underline; margin:0;">{away_img}{safe_away_team} vs Trend</h4>
             </div>
             <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">{safe_away_team} vs Trend</h4>
+                <h4 style="text-decoration:underline; margin:0;">{home_img}{safe_home_team} vs Trend</h4>
             </div>
         </div>
 
         <!-- Records -->
         <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:8px;">
             <div style="text-align:center;">
-                <div><b>Total: {total_home}</b></div>
-                <div><b>Home: {home_record}</b></div>
+                <div><b>Total: {total_away}</b></div>
+                <div><b>Home: {away_record}</b></div>
             </div>
             <div style="text-align:center;">
-                <div><b>Total: {total_away}</b></div>
-                <div><b>Away: {away_record}</b></div>
+                <div><b>Total: {total_home}</b></div>
+                <div><b>Away: {home_record}</b></div>
             </div>
         </div>
     </div>
