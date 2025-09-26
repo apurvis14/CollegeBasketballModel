@@ -365,13 +365,34 @@ with tab9:
         <head>
         <meta charset="UTF-8">
         <style>
-        details {{ background-color:#ffffff; color:#000; border-radius:8px; padding:0; margin:0; }}
-        summary {{ list-style:none; cursor:pointer; display:flex; align-items:center; padding:0.75rem 1rem; font-weight:600; }}
-        summary::before {{ content: "▶"; margin-right:8px; transition: transform 0.2s ease; }}
-        details[open] summary::before {{ transform: rotate(90deg); }}
+        details {{
+            background-color:#ffffff;
+            color:#000;
+            border-radius:8px;
+            padding:0;
+            margin:0;
+        }}
+        summary {{
+            list-style:none;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            padding:0.75rem 1rem;
+            font-weight:600;
+        }}
+        summary::before {{
+            content:"▶";
+            margin-right:8px;
+            transition:transform 0.2s ease;
+        }}
+        details[open] summary::before {{
+            transform:rotate(90deg);
+        }}
         </style>
+        </head>
+        <body>
 
-        <details id="trend details">
+        <details id="trend-details">
         <summary>
             <div style="line-height:1.3;">
             <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
@@ -381,20 +402,21 @@ with tab9:
         {trend_html}
 
         </details>
+
+        <!-- Include iframe-resizer contentWindow script -->
+        <script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
+
         <script>
-        // Post the body height to Streamlit whenever <details> toggles
+        // Manually trigger resize when <details> toggles
         const details = document.getElementById('trend-details');
-        const resize = () => {{
-            const h = document.body.scrollHeight;
-            window.parent.postMessage({{ streamlitResize: h }}, '*');
-        }};
-        details.addEventListener('toggle', resize);
-        window.addEventListener('load', resize);
+        details.addEventListener('toggle', () => {{
+            iFrameResizer.resize();
+        }});
         </script>
 
         </body>
         </html>
-        """
+"""
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
         st_html(full_html, height=100, scrolling=False)
