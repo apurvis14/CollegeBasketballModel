@@ -968,19 +968,19 @@ def show_trend_html(
         <!-- Win metrics -->
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             <div style="text-align:center;">
-                <strong>All Seasons</strong><br>
+                <strong><u>All Seasons<u></strong><br>
                 Win%: {pct_all}<br>
-                W: {win} / L: {loss}
+                W: {win} / L: {loss} <br>
             </div>
             <div style="text-align:center;">
-                <strong>Current Season</strong><br>
+                <strong><u>Current Season<u></strong><br>
                 Win%: {pct_cur}<br>
-                W: {win_cur} / L: {loss_cur}
+                W: {win_cur} / L: {loss_cur} <br>
             </div>
             <div style="text-align:center;">
-                <strong>Previous Season</strong><br>
+                <strong><u>Previous Season</strong><u><br>
                 Win%: {pct_prev}<br>
-                W: {win_prev} / L: {loss_prev}
+                W: {win_prev} / L: {loss_prev} <br>
             </div>
         </div>    
     
