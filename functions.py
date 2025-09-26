@@ -964,21 +964,21 @@ def show_trend_html(
     total_away = total_record_map.get(safe_away_team, "N/A")
 
     html1 = f"""
-    <div style="border:1px solid #cccccc; border-radius:8px; padding:12px; background-color:#ffffff; margin-bottom:8px;">
+    <div style="border:3px solid #DAA520; border-radius:8px; padding:0px; background-color:#ffffff; margin-bottom:0px;">
         <!-- Win metrics -->
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             <div style="text-align:center;">
-                <strong><u>All Seasons<u></strong><br>
+                <strong>All Seasons</strong><br>
                 Win%: {pct_all}<br>
                 W: {win} / L: {loss} <br>
             </div>
             <div style="text-align:center;">
-                <strong><u>Current Season<u></strong><br>
+                <strong>Current Season</strong><br>
                 Win%: {pct_cur}<br>
                 W: {win_cur} / L: {loss_cur} <br>
             </div>
             <div style="text-align:center;">
-                <strong><u>Previous Season</strong><u><br>
+                <strong>Previous Season</strong><br>
                 Win%: {pct_prev}<br>
                 W: {win_prev} / L: {loss_prev} <br>
             </div>
