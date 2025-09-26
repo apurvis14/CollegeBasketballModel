@@ -419,7 +419,7 @@ with tab9:
 """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-        st_html(full_html, height=100, scrolling=False)
+        st_html(full_html, height=300, scrolling=False)
             # st.markdown(f"""
             # <style>
             # details {{
