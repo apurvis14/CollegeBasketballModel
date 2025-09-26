@@ -1035,7 +1035,7 @@ def show_trend_html(
     html1 = f"""
     <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
         <!-- Win metrics -->
-        <div style="display:flex; justify-content:space-around; font-size:14px;">
+        <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:4px">
             {metric_html_all}
             {metric_html_current}
             {metric_html_prev}
