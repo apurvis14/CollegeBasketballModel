@@ -295,13 +295,14 @@ with tab9:
                 full_html = f"""
                 <style>
                 details {{
-                    background-color:#ffffff;
-                    color:#000;
+                    background-color:#000000;
+                    color:#ffffff;
                     border-radius:8px;
                     padding:0;
                     margin:0;
                 }}
                 summary {{
+                    background-color:#ffffff;
                     list-style:none;
                     cursor:pointer;
                     display:flex;
