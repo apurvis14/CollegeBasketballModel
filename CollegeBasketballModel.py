@@ -395,7 +395,7 @@ with tab9:
         <details id="trend-details">
         <summary>
             <div style="line-height:1.3;">
-            <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+            <span style="font-size:22px; font-weight:bold;">{safe_header}</span>
             </div>
         </summary>
 
@@ -403,23 +403,32 @@ with tab9:
 
         </details>
 
-        <!-- Include iframe-resizer contentWindow script -->
+        <!-- Include iframe-resizer script -->
         <script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
 
         <script>
-        // Manually trigger resize when <details> toggles
-        const details = document.getElementById('trend-details');
-        details.addEventListener('toggle', () => {{
+        // Function to resize iframe dynamically
+        function resizeIframe() {{
             iFrameResizer.resize();
-        }});
+        }}
+
+        // Resize on load
+        window.addEventListener('load', resizeIframe);
+
+        // Resize whenever <details> is toggled
+        document.getElementById('trend-details').addEventListener('toggle', resizeIframe);
+
+        // Optional: Resize if content changes dynamically (tables, charts, etc.)
+        const observer = new MutationObserver(resizeIframe);
+        observer.observe(document.body, {{ childList: true, subtree: true }});
         </script>
 
         </body>
         </html>
-"""
+        """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-        st_html(full_html, height=200, scrolling=False)
+        st_html(full_html, height=None, scrolling=False)
             # st.markdown(f"""
             # <style>
             # details {{
