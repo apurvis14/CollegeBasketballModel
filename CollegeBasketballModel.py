@@ -1030,7 +1030,7 @@ with tab9:
         #         )
         #         st.markdown("</div>", unsafe_allow_html=True)
         #     else: 
-        #         st.markdown('No Trends Active')
+        #         st.markdown('No Trends Active') 
 
 with tab1: 
     ## Trend Selection

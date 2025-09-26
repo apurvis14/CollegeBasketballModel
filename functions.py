@@ -961,14 +961,27 @@ def metric_html(label, percent, win, loss):
     # Box for this metric
     return f"""
         <div style='text-align:center; padding:4px 8px;'>
-            <div style='font-size:15px; font-weight:bold; margin-bottom:4px;'>{label}</div>
-            <div>Record: <span style='color:goldenrod'>{win}-{loss}</span></div>
-            <div>Win%: {percent_display}</div>
-            <div>Over: {units_display} units</div>
-            <div>Under: {fade_display} units</div>
+            <!-- Label (bigger + underlined) -->
+            <div style='
+                font-size:18px;            /* bigger text */
+                font-weight:bold;
+                text-decoration:underline; /* underline */
+                margin-bottom:10px;        /* extra space below label */
+            '>
+                {label}
+            </div>
+
+            <!-- Record -->
+            <div style='margin-bottom:6px;'>Record: <span style='color:goldenrod'>{win}-{loss}</span></div>
+
+            <!-- Win % -->
+            <div style='margin-bottom:6px;'>Win%: {percent_display}</div>
+
+            <!-- Over/Under Units -->
+            <div style='margin-bottom:6px;'>Over: {units_display} units</div>
+            <div style='margin-bottom:6px;'>Under: {fade_display} units</div>
         </div>
     """
-
 
 def show_trend_html(
                      metrics,
