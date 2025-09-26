@@ -280,63 +280,469 @@ with tab9:
             unsafe_allow_html=True
         )
         with st.container(border=False):
-            trend_html = show_trend_html(
-                allover_count_win_loss,
-                allover_count_win_loss_current,
-                allover_count_win_loss_prev,
-                home_away_over_under_by_team,
-                df,
-                game,
-                game['Offense Over 100'],
-                game['Defense Over 100']
-            )
+            if game['All Formulas Over'] == 1:
+                trend_html = show_trend_html(
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )
 
-            full_html = f"""
-            <style>
-            details {{
-                background-color:#ffffff;
-                color:#000;
-                border-radius:8px;
-                padding:0;
-                margin:0;
-            }}
-            summary {{
-                list-style:none;
-                cursor:pointer;
-                display:flex;
-                align-items:center;
-                padding:0.75rem 1rem;
-                font-weight:600;
-            }}
-            summary::before {{
-                content:"▶";
-                margin-right:8px;
-                transition:transform 0.2s ease;
-            }}
-            details[open] summary::before {{
-                transform:rotate(90deg);
-            }}
-            </style>
-            </head>
-            <body>
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
 
-            <details id="trend-details">
-            <summary>
-                <div style="line-height:1.3;">
-                <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                </div>
-            </summary>
-            <div style="padding:0; margin:0;">
-            {trend_html}
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
 
-            </details>
+                </details>
 
-            <script>
-            """
+                <script>
+                """
 
-            # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-            st_html(full_html, height=300, scrolling=False)
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+            
+            elif game['All Formulas Under'] == 1:
+                trend_html = show_trend_html(
+                    allover_count_win_loss,
+                    allover_count_win_loss_current,
+                    allover_count_win_loss_prev,
+                    home_away_over_under_by_team_all_under,
+                    df,
+                    game,
+                    game['Offense Over 100'],
+                    game['Defense Over 100']
+                )
 
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+            
+            elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+                trend_html = show_trend_html(
+                    EPOver_TempoUnder_count_win_loss,
+                    EPOver_TempoUnder_count_win_loss_current,
+                    EPOver_TempoUnder_count_win_loss_prev,
+                    home_away_over_under_by_team_EP_over,
+                    df,
+                    game,
+                    game['Count of OFF over 100'],
+                    game['Count of OFF over 110'],
+                    game['Count of DEF under 100'],
+                    game['Count of DEF under 95']
+                )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+
+            elif game['Tempo and Efficiency over (PPG under)'] == 1:
+                trend_html = show_trend_html(
+                    TEOver_PPGUnder_count_win_loss,
+                    TEOver_PPGUnder_count_win_loss_current,
+                    TEOver_PPGUnder_count_win_loss_prev,
+                    home_away_over_under_by_team_TE_over,
+                    df,
+                    game,
+                    game['OFF Under 100'],
+                    game['OFF Under 95'],
+                    game['DEF Under 100'],
+                    game['DEF Under 95']
+                )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+            
+            elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+                trend_html = show_trend_html(
+                    TPOver_EFFUnder_count_win_loss,
+                    TPOver_EFFUnder_count_win_loss_current,
+                    TPOver_EFFUnder_count_win_loss_prev,
+                    home_away_over_under_by_team_TP_over,
+                    df,
+                    game
+                )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+
+            elif game['Just Tempo Over'] == 1:
+                trend_html = show_trend_html(
+                        TempoOver_count_win_loss,
+                        TempoOver_count_win_loss_current,
+                        TempoOver_count_win_loss_prev,
+                        home_away_over_under_by_team_T_over,
+                        df,
+                        game,
+                        game['Over 105 EFF']
+                    )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+            
+            elif game['Just PPG Over'] == 1:
+                trend_html = show_trend_html(
+                        PPGover_count_win_loss,
+                        PPGover_count_win_loss_current,
+                        PPGover_count_win_loss_prev,
+                        home_away_over_under_by_team_P_over,
+                        df,
+                        game,
+                        game['Over 110 EFF']
+                    )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
+
+            elif game['Just Efficiency Over'] == 1:
+                trend_html = show_trend_html(
+                        EFFover_count_win_loss,
+                        EFFover_count_win_loss_current,
+                        EFFover_count_win_loss_prev,
+                        home_away_over_under_by_team_E_over,
+                        df,
+                        game,
+                        game['OFF Over 105'],
+                        game['DEF Over 105']
+                    )
+
+                full_html = f"""
+                <style>
+                details {{
+                    background-color:#ffffff;
+                    color:#000;
+                    border-radius:8px;
+                    padding:0;
+                    margin:0;
+                }}
+                summary {{
+                    list-style:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    padding:0.75rem 1rem;
+                    font-weight:600;
+                }}
+                summary::before {{
+                    content:"▶";
+                    margin-right:8px;
+                    transition:transform 0.2s ease;
+                }}
+                details[open] summary::before {{
+                    transform:rotate(90deg);
+                }}
+                </style>
+                </head>
+                <body>
+
+                <details id="trend-details">
+                <summary>
+                    <div style="line-height:1.3;">
+                    <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                    </div>
+                </summary>
+                <div style="padding:0; margin:0;">
+                {trend_html}
+
+                </details>
+
+                <script>
+                """
+
+                # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                st_html(full_html, height=300, scrolling=False)
             # st.markdown(f"""
             # <style>
             # details {{
@@ -658,7 +1064,7 @@ with tab1:
         results_all = {}
         results_cur = {}
         results_prev = {}
-        
+
 
         for o, d in combinations:
             key = (o, d)
