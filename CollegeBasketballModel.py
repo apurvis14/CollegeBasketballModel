@@ -14,7 +14,7 @@ from functions import (
     home_away_over_under_by_team, home_away_over_under_by_team_all_under, home_away_over_under_by_team_EP_over,
     home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TP_over,
     home_away_over_under_by_team_T_over, home_away_over_under_by_team_P_over, home_away_over_under_by_team_E_over,
-    get_base64, show_trend_html)
+    get_base64, show_trend_html, details_html)
 
 from datetime import datetime
 from PIL import Image
@@ -169,14 +169,14 @@ with tab9:
             d = game['Defense Over 100']
 
             count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['All Formulas Under'] == 1:
             o = game['Offense Under 100']
             d = game['Defense Under 100']
 
             count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Efficiency/PPG over  (Tempo under)'] == 1:
             o1 = game['Count of OFF over 100']
@@ -185,7 +185,7 @@ with tab9:
             d2 = game['Count of DEF under 95']
 
             count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Tempo and Efficiency over (PPG under)'] == 1:
             o1 = game['OFF Under 100']
@@ -194,29 +194,29 @@ with tab9:
             d2 = game['DEF Under 95']
 
             count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Tempo and PPG over (Efficiency Under)'] == 1:
             count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Just Tempo Over'] == 1:
             val = game['Over 105 EFF']
 
             count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Just PPG Over'] == 1:
             val = game['Over 110 EFF']
 
             count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, o, d)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
         elif game['Just Efficiency Over'] == 1:
             o = game['OFF Over 105']
             d = game['DEF Over 105']
             count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
-            percent_cur = round((win_cur/count_cur)*100,2)
+            percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
             
         else:
             percent_cur = 'None'
@@ -224,8 +224,8 @@ with tab9:
 
         percent_cur1 = display_metrics_expand(percent_cur)
         
-        away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
-        home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
+        away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
+        home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
 
         away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
         home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">' 
@@ -298,7 +298,7 @@ with tab9:
                 """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(full_html, height=350, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
             
             elif game['All Formulas Under'] == 1:
                 trend_html = show_trend_html(
