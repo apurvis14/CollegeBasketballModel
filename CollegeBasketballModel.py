@@ -326,7 +326,7 @@ with tab9:
                 <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
                 </div>
             </summary>
-            <div style="padding:0; margin:0;bottom-padding:-10;">
+            <div style="padding:0; margin:0;">
             {trend_html}
 
             </details>

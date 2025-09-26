@@ -942,6 +942,10 @@ def show_trend_html(
     pct_cur = pct(win_cur, count_cur)
     pct_prev = pct(win_prev, count_prev)
 
+    all_szn = display_metrics(pct_all, win, loss)
+    current_szn = display_metrics(pct_cur, win_cur, loss_cur)
+    past_szn = display_metrics(pct_prev, win_prev, loss_cur)
+
         # --- Prepare mappings for quick lookup ---
     records_df = records_func(df, *args).reset_index().rename(columns={'index': 'Team'})
     home_record_map = records_df.set_index('Team')['Home Record'].to_dict()
@@ -987,8 +991,7 @@ def show_trend_html(
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             <div style="text-align:center;">
                 <strong>All Seasons</strong><br>
-                Win%: {pct_all}<br>
-                W: {win} / L: {loss}
+                {all_szn}
             </div>
             <div style="text-align:center;">
                 <strong>Current Season</strong><br>
