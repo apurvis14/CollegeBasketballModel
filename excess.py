@@ -1796,3 +1796,47 @@
         #         st.markdown("</div>", unsafe_allow_html=True)
         #     else: 
         #         st.markdown('No Trends Active')
+
+
+                # full_html = f"""
+                # <style>
+                # details {{
+                #     background-color:#ffffff;
+                #     color:#000;
+                #     border-radius:8px;
+                #     padding:0;
+                #     margin:0;
+                # }}
+                # summary {{
+                #     list-style:none;
+                #     cursor:pointer;
+                #     display:flex;
+                #     align-items:center;
+                #     padding:0.75rem 1rem;
+                #     font-weight:600;
+                # }}
+                # summary::before {{
+                #     content:"▶";
+                #     margin-right:8px;
+                #     transition:transform 0.2s ease;
+                # }}
+                # details[open] summary::before {{
+                #     transform:rotate(90deg);
+                # }}
+                # </style>
+                # </head>
+                # <body>
+
+                # <details id="trend-details">
+                # <summary>
+                #     <div style="line-height:1.3;">
+                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+                #     </div>
+                # </summary>
+                # <div style="padding:0; margin:0;">
+                # {trend_html}
+
+                # </details>
+
+                # <script>
+                # """

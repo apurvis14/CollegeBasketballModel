@@ -269,49 +269,6 @@ with tab9:
                     game['Defense Under 100']
                 )
 
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
-
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
             
@@ -328,49 +285,6 @@ with tab9:
                     game['Count of DEF under 100'],
                     game['Count of DEF under 95']
                 )
-
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
@@ -389,49 +303,6 @@ with tab9:
                     game['DEF Under 95']
                 )
 
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
-
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
             
@@ -444,49 +315,6 @@ with tab9:
                     df,
                     game
                 )
-
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
@@ -502,49 +330,6 @@ with tab9:
                         game['Over 105 EFF']
                     )
 
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
-
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
             
@@ -558,49 +343,6 @@ with tab9:
                         game,
                         game['Over 110 EFF']
                     )
-
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
@@ -616,50 +358,7 @@ with tab9:
                         game['OFF Over 105'],
                         game['DEF Over 105']
                     )
-
-                # full_html = f"""
-                # <style>
-                # details {{
-                #     background-color:#ffffff;
-                #     color:#000;
-                #     border-radius:8px;
-                #     padding:0;
-                #     margin:0;
-                # }}
-                # summary {{
-                #     list-style:none;
-                #     cursor:pointer;
-                #     display:flex;
-                #     align-items:center;
-                #     padding:0.75rem 1rem;
-                #     font-weight:600;
-                # }}
-                # summary::before {{
-                #     content:"▶";
-                #     margin-right:8px;
-                #     transition:transform 0.2s ease;
-                # }}
-                # details[open] summary::before {{
-                #     transform:rotate(90deg);
-                # }}
-                # </style>
-                # </head>
-                # <body>
-
-                # <details id="trend-details">
-                # <summary>
-                #     <div style="line-height:1.3;">
-                #     <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-                #     </div>
-                # </summary>
-                # <div style="padding:0; margin:0;">
-                # {trend_html}
-
-                # </details>
-
-                # <script>
-                # """
-
+                
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=350, scrolling=True)
 
