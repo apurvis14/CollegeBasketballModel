@@ -317,6 +317,13 @@ with tab9:
                 details[open] summary::before {{
                     transform:rotate(90deg);
                 }}
+                /* Inner content (the part revealed when open) */
+                details > div {{
+                    background-color: #000000;   /* Black body */
+                    color: #ffffff;              /* White text for contrast */
+                    padding: 1rem;
+                    border-radius: 0 0 8px 8px;  /* Round bottom corners only */
+                }}
                 </style>
                 </head>
                 <body>
