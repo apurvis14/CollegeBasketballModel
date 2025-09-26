@@ -658,6 +658,7 @@ with tab1:
         results_all = {}
         results_cur = {}
         results_prev = {}
+        
 
         for o, d in combinations:
             key = (o, d)

@@ -991,7 +991,8 @@ def show_trend_html(
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             <div style="text-align:center;">
                 <strong>All Seasons</strong><br>
-                {all_szn}
+                Win%: {pct_all}<br>
+                W: {win} / L: {loss}
             </div>
             <div style="text-align:center;">
                 <strong>Current Season</strong><br>
