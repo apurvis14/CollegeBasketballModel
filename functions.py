@@ -1063,7 +1063,7 @@ def show_trend_html(
     <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
         <div style="display:flex; justify-content:space-around; font-size:26px; margin-bottom:4px">
             <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">System Active: {title}</h4>
+                <h4 style="font-style:italic; margin:0;">System Active: {title}</h4>
             </div>
         </div>  
         <!-- Win metrics -->
