@@ -360,10 +360,6 @@ with tab9:
         safe_header = py_html.escape(matchup_header)
 
         full_html = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <meta charset="UTF-8">
         <style>
         details {{
             background-color:#ffffff;
@@ -377,7 +373,7 @@ with tab9:
             cursor:pointer;
             display:flex;
             align-items:center;
-            padding:0.75rem 1rem;
+            padding:0rem 1rem;
             font-weight:600;
         }}
         summary::before {{
@@ -404,25 +400,6 @@ with tab9:
         </details>
 
         <script>
-        function resizeIframeToContent() {{
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({{ type: 'streamlit:resize', height: height}}, '*');
-        }}
-
-        window.addEventListener('load', resizeIframeToContent);
-
-        document.getElementById('trend-details').addEventListener('toggle', () => {{
-            setTimeout(resizeIframeToContent, 300);
-        }});
-
-        const observer = new MutationObserver(() => {{
-            setTimeout(resizeIframeToContent, 300);
-        }});
-        observer.observe(document.body, {{ childList: true, subtree: true }});
-        </script>
-
-        </body>
-        </html>
         """
 
         # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
