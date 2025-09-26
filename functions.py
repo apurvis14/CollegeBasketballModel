@@ -926,17 +926,21 @@ def metric_html(label, percent, win, loss):
     if percent is None:
         percent_display = "N/A"
     elif percent >= 60:
-        percent_display = f"<span style='color:darkgreen; font-weight:bold'><i>{percent}%</i></span>"
+        percent_display = f"<span style='color:darkgreen; font-weight:bold'>{percent}%</span>"
     elif percent >= 55:
-        percent_display = f"<span style='color:lightgreen; font-weight:bold'><i>{percent}%</i></span>"
-    elif 46 < percent < 55:
-        percent_display = f"<span style='color:white; font-weight:bold'><i>{percent}%</i></span>"
+        percent_display = f"<span style='color:#00FF7F; font-weight:bold'>{percent}%</span>"
+    elif 52 <= percent < 55:
+        percent_display = f"<span style='color:orange; font-weight:bold'>{percent}%</span>"
+    elif 48 < percent < 52:
+        percent_display = f"<span style='color:#black; font-weight:bold'>{percent}%</span>"
+    elif 46 < percent <=48:
+        percent_display = f"<span style='color:orange; font-weight:bold'>{percent}%</span>"
     elif 40 <= percent <= 46:
-        percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
+        percent_display = f"<span style='color:orangered; font-weight:bold'>{percent}%</span>"
     elif percent < 40:
-        percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+        percent_display = f"<span style='color:red; font-weight:bold'>{percent}%</span>"
     else:
-        percent_display = f"<i>{percent}%</i>"
+        percent_display = f"{percent}%"
 
     units = round(win * 0.909 - loss, 2)
     if units >= 15:
