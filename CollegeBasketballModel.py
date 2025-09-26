@@ -346,8 +346,8 @@ with tab9:
                     home_away_over_under_by_team_all_under,
                     df,
                     game,
-                    game['Offense Over 100'],
-                    game['Defense Over 100']
+                    game['Offense Under 100'],
+                    game['Defense Under 100']
                 )
 
                 full_html = f"""
