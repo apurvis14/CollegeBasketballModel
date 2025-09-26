@@ -942,9 +942,9 @@ def show_trend_html(
     pct_cur = pct(win_cur, count_cur)
     pct_prev = pct(win_prev, count_prev)
 
-    all_szn = display_metrics(pct_all, win, loss)
-    current_szn = display_metrics(pct_cur, win_cur, loss_cur)
-    past_szn = display_metrics(pct_prev, win_prev, loss_cur)
+    # all_szn = display_metrics(pct_all, win, loss)
+    # current_szn = display_metrics(pct_cur, win_cur, loss_cur)
+    # past_szn = display_metrics(pct_prev, win_prev, loss_cur)
 
         # --- Prepare mappings for quick lookup ---
     records_df = records_func(df, *args).reset_index().rename(columns={'index': 'Team'})
