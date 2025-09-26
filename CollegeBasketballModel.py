@@ -337,8 +337,6 @@ with tab9:
                             <span style="font-size:22px; font-weight:bold;">
                                 {matchup_header}
 
-                    {trend_html}
-
                 </details>
                 """,
                 unsafe_allow_html=True
