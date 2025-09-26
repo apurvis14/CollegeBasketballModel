@@ -320,13 +320,13 @@ with tab9:
             </head>
             <body>
 
-            <details id="trend-details">
-            <summary>
-                <div style="line-height:1.3;">
+            <details id="trend-details" style="padding:0; margin:0;">
+            <summary style="padding:0;>
+                <div style="line-height:1.3; padding-bottom:0;">
                 <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
                 </div>
             </summary>
-
+            <div style="padding:0; margin:0;">
             {trend_html}
 
             </details>
