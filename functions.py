@@ -1017,13 +1017,12 @@ def show_trend_html(
     metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
 
     html1 = f"""
-    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:-100px;">
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:0px;">
         <!-- Win metrics -->
         <div style="display:flex; justify-content:space-around; font-size:14px;">
             {metric_html_all}
             {metric_html_current}
             {metric_html_prev}
-            </div>
         </div>    
     
         <!-- Team headers -->
