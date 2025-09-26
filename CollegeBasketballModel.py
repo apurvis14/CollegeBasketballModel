@@ -371,7 +371,7 @@ with tab9:
         details[open] summary::before {{ transform: rotate(90deg); }}
         </style>
 
-        <details>
+        <details id="trend details">
         <summary>
             <div style="line-height:1.3;">
             <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
