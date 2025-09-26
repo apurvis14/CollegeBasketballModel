@@ -1131,7 +1131,7 @@ def details_html(matchup_header, trend_html):
     </style>
     <details id="trend-details">
     <summary>
-        <div style="line-height:1.3;">
+        <div style="line-height:1.3; background-color:#000000; color:#ffffff">
         <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
         </div>
     </summary>
