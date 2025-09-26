@@ -1042,7 +1042,7 @@ def show_trend_html(
         </div>    
     
         <!-- Team headers -->
-        <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+        <div style="display:flex; justify-content:space-around; font-size:20px;margin-bottom:4px;">
             <div style="text-align:center;">
                 <h4 style="text-decoration:underline; margin:0;">{away_img}{safe_away_team} vs Trend</h4>
             </div>
