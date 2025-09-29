@@ -1111,6 +1111,10 @@ def details_html(matchup_header, trend_html):
         border-radius:8px;
         padding:0;
         margin:0;
+        display: block;
+    }}
+    details[open] {{
+        display:block;
     }}
     summary {{
         list-style:none;
@@ -1127,6 +1131,9 @@ def details_html(matchup_header, trend_html):
     }}
     details[open] summary::before {{
         transform:rotate(90deg);
+    }}
+    details[open] > div {{
+        transition: all 0.3s ease-in-out;    
     }}
     </style>
     <details id="trend-details">
