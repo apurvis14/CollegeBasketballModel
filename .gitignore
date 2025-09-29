@@ -176,6 +176,6 @@ cython_debug/
 
 data/
 Final Regular Season Data/
-datalook.py/
-password.py/
+datalook.py
+password.py
 
