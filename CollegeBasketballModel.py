@@ -27,7 +27,7 @@ st.markdown(
     <style>
     /* Shrink top bar */
     header[data-testid="stHeader"] {
-        height: 0px !important;
+        height: 40px !important;
         padding: 0 !important;
         min-height: 0 !important;
     }
