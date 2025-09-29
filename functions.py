@@ -1070,9 +1070,9 @@ def show_trend_html(
 
     html1 = f"""
     <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">
-        <div style="display:flex; justify-content:space-around; font-size:26px; margin-bottom:0px">
+        <div style="display:flex; justify-content:space-around; font-size:26px; margin-bottom:12px">
             <div style="text-align:center;">
-                <h4 style="font-style:italic; margin:0;">System Active: {title}</h4><br>
+                <h4 style="font-style:italic; margin:0;">System Active: {title}</h4>
             </div>
         </div>  
     
