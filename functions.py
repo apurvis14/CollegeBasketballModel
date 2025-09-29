@@ -1033,8 +1033,8 @@ def show_trend_html(
     away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
     home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
 
-    away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:15px; vertical-align:middle;">'
-    home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:15px; vertical-align:middle;">'
+    away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
+    home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
 
     if game['All Formulas Over'] == 1:
         title = "All Formulas Over"
