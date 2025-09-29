@@ -67,8 +67,7 @@ st.markdown(
 #         st.experimental_rerun()
 
 ENCODED_USERS = {
-    "Y29hY2g6MTIzNDU=": "coach",
-    "YXNzaXN0YW50OmxldG1laW4=": "assistant"
+    "U2FtIERyZW5uYW46MTIzNDU=": "Sam Drennan",
 }
 
 # ---------- SESSION STATE INIT ----------
