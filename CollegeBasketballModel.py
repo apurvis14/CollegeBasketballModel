@@ -10,7 +10,7 @@ from functions import (
     TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev,
     TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, PPGover_count_win_loss_current, PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current, EFFover_count_win_loss_prev,
-    display_total_difference_histogram, display_metrics_expand,
+    display_total_difference_histogram, display_metrics_expand, win_loss_record_expand,
     home_away_over_under_by_team, home_away_over_under_by_team_all_under, home_away_over_under_by_team_EP_over,
     home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TP_over,
     home_away_over_under_by_team_T_over, home_away_over_under_by_team_P_over, home_away_over_under_by_team_E_over,
@@ -335,6 +335,9 @@ with tab9:
 
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
+
+        record_cur = win_loss_record_expand(win_cur, loss_cur)
+        record_all = win_loss_record_expand(win, loss)
         
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -348,7 +351,7 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#000000;">
-                        '25-'26 Over Win Record: {win_cur}-{loss_cur} ({percent_cur1}) &nbsp;|&nbsp; All Time Trend Over Record: {win}-{loss} ({percent_all1})
+                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) &nbsp;|&nbsp; All Time Trend Over Record: {record_all} ({percent_all1})
                     </span>
                 </div>
                 """
