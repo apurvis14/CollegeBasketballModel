@@ -20,6 +20,21 @@ from datetime import datetime
 from PIL import Image
 from streamlit.components.v1 import html as st_html
 
+st.set_page_config(layout="centered", page_title="CBB Trends")
+
+st.markdown(
+    """
+    <style>
+    /* Shrink top bar */
+    header[data-testid="stHeader"] {
+        height: 40px !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
+
 # Load Data
 filename = "data/College Basketball Model.xlsm"
 sheet = "All Seasons Data"
