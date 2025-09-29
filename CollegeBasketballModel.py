@@ -19,6 +19,7 @@ from functions import (
 from datetime import datetime
 from PIL import Image
 from streamlit.components.v1 import html as st_html
+import base64
 
 st.set_page_config(layout="centered", page_title="CBB Trends")
 
@@ -34,6 +35,36 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True)
+
+ENCODED_USERS = {
+    "Y29hY2g6MTIzNDU=": "coach",
+    "YXNzaXN0YW50OmxldG1laW4=": "assistant"
+}
+
+if "auth" not in st.session_state:
+    st.session_state.auth = False
+    st.session_state.username = None
+
+if not st.session_state.auth:
+    st.sidebar.header("Coach Login")
+    username_input = st.sidebar.text_input("Username")
+    password_input = st.sidebar.text_input("Password", type="password")
+    if st.sidebar.button("Login"):
+        combined = f"{username_input}:{password_input}"
+        encoded = base64.b64encode(combined.encode()).decode()
+        if encoded in ENCODED_USERS:
+            st.session_state.auth = True
+            st.session_state.username = username_input
+            st.sidebar.success(f"Logged in as {username_input}")
+        else:
+            st.sidebar.error("Invalid username or password")
+    st.stop()
+
+if st.session_state.auth:
+    if st.sidebar.button("Logout"):
+        st.session_state.auth = False
+        st.session_state.username = None
+        st.experimental_rerun()
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
