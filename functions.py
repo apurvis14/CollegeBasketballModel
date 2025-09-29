@@ -1193,7 +1193,8 @@ def details_html(matchup_header, trend_html):
             {}
         </div>
     </details>
-    """.format(matchup_header, trend_html)
+    """.format(matchup_header.replace("{", "{{").replace("}", "}}"),
+               trend_html.replace("{", "{{").replace("}", "}}"))
 
 
 def estimate_height(html: str, base: int = 125, per_block: int = 10) -> int:
