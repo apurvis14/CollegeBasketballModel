@@ -71,33 +71,45 @@ ENCODED_USERS = {
     "YXNzaXN0YW50OmxldG1laW4=": "assistant"
 }
 
-# Initialize session state
+# ---------- SESSION STATE INIT ----------
 if "auth" not in st.session_state:
     st.session_state.auth = False
     st.session_state.username = None
 
-# ---------------- LOGIN SECTION ----------------
-if not st.session_state.auth:
-    st.sidebar.header("Login")
-    username_input = st.sidebar.text_input("Username")
-    password_input = st.sidebar.text_input("Password", type="password")
-    if st.sidebar.button("Login"):
-        combined = f"{username_input}:{password_input}"
-        encoded = base64.b64encode(combined.encode()).decode()
-        if encoded in ENCODED_USERS:
-            st.session_state.auth = True
-            st.session_state.username = username_input
-            st.sidebar.success("Logged in")
-            st.experimental_rerun()   # <--- KEY FIX: immediate rerun
-        else:
-            st.sidebar.error("Invalid username or password")
-    st.stop()  # Stop here if not logged in
+def do_login():
+    """Callback to validate and set session state."""
+    combined = f"{st.session_state.u}:{st.session_state.p}"
+    encoded = base64.b64encode(combined.encode()).decode()
+    if encoded in ENCODED_USERS:
+        st.session_state.auth = True
+        st.session_state.username = st.session_state.u
+    else:
+        st.session_state.login_error = "Invalid username or password"
 
-# ---------------- PROTECTED CONTENT ----------------
-if st.sidebar.button("Logout"):
+def do_logout():
     st.session_state.auth = False
     st.session_state.username = None
-    st.experimental_rerun()  # Already had this
+
+# ---------- UI ----------
+if not st.session_state.auth:
+    st.sidebar.header("Login")
+
+    # Text inputs with keys so values persist across reruns
+    st.sidebar.text_input("Username", key="u", on_change=None)
+    st.sidebar.text_input("Password", type="password", key="p", on_change=None)
+
+    # Single button triggers the callback once
+    st.sidebar.button("Login", on_click=do_login)
+
+    # Show any login error
+    if st.session_state.get("login_error"):
+        st.sidebar.error(st.session_state.login_error)
+
+    st.stop()  # Nothing below runs until logged in
+
+# ---------- PROTECTED CONTENT ----------
+st.sidebar.success(f"Welcome **{st.session_state.username}**!")
+st.sidebar.button("Logout", on_click=do_logout)
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
