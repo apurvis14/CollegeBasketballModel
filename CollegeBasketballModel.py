@@ -347,7 +347,7 @@ with tab9:
                     <span style="font-size:22px; font-weight:bold;">
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
-                    <span style="font-size:14px; color:#545353ff;">
+                    <span style="font-size:14px; color:#000000;">
                         '25-'26 Over Win Record: {win_cur}-{loss_cur} ({percent_cur1}) &nbsp;|&nbsp; All Time Trend Over Record: {win}-{loss} ({percent_all1})
                     </span>
                 </div>
