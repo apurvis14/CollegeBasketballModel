@@ -260,6 +260,8 @@ with tab9:
 
             count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = allover_count_win_loss(df, o, d)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['All Formulas Under'] == 1:
             o = game['Offense Under 100']
@@ -267,6 +269,8 @@ with tab9:
 
             count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = allunder_count_win_loss(df, o, d)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Efficiency/PPG over  (Tempo under)'] == 1:
             o1 = game['Count of OFF over 100']
@@ -276,6 +280,8 @@ with tab9:
 
             count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Tempo and Efficiency over (PPG under)'] == 1:
             o1 = game['OFF Under 100']
@@ -285,34 +291,50 @@ with tab9:
 
             count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Tempo and PPG over (Efficiency Under)'] == 1:
             count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Just Tempo Over'] == 1:
             val = game['Over 105 EFF']
 
             count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = TempoOver_count_win_loss(df, val)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Just PPG Over'] == 1:
             val = game['Over 110 EFF']
 
             count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, o, d)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = PPGover_count_win_loss(df, o, d)
+            percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Just Efficiency Over'] == 1:
             o = game['OFF Over 105']
             d = game['DEF Over 105']
+
             count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+            count, win, loss = EFFover_count_win_loss(df, o, d)
+            percent_all = round((win/count)*100,2) if count else 0
             
         else:
             percent_cur = 'None'
+            win_cur, loss_cur = 0
             count_cur = 0
+            percent_all = 'None'
+            win, loss = 0
+
 
         percent_cur1 = display_metrics_expand(percent_cur)
+        percent_all1 = display_metrics_expand(percent_all)
         
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -326,7 +348,7 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px; color:#545353ff;">
-                        Season Trend Over Win %: {percent_cur1} &nbsp;|&nbsp; Season Trend Size: {count_cur}
+                        '25-'26 Over Win Record: {win_cur}-{loss_cur} ({percent_cur1}) &nbsp;|&nbsp; All Time Trend Over Record: {win}-{loss} ({percent_all1})
                     </span>
                 </div>
                 """
