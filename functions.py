@@ -855,7 +855,7 @@ def display_metrics_expand(percent):
     return percent_display
 
 def win_loss_record_expand(win, loss):
-    record = f"<span style='color:goldenrod; font-size:16px; font-weight:bold'>{win} - {loss}</span>"
+    record = f"<span style='color:goldenrod; font-size:14px; font-weight:bold'>{win} - {loss}</span>"
 
     return record
 
