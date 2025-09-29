@@ -1152,6 +1152,6 @@ def details_html(matchup_header, trend_html):
     </script>
     """
 
-def estimate_height(html: str, base: int = 100, per_block: int = 10) -> int:
+def estimate_height(html: str, base: int = 125, per_block: int = 10) -> int:
     blocks = html.count('<div') + html.count('<h4') + html.count('<br>')
     return base + blocks * per_block
