@@ -256,7 +256,7 @@ with tab9:
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 height = estimate_height(trend_html)
-                st_html(details_html(matchup_header, trend_html), height=height scrolling=False)
+                st_html(details_html(matchup_header, trend_html), height=height, scrolling=False)
             
             elif game['All Formulas Under'] == 1:
                 trend_html = show_trend_html(
