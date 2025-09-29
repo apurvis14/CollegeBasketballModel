@@ -1031,9 +1031,9 @@ def show_trend_html(
     away_record = away_record_map.get(safe_away_team, "N/A")
     total_away = total_record_map.get(safe_away_team, "N/A")
 
-    metric_html_all = metric_html("All Seasons", pct_all, win, loss)
-    metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
-    metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
+    # metric_html_all = metric_html("All Seasons", pct_all, win, loss)
+    # metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
+    # metric_html_prev = metric_html("Previous Season", pct_prev, win_prev, loss_prev)
 
     away_logo = get_base64(f'Team Logo/{game['Away Team']}.jpg')
     home_logo = get_base64(f'Team Logo/{game['Home Team']}.jpg')
