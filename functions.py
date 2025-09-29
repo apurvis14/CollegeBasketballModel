@@ -1075,12 +1075,6 @@ def show_trend_html(
                 <h4 style="font-style:italic; margin:0;">System Active: {title}</h4>
             </div>
         </div>  
-        <!-- Win metrics -->
-        <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:4px">
-            {metric_html_all}
-            {metric_html_current}
-            {metric_html_prev}
-        </div>    
     
         <!-- Team headers -->
         <div style="display:flex; justify-content:space-around; font-size:20px;margin-bottom:4px;">
