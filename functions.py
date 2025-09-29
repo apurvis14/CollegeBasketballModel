@@ -1041,41 +1041,35 @@ def show_trend_html(
     away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
     home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
 
-    if game['All Formulas Over'] == 1:
-        title = "All Formulas Over"
+    # if game['All Formulas Over'] == 1:
+    #     title = "All Formulas Over"
 
-    elif game['All Formulas Under'] == 1:
-        title = "All Formulas Under"
+    # elif game['All Formulas Under'] == 1:
+    #     title = "All Formulas Under"
 
-    elif game['Efficiency/PPG over  (Tempo under)'] == 1:
-        title = "Only Efficiency and PPG Formulas Over"
+    # elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+    #     title = "Only Efficiency and PPG Formulas Over"
 
-    elif game['Tempo and Efficiency over (PPG under)'] == 1:
-        title = "Only Tempo and Efficiency Formulas Over"
+    # elif game['Tempo and Efficiency over (PPG under)'] == 1:
+    #     title = "Only Tempo and Efficiency Formulas Over"
 
-    elif game['Tempo and PPG over (Efficiency Under)'] == 1:
-        title = "Only Tempo and PPG Formulas Over"
+    # elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+    #     title = "Only Tempo and PPG Formulas Over"
 
-    elif game['Just Tempo Over'] == 1:
-        title = "Only Tempo Formula Over"  
+    # elif game['Just Tempo Over'] == 1:
+    #     title = "Only Tempo Formula Over"  
 
-    elif game['Just PPG Over'] == 1:
-        title = "Only PPG Formula Over"
+    # elif game['Just PPG Over'] == 1:
+    #     title = "Only PPG Formula Over"
 
-    elif game['Just Efficiency Over'] == 1:
-        title = "Only Efficiency Formula Over"
+    # elif game['Just Efficiency Over'] == 1:
+    #     title = "Only Efficiency Formula Over"
 
-    else:
-        title = "No Trend Active"
+    # else:
+    #     title = "No Trend Active"
 
     html1 = f"""
-    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">
-        <div style="display:flex; justify-content:space-around; font-size:26px; margin-bottom:12px">
-            <div style="text-align:center;">
-                <h4 style="font-style:italic; margin:0;">System Active: {title}</h4>
-            </div>
-        </div>  
-    
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">    
         <!-- Team headers -->
         <div style="display:flex; justify-content:space-around; font-size:20px;margin-bottom:4px;">
             <div style="text-align:center;">
