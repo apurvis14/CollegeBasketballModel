@@ -46,7 +46,7 @@ if "auth" not in st.session_state:
     st.session_state.username = None
 
 if not st.session_state.auth:
-    st.sidebar.header("Coach Login")
+    st.sidebar.header(" Login")
     username_input = st.sidebar.text_input("Username")
     password_input = st.sidebar.text_input("Password", type="password")
     if st.sidebar.button("Login"):
