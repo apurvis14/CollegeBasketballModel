@@ -274,7 +274,7 @@ with tab9:
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 height = int(estimate_height(trend_html))
-                st.markdown("<div style='margin-bottom:6px;'>", unsafe_allow_html=True)
+                st.markdown("<div style='margin-bottom:-100px;'>", unsafe_allow_html=True)
                 st_html(details_html(matchup_header, trend_html), height=height, scrolling=False)
                 st.markdown("</div>", unsafe_allow_html=True)
             
