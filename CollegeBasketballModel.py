@@ -255,7 +255,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                height = estimate_height(trend_html)
+                height = int(estimate_height(trend_html))
                 st_html(details_html(matchup_header, trend_html), height=height, scrolling=False)
             
             elif game['All Formulas Under'] == 1:
@@ -271,6 +271,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
+                height = int(estimate_height(trend_html))
                 st_html(details_html(matchup_header, trend_html), height=height, scrolling=False)
             
             elif game['Efficiency/PPG over  (Tempo under)'] == 1:
