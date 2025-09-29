@@ -14,7 +14,7 @@ from functions import (
     home_away_over_under_by_team, home_away_over_under_by_team_all_under, home_away_over_under_by_team_EP_over,
     home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TP_over,
     home_away_over_under_by_team_T_over, home_away_over_under_by_team_P_over, home_away_over_under_by_team_E_over,
-    get_base64, show_trend_html, details_html)
+    get_base64, show_trend_html, details_html, estimate_height)
 
 from datetime import datetime
 from PIL import Image
@@ -255,7 +255,8 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), scrolling=False)
+                height = estimate_height(trend_html)
+                st_html(details_html(matchup_header, trend_html), height=height scrolling=False)
             
             elif game['All Formulas Under'] == 1:
                 trend_html = show_trend_html(
@@ -270,7 +271,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), scrolling=False)
+                st_html(details_html(matchup_header, trend_html),height=height, scrolling=False)
             
             elif game['Efficiency/PPG over  (Tempo under)'] == 1:
                 trend_html = show_trend_html(

@@ -1152,3 +1152,7 @@ def details_html(matchup_header, trend_html):
     }}
     </script>
     """
+
+def estimate_height(html: str, base=150, per_line=20):
+    lines = html.count("<br>") + html.count("\n")
+    return base + lines * per_line
