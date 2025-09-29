@@ -1064,7 +1064,7 @@ def show_trend_html(
         title = "No Trend Active"
 
     html1 = f"""
-    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#ffffff; margin-bottom:2px;">
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">
         <div style="display:flex; justify-content:space-around; font-size:26px; margin-bottom:4px">
             <div style="text-align:center;">
                 <h4 style="font-style:italic; margin:0;">System Active: {title}</h4>
@@ -1135,7 +1135,7 @@ def details_html(matchup_header, trend_html):
         <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
         </div>
     </summary>
-    <div style="padding:0; margin:0; background-color:#000000; color:#000000;">
+    <div style="padding:0; margin:0; background-color:#000000; color:#ffffff;">
     {trend_html}
 
     </details>
