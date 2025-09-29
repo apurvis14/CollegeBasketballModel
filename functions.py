@@ -1098,7 +1098,6 @@ def show_trend_html(
                 <div><b>Away: {home_record}</b></div>
             </div>
         </div>
-    </div>
     """
     return html1
 
