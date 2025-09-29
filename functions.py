@@ -857,7 +857,27 @@ def display_metrics_expand(percent):
 def win_loss_record_expand(win, loss):
     record = f"<span style='color:goldenrod; font-size:14px; font-weight:bold'>{win} - {loss}</span>"
 
-    return record
+    units = round(win * 0.909 - loss, 2)
+    if units >= 15:
+        units_display = f"<span style='color:darkgreen; font-weight:bold'>{units}</span>"
+    elif 10 <= units < 15:
+        units_display = f"<span style='color:green; font-weight:bold'>{units}</span>"
+    elif 0 <= units < 10:
+        units_display = f"<span style='color:lightgreen; font-weight:bold'>{units}</span>"
+    else:
+        units_display = f"<span style='color:red; font-weight:bold'>{units}</span>"
+
+    fade_units = round(loss*0.909 - win, 2)
+    if fade_units >= 15:
+        fade_display = f" <span style='color:darkgreen; font-weight:bold'>({fade_units})</span>"
+    elif 10 <= fade_units < 15:
+        fade_display = f" <span style='color:green; font-weight:bold'>({fade_units})</span>"
+    elif 0 <= fade_units < 10:
+        fade_display = f" <span style='color:lightgreen; font-weight:bold'>({fade_units})</span>"
+    else:
+        fade_display = f" <span style='color:red; font-weight:bold'>({fade_units})</span>"
+
+    return record, units_display, fade_display
 
 def get_base64(path):
     with open(path, "rb") as f:
@@ -1006,9 +1026,9 @@ def show_trend_html(
     def pct(w, c): 
         return round((w / c) * 100, 2) if c else 0
     
-    pct_all = pct(win, count)
-    pct_cur = pct(win_cur, count_cur)
-    pct_prev = pct(win_prev, count_prev)
+    # pct_all = pct(win, count)
+    # pct_cur = pct(win_cur, count_cur)
+    # pct_prev = pct(win_prev, count_prev)
 
     # all_szn = display_metrics(pct_all, win, loss)
     # current_szn = display_metrics(pct_cur, win_cur, loss_cur)

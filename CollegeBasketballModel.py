@@ -336,8 +336,8 @@ with tab9:
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
 
-        record_cur = win_loss_record_expand(win_cur, loss_cur)
-        record_all = win_loss_record_expand(win, loss)
+        record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
+        record_all, units_all, fade_all = win_loss_record_expand(win, loss)
         
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -351,8 +351,8 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px;">
-                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) &nbsp;|&nbsp; Over Units:  Under Units: <br>
-                        All Time Trend Over Record: {record_all} ({percent_all1}) &nbsp;|&nbsp; Over Units:  Under Units: 
+                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) &nbsp;|&nbsp; Over Units: {units_cur} &nbsp;|&nbsp; Under Units: {fade_cur} <br>
+                        All Time Trend Over Record: {record_all} ({percent_all1}) &nbsp;|&nbsp; Over Units: {units_all} &nbsp;|&nbsp; Under Units: {fade_all}
                     </span>
                 </div>
                 """
