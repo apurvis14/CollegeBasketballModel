@@ -36,17 +36,49 @@ st.markdown(
     """,
     unsafe_allow_html=True)
 
+# ENCODED_USERS = {
+#     "Y29hY2g6MTIzNDU=": "coach",
+#     "YXNzaXN0YW50OmxldG1laW4=": "assistant"
+# }
+
+# if "auth" not in st.session_state:
+#     st.session_state.auth = False
+#     st.session_state.username = None
+
+# if not st.session_state.auth:
+#     st.sidebar.header("Login")
+#     username_input = st.sidebar.text_input("Username")
+#     password_input = st.sidebar.text_input("Password", type="password")
+#     if st.sidebar.button("Login"):
+#         combined = f"{username_input}:{password_input}"
+#         encoded = base64.b64encode(combined.encode()).decode()
+#         if encoded in ENCODED_USERS:
+#             st.session_state.auth = True
+#             st.session_state.username = username_input
+#             st.sidebar.success("Logged in")
+#         else:
+#             st.sidebar.error("Invalid username or password")
+#     st.stop()
+
+# if st.session_state.auth:
+#     if st.sidebar.button("Logout"):
+#         st.session_state.auth = False
+#         st.session_state.username = None
+#         st.experimental_rerun()
+
 ENCODED_USERS = {
     "Y29hY2g6MTIzNDU=": "coach",
     "YXNzaXN0YW50OmxldG1laW4=": "assistant"
 }
 
+# Initialize session state
 if "auth" not in st.session_state:
     st.session_state.auth = False
     st.session_state.username = None
 
+# ---------------- LOGIN SECTION ----------------
 if not st.session_state.auth:
-    st.sidebar.header(" Login")
+    st.sidebar.header("Login")
     username_input = st.sidebar.text_input("Username")
     password_input = st.sidebar.text_input("Password", type="password")
     if st.sidebar.button("Login"):
@@ -55,16 +87,17 @@ if not st.session_state.auth:
         if encoded in ENCODED_USERS:
             st.session_state.auth = True
             st.session_state.username = username_input
-            st.sidebar.success(f"Logged in as {username_input}")
+            st.sidebar.success("Logged in")
+            st.experimental_rerun()   # <--- KEY FIX: immediate rerun
         else:
             st.sidebar.error("Invalid username or password")
-    st.stop()
+    st.stop()  # Stop here if not logged in
 
-if st.session_state.auth:
-    if st.sidebar.button("Logout"):
-        st.session_state.auth = False
-        st.session_state.username = None
-        st.experimental_rerun()
+# ---------------- PROTECTED CONTENT ----------------
+if st.sidebar.button("Logout"):
+    st.session_state.auth = False
+    st.session_state.username = None
+    st.experimental_rerun()  # Already had this
 
 # Load Data
 filename = "data/College Basketball Model.xlsm"
