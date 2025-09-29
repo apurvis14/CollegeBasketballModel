@@ -1101,8 +1101,59 @@ def show_trend_html(
     """
     return html1
 
+# def details_html(matchup_header, trend_html):
+#     return f"""
+#     <style>
+#     details {{
+#         background-color: #ffffff;
+#         color: #000;
+#         border-radius: 8px;
+#         padding: 0;
+#         margin: 4px 0;
+#     }}
+#     summary {{
+#         list-style: none;
+#         cursor: pointer;
+#         display: flex;
+#         align-items: center;
+#         padding: 0.75rem 1rem;
+#         font-weight: 600;
+#     }}
+#     summary::before {{
+#         content: "▶";
+#         margin-right: 8px;
+#         transition: transform 0.2s ease;
+#     }}
+#     details[open] summary::before {{
+#         transform: rotate(90deg);
+#     }}
+#     </style>
+
+#     <details id="trend-details" onToggle="resizeIframe()">
+#         <summary>
+#             <div style="line-height:1.3;">
+#                 <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
+#             </div>
+#         </summary>
+#         <div id="trend-content" style="padding:0; margin:0; background-color:#000000; color:#ffffff;">
+#             {trend_html}
+#         </div>
+#     </details>
+
+#     <script>
+#     function resizeIframe() {{
+#         const iframe = window.frameElement;
+#         if (iframe) {{
+#             setTimeout(() => {{
+#                 iframe.style.height = document.body.scrollHeight + 'px';
+#             }}, 300); // wait for expand animation
+#         }}
+#     }}
+#     </script>
+#     """
+
 def details_html(matchup_header, trend_html):
-    return f"""
+    return """
     <style>
     details {{
         background-color: #ffffff;
@@ -1118,6 +1169,7 @@ def details_html(matchup_header, trend_html):
         align-items: center;
         padding: 0.75rem 1rem;
         font-weight: 600;
+        font-size: 20px;
     }}
     summary::before {{
         content: "▶";
@@ -1127,30 +1179,22 @@ def details_html(matchup_header, trend_html):
     details[open] summary::before {{
         transform: rotate(90deg);
     }}
+    .trend-content {{
+        padding: 0.75rem 1rem;
+        background-color: #000000;
+        color: #ffffff;
+        border-radius: 0 0 8px 8px;
+    }}
     </style>
 
-    <details id="trend-details" onToggle="resizeIframe()">
-        <summary>
-            <div style="line-height:1.3;">
-                <span style="font-size:22px; font-weight:bold;">{matchup_header}</span>
-            </div>
-        </summary>
-        <div id="trend-content" style="padding:0; margin:0; background-color:#000000; color:#ffffff;">
-            {trend_html}
+    <details>
+        <summary>{}</summary>
+        <div class="trend-content">
+            {}
         </div>
     </details>
+    """.format(matchup_header, trend_html)
 
-    <script>
-    function resizeIframe() {{
-        const iframe = window.frameElement;
-        if (iframe) {{
-            setTimeout(() => {{
-                iframe.style.height = document.body.scrollHeight + 'px';
-            }}, 300); // wait for expand animation
-        }}
-    }}
-    </script>
-    """
 
 def estimate_height(html: str, base: int = 125, per_block: int = 10) -> int:
     blocks = html.count('<div') + html.count('<h4') + html.count('<br>')
