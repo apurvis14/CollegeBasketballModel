@@ -1126,9 +1126,9 @@ def show_trend_html(
 
             <!-- Trend title and labels -->
             <div style="text-align:center; margin-bottom:8px;">
-                <div style="font-size:20px; font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">Active Trend - {title}</div>
-                {'<div style="font-size:14px; color:#ffffff; margin-bottom:1px; font-weight:bold; font-style:italic;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
-                {'<div style="font-size:14px; color:#ffffff; margin-bottom:8px; font-weight:bold; font-style:italic;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
+                <div class="title-drop" style="font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">Active Trend - {title}</div>
+                {'<div class="label-drop" style="color:#ffffff; margin-bottom:1px; font-weight:bold; font-style:italic;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
+                {'<div class="label-drop" style="color:#ffffff; margin-bottom:8px; font-weight:bold; font-style:italic;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
 
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
@@ -1222,6 +1222,14 @@ def details_html(matchup_header, trend_html):
         border-radius: 0 0 8px 8px;
     }}
 
+    .trend-content .title-drop {{
+        font-size: 20px;
+    }}
+
+    .trend-content .label-drop {{
+        font-size: 14px;
+    }}
+
     .trend-content .team-header {{
         font-size: 20px;
         display: flex;
@@ -1240,6 +1248,15 @@ def details_html(matchup_header, trend_html):
         .header-bottom {{
             font-size: 10px;
         }}
+
+        .trend-content .title-drop {{
+            font-size: 13px;
+        }}
+
+        .trend-content .label-drop {{
+            font-size: 10px;
+        }}
+
         .trend-content .team-header {{
             font-size: 13px;
             display: flex;
