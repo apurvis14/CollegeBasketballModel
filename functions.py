@@ -1181,14 +1181,15 @@ def details_html(matchup_header, trend_html):
         margin-left: 8px;        /* ✅ space between arrow and text */
     }}
     .header-top {{
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
         line-height: 1.3;
         display: flex;
         align-items: center;  /* ✅ keeps logos aligned with team text */
     }}
     .header-bottom {{
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: bold;
         color: #333333;
         line-height: 1.3;
     }}
