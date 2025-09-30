@@ -1112,7 +1112,7 @@ def show_trend_html(
         underlabel1 = f"- {val} Total EFF over 110 in this matchup"
 
     elif game['Just Efficiency Over'] == 1:
-        o = game['OFF Over 105'],
+        o = game['OFF Over 105']
         d = game['DEF Over 105']
         title = "Only Efficiency Formula Over"
         underlabel1 = f"- {o} OFF EFF over 105 in this matchup"
