@@ -1178,6 +1178,14 @@ def details_html(matchup_header, trend_html):
         border-radius: 0 0 8px 8px;
     }}
 
+    .trend-content .team-header {{
+        font-size: 20px;          
+        text-decoration: underline;  
+        margin: 0;
+        display: flex;
+        align-items: center; 
+    }}
+
     /* Responsive font sizes for mobile */
     @media (max-width: 600px) {{
         .header-top {{
@@ -1196,7 +1204,7 @@ def details_html(matchup_header, trend_html):
             font-size: 10px;
         }}
         .trend-content .team-header .team-logo {{
-            height: 10px;
+            height: 1em;
         }}
     }}
     </style>
