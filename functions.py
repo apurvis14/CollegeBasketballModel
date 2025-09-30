@@ -1127,16 +1127,16 @@ def show_trend_html(
         <!-- Trend title and labels -->
         <div style="text-align:center; margin-bottom:4px;">
             <div style="font-size:20px; font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">{title}</div>
-            {'<div style="font-size:12px; color:#ffffff; margin-bottom:1px; font-weight:bold;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
-            {'<div style="font-size:12px; color:#ffffff; margin-bottom:2px; font-weight:bold;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:1px; font-weight:bold; font-style:italic;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:2px; font-weight:bold; font-style:italic;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
 
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
                 <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0;">{away_img}{safe_away_team} vs Trend</h4>
+                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color: #DAA520;">{away_img}{safe_away_team} vs Trend</h4>
                 </div>
                 <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0;">{home_img}{safe_home_team} vs Trend</h4>
+                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color: #DAA520;">{home_img}{safe_home_team} vs Trend</h4>
                 </div>
             </div>
             <!-- Records -->
