@@ -1256,6 +1256,10 @@ def details_html(matchup_header, trend_html):
         overflow: hidden;         /* hide overflow */
         text-overflow: ellipsis;  /* show "..." if too long */
     }}
+    .header-top .team-logo {{
+        height: 20px; 
+        vertical-align: middle;
+    }}
     .header-bottom {{
         font-size: 14px;          /* desktop font size */
         font-weight: bold;
@@ -1284,6 +1288,9 @@ def details_html(matchup_header, trend_html):
     @media (max-width: 600px) {{
         .header-top {{
             font-size: 13px;
+        }}
+        .header-top .team-logo {{
+            height: 14px;
         }}
         .header-bottom {{
             font-size: 10px;
