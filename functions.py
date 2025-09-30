@@ -1089,20 +1089,18 @@ def show_trend_html(
     #     title = "No Trend Active"
 
     html1 = f"""
-        <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:0px;">    
-
+        <div style="border:2px solid #DAA520; border-radius:8px; padding:4px; background-color:#000000; margin-bottom:0px;">    
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
                 <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline;">{away_img}{safe_away_team} vs Trend</h4>
+                    <h4 class="team-header" style="text-decoration:underline; margin:0;">{away_img}{safe_away_team} vs Trend</h4>
                 </div>
                 <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline;">{home_img}{safe_home_team} vs Trend</h4>
+                    <h4 class="team-header" style="text-decoration:underline; margin:0;">{home_img}{safe_home_team} vs Trend</h4>
                 </div>
             </div>
-
             <!-- Records -->
-            <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+            <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
                 <div style="text-align:center;">
                     <div class="team-record"><b>Total: {total_away}</b></div>
                     <div class="team-record"><b>Home: {away_record}</b></div>
