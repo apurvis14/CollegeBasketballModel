@@ -1195,7 +1195,7 @@ def details_html(matchup_header, trend_html):
         .trend-content .team-record {{
             font-size: 10px;
         }}
-        .trend-content .team-logo {{
+        .trend-content .team-header .team-logo {{
             height: 10px;
         }}
     }}
