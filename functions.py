@@ -1174,19 +1174,25 @@ def details_html(matchup_header, trend_html):
         list-style: none;
         cursor: pointer;
         display: flex;
-        align-items: center;
+        flex-direction: column;  /* ✅ stack lines vertically */
+        align-items: flex-start;
         padding: 0.75rem 1rem;
-        font-weight: 600;
+    }}
+    .header-top {{
         font-size: 20px;
+        font-weight: bold;
         line-height: 1.3;
     }}
-    summary span {{
-        font-size: inherit !important;
+    .header-bottom {{
+        font-size: 14px;
+        color: #333333;
+        line-height: 1.2;
     }}
     summary::before {{
         content: "▶";
         margin-right: 8px;
         transition: transform 0.2s ease;
+        align-self: center;  /* keep arrow aligned */
     }}
     details[open] summary::before {{
         transform: rotate(90deg);
@@ -1200,7 +1206,10 @@ def details_html(matchup_header, trend_html):
     </style>
 
     <details>
-        <summary>{safe_header}</summary>
+        <summary>
+            <div class="header-top">{safe_header.split("||")[0]}</div>
+            <div class="header-bottom">{safe_header.split("||")[1]}</div>
+        </summary>
         <div class="trend-content">
             {safe_trend}
         </div>

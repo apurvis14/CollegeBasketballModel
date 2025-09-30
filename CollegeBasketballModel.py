@@ -345,17 +345,24 @@ with tab9:
         away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
         home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
         
-        matchup_header = f"""
-                <div style="line-height:1.3;">
-                    <span style="font-size:22px; font-weight:bold;">
-                        {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
-                    </span><br>
-                    <span style="font-size:14px;">
-                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) <br>
-                        All Time Trend Over Record: {record_all} ({percent_all1})
-                    </span>
-                </div>
-                """
+        # matchup_header = f"""
+        #         <div style="line-height:1.3;">
+        #             <span style="font-size:22px; font-weight:bold;">
+        #                 {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
+        #             </span><br>
+        #             <span style="font-size:14px;">
+        #                 '25-'26 Over Win Record: {record_cur} ({percent_cur1}) <br>
+        #                 All Time Trend Over Record: {record_all} ({percent_all1})
+        #             </span>
+        #         </div>
+        #         """
+
+        matchup_header = (
+            f"{away_img} {game['Away Team']} @ {home_img} {game['Home Team']} "
+            f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
+            f"'25-'26 Over Win Record: {record_cur} ({percent_cur1})<br>"
+            f"All Time Trend Over Record: {record_all} ({percent_all1})"
+)
 
                 #  &nbsp;|&nbsp; Over Units: {units_cur} &nbsp;|&nbsp; Under Units: {fade_cur}
                 #  &nbsp;|&nbsp; Over Units: {units_all} &nbsp;|&nbsp; Under Units: {fade_all}
