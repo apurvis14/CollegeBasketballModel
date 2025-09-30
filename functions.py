@@ -1283,10 +1283,10 @@ def details_html(matchup_header, trend_html):
     /* Responsive font sizes for mobile */
     @media (max-width: 600px) {{
         .header-top {{
-            font-size: 16px;
+            font-size: 12px;
         }}
         .header-bottom {{
-            font-size: 11px;
+            font-size: 10px;
         }}
     }}
     </style>
