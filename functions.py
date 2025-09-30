@@ -1250,21 +1250,21 @@ def details_html(matchup_header, trend_html):
         }}
 
         .trend-content .title-drop {{
-            font-size: 13px;
-        }}
-
-        .trend-content .label-drop {{
             font-size: 10px;
         }}
 
+        .trend-content .label-drop {{
+            font-size: 8px;
+        }}
+
         .trend-content .team-header {{
-            font-size: 13px;
+            font-size: 10px;
             display: flex;
             align-items: center;  /* aligns logo with text */
             text-decoration: underline;
         }}
         .trend-content .team-record {{
-            font-size: 10px;
+            font-size: 8px;
         }}
         .trend-content .team-header .team-logo {{
             height: 1em;
