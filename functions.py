@@ -1257,7 +1257,7 @@ def details_html(matchup_header, trend_html):
         text-overflow: ellipsis;  /* show "..." if too long */
     }}
     .header-bottom {{
-        font-size: 12px;          /* desktop font size */
+        font-size: 14px;          /* desktop font size */
         font-weight: bold;
         color: #333333;
         line-height: 1.3;
