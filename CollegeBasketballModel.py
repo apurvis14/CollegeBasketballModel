@@ -148,7 +148,8 @@ logo = Image.open("data/CBB Horizontal Logo.png")
 st.image(logo, use_container_width=True)
 
 # Tabs Using for Info
-tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info'])
+tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info']) 
+
 
 with tab9:
     st.markdown(

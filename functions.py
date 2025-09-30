@@ -1089,138 +1089,32 @@ def show_trend_html(
     #     title = "No Trend Active"
 
     html1 = f"""
-    <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">    
-        <!-- Team headers -->
-        <div style="display:flex; justify-content:space-around; font-size:20px;margin-bottom:4px;">
-            <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">{away_img}{safe_away_team} vs Trend</h4>
-            </div>
-            <div style="text-align:center;">
-                <h4 style="text-decoration:underline; margin:0;">{home_img}{safe_home_team} vs Trend</h4>
-            </div>
-        </div>
+        <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">    
 
-        <!-- Records -->
-        <div style="display:flex; justify-content:space-around; font-size:14px; margin-bottom:8px;">
-            <div style="text-align:center;">
-                <div><b>Total: {total_away}</b></div>
-                <div><b>Home: {away_record}</b></div>
+            <!-- Team headers -->
+            <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+                <div style="text-align:center;">
+                    <h4 class="team-header">{away_img}{safe_away_team} vs Trend</h4>
+                </div>
+                <div style="text-align:center;">
+                    <h4 class="team-header">{home_img}{safe_home_team} vs Trend</h4>
+                </div>
             </div>
-            <div style="text-align:center;">
-                <div><b>Total: {total_home}</b></div>
-                <div><b>Away: {home_record}</b></div>
+
+            <!-- Records -->
+            <div style="display:flex; justify-content:space-around; margin-bottom:8px;">
+                <div style="text-align:center;">
+                    <div class="team-record"><b>Total: {total_away}</b></div>
+                    <div class="team-record"><b>Home: {away_record}</b></div>
+                </div>
+                <div style="text-align:center;">
+                    <div class="team-record"><b>Total: {total_home}</b></div>
+                    <div class="team-record"><b>Away: {home_record}</b></div>
+                </div>
             </div>
         </div>
     """
     return html1
-
-# def details_html(matchup_header, trend_html):
-#     return """
-#     <style>
-#     details {{
-#         background-color: #ffffff;
-#         color: #000;
-#         border-radius: 8px;
-#         padding: 0;
-#         margin: 4px 0;
-#     }}
-#     summary {{
-#         list-style: none;
-#         cursor: pointer;
-#         display: flex;
-#         align-items: center;
-#         padding: 0.75rem 1rem;
-#         font-weight: 600;
-#     }}
-#     summary::before {{
-#         content: "▶";
-#         margin-right: 8px;
-#         transition: transform 0.2s ease;
-#     }}
-#     details[open] summary::before {{
-#         transform: rotate(90deg);
-#     }}
-#     .trend-content {{
-#         padding: 0.75rem 1rem;
-#         background-color: #000000;
-#         color: #ffffff;
-#         border-radius: 0 0 8px 8px;
-#     }}
-#     </style>
-
-#     <details>
-#         <summary>{}</summary>
-#         <div class="trend-content">
-#             {}
-#         </div>
-#     </details>
-#     """.format(matchup_header.replace("{", "{{").replace("}", "}}"),
-#                trend_html.replace("{", "{{").replace("}", "}}"))
-
-# def details_html(matchup_header, trend_html):
-#     return f"""
-#     <style>
-#     details {{
-#         background-color: #ffffff;
-#         color: #000;
-#         border-radius: 8px;
-#         padding: 0;
-#         margin: 4px 0;
-#     }}
-#     summary {{
-#         list-style: none;
-#         cursor: pointer;
-#         display: flex;
-#         align-items: center;
-#         justify-content: flex-start;
-#         padding: 0.75rem 1rem;
-#     }}
-#     .header-block {{
-#         display: flex;
-#         flex-direction: column;  /* ✅ stack top + bottom lines */
-#         margin-left: 8px;        /* ✅ space between arrow and text */
-#     }}
-#     .header-top {{
-#         font-size: 20px;
-#         font-weight: bold;
-#         line-height: 1.3;
-#         display: flex;
-#         align-items: center;  /* ✅ keeps logos aligned with team text */
-#     }}
-#     .header-bottom {{
-#         font-size: 12px;
-#         font-weight: bold;
-#         color: #333333;
-#         line-height: 1.3;
-#     }}
-#     summary::before {{
-#         content: "▶";
-#         margin-right: 4px;
-#         transition: transform 0.2s ease;
-#     }}
-#     details[open] summary::before {{
-#         transform: rotate(90deg);
-#     }}
-#     .trend-content {{
-#         padding: 0.75rem 1rem;
-#         background-color: #000000;
-#         color: #ffffff;
-#         border-radius: 0 0 8px 8px;
-#     }}
-#     </style>
-
-#     <details>
-#         <summary>
-#             <div class="header-block">
-#                 <div class="header-top">{matchup_header.split("||")[0]}</div>
-#                 <div class="header-bottom">{matchup_header.split("||")[1]}</div>
-#             </div>
-#         </summary>
-#         <div class="trend-content">
-#             {trend_html}
-#         </div>
-#     </details>
-#     """
 
 def details_html(matchup_header, trend_html):
     return f"""
@@ -1294,6 +1188,15 @@ def details_html(matchup_header, trend_html):
         }}
         .header-bottom {{
             font-size: 10px;
+        }}
+        .trend-content .team-header {{
+            font-size: 13px;
+        }}
+        .trend-content .team-record {{
+            font-size: 10px;
+        }}
+        .trend-content .team-logo {{
+            height: 10px;
         }}
     }}
     </style>
