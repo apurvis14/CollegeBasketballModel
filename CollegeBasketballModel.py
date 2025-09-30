@@ -156,7 +156,7 @@ with tab9:
             <div style="
                 display: block;
                 margin: 0 auto; 
-                border: 1px solid goldenrod; 
+                border: 4px solid goldenrod; 
                 padding: 2px; 
                 border-radius: 10px; 
                 margin-top: 0px;
@@ -195,7 +195,9 @@ with tab9:
     /* --- Fix selectbox background & text color --- */
     div[data-baseweb="select"] > div {
         background-color: #DAA520 !important;   /* Gold dropdown background */
-        color: #000000 !important;              /* black text */
+        color: #000000 !important!              /* black text */
+        border: 2px solid #000000 !important
+        border-radius: 8px !important
     }
     div[data-baseweb="select"] span {
         color: #000000 !important;              /* ensure label text is black */
@@ -203,7 +205,7 @@ with tab9:
     </style>
     """,
     unsafe_allow_html=True)
-    
+
 
     # Select Box for conference filter
     cola, colc = st.columns([3.25,10])
@@ -235,7 +237,7 @@ with tab9:
             <div style="
                 display: inline-block;
                 float: right;
-                border: 1px solid white; 
+                border: 1px solid black; 
                 padding: 6px; 
                 border-radius: 10px; 
                 margin-top: 18px;
