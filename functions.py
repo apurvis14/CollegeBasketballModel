@@ -1171,7 +1171,8 @@ def details_html(matchup_header, trend_html):
         list-style: none;
         cursor: pointer;
         display: flex;
-        align-items: left;
+        align-items: center;
+        justify-content: flex-start;
         padding: 0.75rem 1rem;
     }}
     .header-block {{
