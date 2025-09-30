@@ -164,6 +164,7 @@ with tab9:
                 font-weight: bold;
                 width: 375px;
                 height: 80px;
+                line-height: 80px
                 background-color: #545353ff;
                 text-align: center;
                 color: #ffffff">
