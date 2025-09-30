@@ -1066,16 +1066,16 @@ def show_trend_html(
         d = game['Defense Over 100']
 
         title = "All Formulas Over"
-        underlabel1 = f"{o} OFF EFF over 100 in this matchup"
-        underlabel2 = f"{d} DEF EFF over 100 in this matchup"
+        underlabel1 = f"- {o} OFF EFF over 100 in this matchup"
+        underlabel2 = f"- {d} DEF EFF over 100 in this matchup"
 
     elif game['All Formulas Under'] == 1:
         o = game['Offense Under 100']
         d = game['Defense Under 100']
 
         title = "All Formulas Under"
-        underlabel1 = f"{o} OFF EFF under 100 in this matchup"
-        underlabel2 = f"{d} DEF EFF under 100 in this matchup"
+        underlabel1 = f"- {o} OFF EFF under 100 in this matchup"
+        underlabel2 = f"- {d} DEF EFF under 100 in this matchup"
 
     elif game['Efficiency/PPG over  (Tempo under)'] == 1:
         o1 = game['Count of OFF over 100']
@@ -1084,8 +1084,8 @@ def show_trend_html(
         d2 = game['Count of DEF under 95']
         
         title = "Only Efficiency and PPG Formulas Over"
-        underlabel1 = f"{o1} OFF EFF over 100 and {o2} OFF EFF over 110 in this matchup" 
-        underlabel2 = f"{d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
+        underlabel1 = f"- {o1} OFF EFF over 100 and {o2} OFF EFF over 110 in this matchup" 
+        underlabel2 = f"- {d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
     elif game['Tempo and Efficiency over (PPG under)'] == 1:
         o1 = game['OFF Under 100'],
@@ -1094,8 +1094,8 @@ def show_trend_html(
         d2 = game['DEF Under 95']
 
         title = "Only Tempo and Efficiency Formulas Over"
-        underlabel1 = f"{o1} OFF EFF under 100 and {o2} OFF EFF under 95 in this matchup" 
-        underlabel2 = f"{d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
+        underlabel1 = f"- {o1} OFF EFF under 100 and {o2} OFF EFF under 95 in this matchup" 
+        underlabel2 = f"- {d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
     elif game['Tempo and PPG over (Efficiency Under)'] == 1:
         title = "Only Tempo and PPG Formulas Over"
@@ -1104,19 +1104,19 @@ def show_trend_html(
         val = game['Over 105 EFF']
 
         title = "Only Tempo Formula Over"
-        underlabel1 = f"{val} Total EFF over 105 in this matchup"
+        underlabel1 = f"- {val} Total EFF over 105 in this matchup"
 
     elif game['Just PPG Over'] == 1:
         val = game['Over 110 EFF']
         title = "Only PPG Formula Over"
-        underlabel1 = f"{val} Total EFF over 110 in this matchup"
+        underlabel1 = f"- {val} Total EFF over 110 in this matchup"
 
     elif game['Just Efficiency Over'] == 1:
         o = game['OFF Over 105'],
         d = game['DEF Over 105']
         title = "Only Efficiency Formula Over"
-        underlabel1 = f"{o} OFF EFF over 105 in this matchup"
-        underlabel2 = f"{d} DEF EFF over 105 in this matchup"
+        underlabel1 = f"- {o} OFF EFF over 105 in this matchup"
+        underlabel2 = f"- {d} DEF EFF over 105 in this matchup"
 
     else:
         title = "No Trend Active"
