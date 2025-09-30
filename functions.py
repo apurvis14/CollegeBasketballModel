@@ -1061,35 +1061,75 @@ def show_trend_html(
     away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
     home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
 
-    # if game['All Formulas Over'] == 1:
-    #     title = "All Formulas Over"
+    if game['All Formulas Over'] == 1:
+        o = game['Offense Over 100']
+        d = game['Defense Over 100']
 
-    # elif game['All Formulas Under'] == 1:
-    #     title = "All Formulas Under"
+        title = "All Formulas Over"
+        underlabel1 = f"{o} OFF EFF over 100 in this matchup"
+        underlabel2 = f"{d} DEF EFF over 100 in this matchup"
 
-    # elif game['Efficiency/PPG over  (Tempo under)'] == 1:
-    #     title = "Only Efficiency and PPG Formulas Over"
+    elif game['All Formulas Under'] == 1:
+        o = game['Offense Under 100']
+        d = game['Defense Under 100']
 
-    # elif game['Tempo and Efficiency over (PPG under)'] == 1:
-    #     title = "Only Tempo and Efficiency Formulas Over"
+        title = "All Formulas Under"
+        underlabel1 = f"{o} OFF EFF under 100 in this matchup"
+        underlabel2 = f"{d} DEF EFF under 100 in this matchup"
 
-    # elif game['Tempo and PPG over (Efficiency Under)'] == 1:
-    #     title = "Only Tempo and PPG Formulas Over"
+    elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+        o1 = game['Count of OFF over 100']
+        o2 = game['Count of OFF over 110']
+        d1 = game['Count of DEF under 100']
+        d2 = game['Count of DEF under 95']
+        
+        title = "Only Efficiency and PPG Formulas Over"
+        underlabel1 = f"{o1} OFF EFF over 100 and {o2} OFF EFF over 110 in this matchup" 
+        underlabel2 = f"{d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
-    # elif game['Just Tempo Over'] == 1:
-    #     title = "Only Tempo Formula Over"  
+    elif game['Tempo and Efficiency over (PPG under)'] == 1:
+        o1 = game['OFF Under 100'],
+        o2 = game['OFF Under 95'],
+        d1 = game['DEF Under 100'],
+        d2 = game['DEF Under 95']
 
-    # elif game['Just PPG Over'] == 1:
-    #     title = "Only PPG Formula Over"
+        title = "Only Tempo and Efficiency Formulas Over"
+        underlabel1 = f"{o1} OFF EFF under 100 and {o2} OFF EFF under 95 in this matchup" 
+        underlabel2 = f"{d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
-    # elif game['Just Efficiency Over'] == 1:
-    #     title = "Only Efficiency Formula Over"
+    elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+        title = "Only Tempo and PPG Formulas Over"
 
-    # else:
-    #     title = "No Trend Active"
+    elif game['Just Tempo Over'] == 1:
+        val = game['Over 105 EFF']
+
+        title = "Only Tempo Formula Over"
+        underlabel1 = f"{val} Total EFF over 105 in this matchup"
+
+    elif game['Just PPG Over'] == 1:
+        val = game['Over 110 EFF']
+        title = "Only PPG Formula Over"
+        underlabel1 = f"{val} Total EFF over 110 in this matchup"
+
+    elif game['Just Efficiency Over'] == 1:
+        o = game['OFF Over 105'],
+        d = game['DEF Over 105']
+        title = "Only Efficiency Formula Over"
+        underlabel1 = f"{o} OFF EFF over 105 in this matchup"
+        underlabel2 = f"{d} DEF EFF over 105 in this matchup"
+
+    else:
+        title = "No Trend Active"
 
     html1 = f"""
-        <div style="border:2px solid #DAA520; border-radius:8px; padding:4px; background-color:#000000; margin-bottom:0px;">    
+        <div style="border:2px solid #DAA520; border-radius:8px; padding:4px; background-color:#000000; margin-bottom:0px;"> 
+
+        <!-- Trend title and labels -->
+        <div style="text-align:center; margin-bottom:4px;">
+            <div style="font-size:16px; font-weight:bold; color:#DAA520; margin-bottom:2px;">{title}</div>
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:1px;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:2px;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
+
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
                 <div style="text-align:center;">
