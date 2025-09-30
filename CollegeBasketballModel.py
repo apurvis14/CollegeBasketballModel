@@ -154,20 +154,20 @@ with tab9:
     st.markdown(
             """
             <div style="
-                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 margin: 0 auto; 
                 border: 4px solid goldenrod; 
                 padding: 2px; 
                 border-radius: 10px; 
-                margin-top: 0px;
-                font-size: 48px;
-                font-weight: bold;
                 width: 375px;
                 height: 80px;
-                line-height: 80px;
+                font-size: 48px;
+                font-weight: bold;
                 background-color: #545353ff;
-                text-align: center;
-                color: #ffffff">
+                color: #ffffff;
+                text-align: center;">
                 Today's Games
             </div>
             """,
