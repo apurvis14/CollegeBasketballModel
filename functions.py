@@ -1131,7 +1131,6 @@ def details_html(matchup_header, trend_html):
         align-items: center;
         padding: 0.75rem 1rem;
         font-weight: 600;
-        font-size: 20px;
     }}
     summary::before {{
         content: "▶";
