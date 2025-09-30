@@ -1177,7 +1177,7 @@ def details_html(matchup_header, trend_html):
         align-items: center;
         padding: 0.75rem 1rem;
         font-weight: 600;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 1.3;
     }}
     summary span {{
