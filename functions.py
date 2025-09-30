@@ -1126,9 +1126,9 @@ def show_trend_html(
 
         <!-- Trend title and labels -->
         <div style="text-align:center; margin-bottom:4px;">
-            <div style="font-size:16px; font-weight:bold; color:#DAA520; margin-bottom:2px;">{title}</div>
-            {'<div style="font-size:12px; color:#ffffff; margin-bottom:1px;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
-            {'<div style="font-size:12px; color:#ffffff; margin-bottom:2px;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
+            <div style="font-size:20px; font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">{title}</div>
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:1px; font-weight:bold;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
+            {'<div style="font-size:12px; color:#ffffff; margin-bottom:2px; font-weight:bold;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
 
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
