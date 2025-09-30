@@ -855,7 +855,7 @@ def display_metrics_expand(percent):
     return percent_display
 
 def win_loss_record_expand(win, loss):
-    record = f"<span style='color:goldenrod; font-size:14px; font-weight:bold'>{win} - {loss}</span>"
+    record = f"<span style='color:goldenrod; font-weight:bold'>{win} - {loss}</span>"
 
     units = round(win * 0.909 - loss, 2)
     if units >= 15:
