@@ -342,8 +342,8 @@ with tab9:
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
 
-        away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
-        home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
+        away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
+        home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
         
         # matchup_header = f"""
         #         <div style="line-height:1.3;">
