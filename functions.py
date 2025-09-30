@@ -1157,6 +1157,71 @@ def show_trend_html(
 #     """.format(matchup_header.replace("{", "{{").replace("}", "}}"),
 #                trend_html.replace("{", "{{").replace("}", "}}"))
 
+# def details_html(matchup_header, trend_html):
+#     return f"""
+#     <style>
+#     details {{
+#         background-color: #ffffff;
+#         color: #000;
+#         border-radius: 8px;
+#         padding: 0;
+#         margin: 4px 0;
+#     }}
+#     summary {{
+#         list-style: none;
+#         cursor: pointer;
+#         display: flex;
+#         align-items: center;
+#         justify-content: flex-start;
+#         padding: 0.75rem 1rem;
+#     }}
+#     .header-block {{
+#         display: flex;
+#         flex-direction: column;  /* ✅ stack top + bottom lines */
+#         margin-left: 8px;        /* ✅ space between arrow and text */
+#     }}
+#     .header-top {{
+#         font-size: 20px;
+#         font-weight: bold;
+#         line-height: 1.3;
+#         display: flex;
+#         align-items: center;  /* ✅ keeps logos aligned with team text */
+#     }}
+#     .header-bottom {{
+#         font-size: 12px;
+#         font-weight: bold;
+#         color: #333333;
+#         line-height: 1.3;
+#     }}
+#     summary::before {{
+#         content: "▶";
+#         margin-right: 4px;
+#         transition: transform 0.2s ease;
+#     }}
+#     details[open] summary::before {{
+#         transform: rotate(90deg);
+#     }}
+#     .trend-content {{
+#         padding: 0.75rem 1rem;
+#         background-color: #000000;
+#         color: #ffffff;
+#         border-radius: 0 0 8px 8px;
+#     }}
+#     </style>
+
+#     <details>
+#         <summary>
+#             <div class="header-block">
+#                 <div class="header-top">{matchup_header.split("||")[0]}</div>
+#                 <div class="header-bottom">{matchup_header.split("||")[1]}</div>
+#             </div>
+#         </summary>
+#         <div class="trend-content">
+#             {trend_html}
+#         </div>
+#     </details>
+#     """
+
 def details_html(matchup_header, trend_html):
     return f"""
     <style>
@@ -1171,27 +1236,34 @@ def details_html(matchup_header, trend_html):
         list-style: none;
         cursor: pointer;
         display: flex;
+        flex-direction: row;      /* arrow + content side by side */
         align-items: center;
         justify-content: flex-start;
         padding: 0.75rem 1rem;
     }}
     .header-block {{
         display: flex;
-        flex-direction: column;  /* ✅ stack top + bottom lines */
-        margin-left: 8px;        /* ✅ space between arrow and text */
+        flex-direction: column;   /* stack top + bottom lines */
+        margin-left: 8px;         /* space between arrow and text */
     }}
     .header-top {{
-        font-size: 20px;
+        font-size: 20px;          /* desktop font size */
         font-weight: bold;
         line-height: 1.3;
         display: flex;
-        align-items: center;  /* ✅ keeps logos aligned with team text */
+        align-items: center;
+        white-space: nowrap;      /* prevent wrapping */
+        overflow: hidden;         /* hide overflow */
+        text-overflow: ellipsis;  /* show "..." if too long */
     }}
     .header-bottom {{
-        font-size: 12px;
+        font-size: 12px;          /* desktop font size */
         font-weight: bold;
         color: #333333;
         line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }}
     summary::before {{
         content: "▶";
@@ -1206,6 +1278,16 @@ def details_html(matchup_header, trend_html):
         background-color: #000000;
         color: #ffffff;
         border-radius: 0 0 8px 8px;
+    }}
+
+    /* Responsive font sizes for mobile */
+    @media (max-width: 600px) {{
+        .header-top {{
+            font-size: 16px;
+        }}
+        .header-bottom {{
+            font-size: 11px;
+        }}
     }}
     </style>
 
