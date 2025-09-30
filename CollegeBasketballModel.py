@@ -358,7 +358,7 @@ with tab9:
         #         """
 
         matchup_header = (
-            f"{away_img} {game['Away Team']} @ {home_img} {game['Home Team']} "
+            f"{away_img} {game['Away Team']} &nbsp; @ &nbsp; {home_img} {game['Home Team']} "
             f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
             f"'25-'26 Over Win Record: {record_cur} ({percent_cur1})<br>"
             f"All Time Trend Over Record: {record_all} ({percent_all1})"
