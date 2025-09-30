@@ -1158,9 +1158,6 @@ def show_trend_html(
 #                trend_html.replace("{", "{{").replace("}", "}}"))
 
 def details_html(matchup_header, trend_html):
-    safe_header = matchup_header.replace("{", "{{").replace("}", "}}")
-    safe_trend = trend_html.replace("{", "{{").replace("}", "}}")
-
     return f"""
     <style>
     details {{
@@ -1174,25 +1171,31 @@ def details_html(matchup_header, trend_html):
         list-style: none;
         cursor: pointer;
         display: flex;
-        flex-direction: column;  /* ✅ stack lines vertically */
-        align-items: flex-start;
+        flex-direction: row;  /* ✅ arrow + content side by side */
+        align-items: center;
         padding: 0.75rem 1rem;
     }}
+    .header-block {{
+        display: flex;
+        flex-direction: column;  /* ✅ stack top + bottom lines */
+        margin-left: 8px;        /* ✅ space between arrow and text */
+    }}
     .header-top {{
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
         line-height: 1.3;
+        display: flex;
+        align-items: center;  /* ✅ keeps logos aligned with team text */
     }}
     .header-bottom {{
         font-size: 14px;
         color: #333333;
-        line-height: 1.2;
+        line-height: 1.3;
     }}
     summary::before {{
         content: "▶";
-        margin-right: 8px;
+        margin-right: 4px;
         transition: transform 0.2s ease;
-        align-self: center;  /* keep arrow aligned */
     }}
     details[open] summary::before {{
         transform: rotate(90deg);
@@ -1207,11 +1210,13 @@ def details_html(matchup_header, trend_html):
 
     <details>
         <summary>
-            <div class="header-top">{safe_header.split("||")[0]}</div>
-            <div class="header-bottom">{safe_header.split("||")[1]}</div>
+            <div class="header-block">
+                <div class="header-top">{matchup_header.split("||")[0]}</div>
+                <div class="header-bottom">{matchup_header.split("||")[1]}</div>
+            </div>
         </summary>
         <div class="trend-content">
-            {safe_trend}
+            {trend_html}
         </div>
     </details>
     """
