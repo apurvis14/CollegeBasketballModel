@@ -1139,6 +1139,9 @@ def details_html(matchup_header, trend_html):
         display: flex;
         flex-direction: column;   /* stack top + bottom lines */
         margin-left: 8px;         /* space between arrow and text */
+        border: 4px solid #DAA520;
+        border-radius: 8px;
+        padding: 4px;
     }}
     .header-top {{
         font-size: 20px;          /* desktop font size */
