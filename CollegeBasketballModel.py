@@ -351,11 +351,14 @@ with tab9:
                         {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
                     </span><br>
                     <span style="font-size:14px;">
-                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) &nbsp;|&nbsp; Over Units: {units_cur} &nbsp;|&nbsp; Under Units: {fade_cur} <br>
-                        All Time Trend Over Record: {record_all} ({percent_all1}) &nbsp;|&nbsp; Over Units: {units_all} &nbsp;|&nbsp; Under Units: {fade_all}
+                        '25-'26 Over Win Record: {record_cur} ({percent_cur1}) <br>
+                        All Time Trend Over Record: {record_all} ({percent_all1})
                     </span>
                 </div>
                 """
+
+                #  &nbsp;|&nbsp; Over Units: {units_cur} &nbsp;|&nbsp; Under Units: {fade_cur}
+                #  &nbsp;|&nbsp; Over Units: {units_all} &nbsp;|&nbsp; Under Units: {fade_all}
 
         with st.container(border=False):
             if game['All Formulas Over'] == 1:
