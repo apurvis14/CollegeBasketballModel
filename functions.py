@@ -1094,10 +1094,10 @@ def show_trend_html(
             <!-- Team headers -->
             <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
                 <div style="text-align:center;">
-                    <h4 class="team-header">{away_img}{safe_away_team} vs Trend</h4>
+                    <h4 class="team-header style="text-decoration:underline;">{away_img}{safe_away_team} vs Trend</h4>
                 </div>
                 <div style="text-align:center;">
-                    <h4 class="team-header">{home_img}{safe_home_team} vs Trend</h4>
+                    <h4 class="team-header style="text-decoration:underline;">{home_img}{safe_home_team} vs Trend</h4>
                 </div>
             </div>
 
@@ -1176,14 +1176,6 @@ def details_html(matchup_header, trend_html):
         background-color: #000000;
         color: #ffffff;
         border-radius: 0 0 8px 8px;
-    }}
-
-    .trend-content .team-header {{
-        font-size: 20px;          
-        text-decoration: underline;  
-        margin: 0;
-        display: flex;
-        align-items: center; 
     }}
 
     /* Responsive font sizes for mobile */
