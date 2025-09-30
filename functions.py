@@ -1290,7 +1290,7 @@ def details_html(matchup_header, trend_html):
             font-size: 13px;
         }}
         .header-top .team-logo {{
-            height: 14px;
+            height: 5px;
         }}
         .header-bottom {{
             font-size: 10px;
