@@ -423,7 +423,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
             elif game['Tempo and Efficiency over (PPG under)'] == 1:
                 trend_html = show_trend_html(
@@ -440,7 +440,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
             
             elif game['Tempo and PPG over (Efficiency Under)'] == 1:
                 trend_html = show_trend_html(
@@ -453,7 +453,7 @@ with tab9:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
             elif game['Just Tempo Over'] == 1:
                 trend_html = show_trend_html(
@@ -467,7 +467,7 @@ with tab9:
                     )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
             
             elif game['Just PPG Over'] == 1:
                 trend_html = show_trend_html(
@@ -481,7 +481,7 @@ with tab9:
                     )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
             elif game['Just Efficiency Over'] == 1:
                 trend_html = show_trend_html(
@@ -496,7 +496,7 @@ with tab9:
                     )
                 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
 with tab1: 
     ## Trend Selection
