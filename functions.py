@@ -1134,14 +1134,17 @@ def details_html(matchup_header, trend_html):
         align-items: center;
         justify-content: flex-start;
         padding: 0.75rem 1rem;
+
+        /* Add border */
+        border: 2px solid #DAA520;   /* gold border */
+        border-radius: 8px;           /* rounded corners */
+        background-color: #ffffff;    /* optional: header background */
+        margin-bottom: 4px;           /* space between header and trend content */
     }}
     .header-block {{
         display: flex;
         flex-direction: column;   /* stack top + bottom lines */
         margin-left: 8px;         /* space between arrow and text */
-        border: 4px solid #DAA520;
-        border-radius: 8px;
-        padding: 4px;
     }}
     .header-top {{
         font-size: 20px;          /* desktop font size */
