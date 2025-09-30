@@ -1092,7 +1092,7 @@ def show_trend_html(
         <div style="border:2px solid #DAA520; border-radius:8px; padding:8px; background-color:#000000; margin-bottom:2px;">    
 
             <!-- Team headers -->
-            <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
+            <div style="display:flex; justify-content:space-around; margin-bottom:2px;">
                 <div style="text-align:center;">
                     <h4 class="team-header style="text-decoration:underline;">{away_img}{safe_away_team} vs Trend</h4>
                 </div>
@@ -1102,7 +1102,7 @@ def show_trend_html(
             </div>
 
             <!-- Records -->
-            <div style="display:flex; justify-content:space-around; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-around; margin-bottom:4px;">
                 <div style="text-align:center;">
                     <div class="team-record"><b>Total: {total_away}</b></div>
                     <div class="team-record"><b>Home: {away_record}</b></div>
@@ -1136,7 +1136,7 @@ def details_html(matchup_header, trend_html):
         padding: 0.75rem 1rem;
 
         /* Add border */
-        border: 2px solid #DAA520;   /* gold border */
+        border: 4px solid #DAA520;   /* gold border */
         border-radius: 8px;           /* rounded corners */
         background-color: #ffffff;    /* optional: header background */
         margin-bottom: 4px;           /* space between header and trend content */
