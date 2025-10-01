@@ -156,7 +156,7 @@ with tab9:
 
         /* Optional: hover effect */
         [data-testid="stExpander"] > details > summary:hover {
-            background-color: #FFC846 !important;  /* lighter gold */
+            background-color: #DAA520 !important;  /* lighter gold */
         }
         </style>
         """,
