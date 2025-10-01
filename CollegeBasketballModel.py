@@ -169,17 +169,17 @@ with tab9:
         st.markdown("""
         <div style="font-size:12px; color:black; line-height:1.6;">
             <ul>
-                <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
+                <li>Below "Today's Games" use the Dropdown to Select Specific Conferences<br></li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
                     <ul>
                         <li>There are 8 Trends based on 3 Model Formulas in Comparison to Book Total 
-                            <ul>    
+                            <ul><ul>    
                                 <li>With Various Subcategories based on KenPom Efficiencies for Each Trend</li>
-                            </ul>
+                            </ul></ul>
                         </li>
                         <li>All Records are Record Against the Book Total 
                             <ul>
-                                <li>(2-1 = 2 Overs to 1 Under)</li>
+                                <li>2-1 = 2 Overs to 1 Under<br></li>
                             </ul>
                         </li>
                     </ul>
