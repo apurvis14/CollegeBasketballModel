@@ -167,19 +167,19 @@ with tab9:
     with st.expander("Explanation of Information"):
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
         st.markdown("""
-        <div style="font-size:12px; color:black; line-height:1.6;">
+        <div style="font-size:12px; color:black; line-height:3.2;">
             <ul>
-                <li>Below "Today's Games" use the Dropdown to Select Specific Conferences<br></li>
+                <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
                     <ul>
                         <li>There are 8 Trends based on 3 Model Formulas in Comparison to Book Total 
-                            <ul><ul>    
+                            <ul>    
                                 <li>With Various Subcategories based on KenPom Efficiencies for Each Trend</li>
-                            </ul></ul>
+                            </ul>
                         </li>
                         <li>All Records are Record Against the Book Total 
                             <ul>
-                                <li>2-1 = 2 Overs to 1 Under<br></li>
+                                <li>2-1 = 2 Overs to 1 Under</li>
                             </ul>
                         </li>
                     </ul>
