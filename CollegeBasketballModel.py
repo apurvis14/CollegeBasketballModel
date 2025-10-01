@@ -143,24 +143,25 @@ tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info']
 
 with tab9:
     st.markdown(
-    """
-    <style>
-    /* Expander header */
-    div[role="button"] > div:first-child {
-        background-color: #DAA520 !important;  /* gold */
-        color: black !important;               /* text color */
-        font-weight: bold;
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-    }
-    /* Optional: hover effect */
-    div[role="button"]:hover > div:first-child {
-        background-color: #FFC846 !important;  /* lighter gold on hover */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
+        """
+        <style>
+        /* Expander header */
+        .streamlit-expanderHeader {
+            background-color: #DAA520 !important;  /* gold */
+            color: black !important;               /* text color */
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Optional: hover effect */
+        .streamlit-expanderHeader:hover {
+            background-color: #FFC846 !important;  /* lighter gold on hover */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )   
 
     with st.expander("Explanation of Information"):
         st.write("- BLAH \n- BLAH \n- BLAH")
