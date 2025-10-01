@@ -844,7 +844,7 @@ def display_metrics_expand(percent):
     elif 48 < percent < 52:
         percent_display = f"<span style='color:black; background-color:white; font-weight:bold'>({percent}%)</span>"
     elif 46 < percent <=48:
-        percent_display = f"<span style=color:black; background-color:gold; font-weight:bold'>({percent}%)</span>"
+        percent_display = f"<span style='color:black; background-color:gold; font-weight:bold'>({percent}%)</span>"
     elif 40 <= percent <= 46:
         percent_display = f"<span style='color:black; background-color:#FF6933; font-weight:bold'>({percent}%)</span>"
     elif percent < 40:
