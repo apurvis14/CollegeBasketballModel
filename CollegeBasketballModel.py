@@ -11,9 +11,14 @@ from functions import (
     TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, PPGover_count_win_loss_current, PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current, EFFover_count_win_loss_prev,
     display_total_difference_histogram, display_metrics_expand, win_loss_record_expand,
-    home_away_over_under_by_team, home_away_over_under_by_team_all_under, home_away_over_under_by_team_EP_over,
-    home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TP_over,
-    home_away_over_under_by_team_T_over, home_away_over_under_by_team_P_over, home_away_over_under_by_team_E_over,
+    home_away_over_under_by_team, home_away_over_under_by_team_all,
+    home_away_over_under_by_team_all_under, home_away_over_under_by_team_all_under_all,
+    home_away_over_under_by_team_EP_over, home_away_over_under_by_team_EP_over_all,
+    home_away_over_under_by_team_TE_over, home_away_over_under_by_team_TE_over_all,
+    home_away_over_under_by_team_TP_over, home_away_over_under_by_team_TP_over_all,
+    home_away_over_under_by_team_T_over, home_away_over_under_by_team_T_over_all,
+    home_away_over_under_by_team_P_over, home_away_over_under_by_team_P_over_all,
+    home_away_over_under_by_team_E_over, home_away_over_under_by_team_E_over_all,
     get_base64, show_trend_html, details_html)
 
 from datetime import datetime
@@ -365,6 +370,7 @@ with tab9:
                     allover_count_win_loss_current,
                     allover_count_win_loss_prev,
                     home_away_over_under_by_team,
+                    home_away_over_under_by_team_all,
                     df,
                     game,
                     game['Offense Over 100'],
@@ -384,6 +390,7 @@ with tab9:
                     allunder_count_win_loss_current,
                     allunder_count_win_loss_prev,
                     home_away_over_under_by_team_all_under,
+                    home_away_over_under_by_team_all_under_all,
                     df,
                     game,
                     game['Offense Under 100'],
@@ -400,6 +407,7 @@ with tab9:
                     EPOver_TempoUnder_count_win_loss_current,
                     EPOver_TempoUnder_count_win_loss_prev,
                     home_away_over_under_by_team_EP_over,
+                    home_away_over_under_by_team_EP_over_all,
                     df,
                     game,
                     game['Count of OFF over 100'],
@@ -417,6 +425,7 @@ with tab9:
                     TEOver_PPGUnder_count_win_loss_current,
                     TEOver_PPGUnder_count_win_loss_prev,
                     home_away_over_under_by_team_TE_over,
+                    home_away_over_under_by_team_TE_over_all,
                     df,
                     game,
                     game['OFF Under 100'],
@@ -434,6 +443,7 @@ with tab9:
                     TPOver_EFFUnder_count_win_loss_current,
                     TPOver_EFFUnder_count_win_loss_prev,
                     home_away_over_under_by_team_TP_over,
+                    home_away_over_under_by_team_TP_over_all,
                     df,
                     game
                 )
@@ -447,6 +457,7 @@ with tab9:
                         TempoOver_count_win_loss_current,
                         TempoOver_count_win_loss_prev,
                         home_away_over_under_by_team_T_over,
+                        home_away_over_under_by_team_T_over_all,
                         df,
                         game,
                         game['Over 105 EFF']
@@ -461,6 +472,7 @@ with tab9:
                         PPGover_count_win_loss_current,
                         PPGover_count_win_loss_prev,
                         home_away_over_under_by_team_P_over,
+                        home_away_over_under_by_team_P_over_all,
                         df,
                         game,
                         game['Over 110 EFF']
@@ -475,6 +487,7 @@ with tab9:
                         EFFover_count_win_loss_current,
                         EFFover_count_win_loss_prev,
                         home_away_over_under_by_team_E_over,
+                        home_away_over_under_by_team_E_over_all,
                         df,
                         game,
                         game['OFF Over 105'],
