@@ -716,12 +716,12 @@ def home_away_over_under_by_team_TP_over(df):
         # Home games for team
         home_games = filtered_df[filtered_df['Home Team'] == team]
         home_overs = ((home_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == 1) & (home_games['Year'] == year)).sum()
-        home_unders = ((home_games['Efficiency/PPG over  (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == " ") & (home_games['Year'] == year)).sum()
+        home_unders = ((home_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == " ") & (home_games['Year'] == year)).sum()
 
         # Away games for team
         away_games = filtered_df[filtered_df['Away Team'] == team]
-        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == 1) & (away_games['Year'] == year)).sum()
-        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == " ") & (away_games['Year'] == year)).sum()
+        away_overs = ((away_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (away_games['Over Hit.4'] == 1) & (away_games['Year'] == year)).sum()
+        away_unders = ((away_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (away_games['Over Hit.4'] == " ") & (away_games['Year'] == year)).sum()
         
         # Total overs/unders
         total_overs = home_overs + away_overs
