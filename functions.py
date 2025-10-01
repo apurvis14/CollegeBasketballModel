@@ -1356,9 +1356,9 @@ def show_trend_html(
         underlabel2 = f"- {d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
     elif game['Tempo and Efficiency over (PPG under)'] == 1:
-        o1 = game['OFF Under 100'],
-        o2 = game['OFF Under 95'],
-        d1 = game['DEF Under 100'],
+        o1 = game['OFF Under 100']
+        o2 = game['OFF Under 95']
+        d1 = game['DEF Under 100']
         d2 = game['DEF Under 95']
 
         title = "Only Tempo and Efficiency Formulas Over"
