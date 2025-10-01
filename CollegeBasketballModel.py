@@ -145,23 +145,23 @@ with tab9:
     st.markdown(
         """
         <style>
-        /* Expander header */
-        .streamlit-expanderHeader {
+        /* Target the expander header using data-testid */
+        [data-testid="stExpander"] > details > summary {
             background-color: #DAA520 !important;  /* gold */
-            color: black !important;               /* text color */
+            color: black !important;
             font-weight: bold;
             border-radius: 8px;
             padding: 0.5rem 1rem;
         }
 
         /* Optional: hover effect */
-        .streamlit-expanderHeader:hover {
-            background-color: #FFC846 !important;  /* lighter gold on hover */
+        [data-testid="stExpander"] > details > summary:hover {
+            background-color: #FFC846 !important;  /* lighter gold */
         }
         </style>
         """,
         unsafe_allow_html=True
-    )   
+    )  
 
     with st.expander("Explanation of Information"):
         st.write("- BLAH \n- BLAH \n- BLAH")
