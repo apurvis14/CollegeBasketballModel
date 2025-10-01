@@ -1410,12 +1410,12 @@ def show_trend_html(
             <!-- Records -->
             <div style="display:flex; justify-content:space-around; margin-bottom:2px;">
                 <div style="text-align:center;">
-                    <div class="team-record"><b>Total: {total_away} &nbsp;&nbsp; Total: {total_away_all}</b></div>
-                    <div class="team-record"><b>Away: {away_record} &nbsp;&nbsp; Away: {away_record_all}</b></div>
+                    <div class="team-record"><b>Total: {total_away}</b></div>
+                    <div class="team-record"><b>Away: {away_record}</b></div>
                 </div>
                 <div style="text-align:center;">
-                    <div class="team-record"><b>Total: {total_home} &nbsp;&nbsp; Total: {total_home_all}</b></div>
-                    <div class="team-record"><b>Home: {home_record} &nbsp;&nbsp; Home: {home_record_all}</b></div>
+                    <div class="team-record"><b>Total: {total_home} &nbsp;&nbsp;</b></div>
+                    <div class="team-record"><b>Home: {home_record} &nbsp;&nbsp;</b></div>
                 </div>
             </div>
         </div>
