@@ -832,6 +832,262 @@ def home_away_over_under_by_team_E_over(df, offense, defense):
     
     return pd.DataFrame.from_dict(records, orient='index')
 
+def home_away_over_under_by_team_all(df, offense_value, defense_value):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Offense Over 100'] == offense_value) & 
+                     (df['Defense Over 100'] == defense_value) & 
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == 1)).sum()
+        home_unders = ((home_games['All Formulas Over'] == 1) & (home_games['Over Hit'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == 1)).sum()
+        away_unders = ((away_games['All Formulas Over'] == 1) & (away_games['Over Hit'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_all_under_all(df, o, d):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Offense Under 100'] == o) & 
+                     (df['Defense Under 100'] == d) & 
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['All Formulas Under'] == 1) & (home_games['Over Hit.1'] == 1)).sum()
+        home_unders = ((home_games['All Formulas Under'] == 1) & (home_games['Over Hit.1'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['All Formulas Under'] == 1) & (away_games['Over Hit.1'] == 1)).sum()
+        away_unders = ((away_games['All Formulas Under'] == 1) & (away_games['Over Hit.1'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_EP_over_all(df, offense_value1, offense_value2, defense_value, defense_value1):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Count of OFF over 100'] == offense_value1) &
+                     (df['Count of OFF over 110'] == offense_value2) &
+                     (df['Count of DEF under 100'] == defense_value) &
+                     (df['Count of DEF under 95'] == defense_value1) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.2'] == 1)).sum()
+        home_unders = ((home_games['Efficiency/PPG over  (Tempo under)'] == 1) & (home_games['Over Hit.2'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.2'] == 1)).sum()
+        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.2'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_TE_over_all(df, offense_value1, offense_value2, defense_value, defense_value1):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['OFF Under 100'] == offense_value1) &
+                     (df['OFF Under 95'] == offense_value2) &
+                     (df['DEF Under 100'] == defense_value) &
+                     (df['DEF Under 95'] == defense_value1) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.3'] == 1)).sum()
+        home_unders = ((home_games['Tempo and Efficiency over (PPG under)'] == 1) & (home_games['Over Hit.3'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.3'] == 1)).sum()
+        away_unders = ((away_games['Tempo and Efficiency over (PPG under)'] == 1) & (away_games['Over Hit.3'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_TP_over_all(df):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Tempo and PPG Over (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == 1)).sum()
+        home_unders = ((home_games['Efficiency/PPG over  (Efficiency Under)'] == 1) & (home_games['Over Hit.4'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == 1)).sum()
+        away_unders = ((away_games['Efficiency/PPG over  (Tempo under)'] == 1) & (away_games['Over Hit.4'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_T_over_all(df, val):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Over 105 EFF'] == val) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.5'] == 1)).sum()
+        home_unders = ((home_games['Just Tempo Over'] == 1) & (home_games['Over Hit.5'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.5'] == 1)).sum()
+        away_unders = ((away_games['Just Tempo Over'] == 1) & (away_games['Over Hit.5'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_P_over_all(df, val):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['Over 110 EFF'] == val) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.6'] == 1)).sum()
+        home_unders = ((home_games['Just PPG Over'] == 1) & (home_games['Over Hit.6'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.6'] == 1)).sum()
+        away_unders = ((away_games['Just PPG Over'] == 1) & (away_games['Over Hit.6'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
+def home_away_over_under_by_team_E_over_all(df, offense, defense):
+    # Filter dataframe by offense, defense, and RS/PS criteria first
+    filtered_df = df[(df['OFF Over 105'] == offense) &
+                     (df['DEF Over 105'] == defense) &
+                     (df['RS/PS'] == 'RS')]
+    
+    teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
+    
+    records = {}
+    for team in teams:
+        # Home games for team
+        home_games = filtered_df[filtered_df['Home Team'] == team]
+        home_overs = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.7'] == 1)).sum()
+        home_unders = ((home_games['Just Efficiency Over'] == 1) & (home_games['Over Hit.7'] == " ")).sum()
+
+        # Away games for team
+        away_games = filtered_df[filtered_df['Away Team'] == team]
+        away_overs = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.7'] == 1)).sum()
+        away_unders = ((away_games['Just Efficiency Over'] == 1) & (away_games['Over Hit.7'] == " ")).sum()
+        
+        # Total overs/unders
+        total_overs = home_overs + away_overs
+        total_unders = home_unders + away_unders
+        
+        records[team] = {
+            'Home Record': f"{home_overs} - {home_unders}",
+            'Away Record': f"{away_overs} - {away_unders}",
+            'Total Record': f"{total_overs} - {total_unders}"
+        }
+    
+    return pd.DataFrame.from_dict(records, orient='index')
+
 def display_metrics_expand(percent):
     if percent is None:
         percent_display = "N/A"
@@ -930,7 +1186,7 @@ def show_trend(title: str,
         return f"""
         <div style="text-align:center;margin:0;padding:0;">
             <h4 style="text-decoration:underline;margin:0;">{team} vs Trend</h4>
-            <div style="margin-top:-15px;"><b>Total: {total}</b></div>
+            <div style="margin-top:-15px;"><b>Total: {total} </b></div>
             <div style="margin:0;"><b>{home_away}</b></div>
         </div>
         """
@@ -1014,6 +1270,7 @@ def show_trend_html(
                      metricscurrent,
                      metricsprev,
                      records_func,
+                     records_func2,
                      df: pd.DataFrame,
                      game: pd.DataFrame,
                      *args):
@@ -1040,6 +1297,12 @@ def show_trend_html(
     away_record_map = records_df.set_index('Team')['Away Record'].to_dict()
     total_record_map = records_df.set_index('Team')['Total Record'].to_dict()
 
+        # ---- All-Time Team Specific
+    records_df_all = records_func2(df, *args).reset_index().rename(columns={'index': 'Team'})
+    home_map_all = records_df_all.set_index('Team')['Home Record'].to_dict()
+    away_map_all = records_df_all.set_index('Team')['Away Record'].to_dict()
+    total_map_all = records_df_all.set_index('Team')['Total Record'].to_dict()
+
     home_team = game['Home Team']
     away_team = game['Away Team']
 
@@ -1050,6 +1313,11 @@ def show_trend_html(
     total_home = total_record_map.get(home_team, "0-0")
     away_record = away_record_map.get(away_team, "0-0")
     total_away = total_record_map.get(away_team, "0-0")
+
+    home_record_all = home_map_all.get(home_team, "0-0")
+    total_home_all = total_map_all.get(home_team, "0-0")
+    away_record_all = away_map_all.get(away_team, "0-0")
+    total_away_all = total_map_all.get(away_team, "0-0")
 
     # metric_html_all = metric_html("All Seasons", pct_all, win, loss)
     # metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
@@ -1142,12 +1410,12 @@ def show_trend_html(
             <!-- Records -->
             <div style="display:flex; justify-content:space-around; margin-bottom:2px;">
                 <div style="text-align:center;">
-                    <div class="team-record"><b>Total: {total_away}</b></div>
-                    <div class="team-record"><b>Home: {away_record}</b></div>
+                    <div class="team-record"><b>Total: {total_away} &nbsp;&nbsp; Total: {total_away_all}</b></div>
+                    <div class="team-record"><b>Away: {away_record} &nbsp;&nbsp; Away: {away_record_all}</b></div>
                 </div>
                 <div style="text-align:center;">
-                    <div class="team-record"><b>Total: {total_home}</b></div>
-                    <div class="team-record"><b>Away: {home_record}</b></div>
+                    <div class="team-record"><b>Total: {total_home} &nbsp;&nbsp; Total: {total_home_all}</b></div>
+                    <div class="team-record"><b>Home: {home_record} &nbsp;&nbsp; Home: {home_record_all}</b></div>
                 </div>
             </div>
         </div>
