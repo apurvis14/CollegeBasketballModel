@@ -179,7 +179,7 @@ with tab9:
                         </li>
                         <li>All Records are Record Against the Book Total 
                             <ul>
-                                (2-1 = 2 Overs to 1 Under)</li>
+                                <li>(2-1 = 2 Overs to 1 Under)</li>
                             </ul>
                         </li>
                     </ul>
