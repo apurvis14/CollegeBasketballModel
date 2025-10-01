@@ -164,7 +164,13 @@ with tab9:
     )  
 
     with st.expander("Explanation of Information"):
-        st.write("- BLAH \n- BLAH \n- BLAH")
+        # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
+        st.markdown("""
+            - Dropdown to Select Specific Conferences
+            - Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
+            - BLAH
+            - BLAH
+            """)
 
     st.markdown(
     "<hr style='border: 2px solid goldenrod; margin-top: 0rem; margin-bottom: 0.5rem;'>",
