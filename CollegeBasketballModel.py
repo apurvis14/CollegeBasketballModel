@@ -167,7 +167,7 @@ with tab9:
     with st.expander("Explanation of Information"):
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
         st.markdown("""
-        <div style="font-size:8px; color:black; line-height:1.2;">
+        <div style="font-size:12px; color:black; line-height:1.2;">
             <ul>
                 <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend</li>
