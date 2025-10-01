@@ -1478,7 +1478,7 @@ def details_html(matchup_header, trend_html):
     summary::before {{
         content: "▶";
         margin-right: 4px;
-        transition: transform 1s ease;
+        transition: transform 0.5s ease;
     }}
     details[open] summary::before {{
         transform: rotate(90deg);
@@ -1488,6 +1488,12 @@ def details_html(matchup_header, trend_html):
         background-color: #000000;
         color: #ffffff;
         border-radius: 0 0 8px 8px;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.8s ease;
+    }}
+    details[open] > .trend-content {{
+        max-height: 290px;
     }}
 
     .trend-content .title-drop {{
