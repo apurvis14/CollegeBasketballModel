@@ -517,7 +517,7 @@ with tab9:
                     home_away_over_under_by_team_TP_over_all,
                     df,
                     game,
-                    "RS"
+                    game["Arg"]
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
