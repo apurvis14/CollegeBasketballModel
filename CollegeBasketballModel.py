@@ -345,18 +345,18 @@ with tab9:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
         elif percent_cur >= 55 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        elif percent_cur >= 55 and 53 <= percent_all < 55:
+        elif percent_cur >= 55 and 52 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        elif percent_cur >= 55 and percent_all < 53:
+        elif percent_cur >= 55 and percent_all < 52:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
 
         elif 52 <= percent_cur < 55 and percent_all >= 60:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
         elif 52 <= percent_cur < 55 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        elif 52 <= percent_cur < 55 and 53 <= percent_all < 55:
+        elif 52 <= percent_cur < 55 and 52 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        elif 52 <= percent_cur < 55 and percent_all < 53:
+        elif 52 <= percent_cur < 55 and percent_all < 52:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
 
         elif 48 < percent_cur < 52 and percent_all >= 60:
