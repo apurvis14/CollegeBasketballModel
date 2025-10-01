@@ -161,8 +161,8 @@ with tab9:
     """,
     unsafe_allow_html=True
     )
-    
-    with st.expander("Further Explanation of This App's Information"):
+
+    with st.expander("Explanation of Information"):
         st.write("- BLAH \n- BLAH \n- BLAH")
 
     st.markdown(
