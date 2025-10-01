@@ -260,10 +260,6 @@ with tab9:
     "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
     unsafe_allow_html=True)
 
-    st.markdown(
-    "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
-    unsafe_allow_html=True)
-
     for idx, game in today_games.iterrows():
         if game['All Formulas Over'] == 1:
             o = game['Offense Over 100']
