@@ -213,7 +213,7 @@ with tab9:
                 border: 4px solid goldenrod; 
                 padding: 2px; 
                 border-radius: 10px; 
-                width: 375px;
+                width: 350px;
                 height: 80px;
                 font-size: 48px;
                 font-weight: bold;
