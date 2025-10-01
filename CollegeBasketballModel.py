@@ -158,11 +158,6 @@ with tab9:
         [data-testid="stExpander"] > details > summary:hover {
             background-color: #DAA520 !important;  /* lighter gold */
         }
-        /* Expander content */
-        [data-testid="stExpander"] > details > div[role="region"] {
-            font-size: 10px !important;  /* smaller font */
-            color: #000000;              /* optional text color */
-        }
         </style>
         """,
         unsafe_allow_html=True
@@ -172,12 +167,23 @@ with tab9:
     with st.expander("Explanation of Information"):
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
         st.markdown("""
-            - Below "Today's Games" use the Dropdown to Select Specific Conferences
-            - Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
-                - There are 8 Trends with Various Subcategories based on KenPom Efficiencies for Each Trend
-                - All Records are Record Against the Total (2-1 = 2 Overs to 1 Under)
-            - Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk
-            """)
+        <div style="font-size:8px; color:black; line-height:1.2;">
+            <ul>
+                <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
+                <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend</li>
+                <li>There are 8 Trends with Various Subcategories based on KenPom Efficiencies for Each Trend</li>
+                <li>All Records are Record Against the Total (2-1 = 2 Overs to 1 Under)</li>
+                <li>Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        # st.markdown("""
+        #     - Below "Today's Games" use the Dropdown to Select Specific Conferences
+        #     - Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
+        #         - There are 8 Trends with Various Subcategories based on KenPom Efficiencies for Each Trend
+        #         - All Records are Record Against the Total (2-1 = 2 Overs to 1 Under)
+        #     - Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk
+        #     """)
 
     st.markdown(
     "<hr style='border: 2px solid goldenrod; margin-top: 0rem; margin-bottom: 0.5rem;'>",
