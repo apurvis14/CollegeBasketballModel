@@ -180,6 +180,16 @@ with tab9:
                 <li>Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk</li>
             </ol>
         </div>
+
+        <style>
+            /* Mobile adjustments */
+            @media (max-width: 600px) {
+                div {
+                    font-size: 9px !important;
+                    line-height: 1.6 !important;
+                }
+            }
+        </style>
         """, unsafe_allow_html=True)
         # st.markdown("""
         #     - Below "Today's Games" use the Dropdown to Select Specific Conferences
