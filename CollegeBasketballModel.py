@@ -150,7 +150,7 @@ with tab9:
         st.write("- BLAH \n- BLAH \n- BLAH")
 
     st.markdown(
-    "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
+    "<hr style='border: 2px solid goldenrod; margin-top: 0rem; margin-bottom: 0.25rem;'>",
     unsafe_allow_html=True)
 
     st.markdown(
