@@ -174,7 +174,7 @@ with tab9:
                     <ul>
                         <li>There are 8 Trends based on 3 Model Formulas in Comparison to Book Total</li> 
                         <li>With Various Subcategories for Each of the 8 Trends based on KenPom Efficiencies</li>
-                        <li>All Records are Record Against the Book Total (Ex: 2-1 = 2 Overs to 1 Under)</li>
+                        <li>All Records are Record Against the Book Total for the Active Trend (Ex: 92-11 = 92 Overs to 11 Unders)</li>
                     </ul>
                 </li>
                 <li>Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk</li>
