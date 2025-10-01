@@ -704,9 +704,9 @@ def home_away_over_under_by_team_TE_over(df, offense_value1, offense_value2, def
     
     return pd.DataFrame.from_dict(records, orient='index')
 
-def home_away_over_under_by_team_TP_over(df):
+def home_away_over_under_by_team_TP_over(df, RS):
     # Filter dataframe by offense, defense, and RS/PS criteria first
-    filtered_df = df[(df['RS/PS'] == 'RS')]
+    filtered_df = df[(df['RS/PS'] == RS)]
     
     teams = pd.unique(filtered_df[['Home Team', 'Away Team']].values.ravel())
     
