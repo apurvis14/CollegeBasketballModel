@@ -332,13 +332,11 @@ with tab9:
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
 
-        if percent_cur >= 60 and percent_all >= 60:
+        if percent_cur >= 60 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
-        elif percent_cur >= 60 and percent_all >= 55:
-            pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
-        elif percent_cur >= 60 and 52 <= percent_all < 55:
+        elif percent_cur >= 60 and 53 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        elif percent_cur >= 60 and 50 <= percent_all < 52:
+        elif percent_cur >= 60 and 50 <= percent_all < 53:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
         elif percent_cur >= 60 and percent_all < 50:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
@@ -347,29 +345,27 @@ with tab9:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
         elif percent_cur >= 55 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        elif percent_cur >= 55 and 52 <= percent_all < 55:
+        elif percent_cur >= 55 and 53 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        elif percent_cur >= 55 and percent_all < 52:
+        elif percent_cur >= 55 and percent_all < 53:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
 
         elif 52 <= percent_cur < 55 and percent_all >= 60:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
         elif 52 <= percent_cur < 55 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        elif 52 <= percent_cur < 55 and 52 <= percent_all < 55:
+        elif 52 <= percent_cur < 55 and 53 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        elif 52 <= percent_cur < 55 and percent_all < 52:
+        elif 52 <= percent_cur < 55 and percent_all < 53:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
 
         elif 48 < percent_cur < 52 and percent_all >= 60:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
         elif 48 < percent_cur < 52 and percent_all >= 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        elif 48 < percent_cur < 52 and 48 < percent_all < 55:
+        elif 48 < percent_cur < 52 and 46 <= percent_all < 55:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        elif 48 < percent_cur < 52 and 46 < percent_all <= 48:
-            pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
-        elif 48 < percent_cur < 52 and 42 < percent_all <= 46:
+        elif 48 < percent_cur < 52 and 42 < percent_all < 46:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
         elif 48 < percent_cur < 52 and percent_all <= 42:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
@@ -394,7 +390,15 @@ with tab9:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
         elif 40 <= percent_cur <= 46 and 40 <= percent_all <= 46:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
+        elif 40 <= percent_cur <= 46 and percent_all < 40:
+            pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Under"
 
+        elif percent_cur < 40 and percent_all >= 50:
+            pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
+        elif percent_cur < 40 and 48 <= percent_all < 50:
+            pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
+        elif percent_cur < 40 and 40 <= percent_all < 48:
+            pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
         elif percent_cur < 40 and percent_all < 40:
             pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Under"
 
