@@ -307,9 +307,9 @@ with tab9:
         elif game['Just PPG Over'] == 1:
             val = game['Over 110 EFF']
 
-            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, o, d)
+            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
             percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-            count, win, loss = PPGover_count_win_loss(df, o, d)
+            count, win, loss = PPGover_count_win_loss(df, val)
             percent_all = round((win/count)*100,2) if count else 0
 
         elif game['Just Efficiency Over'] == 1:
