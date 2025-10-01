@@ -173,9 +173,7 @@ with tab9:
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
                     <ul>
                         <li>There are 8 Trends based on 3 Model Formulas in Comparison to Book Total</li> 
-                            
                         <li>With Various Subcategories for Each of the 8 Trends based on KenPom Efficiencies</li>
-            
                         <li>All Records are Record Against the Book Total (Ex: 2-1 = 2 Overs to 1 Under)</li>
                     </ul>
                 </li>
