@@ -312,6 +312,21 @@ with tab9:
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
 
+        if percent_cur1 >= 60:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Strong Confident Over"
+        elif percent_cur1 >= 55:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Confident Over"
+        elif 52 <= percent_cur1 < 55:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Less Confident Over, Lean Avoid"
+        elif 48 < percent_cur1 < 52:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Avoid"
+        elif 46 < percent_cur1 <=48:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Less Confident Under, Lean Avoid"
+        elif 40 <= percent_cur1 <= 46:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Confident Under"
+        elif percent_cur1 < 40:
+            pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Strong Confident Under"
+
         record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
         record_all, units_all, fade_all = win_loss_record_expand(win, loss)
         
@@ -336,7 +351,7 @@ with tab9:
         matchup_header = (
             f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']} "
             f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
-            f"'25-'26 Trend Over Record: {record_cur} {percent_cur1}<br>"
+            f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} | {pick}<br>"
             f"All Time Trend Over Record: {record_all} {percent_all1}"
 )
 
