@@ -170,10 +170,10 @@ with tab9:
         <div class="mobile-adjust" style="font-size:12px; color:black; line-height:2.4;">
             <ol>
                 <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
-                <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
+                <li>Each Game has a Dropdown with Trend Info and Team's Season Records for that Active Trend
                     <ul>
                         <li>There are 8 Trends based on 3 Model Formulas in Comparison to Book Total</li> 
-                        <li>With Various Subcategories for Each of the 8 Trends based on KenPom Efficiencies</li>
+                        <li>With Various Subcategories for Each of the 8 Trends using the Team's KenPom Efficiencies</li>
                         <li>All Records are Record Against the Book Total for the Active Trend (Ex: 92-11 = 92 Overs to 11 Unders)</li>
                     </ul>
                 </li>
