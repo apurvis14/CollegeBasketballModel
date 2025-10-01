@@ -168,7 +168,7 @@ with tab9:
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
         st.markdown("""
         <div style="font-size:12px; color:black; line-height:2.4;">
-            <ul>
+            <ol>
                 <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
                     <ul>
@@ -185,7 +185,7 @@ with tab9:
                     </ul>
                 </li>
                 <li>Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk</li>
-            </ul>
+            </ol>
         </div>
         """, unsafe_allow_html=True)
         # st.markdown("""
