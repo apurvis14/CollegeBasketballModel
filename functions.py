@@ -1478,7 +1478,7 @@ def details_html(matchup_header, trend_html):
     summary::before {{
         content: "▶";
         margin-right: 4px;
-        transition: transform 0.2s ease;
+        transition: transform 1s ease;
     }}
     details[open] summary::before {{
         transform: rotate(90deg);
