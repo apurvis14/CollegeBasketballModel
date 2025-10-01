@@ -1490,7 +1490,7 @@ def details_html(matchup_header, trend_html):
         border-radius: 0 0 8px 8px;
         overflow: hidden;
         max-height: 0;
-        transition: max-height 0.8s ease;
+        transition: max-height 3s ease;
     }}
     details[open] > .trend-content {{
         max-height: 290px;
