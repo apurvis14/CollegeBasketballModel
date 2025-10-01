@@ -157,12 +157,17 @@ with tab9:
         /* Optional: hover effect */
         [data-testid="stExpander"] > details > summary:hover {
             background-color: #DAA520 !important;  /* lighter gold */
-            font-size: 10px;
+        }
+        /* Expander content */
+        [data-testid="stExpander"] > details > div[role="region"] {
+            font-size: 10px !important;  /* smaller font */
+            color: #000000;              /* optional text color */
         }
         </style>
         """,
         unsafe_allow_html=True
-    )  
+    )
+
 
     with st.expander("Explanation of Information"):
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
