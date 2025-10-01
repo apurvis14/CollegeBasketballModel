@@ -204,27 +204,32 @@ with tab9:
     unsafe_allow_html=True)
 
     st.markdown(
-            """
-            <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0 auto; 
-                border: 4px solid goldenrod; 
-                padding: 2px; 
-                border-radius: 10px; 
-                width: 350px;
-                height: 80px;
-                font-size: 48px;
-                font-weight: bold;
-                background-color: #545353ff;
-                color: #ffffff;
-                text-align: center;">
-                Today's Games
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    """
+    <div style="
+        display: flex;
+        justify-content: center;  /* centers horizontally */
+        align-items: center;      /* centers vertically */
+        width: 100%;">
+        <div style="
+            border: 4px solid goldenrod; 
+            padding: 2px; 
+            border-radius: 10px; 
+            width: 375px;
+            height: 80px;
+            font-size: 48px;
+            font-weight: bold;
+            background-color: #545353ff;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;">
+            Today's Games
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     # Today Variable for Sorting
     today = datetime(2025, 1, 11).date()
