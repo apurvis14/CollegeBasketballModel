@@ -836,21 +836,21 @@ def display_metrics_expand(percent):
     if percent is None:
         percent_display = "N/A"
     elif percent >= 60:
-        percent_display = f"<span style='color:black; background-color:#22C55E; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:black; background-color:darkgreen; font-weight:bold'>({percent})%</span>"
     elif percent >= 55:
-        percent_display = f"<span style='color:black; background-color:#34D399; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:black; background-color:limegreen; font-weight:bold'>({percent})%</span>"
     elif 52 <= percent < 55:
-        percent_display = f"<span style='color:black; font-weight:bold; background-color:#DCFCE7;'>{percent}%</span>"
+        percent_display = f"<span style='color:black; font-weight:bold; background-color:lightgreen;'>({percent}%)</span>"
     elif 48 < percent < 52:
-        percent_display = f"<span style='color:black; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:black; background-color:white; font-weight:bold'>({percent})%</span>"
     elif 46 < percent <=48:
-        percent_display = f"<span style='color:orange; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style=color:black; background-'color:orange; font-weight:bold'>({percent})%</span>"
     elif 40 <= percent <= 46:
-        percent_display = f"<span style='color:orangered; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:black; background-color:orangered; font-weight:bold'>({percent})%</span>"
     elif percent < 40:
-        percent_display = f"<span style='color:red; font-weight:bold'>{percent}%</span>"
+        percent_display = f"<span style='color:black; background-color:red; font-weight:bold'>({percent})%</span>"
     else:
-        percent_display = f"{percent}%"
+        percent_display = f"({percent})%"
 
     return percent_display
 

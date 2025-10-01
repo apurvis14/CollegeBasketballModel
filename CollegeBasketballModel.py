@@ -365,8 +365,8 @@ with tab9:
         matchup_header = (
             f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']} "
             f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
-            f"'25-'26 Trend Over Record: {record_cur} ({percent_cur1})<br>"
-            f"All Time Trend Over Record: {record_all} ({percent_all1})"
+            f"'25-'26 Trend Over Record: {record_cur} {percent_cur1}<br>"
+            f"All Time Trend Over Record: {record_all} {percent_all1}"
 )
 
                 #  &nbsp;|&nbsp; Over Units: {units_cur} &nbsp;|&nbsp; Under Units: {fade_cur}
