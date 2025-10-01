@@ -167,7 +167,7 @@ with tab9:
     with st.expander("Explanation of Information"):
         # st.write("- Dropdown to Select Specific Conferences\n- Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend \n- BLAH\n- BLAH")
         st.markdown("""
-        <div style="font-size:12px; color:black; line-height:2.4;">
+        <div class="mobile-adjust" style="font-size:12px; color:black; line-height:2.4;">
             <ol>
                 <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend
@@ -184,7 +184,7 @@ with tab9:
         <style>
             /* Mobile adjustments */
             @media (max-width: 600px) {
-                div {
+                .mobile.adjust {
                     font-size: 9px !important;
                     line-height: 1.6 !important;
                 }
