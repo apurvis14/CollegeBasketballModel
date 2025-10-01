@@ -143,6 +143,17 @@ tab9, tab1 = st.tabs(["Today's Games with Trends", 'Extra Info: All Trend Info']
 
 with tab9:
     st.markdown(
+    "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
+    unsafe_allow_html=True)
+
+    with st.expander("Further Explanation of This App's Information"):
+        st.write("- BLAH \n- BLAH \n- BLAH")
+
+    st.markdown(
+    "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
+    unsafe_allow_html=True)
+
+    st.markdown(
             """
             <div style="
                 display: flex;
@@ -248,9 +259,6 @@ with tab9:
     st.markdown(
     "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
     unsafe_allow_html=True)
-
-    with st.expander("Further Explanation of This App's Information"):
-        st.write("- BLAH \n- BLAH \n- BLAH")
 
     st.markdown(
     "<hr style='border: 2px solid goldenrod; margin-top: 0.25rem; margin-bottom: 0rem;'>",
