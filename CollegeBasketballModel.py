@@ -389,7 +389,7 @@ with tab9:
                 # height = int(estimate_height(trend_html))
                 # trend_html_safe = trend_html.replace("{", "{{").replace("}", "}}")
                 # st.markdown(details_html(matchup_header, trend_html), unsafe_allow_html=True) 
-                st_html(details_html(matchup_header, trend_html), height=250, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
             
             elif game['All Formulas Under'] == 1:
