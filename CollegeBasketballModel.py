@@ -166,7 +166,7 @@ with tab9:
         )
 
     # Today Variable for Sorting
-    today = datetime(2025, 1, 20).date()
+    today = datetime(2025, 1, 18).date()
 
     # Names of Columns
     home_col = 'Home Conference'
