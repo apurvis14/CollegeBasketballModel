@@ -1,16 +1,28 @@
 import pandas as pd
 import streamlit as st
 from functions import (
-    allover_count_win_loss, allunder_count_win_loss, EPOver_TempoUnder_count_win_loss, TEOver_PPGUnder_count_win_loss,
-    TPOver_EFFUnder_count_win_loss, TempoOver_count_win_loss, PPGover_count_win_loss, EFFover_count_win_loss,
-    display_metrics, display_metrics_under,
-    allover_count_win_loss_current, allover_count_win_loss_prev, allunder_count_win_loss_current,allunder_count_win_loss_prev,
-    EPOver_TempoUnder_count_win_loss_current, EPOver_TempoUnder_count_win_loss_prev, 
+    # Win/Loss Record Functions
+    allover_count_win_loss, allunder_count_win_loss,
+    EPOver_TempoUnder_count_win_loss, TEOver_PPGUnder_count_win_loss,
+    TPOver_EFFUnder_count_win_loss, TempoOver_count_win_loss,
+    PPGover_count_win_loss, EFFover_count_win_loss,
+
+    # Win/Loss Record by Period (Current vs. Previous)
+    allover_count_win_loss_current, allover_count_win_loss_prev,
+    allunder_count_win_loss_current, allunder_count_win_loss_prev,
+    EPOver_TempoUnder_count_win_loss_current, EPOver_TempoUnder_count_win_loss_prev,
     TEOver_PPGUnder_count_win_loss_current, TEOver_PPGUnder_count_win_loss_prev,
     TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev,
-    TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, PPGover_count_win_loss_current, PPGover_count_win_loss_prev,
+    TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev,
+    PPGover_count_win_loss_current, PPGover_count_win_loss_prev,
     EFFover_count_win_loss_current, EFFover_count_win_loss_prev,
-    display_total_difference_histogram, display_metrics_expand, win_loss_record_expand,
+
+    # Display / Metrics Functions
+    display_metrics, display_metrics_under,
+    display_total_difference_histogram,
+    display_metrics_expand, win_loss_record_expand,
+
+    # Home/Away Breakdown
     home_away_over_under_by_team, home_away_over_under_by_team_all,
     home_away_over_under_by_team_all_under, home_away_over_under_by_team_all_under_all,
     home_away_over_under_by_team_EP_over, home_away_over_under_by_team_EP_over_all,
@@ -19,7 +31,10 @@ from functions import (
     home_away_over_under_by_team_T_over, home_away_over_under_by_team_T_over_all,
     home_away_over_under_by_team_P_over, home_away_over_under_by_team_P_over_all,
     home_away_over_under_by_team_E_over, home_away_over_under_by_team_E_over_all,
-    get_base64, show_trend_html, details_html)
+
+    # Utilities
+    get_base64, show_trend_html, details_html
+)
 
 from datetime import datetime
 from PIL import Image
