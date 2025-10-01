@@ -1276,9 +1276,9 @@ def show_trend_html(
                      *args):
     
     # ---- Win/Loss metrics
-    count, win, loss = metrics(df, *args)
-    count_cur, win_cur, loss_cur = metricscurrent(df, *args)
-    count_prev, win_prev, loss_prev = metricsprev(df, *args)
+    # count, win, loss = metrics(df, *args)
+    # count_cur, win_cur, loss_cur = metricscurrent(df, *args)
+    # count_prev, win_prev, loss_prev = metricsprev(df, *args)
 
     def pct(w, c): 
         return round((w / c) * 100, 2) if c else 0
