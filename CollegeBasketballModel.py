@@ -171,8 +171,11 @@ with tab9:
             <ul>
                 <li>Below "Today's Games" use the Dropdown to Select Specific Conferences</li>
                 <li>Each Game has a Dropdown with Trend Info and Team's Season Record in that Active Trend</li>
-                <li>There are 8 Trends with Various Subcategories based on KenPom Efficiencies for Each Trend</li>
-                <li>All Records are Record Against the Total (2-1 = 2 Overs to 1 Under)</li>
+                    <ul>
+                        <li>There are 8 Trends with Various Subcategories based on KenPom Efficiencies for Each Trend</li>
+                        <li>All Records are Record Against the Total (2-1 = 2 Overs to 1 Under)</li>
+                    </ul>
+                    </li>
                 <li>Each Game has a Suggestion, Use Your Analysis and Take Games at Your Own Risk</li>
             </ul>
         </div>
