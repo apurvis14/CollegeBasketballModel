@@ -1046,10 +1046,10 @@ def show_trend_html(
     safe_home_team = html.escape(home_team)
     safe_away_team = html.escape(away_team)
 
-    home_record = home_record_map.get(safe_home_team, "N/A")
-    total_home = total_record_map.get(safe_home_team, "N/A")
-    away_record = away_record_map.get(safe_away_team, "N/A")
-    total_away = total_record_map.get(safe_away_team, "N/A")
+    home_record = home_record_map.get(home_team, "N/A")
+    total_home = total_record_map.get(home_team, "N/A")
+    away_record = away_record_map.get(away_team, "N/A")
+    total_away = total_record_map.get(away_team, "N/A")
 
     # metric_html_all = metric_html("All Seasons", pct_all, win, loss)
     # metric_html_current = metric_html("Current Season", pct_cur, win_cur, loss_cur)
