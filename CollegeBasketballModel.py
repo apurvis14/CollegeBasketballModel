@@ -184,7 +184,7 @@ with tab9:
         <style>
             /* Mobile adjustments */
             @media (max-width: 600px) {
-                .mobile.adjust {
+                .mobile-adjust {
                     font-size: 9px !important;
                     line-height: 1.6 !important;
                 }
