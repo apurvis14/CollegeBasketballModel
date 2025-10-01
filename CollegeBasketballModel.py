@@ -312,19 +312,19 @@ with tab9:
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
 
-        if percent_cur1 >= 60:
+        if percent_cur >= 60:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Strong Confident Over"
-        elif percent_cur1 >= 55:
+        elif percent_cur >= 55:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Confident Over"
-        elif 52 <= percent_cur1 < 55:
+        elif 52 <= percent_cur < 55:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Less Confident Over, Lean Avoid"
-        elif 48 < percent_cur1 < 52:
+        elif 48 < percent_cur < 52:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Avoid"
-        elif 46 < percent_cur1 <=48:
+        elif 46 < percent_cur <=48:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Less Confident Under, Lean Avoid"
-        elif 40 <= percent_cur1 <= 46:
+        elif 40 <= percent_cur <= 46:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Confident Under"
-        elif percent_cur1 < 40:
+        elif percent_cur < 40:
             pick = "<span style='color:black; font-weight:bold'>Pick Suggestion: Strong Confident Under"
 
         record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
