@@ -234,7 +234,7 @@ def compute_game_metrics(game, df):
 
     return count_cur, win_cur, loss_cur, count, win, loss, percent_cur, percent_all
 
-@st.cache_data
+
 def generate_game_html(game,
     percent_cur,
     percent_all,
