@@ -266,8 +266,8 @@ def generate_game_html(game,
     matchup_header = (
         f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']} "
         f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
-        f"'25-'26 Trend Over Record: {record_cur} ({percent_cur1}%) &nbsp;&nbsp;|&nbsp;&nbsp; {pick}<br>"
-        f"All Time Trend Over Record: {record_all} ({percent_all1}%)"
+        f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} &nbsp;&nbsp;|&nbsp;&nbsp; {pick}<br>"
+        f"All Time Trend Over Record: {record_all} {percent_all1}"
     )
 
     trend_html = show_trend_html(trend_func,
