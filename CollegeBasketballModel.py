@@ -251,6 +251,9 @@ def generate_game_html(game,
     *args  # any additional args needed for the trend
     ):
 
+    record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
+    record_all, units_all, fade_all = win_loss_record_expand(win, loss)
+
     away_logo = logos.get(game['Away Team'], "")
     home_logo = logos.get(game['Home Team'], "")
     
