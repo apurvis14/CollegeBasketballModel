@@ -1,0 +1,68 @@
+Trend,count_gt1,count_lt-1,over_hit_rate_gt1,under_hit_rate_lt-1,total_games
+All Over - 0 OFF and 2 DEF over 100,0.0,106.0,0.0,0.5094339622641509,190.0
+All Over - 1 OFF and 0 DEF over 100,0.0,0.0,0.0,0.0,5.0
+All Over - 1 OFF and 1 DEF over 100,0.0,11.0,0.0,0.45454545454545453,56.0
+All Over - 1 OFF and 2 DEF over 100,38.0,0.0,0.5,0.0,329.0
+All Over - 2 OFF and 0 DEF over 100,0.0,3.0,0.0,0.0,74.0
+All Over - 2 OFF and 1 DEF over 100,0.0,10.0,0.0,0.1,168.0
+All Over - 2 OFF and 2 DEF over 100,142.0,0.0,0.5,0.0,182.0
+All Under - 0 OFF and 0 DEF under 100,2.0,174.0,0.5,0.5344827586206896,331.0
+All Under - 0 OFF and 1 DEF under 100,48.0,3.0,0.5208333333333334,0.3333333333333333,118.0
+All Under - 0 OFF and 2 DEF under 100,0.0,32.0,0.0,0.53125,60.0
+All Under - 1 OFF and 0 DEF under 100,0.0,44.0,0.0,0.5454545454545454,76.0
+All Under - 1 OFF and 1 DEF under 100,3.0,0.0,1.0,0.0,5.0
+All Under - 2 OFF and 0 DEF under 100,0.0,2.0,0.0,0.0,11.0
+EP Over/Tempo Under - 0/0 OFF over 100/110 - 0/0 DEF under 100/95,0.0,4.0,0.0,0.25,23.0
+EP Over/Tempo Under - 1/0 OFF over 100/110 - 0/0 DEF under 100/95,1.0,10.0,0.0,0.4,258.0
+EP Over/Tempo Under - 1/0 OFF over 100/110 - 1/0 DEF under 100/95,0.0,0.0,0.0,0.0,3.0
+EP Over/Tempo Under - 1/0 OFF over 100/110 - 1/1 DEF under 100/95,0.0,0.0,0.0,0.0,1.0
+EP Over/Tempo Under - 1/1 OFF over 100/110 - 0/0 DEF under 100/95,4.0,0.0,0.0,0.0,49.0
+EP Over/Tempo Under - 1/1 OFF over 100/110 - 1/0 DEF under 100/95,0.0,0.0,0.0,0.0,5.0
+EP Over/Tempo Under - 2/0 OFF over 100/110 - 0/0 DEF under 100/95,388.0,0.0,0.5180412371134021,0.0,550.0
+EP Over/Tempo Under - 2/0 OFF over 100/110 - 1/0 DEF under 100/95,13.0,0.0,0.5384615384615384,0.0,31.0
+EP Over/Tempo Under - 2/0 OFF over 100/110 - 1/1 DEF under 100/95,0.0,0.0,0.0,0.0,3.0
+EP Over/Tempo Under - 2/0 OFF over 100/110 - 2/0 DEF under 100/95,0.0,0.0,0.0,0.0,1.0
+EP Over/Tempo Under - 2/1 OFF over 100/110 - 0/0 DEF under 100/95,65.0,1.0,0.49230769230769234,0.0,312.0
+EP Over/Tempo Under - 2/1 OFF over 100/110 - 1/0 DEF under 100/95,2.0,0.0,0.0,0.0,124.0
+EP Over/Tempo Under - 2/1 OFF over 100/110 - 1/1 DEF under 100/95,23.0,0.0,0.6086956521739131,0.0,27.0
+EP Over/Tempo Under - 2/1 OFF over 100/110 - 2/0 DEF under 100/95,0.0,4.0,0.0,0.5,10.0
+EP Over/Tempo Under - 2/1 OFF over 100/110 - 2/1 DEF under 100/95,0.0,0.0,0.0,0.0,7.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 0/0 DEF under 100/95,1.0,5.0,0.0,0.0,92.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 1/0 DEF under 100/95,21.0,0.0,0.5714285714285714,0.0,100.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 1/1 DEF under 100/95,0.0,0.0,0.0,0.0,47.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 2/0 DEF under 100/95,0.0,21.0,0.0,0.5238095238095238,41.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 2/1 DEF under 100/95,0.0,9.0,0.0,0.5555555555555556,40.0
+EP Over/Tempo Under - 2/2 OFF over 100/110 - 2/2 DEF under 100/95,0.0,3.0,0.0,0.6666666666666666,8.0
+Only EFF Under - 0 OFF / 0 DEF over 105,0.0,0.0,0.0,0.0,1.0
+Only EFF Under - 0 OFF / 1 DEF over 105,0.0,0.0,0.0,0.0,26.0
+Only EFF Under - 0 OFF / 2 DEF over 105,55.0,0.0,0.509090909090909,0.0,176.0
+Only EFF Under - 1 OFF / 0 DEF over 105,1.0,1.0,0.0,1.0,15.0
+Only EFF Under - 1 OFF / 1 DEF over 105,0.0,31.0,0.0,0.5483870967741935,141.0
+Only EFF Under - 1 OFF / 2 DEF over 105,12.0,0.0,0.5,0.0,246.0
+Only EFF Under - 2 OFF / 0 DEF over 105,0.0,4.0,0.0,0.25,253.0
+Only EFF Under - 2 OFF / 1 DEF over 105,0.0,10.0,0.0,0.5,144.0
+Only EFF Under - 2 OFF / 2 DEF over 105,0.0,5.0,0.0,0.2,132.0
+Only PPG Over - 0 OFF/DEF over 110,0.0,0.0,0.0,0.0,9.0
+Only PPG Over - 1 OFF/DEF over 110,1.0,0.0,0.0,0.0,17.0
+Only PPG Over - 2 OFF/DEF over 110,0.0,0.0,0.0,0.0,23.0
+Only PPG Over - 3 OFF/DEF over 110,1.0,0.0,0.0,0.0,3.0
+Only Tempo Over - 0 OFF/DEF over 105,0.0,0.0,0.0,0.0,1.0
+Only Tempo Over - 1 OFF/DEF over 105,0.0,6.0,0.0,0.6666666666666666,11.0
+Only Tempo Over - 2 OFF/DEF over 105,5.0,0.0,0.4,0.0,32.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 0/0 DEF under 100/95,0.0,75.0,0.0,0.6533333333333333,87.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 1/0 DEF under 100/95,2.0,0.0,0.0,0.0,42.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 1/1 DEF under 100/95,19.0,0.0,0.5789473684210527,0.0,23.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 2/0 DEF under 100/95,4.0,0.0,0.5,0.0,15.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 2/1 DEF under 100/95,4.0,0.0,0.25,0.0,24.0
+TE Over/PPG Under - 0/0 OFF under 100/95 - 2/2 DEF under 100/95,0.0,0.0,0.0,0.0,5.0
+TE Over/PPG Under - 1/0 OFF under 100/95 - 0/0 DEF under 100/95,24.0,0.0,0.3333333333333333,0.0,71.0
+TE Over/PPG Under - 1/0 OFF under 100/95 - 1/0 DEF under 100/95,13.0,0.0,0.5384615384615384,0.0,17.0
+TE Over/PPG Under - 1/0 OFF under 100/95 - 1/1 DEF under 100/95,0.0,0.0,0.0,0.0,1.0
+TE Over/PPG Under - 1/1 OFF under 100/95 - 0/0 DEF under 100/95,22.0,0.0,0.6818181818181818,0.0,34.0
+TE Over/PPG Under - 1/1 OFF under 100/95 - 1/0 DEF under 100/95,2.0,0.0,0.5,0.0,6.0
+TE Over/PPG Under - 1/1 OFF under 100/95 - 1/1 DEF under 100/95,2.0,0.0,1.0,0.0,4.0
+TE Over/PPG Under - 2/0 OFF under 100/95 - 0/0 DEF under 100/95,4.0,0.0,0.0,0.0,35.0
+TE Over/PPG Under - 2/1 OFF under 100/95 - 0/0 DEF under 100/95,5.0,0.0,0.6,0.0,23.0
+TE Over/PPG Under - 2/1 OFF under 100/95 - 1/0 DEF under 100/95,0.0,0.0,0.0,0.0,1.0
+TE Over/PPG Under - 2/2 OFF under 100/95 - 0/0 DEF under 100/95,0.0,0.0,0.0,0.0,9.0
+Tempo and PPG over (Efficiency Under),7.0,0.0,0.7142857142857143,0.0,9.0
