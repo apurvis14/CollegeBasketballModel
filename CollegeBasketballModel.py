@@ -416,85 +416,6 @@ with tab1:
     for idx, game in today_games.iterrows():
         count_cur, win_cur, loss_cur, count, win, loss, percent_cur, percent_all, percent_prev, win_prev, loss_prev = compute_game_metrics(game, df)
 
-        # if game['All Formulas Over'] == "True":
-        #     o = game['Offense Over 100']
-        #     d = game['Defense Over 100']
-
-        #     # count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = allover_count_win_loss(df, o, d)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['All Formulas Under'] == "Look":
-        #     o = game['Offense Under 100']
-        #     d = game['Defense Under 100']
-
-        #     # count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = allunder_count_win_loss(df, o, d)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
-        #     o1 = game['Count of OFF over 100']
-        #     o2 = game['Count of OFF over 110']
-        #     d1 = game['Count of DEF under 100']
-        #     d2 = game['Count of DEF under 95']
-
-        #     # count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
-        #     o1 = game['OFF Under 100']
-        #     o2 = game['OFF Under 95']
-        #     d1 = game['DEF Under 100']
-        #     d2 = game['DEF Under 95']
-
-        #     # count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
-        #     # count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = TPOver_EFFUnder_count_win_loss(df)
-        #     percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Just Tempo Over'] == "Tempo":
-        #     val = game['Over 105 EFF']
-
-        #     # count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = TempoOver_count_win_loss(df, val)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Just PPG Over'] == "PPG":
-        #     val = game['Over 110 EFF']
-
-        #     # count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = PPGover_count_win_loss(df, val)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-
-        # elif game['Just Efficiency Over'] == "EFF":
-        #     o = game['OFF Over 105']
-        #     d = game['DEF Over 105']
-
-        #     # count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
-        #     # percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
-        #     # count, win, loss = EFFover_count_win_loss(df, o, d)
-        #     # percent_all = round((win/count)*100,2) if count else 0
-            
-        # else:
-        #     percent_cur = 'None'
-        #     win_cur, loss_cur = 0
-        #     count_cur = 0
-        #     percent_all = 'None'
-        #     win, loss = 0
-
-
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
         percent_prev1 = display_metrics_expand(percent_prev)
@@ -581,25 +502,6 @@ with tab1:
 
         away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
         home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
-        
-        # away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
-        # home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
-
-
-        # away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
-        # home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
-        
-        # matchup_header = f"""
-        #         <div style="line-height:1.3;">
-        #             <span style="font-size:22px; font-weight:bold;">
-        #                 {away_img} {game['Away Team']} @ {home_img} {game['Home Team']} &nbsp;|&nbsp; Total: {game['Book Total']}
-        #             </span><br>
-        #             <span style="font-size:14px;">
-        #                 '25-'26 Over Win Record: {record_cur} ({percent_cur1}) <br>
-        #                 All Time Trend Over Record: {record_all} ({percent_all1})
-        #             </span>
-        #         </div>
-        #         """
 
         matchup_header = (
             f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']} "
