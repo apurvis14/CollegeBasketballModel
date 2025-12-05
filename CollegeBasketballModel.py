@@ -135,7 +135,7 @@ def preload_logos(df):
         try:
             logos[team] = load_logo(f"Team Logo/{team}.jpg")
         except FileNotFoundError:
-            logos[team] = ""  # placeholder if missing
+            logos[team] = load_logo("Team Logo/Error.jpg")  # placeholder if missing
     return logos
 
 df = load_data("data/College Basketball Model.xlsm", "All Seasons Data")
@@ -709,6 +709,7 @@ with tab1:
         
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
+
 
         away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
         home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
