@@ -1329,7 +1329,7 @@ def show_trend_html(
     away_img = f'<img src="data:image/jpeg;base64,{away_logo}" style="height:20px; vertical-align:middle;">'
     home_img = f'<img src="data:image/jpeg;base64,{home_logo}" style="height:20px; vertical-align:middle;">'
 
-    if game['All Formulas Over'] == 1:
+    if game['All Formulas Over'] == "True":
         o = game['Offense Over 100']
         d = game['Defense Over 100']
 
@@ -1337,7 +1337,7 @@ def show_trend_html(
         underlabel1 = f"- {o} OFF EFF over 100 in this matchup"
         underlabel2 = f"- {d} DEF EFF over 100 in this matchup"
 
-    elif game['All Formulas Under'] == 1:
+    elif game['All Formulas Under'] == "Look":
         o = game['Offense Under 100']
         d = game['Defense Under 100']
 
@@ -1345,7 +1345,7 @@ def show_trend_html(
         underlabel1 = f"- {o} OFF EFF under 100 in this matchup"
         underlabel2 = f"- {d} DEF EFF under 100 in this matchup"
 
-    elif game['Efficiency/PPG over  (Tempo under)'] == 1:
+    elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
         o2 = game['Count of OFF over 110']
         d1 = game['Count of DEF under 100']
@@ -1355,7 +1355,7 @@ def show_trend_html(
         underlabel1 = f"- {o1} OFF EFF over 100 and {o2} OFF EFF over 110 in this matchup" 
         underlabel2 = f"- {d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
-    elif game['Tempo and Efficiency over (PPG under)'] == 1:
+    elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
         o1 = game['OFF Under 100']
         o2 = game['OFF Under 95']
         d1 = game['DEF Under 100']
@@ -1365,21 +1365,21 @@ def show_trend_html(
         underlabel1 = f"- {o1} OFF EFF under 100 and {o2} OFF EFF under 95 in this matchup" 
         underlabel2 = f"- {d1} DEF EFF under 100 and {d2} DEF EFF under 95 in this matchup"
 
-    elif game['Tempo and PPG over (Efficiency Under)'] == 1:
+    elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
         title = "Only Tempo and PPG Formulas Over"
 
-    elif game['Just Tempo Over'] == 1:
+    elif game['Just Tempo Over'] == "Tempo":
         val = game['Over 105 EFF']
 
         title = "Only Tempo Formula Over"
         underlabel1 = f"- {val} Total EFF over 105 in this matchup"
 
-    elif game['Just PPG Over'] == 1:
+    elif game['Just PPG Over'] == "PPG":
         val = game['Over 110 EFF']
         title = "Only PPG Formula Over"
         underlabel1 = f"- {val} Total EFF over 110 in this matchup"
 
-    elif game['Just Efficiency Over'] == 1:
+    elif game['Just Efficiency Over'] == "EFF":
         o = game['OFF Over 105']
         d = game['DEF Over 105']
         title = "Only Efficiency Formula Over"
