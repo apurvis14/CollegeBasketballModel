@@ -57,7 +57,7 @@ st.markdown(
     unsafe_allow_html=True)
 
 ENCODED_USERS = {
-    "U2FtIERyZW5uYW46MTIzNDU=": "Sam Drennan",
+    "U2FtIERyZW5uYW46Y2hhcmxpZWtpcms2Nw==": "Sam Drennan",
     "QW5kcmV3IEdyaWZmaW46NTY3ODk=": "Andrew Griffin",
     "SGFtcCBIdWRuYWxsOjEzNTc5": "Hamp Hudnall",
     "Qmxha2UgUGFpbnRlcjpMdW5hQm9vdHk2OQ==": "Blake Painter"
