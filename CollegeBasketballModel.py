@@ -712,13 +712,27 @@ with tab1:
         #         return load_logo(path)
         #     except FileNotFoundError:
         #         return load_logo("Team Logo/Error.jpg")  # placeholder if missing
-        
-        away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
-        home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
 
+        def try_get_logo(team_name):
+            path = f"Team Logo/{team_name}.jpg"
+            try:
+                return get_base64(path)
+            except Exception:
+                return get_base64("Team Logo/Error.jpg")
+
+
+        away_logo = try_get_logo(game['Away Team'])
+        home_logo = try_get_logo(game['Home Team'])
 
         away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
         home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
+        
+        # away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
+        # home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
+
+
+        # away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
+        # home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
         
         # matchup_header = f"""
         #         <div style="line-height:1.3;">
