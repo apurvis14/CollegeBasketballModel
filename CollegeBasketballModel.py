@@ -59,7 +59,8 @@ st.markdown(
 ENCODED_USERS = {
     "U2FtIERyZW5uYW46MTIzNDU=": "Sam Drennan",
     "QW5kcmV3IEdyaWZmaW46NTY3ODk=": "Andrew Griffin",
-    "SGFtcCBIdWRuYWxsOjEzNTc5": "Hamp Hudnall"
+    "SGFtcCBIdWRuYWxsOjEzNTc5": "Hamp Hudnall",
+    "Qmxha2UgUGFpbnRlcjpMdW5hQm9vdHk2OQ==": "Blake Painter"
 }
 
 # ---------- SESSION STATE INIT ----------
