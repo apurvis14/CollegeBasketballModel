@@ -156,6 +156,8 @@ def display_metrics(percent, win, loss):
         percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
         percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent == 0:
+        percent_display = f"<i>{percent}%</i>"
     else:
         percent_display = f"<i>{percent}%</i>"
 
@@ -207,6 +209,8 @@ def display_metrics_under(percent, win, loss):
         percent_display = f"<span style='color:orange; font-weight:bold'><i>{percent}%</i></span>"
     elif percent < 40:
         percent_display = f"<span style='color:red; font-weight:bold'><i>{percent}%</i></span>"
+    elif percent == 0:
+        percent_display = f"<i>{percent}%</i>"
     else:
         percent_display = f"<i>{percent}%</i>"
 
@@ -1105,6 +1109,8 @@ def display_metrics_expand(percent):
         percent_display = f"<span style='color:black; background-color:#FF6933; font-weight:bold'>({percent}%)</span>"
     elif percent < 40:
         percent_display = f"<span style='color:black; background-color:red; font-weight:bold'>({percent}%)</span>"
+    elif percent == 0:
+        percent_display = f"({percent}%)"
     else:
         percent_display = f"({percent}%)"
 
