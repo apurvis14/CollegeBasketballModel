@@ -1142,9 +1142,13 @@ def win_loss_record_expand(win, loss):
     return record, units_display, fade_display
 
 def get_base64(path):
-    with open(path, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+    try:
+        with open(path, "rb") as f:
+            return base64.b64encode(f.read()).decode("utf-8")
+    except Exception:
+        # Load fallback logo
+        with open("Team Logo/Error.jpg", "rb") as f:
+            return base64.b64encode(f.read()).decode("utf-8")
 
 def show_trend(title: str,
                metrics_func,         # e.g. allover_count_win_loss
