@@ -707,14 +707,14 @@ with tab1:
         record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
         record_all, units_all, fade_all = win_loss_record_expand(win, loss)
 
-        def safe_base64(path):
-            try:
-                return load_logo(path)
-            except FileNotFoundError:
-                return load_logo("Team Logo/Error.jpg")  # placeholder if missing
+        # def safe_base64(path):
+        #     try:
+        #         return load_logo(path)
+        #     except FileNotFoundError:
+        #         return load_logo("Team Logo/Error.jpg")  # placeholder if missing
         
-        away_logo = safe_base64(f"Team Logo/{game['Away Team']}.jpg")
-        home_logo = safe_base64(f"Team Logo/{game['Home Team']}.jpg")
+        away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
+        home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
 
 
         away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
