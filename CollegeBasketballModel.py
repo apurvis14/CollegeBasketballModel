@@ -861,7 +861,7 @@ with tab1:
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 st_html(details_html(matchup_header, trend_html), height=290, scrolling=True)
 
-            elif game['Just Efficiency Over'] == "Efficiency":
+            elif game['Just Efficiency Over'] == "EFF":
                 trend_html = show_trend_html(
                         EFFover_count_win_loss,
                         EFFover_count_win_loss_current,
