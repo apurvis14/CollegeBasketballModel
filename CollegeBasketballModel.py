@@ -143,6 +143,7 @@ def preload_logos(df):
 df = load_data("data/College Basketball Model.xlsm", "All Seasons Data")
 logos = preload_logos(df)
 
+@st.cache_data(show_spinner=False)
 def compute_game_metrics(game, df):
     """
     Compute win/loss counts, percentages for a given game.
