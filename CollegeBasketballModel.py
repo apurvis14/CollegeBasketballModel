@@ -225,7 +225,7 @@ def compute_game_metrics(game, df):
     percent_all = round((win/count)*100,2) if count else 0
     percent_prev = round((win_prev/count_prev)*100,2) if count_prev else 0
 
-    return count_cur, win_cur, loss_cur, count, win, loss, percent_cur, percent_all, percent_prev, win_prev, loss_prev
+    return count, win, loss, percent_all, percent_prev, win_prev, loss_prev
 
 @st.cache_data
 def compute_game_metrics1(game, df):
