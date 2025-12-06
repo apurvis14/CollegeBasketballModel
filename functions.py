@@ -22,7 +22,6 @@ def allover_count_win_loss(df, offense_value, defense_value):
     
     return count, win, loss
 
-
 # All Under Function (Regular Season) - All Seasons
 def allunder_count_win_loss(df, offense_value, defense_value):
     count = len(df[(df['All Formulas Under'] == 1) & 

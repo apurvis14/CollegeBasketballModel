@@ -221,13 +221,11 @@ def compute_game_metrics(game, df):
             percent_cur = 'None'
 
 
-
     percent_all = round((win/count)*100,2) if count else 0
     percent_prev = round((win_prev/count_prev)*100,2) if count_prev else 0
     percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
     return count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur
-
 
 
 # Remove padding at the top
