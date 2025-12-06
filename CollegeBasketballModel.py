@@ -40,6 +40,7 @@ from datetime import datetime
 from PIL import Image
 from streamlit.components.v1 import html as st_html
 import base64
+from zoneinfo import ZoneInfo
 
 st.set_page_config(layout="centered", page_title="CBB Trends", initial_sidebar_state="expanded")
 
@@ -331,7 +332,7 @@ with tab1:
 )
 
     # Today Variable for Sorting
-    today = datetime.today().date()
+    today = datetime.now(ZoneInfo("America/Chicago")).date()
 
     # Names of Columns
     home_col = 'Home Conference'
