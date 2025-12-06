@@ -206,7 +206,7 @@ def compute_game_metrics(game, df):
             
     else:
             percent_all = 'None'
-            win, loss = 0
+            win, loss = 0, 0
             percent_prev = 'None'
             win_prev, loss_prev = 0
 
@@ -276,7 +276,7 @@ def compute_game_metrics1(game, df):
             
     else:
             percent_cur = 'None'
-            win_cur, loss_cur = 0
+            win_cur, loss_cur = 0, 0
             count_cur = 0
 
     percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
