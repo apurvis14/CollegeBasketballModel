@@ -154,6 +154,7 @@ def compute_game_metrics(game, df):
 
         count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
         count, win, loss = allover_count_win_loss(df, o, d)
+        count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
         
     elif game['All Formulas Under'] == "Look":
         o = game['Offense Under 100']
@@ -161,6 +162,7 @@ def compute_game_metrics(game, df):
 
         count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
         count, win, loss = allunder_count_win_loss(df, o, d)
+        count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
     
     elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
@@ -170,6 +172,7 @@ def compute_game_metrics(game, df):
 
         count_prev, win_prev, loss_prev = EPOver_TempoUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
+        count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
 
     elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
         o1 = game['OFF Under 100']
@@ -179,23 +182,27 @@ def compute_game_metrics(game, df):
 
         count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
+        count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
 
     
     elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
             count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
             count, win, loss = TPOver_EFFUnder_count_win_loss(df)
+            count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
 
     elif game['Just Tempo Over'] == "Tempo":
             val = game['Over 105 EFF']
 
             count_prev, win_prev, loss_prev = TempoOver_count_win_loss_prev(df, val)
             count, win, loss = TempoOver_count_win_loss(df, val)
+            count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
 
     elif game['Just PPG Over'] == "PPG":
             val = game['Over 110 EFF']
 
             count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
             count, win, loss = PPGover_count_win_loss(df, val)
+            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
 
     elif game['Just Efficiency Over'] == "EFF":
             o = game['OFF Over 105']
@@ -203,85 +210,25 @@ def compute_game_metrics(game, df):
 
             count_prev, win_prev, loss_prev = EFFover_count_win_loss_prev(df, o, d)
             count, win, loss = EFFover_count_win_loss(df, o, d)
+            count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
             
     else:
             percent_all = 'None'
             win, loss = 0, 0
             percent_prev = 'None'
-            win_prev, loss_prev = 0
+            win_prev, loss_prev = 0, 0
+            count, count_prev = 0, 0
+            percent_cur = 'None'
+
 
 
     percent_all = round((win/count)*100,2) if count else 0
     percent_prev = round((win_prev/count_prev)*100,2) if count_prev else 0
-
-    return count, win, loss, percent_all, percent_prev, win_prev, loss_prev
-
-@st.cache_data
-def compute_game_metrics1(game, df):
-    """
-    Compute win/loss counts, percentages for a given game for season.
-    """
-    if game['All Formulas Over'] == 1:
-        o = game['Offense Over 100']
-        d = game['Defense Over 100']
-
-        count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
-        
-    elif game['All Formulas Under'] == 1:
-        o = game['Offense Under 100']
-        d = game['Defense Under 100']
-
-        count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
-    
-    elif game['Efficiency/PPG over  (Tempo under)'] == 1:
-        o1 = game['Count of OFF over 100']
-        o2 = game['Count of OFF over 110']
-        d1 = game['Count of DEF under 100']
-        d2 = game['Count of DEF under 95']
-
-        count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
-
-
-    elif game['Tempo and Efficiency over (PPG under)'] == 1:
-        o1 = game['OFF Under 100']
-        o2 = game['OFF Under 95']
-        d1 = game['DEF Under 100']
-        d2 = game['DEF Under 95']
-
-        count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
-
-
-    
-    elif game['Tempo and PPG over (Efficiency Under)'] == 1:
-            count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
-
-
-    elif game['Just Tempo Over'] == 1:
-            val = game['Over 105 EFF']
-
-            count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
-
-
-    elif game['Just PPG Over'] == 1:
-            val = game['Over 110 EFF']
-
-            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
-
-
-    elif game['Just Efficiency Over'] == 1:
-            o = game['OFF Over 105']
-            d = game['DEF Over 105']
-
-            count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
-            
-    else:
-            percent_cur = 'None'
-            win_cur, loss_cur = 0, 0
-            count_cur = 0
-
     percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
 
-    return count_cur, win_cur, loss_cur, percent_cur
+    return count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur
+
+
 
 # Remove padding at the top
 st.markdown(
@@ -471,8 +418,8 @@ with tab1:
     unsafe_allow_html=True)
 
     for idx, game in today_games.iterrows():
-        count, win, loss, percent_all, percent_prev, win_prev, loss_prev = compute_game_metrics(game, df)
-        count_cur, win_cur, loss_cur, percent_cur = compute_game_metrics1(game, df)
+        count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur = compute_game_metrics(game, df)
+        
 
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
