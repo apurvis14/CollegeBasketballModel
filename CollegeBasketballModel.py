@@ -152,7 +152,6 @@ def compute_game_metrics(game, df):
         o = game['Offense Over 100']
         d = game['Defense Over 100']
 
-        count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
         count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
         count, win, loss = allover_count_win_loss(df, o, d)
         
@@ -160,7 +159,6 @@ def compute_game_metrics(game, df):
         o = game['Offense Under 100']
         d = game['Defense Under 100']
 
-        count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
         count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
         count, win, loss = allunder_count_win_loss(df, o, d)
     
@@ -170,7 +168,6 @@ def compute_game_metrics(game, df):
         d1 = game['Count of DEF under 100']
         d2 = game['Count of DEF under 95']
 
-        count_cur, win_cur, loss_cur = EPOver_TempoUnder_count_win_loss_current(df, o1, o2, d1, d2)
         count_prev, win_prev, loss_prev = EPOver_TempoUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
 
@@ -180,27 +177,23 @@ def compute_game_metrics(game, df):
         d1 = game['DEF Under 100']
         d2 = game['DEF Under 95']
 
-        count_cur, win_cur, loss_cur = TEOver_PPGUnder_count_win_loss_current(df, o1, o2, d1, d2)
         count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
 
     
     elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
-            count_cur, win_cur, loss_cur = TPOver_EFFUnder_count_win_loss_current(df)
             count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
             count, win, loss = TPOver_EFFUnder_count_win_loss(df)
 
     elif game['Just Tempo Over'] == "Tempo":
             val = game['Over 105 EFF']
 
-            count_cur, win_cur, loss_cur = TempoOver_count_win_loss_current(df, val)
             count_prev, win_prev, loss_prev = TempoOver_count_win_loss_prev(df, val)
             count, win, loss = TempoOver_count_win_loss(df, val)
 
     elif game['Just PPG Over'] == "PPG":
             val = game['Over 110 EFF']
 
-            count_cur, win_cur, loss_cur = PPGover_count_win_loss_current(df, val)
             count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
             count, win, loss = PPGover_count_win_loss(df, val)
 
@@ -208,20 +201,16 @@ def compute_game_metrics(game, df):
             o = game['OFF Over 105']
             d = game['DEF Over 105']
 
-            count_cur, win_cur, loss_cur = EFFover_count_win_loss_current(df, o, d)
             count_prev, win_prev, loss_prev = EFFover_count_win_loss_prev(df, o, d)
             count, win, loss = EFFover_count_win_loss(df, o, d)
             
     else:
-            percent_cur = 'None'
-            win_cur, loss_cur = 0
-            count_cur = 0
             percent_all = 'None'
             win, loss = 0
             percent_prev = 'None'
             win_prev, loss_prev = 0
 
-    percent_cur = round((win_cur/count_cur)*100,2) if count_cur else 0
+
     percent_all = round((win/count)*100,2) if count else 0
     percent_prev = round((win_prev/count_prev)*100,2) if count_prev else 0
 
