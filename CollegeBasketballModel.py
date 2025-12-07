@@ -128,6 +128,7 @@ def load_data(filename, sheet):
 def load_logo(path):
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
+    
 
 # Preload all logos to cache
 def preload_logos(df):
