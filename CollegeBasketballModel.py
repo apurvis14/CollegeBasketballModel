@@ -241,6 +241,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
 # Logo For Top of Page
 logo = Image.open("data/CBB Horizontal Logo.png")
 st.image(logo, use_container_width=True)
