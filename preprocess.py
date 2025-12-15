@@ -22,6 +22,8 @@ columns_to_drop = [
 df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
+
+
 def determine_trend(row):
     if row['All Formulas Over'] == 1:
         o = row['Offense Over 100']
