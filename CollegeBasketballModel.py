@@ -65,6 +65,7 @@ ENCODED_USERS = {
     "R3JpZmY6MTIzNA==": "Griff"
 }
 
+
 # ---------- SESSION STATE INIT ----------
 if "auth" not in st.session_state:
     st.session_state.auth = False
