@@ -65,7 +65,6 @@ ENCODED_USERS = {
     "QWRtaW46YWNjZXNz": "Admin"
 }
 
-
 # ---------- SESSION STATE INIT ----------
 if "auth" not in st.session_state:
     st.session_state.auth = False
