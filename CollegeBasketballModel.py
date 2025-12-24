@@ -681,4 +681,4 @@ with tab1:
                     )
                 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
