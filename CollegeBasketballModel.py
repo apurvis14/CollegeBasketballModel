@@ -527,11 +527,11 @@ with tab1:
         record_prev, units_prev, fade_prev = win_loss_record_expand(win_prev, loss_prev)
         if game['Same Conference'] == 1:
             record_need, units_need, fade_need = win_loss_record_expand(win_conf, loss_conf)
-            percent_need = display_metrics(percent_conf)
+            percent_need = display_metrics_expand(percent_conf)
             need = "Conference"
         elif game['Same Conference'] == 0:
             record_need, units_need, fade_need = win_loss_record_expand(win_nonconf, loss_nonconf)
-            percent_need = display_metrics(percent_nonconf)
+            percent_need = display_metrics_expand(percent_nonconf)
             need = "Non-Conference"
 
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
