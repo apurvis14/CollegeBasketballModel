@@ -541,8 +541,8 @@ with tab1:
         home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
 
         matchup_header = (
-            f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']} {need} Game"
-            f"&nbsp;|&nbsp; Total: {game['Book Total']}||"
+            f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']}"
+            f"&nbsp;|&nbsp; Total: {game['Book Total']}|| {need} Game"
             f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
             f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
             f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
