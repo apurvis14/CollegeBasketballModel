@@ -1812,6 +1812,7 @@ def details_html(matchup_header, trend_html):
     @media (max-width: 600px) {{
         .header-top {{
             font-size: 12px;
+            text-wrap: wrap;
         }}
         .header-top .team-logo {{
             height: 10px;
