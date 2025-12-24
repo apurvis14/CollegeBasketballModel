@@ -1723,10 +1723,10 @@ def show_trend_html(
                     <div class="team-record"><b>Away: {away_record}</b></div>
                 </div>
                 <div>
-                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                    <div class="team-record" style="font-style:italic; color:#ffffff;">
                         <b>All-Time: {total_away_all}</b>
                     </div>
-                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                    <div class="team-record" style="font-style:italic; color:#ffffff;">
                         <b>Away: {away_record_all}</b>
                     </div>
                 </div>
@@ -1739,10 +1739,10 @@ def show_trend_html(
                     <div class="team-record"><b>Home: {home_record}</b></div>
                 </div>
                 <div>
-                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                    <div class="team-record" style="font-style:italic; color:#ffffff;">
                         <b>All-Time: {total_home_all}</b>
                     </div>
-                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                    <div class="team-record" style="font-style:italic; color:#ffffff;">
                         <b>Home: {home_record_all}</b>
                     </div>
                 </div>
