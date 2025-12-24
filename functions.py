@@ -1687,37 +1687,70 @@ def show_trend_html(
         title = "No Trend Active"
 
     html1 = f"""
-        <div style="border:2px solid #DAA520; border-radius:8px; padding:4px; background-color:#000000; margin-bottom:0px;"> 
+    <div style="border:2px solid #DAA520; border-radius:8px; padding:4px; background-color:#000000; margin-bottom:0px;"> 
 
-            <!-- Trend title and labels -->
-            <div style="text-align:center; margin-bottom:8px;">
-                <div class="title-drop" style="font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">Active Trend - {title}</div>
-                {'<div class="label-drop" style="color:#ffffff; margin-bottom:1px; font-weight:bold; font-style:italic;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
-                {'<div class="label-drop" style="color:#ffffff; margin-bottom:8px; font-weight:bold; font-style:italic;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
-
-            <!-- Team headers -->
-            <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
-                <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color: #DAA520;">{away_img}{safe_away_team} vs Trend</h4>
-                </div>
-                <div style="text-align:center;">
-                    <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color: #DAA520;">{home_img}{safe_home_team} vs Trend</h4>
-                </div>
+        <!-- Trend title and labels -->
+        <div style="text-align:center; margin-bottom:8px;">
+            <div class="title-drop" style="font-weight:bold; color:#DAA520; margin-bottom:2px; text-decoration:underline;">
+                Active Trend - {title}
             </div>
-            <!-- Records -->
-            <div style="display:flex; justify-content:space-around; margin-bottom:2px;">
-                <div style="text-align:center;">
+
+            {'<div class="label-drop" style="color:#ffffff; margin-bottom:1px; font-weight:bold; font-style:italic;">' + underlabel1 + '</div>' if 'underlabel1' in locals() else ''}
+            {'<div class="label-drop" style="color:#ffffff; margin-bottom:8px; font-weight:bold; font-style:italic;">' + underlabel2 + '</div>' if 'underlabel2' in locals() else ''}
+        </div>  <!-- ✅ MISSING CLOSE FIXED -->
+
+        <!-- Team headers -->
+        <div style="display:flex; justify-content:space-around; margin-bottom:0px;">
+            <div style="text-align:center;">
+                <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color:#DAA520;">
+                    {away_img}{safe_away_team} vs Trend
+                </h4>
+            </div>
+            <div style="text-align:center;">
+                <h4 class="team-header" style="text-decoration:underline; margin:0 0 2px 0; color:#DAA520;">
+                    {home_img}{safe_home_team} vs Trend
+                </h4>
+            </div>
+        </div>
+
+        <!-- Records -->
+        <div style="display:flex; justify-content:space-around; margin-bottom:2px;">
+
+            <!-- AWAY TEAM -->
+            <div style="display:grid; grid-template-columns:auto auto; gap:14px; text-align:center;">
+                <div>
                     <div class="team-record"><b>Total: {total_away}</b></div>
                     <div class="team-record"><b>Away: {away_record}</b></div>
                 </div>
-                <div style="text-align:center;">
-                    <div class="team-record"><b>Total: {total_home} &nbsp;&nbsp;</b></div>
-                    <div class="team-record"><b>Home: {home_record} &nbsp;&nbsp;</b></div>
+                <div>
+                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                        <b>All-Time: {total_away_all}</b>
+                    </div>
+                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                        <b>Away: {away_record_all}</b>
+                    </div>
                 </div>
             </div>
+
+            <!-- HOME TEAM -->
+            <div style="display:grid; grid-template-columns:auto auto; gap:14px; text-align:center;">
+                <div>
+                    <div class="team-record"><b>Total: {total_home}</b></div>
+                    <div class="team-record"><b>Home: {home_record}</b></div>
+                </div>
+                <div>
+                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                        <b>All-Time: {total_home_all}</b>
+                    </div>
+                    <div class="team-record" style="font-style:italic; color:#cccccc;">
+                        <b>Home: {home_record_all}</b>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
     """
-    return html1
 
 def details_html(matchup_header, trend_html):
     return f"""
