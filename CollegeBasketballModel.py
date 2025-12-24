@@ -529,10 +529,12 @@ with tab1:
             record_need, units_need, fade_need = win_loss_record_expand(win_conf, loss_conf)
             percent_need = display_metrics_expand(percent_conf)
             need = "Conference"
+            need1 = "Conf."
         elif game['Same Conference'] == 0:
             record_need, units_need, fade_need = win_loss_record_expand(win_nonconf, loss_nonconf)
             percent_need = display_metrics_expand(percent_nonconf)
             need = "Non-Conference"
+            need1 = "Non-Conf."
 
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -542,7 +544,7 @@ with tab1:
 
         matchup_header = (
             f"{away_img} {game['Away Team']} @ &nbsp;{home_img} {game['Home Team']}"
-            f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need} Game||"
+            f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
             f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
             f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
             f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
