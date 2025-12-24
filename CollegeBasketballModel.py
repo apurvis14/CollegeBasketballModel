@@ -450,6 +450,7 @@ with tab1:
         percent_all1 = display_metrics_expand(percent_all)
         percent_prev1 = display_metrics_expand(percent_prev)
 
+
         # if percent_cur >= 60 and percent_all >= 55:
         #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
         # elif percent_cur >= 60 and 53 <= percent_all < 55:
@@ -526,11 +527,11 @@ with tab1:
         record_prev, units_prev, fade_prev = win_loss_record_expand(win_prev, loss_prev)
         if game['Same Conference'] == 1:
             record_need, units_need, fade_need = win_loss_record_expand(win_conf, loss_conf)
-            percent_need = percent_conf
+            percent_need = display_metrics(percent_conf)
             need = "Conference"
         elif game['Same Conference'] == 0:
             record_need, units_need, fade_need = win_loss_record_expand(win_nonconf, loss_nonconf)
-            percent_need = percent_nonconf
+            percent_need = display_metrics(percent_nonconf)
             need = "Non-Conference"
 
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
