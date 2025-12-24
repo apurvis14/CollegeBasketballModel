@@ -566,7 +566,7 @@ with tab1:
                 # height = int(estimate_height(trend_html))
                 # trend_html_safe = trend_html.replace("{", "{{").replace("}", "}}")
                 # st.markdown(details_html(matchup_header, trend_html), unsafe_allow_html=True) 
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
 
             
             elif game['All Formulas Under'] == "Look":
@@ -584,7 +584,7 @@ with tab1:
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
                 # height = int(estimate_height(trend_html))
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
             
             elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
                 trend_html = show_trend_html(
@@ -602,7 +602,7 @@ with tab1:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
 
             elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
                 trend_html = show_trend_html(
@@ -620,7 +620,7 @@ with tab1:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
             
             elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
                 trend_html = show_trend_html(
@@ -635,7 +635,7 @@ with tab1:
                 )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
 
             elif game['Just Tempo Over'] == "Tempo":
                 trend_html = show_trend_html(
@@ -650,7 +650,7 @@ with tab1:
                     )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
             
             elif game['Just PPG Over'] == "PPG":
                 trend_html = show_trend_html(
@@ -665,7 +665,7 @@ with tab1:
                     )
 
                 # Adjust height to fit (or compute dynamically). Use scrolling if content is larger.
-                st_html(details_html(matchup_header, trend_html), height=305, scrolling=True)
+                st_html(details_html(matchup_header, trend_html), height=320, scrolling=True)
 
             elif game['Just Efficiency Over'] == "EFF":
                 trend_html = show_trend_html(
