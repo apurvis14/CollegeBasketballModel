@@ -1752,6 +1752,8 @@ def show_trend_html(
     </div>
     """
 
+    return html1
+
 def details_html(matchup_header, trend_html):
     return f"""
     <style>
