@@ -1811,7 +1811,7 @@ def details_html(matchup_header, trend_html):
     /* Responsive font sizes for mobile */
     @media (max-width: 600px) {{
         .header-top {{
-            font-size: 13px;
+            font-size: 12px;
         }}
         .header-top .team-logo {{
             height: 10px;
