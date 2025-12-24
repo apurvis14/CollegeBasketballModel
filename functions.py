@@ -360,6 +360,22 @@ def PPGover_count_win_loss_conference(df,eff_value):
 
     return count, win, loss
 
+def PPGover_count_win_loss_nonconference(df,eff_value):
+    count = len(df[(df['Just PPG Over'] == 1) &
+                   (df['Over 110 EFF'] == eff_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Same Conference'] == 0)])
+    
+    win = len(df[(df['Just PPG Over'] == 1) &
+                   (df['Over 110 EFF'] == eff_value) &
+                    (df['Over Hit.6'] == 1) &
+                    (df['RS/PS'] == 'RS') &
+                    (df['Same Conference'] == 0)])
+    
+    loss = count - win
+
+    return count, win, loss
+
 # Just EFF Over Function (Regular Season) - All Seasons
 def EFFover_count_win_loss(df,offense_value, defense_value):
     count = len(df[(df['Just Efficiency Over'] == 1) &
