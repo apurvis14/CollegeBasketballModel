@@ -1719,7 +1719,7 @@ def show_trend_html(
             <!-- AWAY TEAM -->
             <div style="display:grid; grid-template-columns:auto auto; gap:14px; text-align:center;">
                 <div>
-                    <div class="team-record"><b>Total: {total_away}</b></div>
+                    <div class="team-record"><b>Season: {total_away}</b></div>
                     <div class="team-record"><b>Away: {away_record}</b></div>
                 </div>
                 <div>
@@ -1735,7 +1735,7 @@ def show_trend_html(
             <!-- HOME TEAM -->
             <div style="display:grid; grid-template-columns:auto auto; gap:14px; text-align:center;">
                 <div>
-                    <div class="team-record"><b>Total: {total_home}</b></div>
+                    <div class="team-record"><b>Season: {total_home}</b></div>
                     <div class="team-record"><b>Home: {home_record}</b></div>
                 </div>
                 <div>
