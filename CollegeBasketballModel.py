@@ -161,9 +161,11 @@ def compute_game_metrics(game, df):
 
         if game['Same Conference'] == 1:
             count_conf, win_conf, loss_conf = allover_count_win_loss_conference(df, o, d)
+            count_nonconf, win_nonconf, loss_nonconf = allover_count_win_loss_nonconference(df, o, d)
 
         elif game['Same Conference'] == 0:
             count_nonconf, win_nonconf, loss_nonconf = allover_count_win_loss_nonconference(df, o, d)
+            count_conf, win_conf, loss_conf = allover_count_win_loss_conference(df, o, d)
         
     elif game['All Formulas Under'] == "Look":
         o = game['Offense Under 100']
@@ -175,8 +177,10 @@ def compute_game_metrics(game, df):
 
         if game['Same Conference'] == 1:
             count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d)
+            count_nonconf, win_nonconf, loss_nonconf = allunder_count_win_loss_nonconference(df, o, d)
         elif game['Same Conference'] == 0:
             count_nonconf, win_nonconf, loss_nonconf = allunder_count_win_loss_nonconference(df, o, d)
+            count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d)
     
     elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
@@ -190,8 +194,10 @@ def compute_game_metrics(game, df):
 
         if game['Same Conference'] == 1:
             count_conf, win_conf, loss_conf = EPOver_TempoUnder_count_win_loss_conference(df, o1, o2, d1, d2)
+            count_nonconf, win_nonconf, loss_nonconf = EPOver_TempoUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
         elif game['Same Conference'] == 0:
             count_nonconf, win_nonconf, loss_nonconf = EPOver_TempoUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
+            count_conf, win_conf, loss_conf = EPOver_TempoUnder_count_win_loss_conference(df, o1, o2, d1, d2)
 
     elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
         o1 = game['OFF Under 100']
@@ -205,8 +211,10 @@ def compute_game_metrics(game, df):
 
         if game['Same Conference'] == 1:
             count_conf, win_conf, loss_conf = TEOver_PPGUnder_count_win_loss_conference(df, o1, o2, d1, d2)
+            count_nonconf, win_nonconf, loss_nonconf = TEOver_PPGUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
         elif game['Same Conference'] == 0: 
             count_nonconf, win_nonconf, loss_nonconf = TEOver_PPGUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
+            count_conf, win_conf, loss_conf = TEOver_PPGUnder_count_win_loss_conference(df, o1, o2, d1, d2)
 
     
     elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
@@ -216,7 +224,9 @@ def compute_game_metrics(game, df):
 
             if game['Same Conference'] == 1:
                 count_conf, win_conf, loss_conf = TPOver_EFFUnder_count_win_loss_conference(df)
+                count_nonconf, win_nonconf, loss_nonconf = TPOver_EFFUnder_count_win_loss_nonconference(df)
             elif game['Same Conference'] == 0:
+                count_conf, win_conf, loss_conf = TPOver_EFFUnder_count_win_loss_conference(df)
                 count_nonconf, win_nonconf, loss_nonconf = TPOver_EFFUnder_count_win_loss_nonconference(df)
 
     elif game['Just Tempo Over'] == "Tempo":
@@ -228,8 +238,10 @@ def compute_game_metrics(game, df):
 
             if game['Same Conference'] == 1:
                 count_conf, win_conf, loss_conf = TempoOver_count_win_loss_conference(df, val)
+                count_nonconf, win_nonconf, loss_nonconf = TempoOver_count_win_loss_nonconference(df, val)
             elif game['Same Conference'] == 0:
                 count_nonconf, win_nonconf, loss_nonconf = TempoOver_count_win_loss_nonconference(df, val)
+                count_conf, win_conf, loss_conf = TempoOver_count_win_loss_conference(df, val)
 
     elif game['Just PPG Over'] == "PPG":
             val = game['Over 110 EFF']
@@ -240,8 +252,10 @@ def compute_game_metrics(game, df):
 
             if game['Same Conference'] == 1:
                 count_conf, win_conf, loss_conf = PPGover_count_win_loss_conference(df, val)
+                count_nonconf, win_nonconf, loss_nonconf = PPGover_count_win_loss_nonconference(df, val)
             elif game['Same Conference'] == 0:
                 count_nonconf, win_nonconf, loss_nonconf = PPGover_count_win_loss_nonconference(df, val)
+                count_conf, win_conf, loss_conf = TempoOver_count_win_loss_conference(df, val)
 
     elif game['Just Efficiency Over'] == "EFF":
             o = game['OFF Over 105']
@@ -253,8 +267,10 @@ def compute_game_metrics(game, df):
 
             if game['Same Conference'] == 1:
                 count_conf, win_conf, loss_conf = EFFover_count_win_loss_conference(df, o, d)
+                count_nonconf, win_nonconf, loss_nonconf = EFFover_count_win_loss_nonconference(df, o, d)
             elif game['Same Conference'] == 0:
                 count_nonconf, win_nonconf, loss_nonconf = EFFover_count_win_loss_nonconference(df, o, d)
+                count_conf, win_conf, loss_conf = EFFover_count_win_loss_conference(df, o, d)
             
     else:
             percent_all = 'None'
@@ -263,6 +279,11 @@ def compute_game_metrics(game, df):
             win_prev, loss_prev = 0, 0
             count, count_prev = 0, 0
             percent_cur = 'None'
+            count_cur = 0
+            percent_conf = 'None'
+            count_conf, count_nonconf = 0, 0
+            win_conf, win_nonconf = 0, 0
+            loss_conf, loss_nonconf = 0, 0
 
 
     percent_all = round((win/count)*100,2) if count else 0
