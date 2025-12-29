@@ -65,7 +65,7 @@ ENCODED_USERS = {
     "R3JpZmY6MTIzNA==": "Griff",
     "QWRtaW46YWNjZXNz": "Admin",
     "SmFjb2IgUGVya2luczpXYXJyaW9yMTIzNDUh": "Jacob Perkins",
-    "VGFubmVyIEdyYXZlczokU21pdGgxMjImIEM6L1VzZXJzL2FuZHJlL0FwcERhdGEvTG9jYWwvTWljcm9zb2Z0L1dpbmRvd3NBcHBzL3B5dGhvbjMuMTMuZXhlICJjOi9Vc2Vycy9hbmRyZS9PbmVEcml2ZSAtIE1pc3Npc3NpcHBpIFN0YXRlIFVuaXZlcnNpdHkvRG9jdW1lbnRzL1BlcnNvbmFsL0NvbGxlZ2VCYXNrZXRiYWxsTW9kZWwvcGFzc3dvcmQucHki": "Tanner Graves"
+    "VGFubmVyIEdyYXZlczokU21pdGgxMjI=": "Tanner Graves"
 }
 
 # ---------- SESSION STATE INIT ----------
