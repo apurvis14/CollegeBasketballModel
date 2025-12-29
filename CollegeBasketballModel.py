@@ -63,7 +63,8 @@ ENCODED_USERS = {
     "QW5kcmV3IEdyaWZmaW46NTY3ODk=": "Andrew Griffin",
     "Qmxha2UgUGFpbnRlcjpMdW5hQm9vdHk2OQ==": "Blake Painter",
     "R3JpZmY6MTIzNA==": "Griff",
-    "QWRtaW46YWNjZXNz": "Admin"
+    "QWRtaW46YWNjZXNz": "Admin",
+    "SmFjb2IgUGVya2luczpXYXJyaW9yMTIzNDUh": "Jacob Perkins"
 }
 
 # ---------- SESSION STATE INIT ----------
