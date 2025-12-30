@@ -60,7 +60,6 @@ st.markdown(
 
 ENCODED_USERS = {
     "U2FtIERyZW5uYW46Y2hhcmxpZWtpcms2Nw==": "Sam Drennan",
-    "QW5kcmV3IEdyaWZmaW46NTY3ODk=": "Andrew Griffin",
     "Qmxha2UgUGFpbnRlcjpMdW5hQm9vdHk2OQ==": "Blake Painter",
     "R3JpZmY6MTIzNA==": "Griff",
     "QWRtaW46YWNjZXNz": "Admin",
