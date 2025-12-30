@@ -545,7 +545,7 @@ with tab1:
         if game['Same Conference'] == 1:
             record_need, units_need, fade_need = win_loss_record_expand(win_conf, loss_conf)
             percent_need = display_metrics_expand(percent_conf)
-            record_specific, percent_specific = win_loss_record_expand(win_specific, loss_specific)
+            record_specific1, unit_specific, fade_specific = win_loss_record_expand(win_specific, loss_specific)
             need = "Conference"
             need1 = f"Conf. ({game['Conference']})"
 
@@ -561,7 +561,7 @@ with tab1:
             f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
             f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
             f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
-            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific} {percent_specific1})")
+            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific1} {percent_specific1})")
 
         elif game['Same Conference'] == 0:
             record_need, units_need, fade_need = win_loss_record_expand(win_nonconf, loss_nonconf)
