@@ -40,6 +40,26 @@ def allover_count_win_loss_conference(df, offense_value, defense_value, conf):
     
     return count, win, loss
 
+def allover_count_win_loss_conference_specific(df, offense_value, defense_value, conf):
+    count = len(df[(df['All Formulas Over'] == 1) & 
+                   (df['Offense Over 100'] == offense_value) & 
+                   (df['Defense Over 100'] == defense_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['All Formulas Over'] == 1) & 
+                 (df['Offense Over 100'] == offense_value) & 
+                 (df['Defense Over 100'] == defense_value) & 
+                 (df['Over Hit'] == 1) &
+                 (df['RS/PS'] == 'RS') &
+                 (df['Conference'] == conf) &
+                 (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
 def allover_count_win_loss_nonconference(df, offense_value, defense_value):
     count = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
@@ -87,6 +107,26 @@ def allunder_count_win_loss_conference(df, offense_value, defense_value, conf):
                  (df['Defense Under 100'] == defense_value) & 
                  (df['Over Hit.1'] == 1) &
                  (df['RS/PS'] == 'RS') &
+                 (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
+def allunder_count_win_loss_conference_specific(df, offense_value, defense_value, conf):
+    count = len(df[(df['All Formulas Under'] == 1) & 
+                   (df['Offense Under 100'] == offense_value) & 
+                   (df['Defense Under 100'] == defense_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['All Formulas Under'] == 1) & 
+                 (df['Offense Under 100'] == offense_value) & 
+                 (df['Defense Under 100'] == defense_value) & 
+                 (df['Over Hit.1'] == 1) &
+                 (df['RS/PS'] == 'RS') &
+                 (df['Conference'] == conf) &
                  (df['Same Conference'] == 1)])
     
     loss = count - win
@@ -148,6 +188,30 @@ def EPOver_TempoUnder_count_win_loss_conference(df, offense_value, offense_value
                    (df['Count of DEF under 95'] == defense_value_1) &
                    (df['Over Hit.2'] == 1) &
                    (df['RS/PS'] == 'RS') &
+                   (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
+def EPOver_TempoUnder_count_win_loss_conference_specific(df, offense_value, offense_value_1, defense_value, defense_value_1, conf):
+    count = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+                   (df['Count of OFF over 100'] == offense_value) & 
+                   (df['Count of OFF over 110'] == offense_value_1) &
+                   (df['Count of DEF under 100'] == defense_value) &
+                   (df['Count of DEF under 95'] == defense_value_1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Efficiency/PPG over  (Tempo under)'] == 1) & 
+                   (df['Count of OFF over 100'] == offense_value) & 
+                   (df['Count of OFF over 110'] == offense_value_1) &
+                   (df['Count of DEF under 100'] == defense_value) &
+                   (df['Count of DEF under 95'] == defense_value_1) &
+                   (df['Over Hit.2'] == 1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
                    (df['Same Conference'] == 1)])
     
     loss = count - win
@@ -219,6 +283,30 @@ def TEOver_PPGUnder_count_win_loss_conference(df, offense_value, offense_value_1
     
     return count, win, loss
 
+def TEOver_PPGUnder_count_win_loss_conference_specific(df, offense_value, offense_value_1, defense_value, defense_value_1, conf):
+    count = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+                   (df['OFF Under 100'] == offense_value) & 
+                   (df['OFF Under 95'] == offense_value_1) &
+                   (df['DEF Under 100'] == defense_value) &
+                   (df['DEF Under 95'] == defense_value_1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
+                   (df['OFF Under 100'] == offense_value) & 
+                   (df['OFF Under 95'] == offense_value_1) &
+                   (df['DEF Under 100'] == defense_value) &
+                   (df['DEF Under 95'] == defense_value_1) &
+                   (df['Over Hit.3'] == 1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
 def TEOver_PPGUnder_count_win_loss_nonconference(df, offense_value, offense_value_1, defense_value, defense_value_1):
     count = len(df[(df['Tempo and Efficiency over (PPG under)'] == 1) & 
                    (df['OFF Under 100'] == offense_value) & 
@@ -268,6 +356,22 @@ def TPOver_EFFUnder_count_win_loss_conference(df):
     
     return count, win, loss
 
+def TPOver_EFFUnder_count_win_loss_conference_specific(df, conf):
+    count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+                (df['RS/PS'] == 'RS') &
+                (df['Conference'] == conf) &
+                (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
+                (df['Over Hit.4'] == 1) &
+                (df['RS/PS'] == 'RS') &
+                (df['Conference'] == conf) &
+                (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
 def TPOver_EFFUnder_count_win_loss_nonconference(df):
     count = len(df[(df['Tempo and PPG over (Efficiency Under)'] == 1) &
                 (df['RS/PS'] == 'RS') &
@@ -307,6 +411,24 @@ def TempoOver_count_win_loss_conference(df, eff_value):
                    (df['Over 105 EFF'] == eff_value) &
                    (df['Over Hit.5'] == 1) &
                    (df['RS/PS'] == 'RS') &
+                   (df['Same Conference'] == 1)])
+    
+    loss = count - win
+    
+    return count, win, loss
+
+def TempoOver_count_win_loss_conference_specific(df, eff_value, conf):
+    count = len(df[(df['Just Tempo Over'] == 1) & 
+                   (df['Over 105 EFF'] == eff_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Just Tempo Over'] == 1) & 
+                   (df['Over 105 EFF'] == eff_value) &
+                   (df['Over Hit.5'] == 1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
                    (df['Same Conference'] == 1)])
     
     loss = count - win
@@ -376,6 +498,24 @@ def PPGover_count_win_loss_nonconference(df,eff_value):
 
     return count, win, loss
 
+def PPGover_count_win_loss_conference_specific(df,eff_value, conf):
+    count = len(df[(df['Just PPG Over'] == 1) &
+                   (df['Over 110 EFF'] == eff_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Just PPG Over'] == 1) &
+                   (df['Over 110 EFF'] == eff_value) &
+                    (df['Over Hit.6'] == 1) &
+                    (df['RS/PS'] == 'RS') &
+                    (df['Conference'] == conf) &
+                    (df['Same Conference'] == 1)])
+    
+    loss = count - win
+
+    return count, win, loss
+
 # Just EFF Over Function (Regular Season) - All Seasons
 def EFFover_count_win_loss(df,offense_value, defense_value):
     count = len(df[(df['Just Efficiency Over'] == 1) &
@@ -424,6 +564,26 @@ def EFFover_count_win_loss_nonconference(df,offense_value, defense_value):
                    (df['Over Hit.7'] == 1) &
                    (df['RS/PS'] == 'RS') &
                    (df['Same Conference'] == 0)])
+    
+    loss = count - win
+
+    return count, win, loss
+
+def EFFover_count_win_loss_conference_specific(df,offense_value, defense_value, conf):
+    count = len(df[(df['Just Efficiency Over'] == 1) &
+                   (df['OFF Over 105'] == offense_value) &
+                   (df['DEF Over 105'] == defense_value) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
+    
+    win = len(df[(df['Just Efficiency Over'] == 1) &
+                   (df['OFF Over 105'] == offense_value) &
+                   (df['DEF Over 105'] == defense_value) &
+                   (df['Over Hit.7'] == 1) &
+                   (df['RS/PS'] == 'RS') &
+                   (df['Conference'] == conf) &
+                   (df['Same Conference'] == 1)])
     
     loss = count - win
 
