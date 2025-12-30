@@ -553,6 +553,7 @@ with tab1:
             percent_need = display_metrics_expand(percent_nonconf)
             need = "Non-Conference"
             need1 = "Non-Conf."
+            record_specific = ""
 
         away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
         home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -566,7 +567,7 @@ with tab1:
             f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
             f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
             f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
-            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific} {percent_specific})")
+            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific} {percent_specific1})")
 
         with st.container(border=False):
             height = 325
