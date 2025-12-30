@@ -155,22 +155,24 @@ def compute_game_metrics(game, df):
     if game['All Formulas Over'] == "True":
         o = game['Offense Over 100']
         d = game['Defense Over 100']
+        conf = game['Conference']
 
         count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
         count, win, loss = allover_count_win_loss(df, o, d)
         count_cur, win_cur, loss_cur = allover_count_win_loss_current(df, o, d)
         count_nonconf, win_nonconf, loss_nonconf = allover_count_win_loss_nonconference(df, o, d)
-        count_conf, win_conf, loss_conf = allover_count_win_loss_conference(df, o, d)
+        count_conf, win_conf, loss_conf = allover_count_win_loss_conference(df, o, d, conf)
         
     elif game['All Formulas Under'] == "Look":
         o = game['Offense Under 100']
         d = game['Defense Under 100']
+        conf = game['Conference']
 
         count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
         count, win, loss = allunder_count_win_loss(df, o, d)
         count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
         count_nonconf, win_nonconf, loss_nonconf = allunder_count_win_loss_nonconference(df, o, d)
-        count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d)
+        count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d, conf)
     
     elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
