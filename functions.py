@@ -22,19 +22,21 @@ def allover_count_win_loss(df, offense_value, defense_value):
     
     return count, win, loss
 
-def allover_count_win_loss_conference(df, offense_value, defense_value):
+def allover_count_win_loss_conference(df, offense_value, defense_value, conf):
     count = len(df[(df['All Formulas Over'] == 1) & 
                    (df['Offense Over 100'] == offense_value) & 
                    (df['Defense Over 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
-                   (df['Same Conference'] == 1)])
+                   (df['Same Conference'] == 1) &
+                   df['Conference'] == conf])
     
     win = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
                  (df['Defense Over 100'] == defense_value) & 
                  (df['Over Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
-                 (df['Same Conference'] == 1)])
+                 (df['Same Conference'] == 1) &
+                 df['Conference'] == conf])
     
     loss = count - win
     
@@ -75,19 +77,21 @@ def allunder_count_win_loss(df, offense_value, defense_value):
     
     return count, win, loss
 
-def allunder_count_win_loss_conference(df, offense_value, defense_value):
+def allunder_count_win_loss_conference(df, offense_value, defense_value, conf):
     count = len(df[(df['All Formulas Under'] == 1) & 
                    (df['Offense Under 100'] == offense_value) & 
                    (df['Defense Under 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
-                   (df['Same Conference'] == 1)])
+                   (df['Same Conference'] == 1) &
+                   df['Conference'] == conf])
     
     win = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
                  (df['Defense Under 100'] == defense_value) & 
                  (df['Over Hit.1'] == 1) &
                  (df['RS/PS'] == 'RS') &
-                 (df['Same Conference'] == 1)])
+                 (df['Same Conference'] == 1) &
+                 df['Conference'] == conf])
     
     loss = count - win
     
