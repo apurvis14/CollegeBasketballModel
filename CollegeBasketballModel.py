@@ -548,6 +548,21 @@ with tab1:
             record_specific, percent_specific = win_loss_record_expand(win_specific, loss_specific)
             need = "Conference"
             need1 = f"Conf. ({game['Conference']})"
+
+            away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
+            home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
+
+            away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
+            home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
+
+            matchup_header = (
+            f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
+            f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
+            f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
+            f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
+            f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
+            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific} {percent_specific1})")
+
         elif game['Same Conference'] == 0:
             record_need, units_need, fade_need = win_loss_record_expand(win_nonconf, loss_nonconf)
             percent_need = display_metrics_expand(percent_nonconf)
@@ -555,19 +570,19 @@ with tab1:
             need1 = "Non-Conf."
             record_specific = ""
 
-        away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
-        home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
+            away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
+            home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
 
-        away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
-        home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
+            away_img = f'<img class="team-logo" src="data:image/jpeg;base64,{away_logo}">'
+            home_img = f'<img class="team-logo" src="data:image/jpeg;base64,{home_logo}">'
 
-        matchup_header = (
-            f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
-            f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
-            f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
-            f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
-            f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
-            f"{need} Trend Over Record: {record_need} {percent_need} ({record_specific} {percent_specific1})")
+            matchup_header = (
+                f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
+                f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
+                f"'25-'26 Trend Over Record: {record_cur} {percent_cur1} <br>"
+                f"All Time Trend Over Record: {record_all} {percent_all1} <br>"
+                f"Last Season Trend Over Record: {record_prev} {percent_prev1} <br>"
+                f"{need} Trend Over Record: {record_need} {percent_need}")
 
         with st.container(border=False):
             height = 325
