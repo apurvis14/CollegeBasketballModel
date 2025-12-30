@@ -28,7 +28,7 @@ def allover_count_win_loss_conference(df, offense_value, defense_value, conf):
                    (df['Defense Over 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Same Conference'] == 1) &
-                   df['Conference'] == conf])
+                   (df['Conference'] == conf)])
     
     win = len(df[(df['All Formulas Over'] == 1) & 
                  (df['Offense Over 100'] == offense_value) & 
@@ -36,7 +36,7 @@ def allover_count_win_loss_conference(df, offense_value, defense_value, conf):
                  (df['Over Hit'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Same Conference'] == 1) &
-                 df['Conference'] == conf])
+                 (df['Conference'] == conf)])
     
     loss = count - win
     
@@ -83,7 +83,7 @@ def allunder_count_win_loss_conference(df, offense_value, defense_value, conf):
                    (df['Defense Under 100'] == defense_value) &
                    (df['RS/PS'] == 'RS') &
                    (df['Same Conference'] == 1) &
-                   df['Conference'] == conf])
+                   (df['Conference'] == conf)])
     
     win = len(df[(df['All Formulas Under'] == 1) & 
                  (df['Offense Under 100'] == offense_value) & 
@@ -91,7 +91,7 @@ def allunder_count_win_loss_conference(df, offense_value, defense_value, conf):
                  (df['Over Hit.1'] == 1) &
                  (df['RS/PS'] == 'RS') &
                  (df['Same Conference'] == 1) &
-                 df['Conference'] == conf])
+                 (df['Conference'] == conf)])
     
     loss = count - win
     
