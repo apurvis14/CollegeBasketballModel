@@ -64,7 +64,8 @@ ENCODED_USERS = {
     "R3JpZmY6MTIzNA==": "Griff",
     "QWRtaW46YWNjZXNz": "Admin",
     "SmFjb2IgUGVya2luczpXYXJyaW9yMTIzNDUh": "Jacob Perkins",
-    "VGFubmVyIEdyYXZlczokU21pdGgxMjI=": "Tanner Graves"
+    "VGFubmVyIEdyYXZlczokU21pdGgxMjI=": "Tanner Graves",
+    "QmVuOkxJR01BQkFMTFM=": "Ben",
 }
 
 # ---------- SESSION STATE INIT ----------
