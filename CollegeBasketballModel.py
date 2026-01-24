@@ -8,14 +8,14 @@ from functions import (
     PPGover_count_win_loss, EFFover_count_win_loss,
 
     # Win/Loss Record by Period (Current vs. Previous)
-    allover_count_win_loss_current, allover_count_win_loss_prev, allover_count_win_loss_conference, allover_count_win_loss_nonconference, allover_count_win_loss_conference_specific,
-    allunder_count_win_loss_current, allunder_count_win_loss_prev, allunder_count_win_loss_conference, allunder_count_win_loss_nonconference, allunder_count_win_loss_conference_specific,
-    EPOver_TempoUnder_count_win_loss_current, EPOver_TempoUnder_count_win_loss_prev, EPOver_TempoUnder_count_win_loss_conference, EPOver_TempoUnder_count_win_loss_nonconference, EPOver_TempoUnder_count_win_loss_conference_specific,
-    TEOver_PPGUnder_count_win_loss_current, TEOver_PPGUnder_count_win_loss_prev, TEOver_PPGUnder_count_win_loss_conference, TEOver_PPGUnder_count_win_loss_nonconference, TEOver_PPGUnder_count_win_loss_conference_specific,
-    TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev, TPOver_EFFUnder_count_win_loss_conference, TPOver_EFFUnder_count_win_loss_nonconference, TPOver_EFFUnder_count_win_loss_conference_specific,
-    TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, TempoOver_count_win_loss_conference, TempoOver_count_win_loss_nonconference, TempoOver_count_win_loss_conference_specific,
-    PPGover_count_win_loss_current, PPGover_count_win_loss_prev, PPGover_count_win_loss_conference, PPGover_count_win_loss_nonconference, PPGover_count_win_loss_conference_specific,
-    EFFover_count_win_loss_current, EFFover_count_win_loss_prev, EFFover_count_win_loss_conference, EFFover_count_win_loss_nonconference, EFFover_count_win_loss_conference_specific,
+    allover_count_win_loss_current, allover_count_win_loss_prev, allover_count_win_loss_conference, allover_count_win_loss_nonconference, allover_count_win_loss_conference_specific, allover_count_win_loss_total,
+    allunder_count_win_loss_current, allunder_count_win_loss_prev, allunder_count_win_loss_conference, allunder_count_win_loss_nonconference, allunder_count_win_loss_conference_specific, allunder_count_win_loss_total,
+    EPOver_TempoUnder_count_win_loss_current, EPOver_TempoUnder_count_win_loss_prev, EPOver_TempoUnder_count_win_loss_conference, EPOver_TempoUnder_count_win_loss_nonconference, EPOver_TempoUnder_count_win_loss_conference_specific, EPOver_TempoUnder_count_win_loss_total,
+    TEOver_PPGUnder_count_win_loss_current, TEOver_PPGUnder_count_win_loss_prev, TEOver_PPGUnder_count_win_loss_conference, TEOver_PPGUnder_count_win_loss_nonconference, TEOver_PPGUnder_count_win_loss_conference_specific, TEOver_PPGUnder_count_win_loss_total,
+    TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev, TPOver_EFFUnder_count_win_loss_conference, TPOver_EFFUnder_count_win_loss_nonconference, TPOver_EFFUnder_count_win_loss_conference_specific, TPOver_EFFUnder_count_win_loss_total,
+    TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, TempoOver_count_win_loss_conference, TempoOver_count_win_loss_nonconference, TempoOver_count_win_loss_conference_specific, TempoOver_count_win_loss_total,
+    PPGover_count_win_loss_current, PPGover_count_win_loss_prev, PPGover_count_win_loss_conference, PPGover_count_win_loss_nonconference, PPGover_count_win_loss_conference_specific, PPGover_count_win_loss_total, 
+    EFFover_count_win_loss_current, EFFover_count_win_loss_prev, EFFover_count_win_loss_conference, EFFover_count_win_loss_nonconference, EFFover_count_win_loss_conference_specific, EFFover_count_win_loss_total,
 
 
     # Display / Metrics Functions
@@ -157,6 +157,7 @@ def compute_game_metrics(game, df):
         o = game['Offense Over 100']
         d = game['Defense Over 100']
         conf = game['Conference']
+        bucket = game['Book Total Bucket']
 
         count_prev, win_prev, loss_prev = allover_count_win_loss_prev(df, o, d)
         count, win, loss = allover_count_win_loss(df, o, d)
@@ -164,11 +165,13 @@ def compute_game_metrics(game, df):
         count_nonconf, win_nonconf, loss_nonconf = allover_count_win_loss_nonconference(df, o, d)
         count_conf, win_conf, loss_conf = allover_count_win_loss_conference(df, o, d, conf)
         count_specific, win_specific, loss_specific = allover_count_win_loss_conference_specific(df, o, d, conf)
+        count_book, win_book, loss_book = allover_count_win_loss_total(df, o, d, bucket)
 
     elif game['All Formulas Under'] == "Look":
         o = game['Offense Under 100']
         d = game['Defense Under 100']
         conf = game['Conference']
+        bucket = game['Book Total Bucket']
 
         count_prev, win_prev, loss_prev = allunder_count_win_loss_prev(df, o, d)
         count, win, loss = allunder_count_win_loss(df, o, d)
@@ -176,6 +179,7 @@ def compute_game_metrics(game, df):
         count_nonconf, win_nonconf, loss_nonconf = allunder_count_win_loss_nonconference(df, o, d)
         count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d, conf)
         count_specific, win_specific, loss_specific = allunder_count_win_loss_conference_specific(df, o, d, conf)
+        count_book, win_book, loss_book = allunder_count_win_loss_total(df, o, d, bucket)
     
     elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
@@ -183,6 +187,7 @@ def compute_game_metrics(game, df):
         d1 = game['Count of DEF under 100']
         d2 = game['Count of DEF under 95']
         conf = game['Conference']
+        bucket = game['Book Total Bucket']
 
         count_prev, win_prev, loss_prev = EPOver_TempoUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = EPOver_TempoUnder_count_win_loss(df, o1, o2, d1, d2)
@@ -190,6 +195,7 @@ def compute_game_metrics(game, df):
         count_nonconf, win_nonconf, loss_nonconf = EPOver_TempoUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
         count_conf, win_conf, loss_conf = EPOver_TempoUnder_count_win_loss_conference(df, o1, o2, d1, d2)
         count_specific, win_specific, loss_specific = EPOver_TempoUnder_count_win_loss_conference_specific(df, o1, o2, d1, d2, conf)
+        count_book, win_book, loss_book = EPOver_TempoUnder_count_win_loss_total(df, o1, o2, d1, d2, bucket)
 
     elif game['Tempo and Efficiency over (PPG under)'] == "Alert":
         o1 = game['OFF Under 100']
@@ -197,6 +203,7 @@ def compute_game_metrics(game, df):
         d1 = game['DEF Under 100']
         d2 = game['DEF Under 95']
         conf = game['Conference']
+        bucket = game['Book Total Bucket']
 
         count_prev, win_prev, loss_prev = TEOver_PPGUnder_count_win_loss_prev(df, o1, o2, d1, d2)
         count, win, loss = TEOver_PPGUnder_count_win_loss(df, o1, o2, d1, d2)
@@ -204,10 +211,11 @@ def compute_game_metrics(game, df):
         count_nonconf, win_nonconf, loss_nonconf = TEOver_PPGUnder_count_win_loss_nonconference(df, o1, o2, d1, d2)
         count_conf, win_conf, loss_conf = TEOver_PPGUnder_count_win_loss_conference(df, o1, o2, d1, d2)
         count_specific, win_specific, loss_specific = TEOver_PPGUnder_count_win_loss_conference_specific(df, o1, o2, d1, d2, conf)
-
+        count_book, win_book, loss_book = TEOver_PPGUnder_count_win_loss_total(df, o1, o2, d1, d2, bucket)
     
     elif game['Tempo and PPG over (Efficiency Under)'] == "Alive":
             conf = game['Conference']
+            bucket = game['Book Total Bucket']
 
             count_prev, win_prev, loss_prev = TPOver_EFFUnder_count_win_loss_prev(df)
             count, win, loss = TPOver_EFFUnder_count_win_loss(df)
@@ -215,10 +223,12 @@ def compute_game_metrics(game, df):
             count_conf, win_conf, loss_conf = TPOver_EFFUnder_count_win_loss_conference(df)
             count_nonconf, win_nonconf, loss_nonconf = TPOver_EFFUnder_count_win_loss_nonconference(df)
             count_specific, win_specific, loss_specific = TPOver_EFFUnder_count_win_loss_conference_specific(df, conf)
+            count_book, win_book, loss_book = TPOver_EFFUnder_count_win_loss_total(df, bucket)
 
     elif game['Just Tempo Over'] == "Tempo":
             val = game['Over 105 EFF']
             conf = game['Conference']
+            bucket = game['Book Total Bucket']
 
             count_prev, win_prev, loss_prev = TempoOver_count_win_loss_prev(df, val)
             count, win, loss = TempoOver_count_win_loss(df, val)
@@ -226,10 +236,12 @@ def compute_game_metrics(game, df):
             count_nonconf, win_nonconf, loss_nonconf = TempoOver_count_win_loss_nonconference(df, val)
             count_conf, win_conf, loss_conf = TempoOver_count_win_loss_conference(df, val)
             count_specific, win_specific, loss_specific = TempoOver_count_win_loss_conference_specific(df, val, conf)
+            count_book, win_book, loss_book = TempoOver_count_win_loss_total(df, val, bucket)
 
     elif game['Just PPG Over'] == "PPG":
             val = game['Over 110 EFF']
             conf = game['Conference']
+            bucket = game['Book Total Bucket']
 
             count_prev, win_prev, loss_prev = PPGover_count_win_loss_prev(df, val)
             count, win, loss = PPGover_count_win_loss(df, val)
@@ -237,11 +249,13 @@ def compute_game_metrics(game, df):
             count_nonconf, win_nonconf, loss_nonconf = PPGover_count_win_loss_nonconference(df, val)
             count_conf, win_conf, loss_conf = PPGover_count_win_loss_conference(df, val)
             count_specific, win_specific, loss_specific = PPGover_count_win_loss_conference_specific(df, val, conf)
+            count_book, win_book, loss_book = PPGover_count_win_loss_total(df, val, bucket)
 
     elif game['Just Efficiency Over'] == "EFF":
             o = game['OFF Over 105']
             d = game['DEF Over 105']
             conf = game['Conference']
+            bucket = game['Book Total Bucket']
 
             count_prev, win_prev, loss_prev = EFFover_count_win_loss_prev(df, o, d)
             count, win, loss = EFFover_count_win_loss(df, o, d)
@@ -249,6 +263,7 @@ def compute_game_metrics(game, df):
             count_conf, win_conf, loss_conf = EFFover_count_win_loss_conference(df, o, d)
             count_nonconf, win_nonconf, loss_nonconf = EFFover_count_win_loss_nonconference(df, o, d)
             count_specific, win_specific, loss_specific = EFFover_count_win_loss_conference_specific(df, o, d, conf)
+            count_book, win_book, loss_book = EFFover_count_win_loss_total(df, o, d, bucket)    
             
     else:
             percent_all = 'None'
@@ -264,6 +279,9 @@ def compute_game_metrics(game, df):
             loss_conf, loss_nonconf = 0, 0
             percent_specific = 'None'
             count_specific, win_specific, loss_specific = 0, 0, 0
+            count_book = 0
+            win_book, loss_book = 0, 0
+            percent_book = 'None'
 
 
     percent_all = round((win/count)*100,2) if count else 0
@@ -272,8 +290,9 @@ def compute_game_metrics(game, df):
     percent_conf = round((win_conf/count_conf)*100,2) if count_conf else 0
     percent_nonconf = round((win_nonconf/count_nonconf)*100,2) if count_nonconf else 0 
     percent_specific = round((win_specific/count_specific)*100,2) if count_specific else 0
+    percent_book = round((win_book/count_book)*100,2) if count_book else 0
 
-    return count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur, percent_conf, percent_nonconf, count_conf, count_nonconf, win_conf, win_nonconf, loss_conf, loss_nonconf, count_specific, win_specific, loss_specific, percent_specific
+    return count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur, percent_conf, percent_nonconf, count_conf, count_nonconf, win_conf, win_nonconf, loss_conf, loss_nonconf, count_specific, win_specific, loss_specific, percent_specific, win_book, loss_book, percent_book
 
 
 # Remove padding at the top
@@ -465,85 +484,14 @@ with tab1:
     unsafe_allow_html=True)
 
     for idx, game in today_games.iterrows():
-        count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur, percent_conf, percent_nonconf, count_conf, count_nonconf, win_conf, win_nonconf, loss_conf, loss_nonconf, count_specific, win_specific, loss_specific, percent_specific = compute_game_metrics(game, df)
+        count, win, loss, percent_all, percent_prev, win_prev, loss_prev, percent_cur, count_cur, win_cur, loss_cur, percent_conf, percent_nonconf, count_conf, count_nonconf, win_conf, win_nonconf, loss_conf, loss_nonconf, count_specific, win_specific, loss_specific, percent_specific, win_book, loss_book, percent_book = compute_game_metrics(game, df)
         
 
         percent_cur1 = display_metrics_expand(percent_cur)
         percent_all1 = display_metrics_expand(percent_all)
         percent_prev1 = display_metrics_expand(percent_prev)
         percent_specific1 = display_metrics_expand(percent_specific)
-
-
-
-        # if percent_cur >= 60 and percent_all >= 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
-        # elif percent_cur >= 60 and 53 <= percent_all < 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        # elif percent_cur >= 60 and 50 <= percent_all < 53:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        # elif percent_cur >= 60 and percent_all < 50:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-
-        # elif percent_cur >= 55 and percent_all >= 60:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
-        # elif percent_cur >= 55 and percent_all >= 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        # elif percent_cur >= 55 and 52 <= percent_all < 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        # elif percent_cur >= 55 and percent_all < 52:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-
-        # elif 52 <= percent_cur < 55 and percent_all >= 60:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Over"
-        # elif 52 <= percent_cur < 55 and percent_all >= 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over"
-        # elif 52 <= percent_cur < 55 and 52 <= percent_all < 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        # elif 52 <= percent_cur < 55 and percent_all < 52:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-
-        # elif 48 < percent_cur < 52 and percent_all >= 60:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        # elif 48 < percent_cur < 52 and percent_all >= 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Over / Avoid"
-        # elif 48 < percent_cur < 52 and 46 <= percent_all < 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif 48 < percent_cur < 52 and 42 < percent_all < 46:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
-        # elif 48 < percent_cur < 52 and percent_all <= 42:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
-
-        # elif 46 < percent_cur <=48 and percent_all >= 60:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif 46 < percent_cur <=48 and percent_all >= 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif 46 < percent_cur <=48 and 48 < percent_all < 55:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif 46 < percent_cur <=48 and 46 < percent_all <= 48:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
-        # elif 46 < percent_cur <=48 and 42 < percent_all <= 46:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
-        # elif 46 < percent_cur <=48 and percent_all <= 42:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Moderate Under"
-
-        
-        # elif 40 <= percent_cur <= 46 and percent_all >= 50:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif 40 <= percent_cur <= 46 and 46 <= percent_all < 50:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
-        # elif 40 <= percent_cur <= 46 and 40 <= percent_all <= 46:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
-        # elif 40 <= percent_cur <= 46 and percent_all < 40:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Under"
-
-        # elif percent_cur < 40 and percent_all >= 50:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Avoid"
-        # elif percent_cur < 40 and 48 <= percent_all < 50:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under / Avoid"
-        # elif percent_cur < 40 and 40 <= percent_all < 48:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Under"
-        # elif percent_cur < 40 and percent_all < 40:
-        #     pick = "<span style='color:black; font-weight:bold'>Suggestion: Strong Under"
+        percent_book1 = display_metrics_expand(percent_book)
 
 
         record_cur, units_cur, fade_cur = win_loss_record_expand(win_cur, loss_cur)
@@ -557,6 +505,8 @@ with tab1:
             need = "Conference"
             need1 = f"Conf. ({game['Conference']})"
             conf_need = game['Conference']
+            book_bucket = game['Book Total Bucket']
+            record_book, units_book, fade_book = win_loss_record_expand(win_book, loss_book)
 
             away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
             home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -568,7 +518,7 @@ with tab1:
             f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
             f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
             f"'25-'26 Trend Record: {record_cur} {percent_cur1} <br>"
-            f"All Time Trend Record: {record_all} {percent_all1} <br>"
+            f"All Time Trend Record: {record_all} {percent_all1} - {book_bucket}: {record_book} {percent_book1}<br>"
             f"Last Season Trend Record: {record_prev} {percent_prev1} <br>"
             f"{need} Trend Record: {record_need} {percent_need} - {conf_need}: {record_specific1} {percent_specific1}")
 
@@ -578,6 +528,8 @@ with tab1:
             need = "Non-Conference"
             need1 = "Non-Conf."
             record_specific = ""
+            book_bucket = game['Book Total Bucket']
+            record_book, units_book, fade_book = win_loss_record_expand(win_book, loss_book)
 
             away_logo = get_base64(f"Team Logo/{game['Away Team']}.jpg")
             home_logo = get_base64(f"Team Logo/{game['Home Team']}.jpg")
@@ -589,7 +541,7 @@ with tab1:
                 f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
                 f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
                 f"'25-'26 Trend Record: {record_cur} {percent_cur1} <br>"
-                f"All Time Trend Record: {record_all} {percent_all1} <br>"
+                f"All Time Trend Record: {record_all} {percent_all1} - {book_bucket}: {record_book} {percent_book1}<br>"
                 f"Last Season Trend Record: {record_prev} {percent_prev1} <br>"
                 f"{need} Trend Record: {record_need} {percent_need}")
 
