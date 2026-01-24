@@ -14,13 +14,11 @@ from functions import (
     TEOver_PPGUnder_count_win_loss_current, TEOver_PPGUnder_count_win_loss_prev, TEOver_PPGUnder_count_win_loss_conference, TEOver_PPGUnder_count_win_loss_nonconference, TEOver_PPGUnder_count_win_loss_conference_specific, TEOver_PPGUnder_count_win_loss_total,
     TPOver_EFFUnder_count_win_loss_current, TPOver_EFFUnder_count_win_loss_prev, TPOver_EFFUnder_count_win_loss_conference, TPOver_EFFUnder_count_win_loss_nonconference, TPOver_EFFUnder_count_win_loss_conference_specific, TPOver_EFFUnder_count_win_loss_total,
     TempoOver_count_win_loss_current, TempoOver_count_win_loss_prev, TempoOver_count_win_loss_conference, TempoOver_count_win_loss_nonconference, TempoOver_count_win_loss_conference_specific, TempoOver_count_win_loss_total,
-    PPGover_count_win_loss_current, PPGover_count_win_loss_prev, PPGover_count_win_loss_conference, PPGover_count_win_loss_nonconference, PPGover_count_win_loss_conference_specific, PPGover_count_win_loss_total, 
+    PPGover_count_win_loss_current, PPGover_count_win_loss_prev, PPGover_count_win_loss_conference, PPGover_count_win_loss_nonconference, PPGover_count_win_loss_conference_specific, PPGover_count_win_loss_total,
     EFFover_count_win_loss_current, EFFover_count_win_loss_prev, EFFover_count_win_loss_conference, EFFover_count_win_loss_nonconference, EFFover_count_win_loss_conference_specific, EFFover_count_win_loss_total,
 
 
     # Display / Metrics Functions
-    display_metrics, display_metrics_under,
-    display_total_difference_histogram,
     display_metrics_expand, win_loss_record_expand,
 
     # Home/Away Breakdown
@@ -177,7 +175,7 @@ def compute_game_metrics(game, df):
         count, win, loss = allunder_count_win_loss(df, o, d)
         count_cur, win_cur, loss_cur = allunder_count_win_loss_current(df, o, d)
         count_nonconf, win_nonconf, loss_nonconf = allunder_count_win_loss_nonconference(df, o, d)
-        count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d, conf)
+        count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d)
         count_specific, win_specific, loss_specific = allunder_count_win_loss_conference_specific(df, o, d, conf)
         count_book, win_book, loss_book = allunder_count_win_loss_total(df, o, d, bucket)
     
