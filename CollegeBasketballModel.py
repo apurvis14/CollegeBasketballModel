@@ -516,7 +516,7 @@ with tab1:
             f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
             f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
             f"'25-'26 Trend Record: {record_cur} {percent_cur1} <br>"
-            f"All Time Trend Record: {record_all} {percent_all1} - {book_bucket}: {record_book} {percent_book1}<br>"
+            f"All Time Trend Record: {record_all} {percent_all1} - When {book_bucket}: {record_book} {percent_book1}<br>"
             f"Last Season Trend Record: {record_prev} {percent_prev1} <br>"
             f"{need} Trend Record: {record_need} {percent_need} - {conf_need}: {record_specific1} {percent_specific1}")
 
@@ -539,7 +539,7 @@ with tab1:
                 f"{away_img}{game['Away Team']} @&nbsp;{home_img}{game['Home Team']}"
                 f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
                 f"'25-'26 Trend Record: {record_cur} {percent_cur1} <br>"
-                f"All Time Trend Record: {record_all} {percent_all1} - {book_bucket}: {record_book} {percent_book1}<br>"
+                f"All Time Trend Record: {record_all} {percent_all1} - When{book_bucket}: {record_book} {percent_book1}<br>"
                 f"Last Season Trend Record: {record_prev} {percent_prev1} <br>"
                 f"{need} Trend Record: {record_need} {percent_need}")
 
