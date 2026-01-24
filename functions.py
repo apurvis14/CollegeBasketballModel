@@ -1546,13 +1546,13 @@ def display_metrics_expand(percent):
         percent_display = f"<span style='color:black; background-color:#009900; font-weight:bold'>({percent}%)</span>"
     elif percent >= 55:
         percent_display = f"<span style='color:black; background-color:limegreen; font-weight:bold'>({percent}%)</span>"
-    elif 52 <= percent < 55:
+    elif 53.5 <= percent < 55:
         percent_display = f"<span style='color:black; font-weight:bold; background-color:lightgreen;'>({percent}%)</span>"
-    elif 48 < percent < 52:
+    elif 47 < percent < 53.5:
         percent_display = f"<span style='color:black; background-color:white; font-weight:bold'>({percent}%)</span>"
-    elif 46 < percent <=48:
+    elif 44.5 < percent <= 47:
         percent_display = f"<span style='color:black; background-color:gold; font-weight:bold'>({percent}%)</span>"
-    elif 40 <= percent <= 46:
+    elif 40 <= percent <= 44.5:
         percent_display = f"<span style='color:black; background-color:#FF6933; font-weight:bold'>({percent}%)</span>"
     elif percent == 0:
         percent_display = f"({percent}%)"
@@ -1667,13 +1667,13 @@ def metric_html(label, percent, win, loss):
         percent_display = f"<span style='color:#22C55E; font-weight:bold'>{percent}%</span>"
     elif percent >= 55:
         percent_display = f"<span style='color:#34D399; font-weight:bold'>{percent}%</span>"
-    elif 52 <= percent < 55:
+    elif 53.5 <= percent < 55:
         percent_display = f"<span style='color:DCFCE7; font-weight:bold'>{percent}%</span>"
-    elif 48 < percent < 52:
+    elif 47 < percent < 53.5:
         percent_display = f"<span style='color:#black; font-weight:bold'>{percent}%</span>"
-    elif 46 < percent <=48:
+    elif 44.5 < percent <= 47:
         percent_display = f"<span style='color:yellow; font-weight:bold'>{percent}%</span>"
-    elif 40 <= percent <= 46:
+    elif 40 <= percent <= 44.5:
         percent_display = f"<span style='color:orange; font-weight:bold'>{percent}%</span>"
     elif percent < 40:
         percent_display = f"<span style='color:red; font-weight:bold'>{percent}%</span>"
