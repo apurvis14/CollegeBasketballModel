@@ -181,7 +181,7 @@ def compute_game_metrics(game, df):
         count_conf, win_conf, loss_conf = allunder_count_win_loss_conference(df, o, d)
         count_specific, win_specific, loss_specific = allunder_count_win_loss_conference_specific(df, o, d, conf)
         count_book, win_book, loss_book = allunder_count_win_loss_total(df, o, d, bucket)
-        count_day, win_day, loss_day = allunder_count_win_loss_dayweek(df, o, d)
+        count_day, win_day, loss_day = allunder_count_win_loss_dayweek(df, o, d,day)
     
     elif game['Efficiency/PPG over  (Tempo under)'] == "Invest":
         o1 = game['Count of OFF over 100']
@@ -540,7 +540,7 @@ with tab1:
             f"&nbsp;|&nbsp;Total: {game['Book Total']} | {need1}||"
             f"'25-'26 Trend Record: {record_cur} {percent_cur1} <br>"
             f"All Time Trend Record: {record_all} {percent_all1} - When {book_bucket}: {record_book} {percent_book1}<br>"
-            f"Last Season Trend Record: {record_prev} {percent_prev1} - On{day} {record_day} {percent_day1} <br>"
+            f"Last Season Trend Record: {record_prev} {percent_prev1} - On {day} {record_day} {percent_day1} <br>"
             f"{need} Trend Record: {record_need} {percent_need} - {conf_need}: {record_specific1} {percent_specific1}")
 
         elif game['Same Conference'] == 0:
